@@ -1,6 +1,5 @@
 <?php
-echo 23423; die;
-ini_set('display_errors', 1);
+
 //error_reporting(E_ALL);
 //
 //$actual_link = $al = "http" . ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? "s://" : "://") . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -56,6 +55,9 @@ ini_set('display_errors', 1);
  * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
  */
+
+define('LARAVEL_START', microtime(true));
+
 /*
   |--------------------------------------------------------------------------
   | Register The Auto Loader
@@ -64,11 +66,11 @@ ini_set('display_errors', 1);
   | Composer provides a convenient, automatically generated class loader for
   | our application. We just need to utilize it! We'll simply require it
   | into the script here so that we don't have to worry about manual
-  | loading any of our classes later on. It feels nice to relax.
+| loading any of our classes later on. It feels great to relax.
   |
  */
 
-require __DIR__ . '/../bootstrap/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 /*
   |--------------------------------------------------------------------------
@@ -82,7 +84,7 @@ require __DIR__ . '/../bootstrap/autoload.php';
   |
  */
 
-$app = require_once __DIR__ . '/../bootstrap/app.php';
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
 /*
   |--------------------------------------------------------------------------
@@ -105,4 +107,3 @@ $response = $kernel->handle(
 $response->send();
 
 $kernel->terminate($request, $response);
-
