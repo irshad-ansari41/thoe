@@ -100,7 +100,11 @@ class CacheController extends Controller {
     }
 
     public function store(Request $request) {
-        $newurl = preg_replace('/&?_=[0-9]*/', '', $request->page_url);
+        $str =trim(stripslashes(htmlspecialchars($request->page_url)));
+        $test = str_replace('%','-', $str );
+        $newurl = preg_replace('/&?_=[0-9]*/', '', $test);
+
+        //$newurl = preg_replace('/&?_=[0-9]*/', '', $request->page_url);
         if ((strpos($newurl, 'http') === false)) {
             $newurl = 'https:' . $newurl;
         }

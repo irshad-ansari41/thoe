@@ -225,7 +225,9 @@
 
         </script> 
         
-        <script>jQuery.ajax({url: '<?= url('cache-page') ?>', cache: false, data: {page_url: '<?= Request::url() ?>', user_id: '1'}, success: function (html) { }});</script>
+        <script>
+            //jQuery.ajax({url: '<?= url('cache-page') ?>', method: 'post', cache: false, data: {page_url: '<?= Request::url() ?>', user_id: '1'}, success: function (html) { }});
+        </script>
     </body>
 </html>
 

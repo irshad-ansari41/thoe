@@ -648,7 +648,7 @@
 			if(fileUpload.files[0]!=undefined)
 			{
 				//Check whether the file is valid Image.
-				var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(.jpg|.png|.gif)$");
+				var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(.jpg|.png|.gif|.webp)$");
 				if (regex.test(fileUpload.value.toLowerCase())) {
 					//Check whether HTML5 is supported.
 					if (typeof (fileUpload.files) != "undefined") {

@@ -3,6 +3,8 @@
     <head>
         <META HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=UTF-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <meta name="insight-app-sec-validation" content="525fc7f0-20d9-4261-8822-a3f8e12821ab">
+
         <title>Azizi Developments Emailer</title>
         <style>
             html, body { width: 100%; font-family: helvetica, "helvetica neue", arial, verdana, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }

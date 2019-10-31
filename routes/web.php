@@ -193,8 +193,8 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
 
     
     //Redirect Pages Section
-    Route::get('/cityscape-dubai-2019',function(){
-        return redirect('https://azizidevelopments.com/azizi-cityscape-dubai-2019/');
+    Route::get('en/offers',function(){
+        return redirect('https://azizidevelopments.com/offers');
     });
     //End Page Redirect Section
     
@@ -208,10 +208,10 @@ Route::get('cn', array('as' => 'home.cn', 'uses' => 'HomeController@index'));
 
 
 /* Custom */
-Route::any('/cache-page', 'CacheController@store');
+Route::post('/cache-page', 'CacheController@store');
 Route::any('/cache-clear', 'CacheController@index');
 //Route::get('/delete-session', 'CacheController@delete_session_views');
-Route::any('/save-meta', 'MetaController@save');
+Route::post('/save-meta', 'MetaController@save');
 
 /* End Landing Pages */
 Route::get('lp/diamond-week-offers', ['as' => 'cityscape.lp-diamond-week-offers', 'uses' => 'OfferController@Lp_Diamond_Week']);
@@ -232,3 +232,10 @@ Route::get('/confirm/{sid}/{token}', ['as' => 'newsletter-confirm', 'uses' => 'L
 Route::get('/sent-emails/{propertyslug}/{fullname}/{email}', ['as' => 'view-emails', 'uses' => 'LeadController@Thankyou_preview']);
 Route::get('/sent-emails/{fullname}/{email}', ['as' => 'view-emails', 'uses' => 'LeadController@Thankyou_preview']);
 //Route::get('import-SF-leads',['as' => 'import-SF-leads', 'uses' => 'LeadController@import_SF_leads']);
+
+Route::get('/Artisan', function() {
+    $exitCode = Artisan::call('config:clear');
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('config:cache');
+    return 'DONE'; //Return anything
+});

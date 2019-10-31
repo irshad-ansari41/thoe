@@ -86,6 +86,7 @@ if (strpos($curr_url, 'events/') !== false && empty($content->event_title_ar)) {
         <meta name="twitter:description" content="<?= !empty($meta_description) ? $meta_description : '' ?>">
         <meta name="twitter:creator" content="@author_handle">
         <meta name="twitter:image" content="<?= !empty($og_pic) ? $og_pic : '' ?>">
+        <meta name="insight-app-sec-validation" content="525fc7f0-20d9-4261-8822-a3f8e12821ab">
 
 
 
@@ -249,7 +250,7 @@ if (strpos($curr_url, 'events/') !== false && empty($content->event_title_ar)) {
                     <i class="large material-icons">menu</i>
                 </a-->
                 <ul class="nav navbar-nav topmg <?= $locale == 'ar' ? 'floatLeft' : 'floatRight' ?>">
-                    <li><a id="offer-icon" href="<?= SITE_URL ?>/{{$locale}}/<?=OFFERS_URL?>"><span><?=OFFERS_Name?></span></a></li>
+                    <!--li><a id="offer-icon" href="<?= SITE_URL ?>/{{$locale}}/<?=OFFERS_URL?>"><span><?=OFFERS_Name?></span></a></li-->
                     <li><a id="call-icon" class="telephone" data-telephone="80029494"><i class="ion-android-call"></i><span>Call Us 800 (AZIZI) 29494</span></a></li>
                     <li><a id="mail-icon" class="modal-trigger" href="#enquire-now"><i class="ion-android-mail"></i><span>{{trans('words.register-your-interest')}}</span></a></li>                    
                     <li>
@@ -622,7 +623,7 @@ if (strpos($curr_url, 'events/') !== false && empty($content->event_title_ar)) {
 
             });
             setTimeout(function () {
-                jQuery.ajax({url: '<?= url('cache-page') ?>', method: 'get', cache: false, data: {page_url: '<?= $curr_url ?>', user_id: '1'}, success: function (html) { }});
+                jQuery.ajax({url: '<?= url('cache-page') ?>', method: 'post', cache: false, data: {page_url: '<?= $curr_url ?>', user_id: '1'}, success: function (html) { }});
 
                 var data = {meta_id: '<?= !empty($meta_id) ? $meta_id : 0 ?>', meta_title: $('title').text(),
                     meta_desc: $('meta[name="description"]').attr('content'),

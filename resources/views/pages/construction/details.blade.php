@@ -188,9 +188,10 @@ if ($property->plan_start_date != "" && $property->plan_end_date != "") {
 
 
     <div class="container" style="margin-top: 2em;">
-
+        <?php $ar =['Riviera Phase 1','Riviera Phase 2','Riviera Phase 3']; ?>
         <div class="row">
             <div class="col s12 p0">
+                <?php if (!in_array($property->title_en, $ar)): ?>
                 <div class="col s12 m2">
                     <div class="col s12 card {{$property->mobilization_percentage=='100'?'delivered':''}}">
                         <div class="progress-circle-mobilization"></div>
@@ -205,6 +206,7 @@ if ($property->plan_start_date != "" && $property->plan_end_date != "") {
                         </h6>
                     </div>
                 </div>
+                
                 <div class="col s12 m2">
                     <div class="col s12 card {{$property->structure_percentage=='100'?'delivered':''}}">
                         <div class="progress-circle-structure"></div>
@@ -249,6 +251,7 @@ if ($property->plan_start_date != "" && $property->plan_end_date != "") {
 
                     </div>
                 </div>
+                
                 <div class="col s12 m2">
                     <div class="col s12 card {{$property->total_completion=='100'?'delivered':''}}">
                         <div class="progress-circle-overall"></div>
@@ -325,10 +328,109 @@ if ($property->plan_start_date != "" && $property->plan_end_date != "") {
                             </div>
                         <?php } ?>
 
+                        <!-- @if($locale=='en')
+                        <a href="<?= !empty($booklink) ? $booklink : '' ?>">
+                            <h6 class="btn-enquire" style="right: -4.3rem;"><strong style="font-size: 20px;margin-right: 5px;"><i class="ion-ios-paperplane-outline"></i></strong>{{trans('words.BOOK NOW')}}</h6>
+                        </a>
+
+                        @elseif($locale=='ar')
+                        <a href="<?= !empty($booklink) ? $booklink : '' ?>">
+                            <h6 class="btn-enquire" style="right: -4.3rem;"><strong style="font-size: 20px;margin-right: 5px;"><i class="ion-ios-paperplane-outline"></i></strong>{{trans('words.BOOK NOW')}}</h6>
+                        </a>
+
+                        @elseif($locale=='cn')
+
+                        <a href="<?= !empty($booklink) ? $booklink : '' ?>">
+                            <h6 class="btn-enquire" style="right: -3rem;"><strong style="font-size: 20px;margin-right: 5px;"><i class="ion-ios-paperplane-outline"></i></strong>{{trans('words.BOOK NOW')}}</h6>
+                        </a>
 
 
+                        @endif
+                        -->
 
 
+                    </div>
+                </div>
+                <?php else: ?>
+                <div class="col s12 m2"></div>
+                <div class="col s12 m2"></div>
+                
+                <div class="col s12 m2">
+                    <div class="col s12 card {{$property->total_completion=='100'?'delivered':''}}">
+                        <div class="progress-circle-overall"></div>
+                        <h6 class="az-title center-align">
+                            @if($locale=='en')
+                            {{trans('words.Overall Progress')}}
+                            @elseif($locale=='cn')
+                            服务设施和收尾
+                            @elseif($locale=='ar')
+                            {{trans('words.Overall Progress')}}
+                            @endif
+                        </h6>
+
+                    </div>
+                </div>
+                
+                <div class="col s12 m2 card center-align">
+                    <div class="col s12" style="    margin-top: 1.8rem;">
+                        <!-- <div class="progress-circle-overall"></div> -->
+                        <?php if ($flag == "3") { ?>
+                            <div class="col s12" style="">
+                                <?php if (!empty($text)) { ?>
+                                    <h6 style="text-transform: uppercase;letter-spacing: 4px;font-size: 14px !important;background: black;color: white;border-radius: 0px;padding: 10px 0px;margin-bottom: 0;">
+                                        @if($locale=='en')
+                                        {{trans('words.Delivery date')}}
+                                        @elseif($locale=='cn')
+                                        预计交工日期
+                                        @elseif($locale=='ar')
+                                        {{trans('words.Delivery date')}}
+                                        @endif
+                                    </h6>
+
+                                    <h4 style="margin-top: 3rem;border: 1px dashed grey;padding: 15px 0px;border-bottom: 10px solid black;"><?= $text ?></h4>
+                                <?php } ?>
+                            </div>        
+                        <?php } elseif ($flag != '3') { ?>
+                            <div class="col s12" style="margin-top: 2.2rem;">
+
+                                <?php if ($flag == "1") { ?>
+                                    <h4 style="text-transform: uppercase;letter-spacing: 4px;font-size: 16px;background: black;color: white;border-radius: 0px;padding: 10px 0px;margin-bottom: 0;line-height: 23px;">
+                                        @if($locale=='en')
+                                        Delivered on <br><?php echo date('j F Y', strtotime($property->plan_end_date)); ?>
+                                        @elseif($locale=='cn')
+                                        预计交工日期
+                                        @elseif($locale=='ar')
+                                        {{trans('words.Delivery date')}}
+                                        @endif
+                                    </h4>
+
+                                    <h3 style=""> <span class="ion-ios-time-outline"></span><br></h3>
+                                    <h4 style="line-height: 25px;text-transform: uppercase;margin: 0;">{{ $days }} <br>
+                                        @if($locale=='en')
+                                        <span style="font-size: 15px;font-weight: 100;">{{trans('words.days of construction')}}</span></h4>
+                                    @elseif($locale=='cn')
+                                    <span style="font-size: 15px;font-weight: 100;">施工天数</span></h4>
+                                    @elseif($locale=='ar')
+                                    <span style="font-size: 15px;font-weight: 100;">{{trans('words.days of construction')}}</span></h4>
+                                    @endif
+                                <?php } elseif ($flag == "2") { ?>
+                                    <h4 style="text-transform: uppercase;letter-spacing: 4px;font-size: 18px;background: black;color: white;border-radius: 0px;padding: 10px 0px;margin-bottom: 0;">
+                                        @if($locale=='en')
+                                        {{trans('words.Delivery date')}}
+                                        @elseif($locale=='cn')
+                                        预计交工日期
+                                        @elseif($locale=='ar')
+                                        {{trans('words.Delivery date')}}
+                                        @endif
+                                    </h4>
+
+                                    <p style="margin: 5px 0px;"><?php echo date("d-m-Y", strtotime($property->plan_end_date)); ?></p>
+                                    <h5 style="margin-bottom: 10px;font-size: 4rem;margin-top: 15px;"><span class="ion-ios-timer-outline"></span></h5>
+                                    <h6 id="demo" style="font-size: 20px;text-transform: uppercase;margin-top: 10px;"><span style="font-weight: 600;font-size: 2.5rem"></h6>
+                                    <h4 style="line-height: 25px;text-transform: uppercase;margin: 0;"><span style="font-size: 15px;font-weight: 100;">{{trans('words.to complete')}}</span></h4>
+                                <?php } ?>
+                            </div>
+                        <?php } ?>
 
                         <!-- @if($locale=='en')
                         <a href="<?= !empty($booklink) ? $booklink : '' ?>">
@@ -353,6 +455,12 @@ if ($property->plan_start_date != "" && $property->plan_end_date != "") {
 
                     </div>
                 </div>
+                <div class="col s12 m2"></div>
+                <div class="col s12 m2"></div>
+                
+                
+                <?php endif; ?>
+                
             </div>
         </div>
 

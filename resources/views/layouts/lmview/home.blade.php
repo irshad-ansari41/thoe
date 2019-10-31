@@ -236,7 +236,7 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
                 </a>
 
                 <ul class="nav navbar-nav topmg <?= $locale == 'ar' ? 'floatLeft' : 'floatRight' ?>">
-                    <li><a id="offer-icon" href="<?= SITE_URL ?>/{{$locale}}/<?=OFFERS_URL?>"><span><?=OFFERS_Name?></span></a></li>
+                    <!--li><a id="offer-icon" href="<?= SITE_URL ?>/{{$locale}}/<?=OFFERS_URL?>"><span><?=OFFERS_Name?></span></a></li-->
                     <li><a id="call-icon" class="telephone" data-telephone="80029494"><i class="ion-android-call"></i><span>Call Us 800 (AZIZI) 29494</span></a></li>
                     <li><a id="mail-icon" data-toggle="modal" data-target="#lead-form-model" href="#lead-form-model"><i class="ion-android-mail"></i><span>{{trans('words.register-your-interest')}}</span></a></li>
                     <li>

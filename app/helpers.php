@@ -654,7 +654,7 @@ function subscribe_newsletter($name, $email, $locale) {
     } else {
         Mail::send('emails.confirm-subscription', ['data' => $data], function ($message) use ($data) {
             $message->subject($data['subject']);
-            $message->from('info@azizidevelopments.com', 'Azizi Developments');
+            $message->from('subscription@azizidevelopments.com', 'Azizi Developments');
             $message->to($data['email'], $data['name']);
         });
         $msg = '<p>Thank you for subscribing to our newsletter! We’ll keep you up-to-date on the latest Azizi projects.</p>
@@ -724,6 +724,9 @@ function social_share($title, $content, $picture, $url) {
 function Ratings(){ $record = DB::table('tbl_setting')->first(); return $record->ratings; }
 
 //Offer Page Settings
-if (!defined('OFFERS_Name')) { define('OFFERS_Name', 'Extended Cityscape For You!'); }
-if (!defined('OFFERS_URL')) { define('OFFERS_URL', 'cityscape-dubai-2019'); }
+if (!defined('OFFERS_Name')) { define('OFFERS_Name', 'offers'); }
+if (!defined('OFFERS_URL')) { define('OFFERS_URL', 'offers'); }
 
+function str_limit($text,$len=null){
+    return $text;
+}

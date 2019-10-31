@@ -112,7 +112,7 @@ class PropertyController extends Controller {
             return redirect("$this->locale/dubai");
         }
 
-        $query = DB::table('tbl_properties')->where("project_id", $project->id)->where("status", "1");
+        $query = DB::table('tbl_properties')->where("project_id", $project->id)->where("status", "1")->where("show_property", "Yes");
         if (strpos($request->fullurl(), '?afm=1') !== false) {
             $query->whereIn('id', [3, 6, 8, 7, 11]);
         }

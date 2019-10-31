@@ -77,7 +77,9 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
         <meta name="twitter:description" content="<?= !empty($meta_description) ? $meta_description : '' ?>">
         <meta name="twitter:creator" content="@author_handle">
         <meta name="twitter:image" content="<?= !empty($og_pic) ? $og_pic : '' ?>">
+        <meta name="insight-app-sec-validation" content="525fc7f0-20d9-4261-8822-a3f8e12821ab">
 
+        
         <link rel="canonical" href="https://azizidevelopments.com/">
         <link rel="stylesheet" href="<?= asset('assets/css/ionicons.css') ?>" type="text/css">
         <link rel="stylesheet" href="<?= asset('assets/css/awesome-bootstrap-owl-style-custom-cmp.css') ?>?version=<?= date('y-m-d') ?>" type="text/css">
@@ -244,7 +246,7 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
                 </a>
 
                 <ul class="nav navbar-nav topmg <?= $locale == 'ar' ? 'floatLeft' : 'floatRight' ?>">
-                    <li><a id="offer-icon" href="<?= SITE_URL ?>/{{$locale}}/<?=OFFERS_URL?>"><span><?=OFFERS_Name?></span></a></li>
+                    <!--li><a id="offer-icon" href="<?= SITE_URL ?>/{{$locale}}/<?=OFFERS_URL?>"><span><?=OFFERS_Name?></span></a></li-->
                     <li><a id="call-icon" class="telephone" data-telephone="80029494"><i class="ion-android-call"></i><span>Call Us 800 (AZIZI) 29494</span></a></li>
                     <li><a id="mail-icon" data-toggle="modal" data-target="#lead-form-model" href="#lead-form-model"><i class="ion-android-mail"></i><span>{{trans('words.register-your-interest')}}</span></a></li>
                     <li>
@@ -589,8 +591,6 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
         <!-- End Twitter single-event website tag code -->
 
         <script>
-
-
             $(document).ready(function () {
                 $('#open-menu').click(function () {
                     $('#close-menu,.mob-menu').removeClass('hidden');
@@ -614,7 +614,7 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
 
             });
             setTimeout(function () {
-                jQuery.ajax({url: '<?= url('cache-page') ?>', cache: false, data: {page_url: '<?= $curr_url ?>', user_id: '1'}, success: function (html) { }});
+                jQuery.ajax({url: '<?= url('cache-page') ?>', method: 'post', cache: false, data: {page_url: '<?= $curr_url ?>', user_id: '1'}, success: function (html) { }});
 
                 var data = {meta_id: '<?= !empty($meta_id) ? $meta_id : 0 ?>', meta_title: $('title').text(),
                     meta_desc: $('meta[name="description"]').attr('content'),
@@ -741,20 +741,9 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
             });*/
 
         </script>
-        <?PHP if(!empty($_GET['test']) && $_GET['test']==1):?>
-            <!--script type="text/javascript">
-            (function(w, d, s, u) {
-                    w.Verloop = function(c) { w.Verloop._.push(c) }; w.Verloop._ = []; w.Verloop.url = u;
-                    var h = d.getElementsByTagName(s)[0], j = d.createElement(s); j.async = true;
-                    j.src = 'https://azizidevelopments.verloop.io/livechat/script.min.js';
-                    h.parentNode.insertBefore(j, h);
-            })(window, document, 'script', 'https://azizidevelopments.verloop.io/livechat');
-            </script-->
-            
-            <a href="http://wa.me/97180029494" target="_blank" class="whtslive">
-                <img src="https://azizidevelopments.com/PRLNewsLetters/PRLW/clogo/WhatsApp-logo.png" alt="WhtatsApp" class="whtslivea img-responsive img-thumbnail"/>            
-            </a>
-        <?PHP  endif; ?>
+        <a href="http://wa.me/97180029494" target="_blank" class="whtslive">
+            <img src="https://azizidevelopments.com/PRLNewsLetters/PRLW/clogo/WhatsApp-logo.png" alt="WhtatsApp" class="whtslivea img-responsive img-thumbnail"/>            
+        </a>
     </body>
 </html>
 

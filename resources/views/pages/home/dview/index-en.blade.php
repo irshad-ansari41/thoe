@@ -245,8 +245,8 @@ End Preloader -->
                 <div class="item">
                     <span class="filter"></span>
 
-                    <img class="smallSlide" src="<?= asset("assets/images/100-blank-img.jpg") ?>"  data-src="<?= asset("assets/images/home_banners/" . $slider->banner_image) ?>" alt="{{ $slider->banner_title_en }}" >
-                    <div class="bigSlide"  data-original="<?= asset("assets/images/home_banners/" . $slider->banner_image) ?>"></div>
+                    <img class="smallSlide owl-lazy" data-src="<?= asset("assets/images/100-blank-img.jpg") ?>"  data-src-retina="<?= asset("assets/images/home_banners/" . $slider->banner_image) ?>" alt="{{ $slider->banner_title_en }}" >
+                    <div class="bigSlide owl-lazy"  data-src-retina="<?= asset("assets/images/home_banners/" . $slider->banner_image) ?>"></div>
 
                     <div class="container Smsgbox">
                         <?php

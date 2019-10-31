@@ -191,17 +191,19 @@
                         <br> 
                         <?= $content->visit_us_at_en ?>
                     </p>
+                    
                     <p class="az-pcontent social-share"><strong style="margin-right: 15px;font-size: 12px;">Share: </strong>
-                        <a href="https://www.facebook.com/dialog/feed?app_id=136745863654131&redirect_uri=<?= url('/') ?>/mediacenter-eventgallery-detail/<?= $content['slug_en'] ?>&link=<?= url('/') ?>/mediacenter-eventgallery-detail/<?= $content['slug_en'] ?>&picture=<?= asset('assets/images/events/main/') ?>/<?= $content['event_main_photo_en'] ?>&caption=<?= $content->event_title_en ?>&description=<?= $content->event_title_en ?>" target="_blank"><i class="ion-social-facebook"></i></a>
-                        <a href="https://twitter.com/share?url=<?= url('/') ?>/mediacenter-eventgallery-detail/<?= $content['slug_en'] ?>&via=AZIZI Developments&text=<?= $content->event_title_en ?>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter"><i class="ion-social-twitter"></i></a>
-                        <a href="https://www.youtube.com/channel/UCmUtuRMwJxaovjGBNSXx-Jw"  target="_blank" ><i class="ion-social-youtube"></i></a>
-                        <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?=SITE_URL?>/&title=<?= $content->event_title_en ?>&summary=<?= $content->event_date ?>&source=LinkedIn" target="_blank"><i class="ion-social-linkedin"></i></a>
+                        <a href="https://www.facebook.com/dialog/feed?app_id=136745863654131&redirect_uri=<?= url('/').'/'.$locale ?>/events/<?= $content['slug_en'] ?>&link=<?= url('/').'/'.$locale ?>/events/<?= $content['slug_en'] ?>&picture=<?= asset('assets/images/events/main/') ?>/<?= $content['event_main_photo_en'] ?>&caption=<?= $content->event_title_en ?>&description=<?= $content->event_title_en ?>" target="_blank"><i class="ion-social-facebook"></i></a>
+                        <a href="https://twitter.com/share?url=<?= url('/').'/'.$locale ?>/events/<?= $content['slug_en'] ?>&via=AZIZI Developments&text=<?= $content->event_title_en ?>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter"><i class="ion-social-twitter"></i></a>
+                        <!--a href="https://www.instagram.com/azizigroup/?hl=en"  target="_blank" ><i class="ion-social-instagram"></i></a-->
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?= url('/').'/'.$locale ?>/events/<?= $content['slug_en'] ?>&title=<?= $content->event_title_en ?>&summary=<?= $content->event_date ?>&source=LinkedIn" target="_blank"><i class="ion-social-linkedin"></i></a>
                     </p>
+                    
                     <div class="divider"></div>
                     <div class="col s12 p0 center-align" style="border-bottom: 1px solid #e0e0e0;margin-bottom: 20px;">
                         <div class="col m12" style="margin: 20px 0px;">
                             <a href="#enquire-now" class="az-btn active modal-trigger"><?= trans('words.enquire_now') ?></a>
-                            <a class="az-btn ace_btn dis"><?= trans('words.add_to_calender') ?></a>                           
+                            <!--a class="az-btn ace_btn dis"><?= trans('words.add_to_calender') ?></a-->
                         </div>
                     </div>
                 </div>

@@ -177,14 +177,14 @@ if (strpos($curr_url, 'events/') !== false && empty($content->event_title_ar)) {
         <!-- End -->
 
         <!-- Google Tag Manager -->
-        <script>(function (w, d, s, l, i) {
+        <!--script>(function (w, d, s, l, i) {
                 w[l] = w[l] || [];
                 w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
                 var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
                 j.async = true;
                 j.src = "<?= PROPTOCOL ?>//www.googletagmanager.com/gtm.js?id=" + i + dl;
                 f.parentNode.insertBefore(j, f);
-            })(window, document, 'script', 'dataLayer', 'GTM-559DSQ');</script>
+            })(window, document, 'script', 'dataLayer', 'GTM-559DSQ');</script-->
         <!-- End Google Tag Manager -->
 
 
@@ -593,11 +593,11 @@ if (strpos($curr_url, 'events/') !== false && empty($content->event_title_ar)) {
         @yield('footer_main_scripts')
 
 
-        <script type="text/javascript" src="{{asset('assets/js/jquery-3.2.1.min.js')}}"></script>
+        <!--script type="text/javascript" src="{{asset('assets/js/jquery-3.2.1.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/js/materialize.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/js/az-scripts.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/js/aos.js')}}"></script>
-        <script type="text/javascript" src="{{asset('assets/js/jquery.scrollify.js')}}"></script>
+        <script type="text/javascript" src="{{asset('assets/js/jquery.scrollify.js')}}"></script-->
 
 
         <!-- begin page level js -->
@@ -612,116 +612,6 @@ if (strpos($curr_url, 'events/') !== false && empty($content->event_title_ar)) {
         <img height="1" width="1" class="none" alt="Twitter - AZIZI Developments" src="<?= PROPTOCOL ?>//t.co/i/adsct?txn_id=nx7zm&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
         </noscript>
         <!-- End Twitter single-event website tag code -->
-
-        <script>
-            $(document).ready(function () {
-                setTimeout(function () {
-                    $("#blue-tags-div").prev("img").hide();
-                    imginit();
-                }, 1500);
-                $("a[href$='index.html']").attr('href', '<?= SITE_URL ?>/cityscape-lp/index.html');
-                $("a[href$='Default.aspx']").attr('href', '<?= PROPTOCOL ?>//www.azizicareers.com/CS/Default.aspx');
-
-            });
-            setTimeout(function () {
-                jQuery.ajax({url: '<?= url('cache-page') ?>', method: 'post', cache: false, data: {page_url: '<?= $curr_url ?>', user_id: '1'}, success: function (html) { }});
-
-                var data = {meta_id: '<?= !empty($meta_id) ? $meta_id : 0 ?>', meta_title: $('title').text(),
-                    meta_desc: $('meta[name="description"]').attr('content'),
-                    meta_key: $('meta[name="keywords"]').attr('content'),
-                    page_url: '<?= Request::url() ?>'};
-                jQuery.ajax({url: '<?= url('save-meta') ?>', method: 'post', cache: false, data: data, success: function (html) { }});
-            }, 3000);
-
-
-            var string1 = "info";
-            var string2 = "@";
-            var string3 = "<?= DOMAIN_NAME ?>";
-            var string4 = string1 + string2 + string3;
-            $('#foo-email').attr("href", "mail" + "to:" + string4).text(string4);
-            //$('#foo-email').text(string4);
-
-            $('.telephone').click(function (e) {
-                event.preventDefault();
-                window.open('tel:' + $(this).data('telephone'), "_top");
-                console.log('click');
-            });
-
-            function imginit() {
-                var imgDefer = document.getElementsByTagName('img');
-                for (var i = 0; i < imgDefer.length; i++) {
-                    if (imgDefer[i].getAttribute('data-src')) {
-                        imgDefer[i].setAttribute('src', imgDefer[i].getAttribute('data-src'));
-                    }
-                }
-
-                var iframeDefer = document.getElementsByTagName('iframe');
-                for (var i = 0; i < iframeDefer.length; i++) {
-                    if (iframeDefer[i].getAttribute('data-src')) {
-                        iframeDefer[i].setAttribute('src', iframeDefer[i].getAttribute('data-src'));
-                    }
-                }
-
-                var divBgImageDefer = document.getElementsByTagName('div');
-
-                for (var i = 0; i < divBgImageDefer.length; i++) {
-                    if (divBgImageDefer[i].getAttribute('data-original')) {
-                        divBgImageDefer[i].style.backgroundImage = 'url(' + divBgImageDefer[i].getAttribute('data-original') + ')';
-                        divBgImageDefer[i].style.backgroundPosition = 'center';
-                        divBgImageDefer[i].style.backgroundSize = 'cover';
-                    }
-                }
-            }
-
-            var url = new URL('<?= Request::fullurl() ?>');
-            var source = url.searchParams.get("utm_source");
-            var campaign = url.searchParams.get("utm_campaign");
-            var medium = url.searchParams.get("utm_medium");
-            var content = url.searchParams.get("utm_content");
-            var term = url.searchParams.get("utm_term");
-
-            if (source !== '' && source !== null) {
-                sessionStorage.setItem("utm_source", capitalize(source.replace("-", " ")));
-            }
-            if (campaign !== '' && campaign !== null) {
-                sessionStorage.setItem("utm_campaign", capitalize(campaign.replace("-", " ")));
-            }
-            if (medium !== '' && medium !== null) {
-                sessionStorage.setItem("utm_medium", capitalize(medium.replace("-", " ")));
-            }
-            if (content !== '' && content !== null) {
-                sessionStorage.setItem("utm_content", capitalize(content.replace("-", " ")));
-            }
-            if (term !== '' && term !== null) {
-                sessionStorage.setItem("utm_term", capitalize(term.replace("-", " ")));
-            }
-            sessionStorage.setItem("lead_url", '<?= Request::fullurl() ?>');
-            sessionStorage.setItem("thank_url", '<?= url("{$locale}/thank-you") ?>');
-            sessionStorage.setItem("website_page_url", '<?= url("{$locale}") ?>');
-
-//            $('#lead-form-model').click(function () {
-//                sessionStorage.setItem("utm_source", 'Website');
-//                sessionStorage.setItem("utm_campaign", $(this).data('campaign'));
-//                $('iframe').each(function () {
-//                    this.contentWindow.location.reload(true);
-//                });
-//            });
-
-            function capitalize(str) {
-                strVal = '';
-                str = str.split(' ');
-                for (var chr = 0; chr < str.length; chr++) {
-                    strVal += str[chr].substring(0, 1).toUpperCase() + str[chr].substring(1, str[chr].length) + ' ';
-                }
-                return strVal;
-            }
-
-            $('.chosen-results .active-result').click(function () {
-                console.log('111');
-            });
-
-        </script>
-
     </body>
 </html>
 

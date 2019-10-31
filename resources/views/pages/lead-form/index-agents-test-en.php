@@ -219,6 +219,7 @@
                                 <option value="Ibn Battuta Mall">Ibn Battuta Mall</option>
                                 <option value="City Walk">City Walk</option>
                                 <option value="Hilton JBR">Hilton JBR</option-->
+                                <option value="Events">Events</option>
                                 <option value="Hilton Hotel">Hilton Hotel</option>
                                 <option value="Dragon Mart">Dragon Mart</option>
                                 <option value="Others">Others</option>
@@ -303,7 +304,8 @@
         </div>
         <script src="https://azizidevelopments.com/lead-form/js/jquery-popper-bootstrap-chosen-compress.js"></script>
         <script src="https://azizidevelopments.com/lead-form/js/agents-custom-1.js"></script>
-        <script>jQuery.ajax({url: '<?= url('cache-page') ?>', cache: false, data: {page_url: '<?= Request::url() ?>', user_id: '1'}, success: function (html) { }});
+        <script>
+            //jQuery.ajax({url: '<?= url('cache-page') ?>', method: 'post', cache: false, data: {page_url: '<?= Request::url() ?>', user_id: '1'}, success: function (html) { }});
             /*grecaptcha.ready(function () {
                 grecaptcha.execute('6LdRBpkUAAAAAKaRIKEKbbspNqp_joj6_-epmRk0', {action: 'validate_captcha_Agent'}).then(function (token) {
                     document.getElementById('g-recaptcha-response').value = token;

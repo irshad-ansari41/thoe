@@ -10,6 +10,7 @@
 <article>
     <h3><?= trans('words.Newsletter Sign Up') ?></h3>
     <form id="nl-form" method="post" action="{{route('newsletter-subscribe')}}">
+        {{ csrf_field() }}
         <table id="nl" style="width:100%">
             <tr>
                 <td style="padding-right: 8px!important;"><input class="form-control nl-name" type="text" name="first_name" id="first-name" size="30" placeholder="<?= trans('words.firstname_validation_msg') ?>" >

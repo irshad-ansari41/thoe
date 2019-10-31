@@ -2,16 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 
-class VerifyCsrfToken extends Middleware
-{
-    /**
-     * Indicates whether the XSRF-TOKEN cookie should be set on the response.
-     *
-     * @var bool
-     */
-    protected $addHttpCookie = true;
+class VerifyCsrfToken extends BaseVerifier {
 
     /**
      * The URIs that should be excluded from CSRF verification.
@@ -19,6 +12,15 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        'api/*',
+        'cache-page',
+        'save-lead',
+        'save-lead-salesforace',
+        'subscribe',
+        'save-lead-wdoors',
+        'en/online-payments/response',
+        'admin/sale-center/*',
+        'save-meta',
     ];
+
 }
