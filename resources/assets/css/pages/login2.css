@@ -23,3 +23,23 @@ h3 {
 .btn-primary {
     background: #428BCA;
 }
+.alert-success {
+    color: #fff;
+    background-color: #22ddad !important;
+    border-color: #acf6ac !important;
+}
+.alert-danger {
+    color: #fff;
+    background-color: #ff908d !important;
+    border-color: #EF6F6C !important;
+}
+.alert-info {
+    color: #fff;
+    background-color: #67C5DF !important;
+    border-color: #67C5DF !important;
+}
+.alert-warning {
+    color: #fff;
+    background-color: #F89A14 !important;
+    border-color: #F89A14 !important;
+}

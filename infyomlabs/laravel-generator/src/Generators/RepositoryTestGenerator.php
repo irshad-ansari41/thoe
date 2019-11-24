@@ -21,7 +21,7 @@ class RepositoryTestGenerator extends BaseGenerator
     {
         $this->commandData = $commandData;
         $this->path = config('infyom.laravel_generator.path.repository_test', base_path('tests/'));
-        $this->fileName = $this->commandData->modelName.'RepositoryTest.php';
+        $this->fileName = $this->commandData->modelName . 'RepositoryTest.php';
     }
 
     public function generate()
@@ -46,7 +46,7 @@ class RepositoryTestGenerator extends BaseGenerator
     public function rollback()
     {
         if ($this->rollbackFile($this->path, $this->fileName)) {
-            $this->commandData->commandComment('Repository Test file deleted: '.$this->fileName);
+            $this->commandData->commandComment('Repository Test file deleted: ' . $this->fileName);
         }
     }
 }

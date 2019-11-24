@@ -40,7 +40,7 @@ class GeneratorPublishCommand extends PublishBaseCommand
      */
     public function publishAPIRoutes()
     {
-        $routesPath = __DIR__.'/../../../templates/api/routes/api_routes.stub';
+        $routesPath = __DIR__ . '/../../../templates/api/routes/api_routes.stub';
 
         $apiRoutesPath = config('infyom.laravel_generator.path.api_routes', app_path('Http/api_routes.php'));
 
@@ -67,47 +67,8 @@ class GeneratorPublishCommand extends PublishBaseCommand
 
         $templateData = $this->fillTemplate($templateData);
 
-        file_put_contents($path, $routeContents."\n\n".$templateData);
+        file_put_contents($path, $routeContents . "\n\n" . $templateData);
         $this->comment("\nAPI group added to routes.php");
-    }
-
-    private function publishTestCases()
-    {
-        $traitPath = __DIR__.'/../../../templates/test/api_test_trait.stub';
-
-        $testsPath = config('infyom.laravel_generator.path.api_test', base_path('tests/'));
-
-        $this->publishFile($traitPath, $testsPath.'ApiTestTrait.php', 'ApiTestTrait.php');
-
-        if (!file_exists($testsPath.'traits/')) {
-            mkdir($testsPath.'traits/');
-            $this->info('traits directory created');
-        }
-    }
-
-    private function publishBaseController()
-    {
-        $templateData = TemplateUtil::getTemplate('app_base_controller', 'laravel-generator');
-
-        $templateData = $this->fillTemplate($templateData);
-
-        $controllerPath = config('infyom.laravel_generator.path.controller', app_path('Http/Controllers/'));
-
-        $pathPrefix = config('infyom.laravel_generator.prefixes.path');
-
-        if (!empty($pathPrefix)) {
-            $controllerPath .= Str::title($pathPrefix).'/';
-        }
-
-        $fileName = 'AppBaseController.php';
-
-        if (file_exists($controllerPath.$fileName) && !$this->confirmOverwrite($fileName)) {
-            return;
-        }
-
-        FileUtil::createFile($controllerPath, $fileName, $templateData);
-
-        $this->info('AppBaseController created');
     }
 
     /**
@@ -131,7 +92,7 @@ class GeneratorPublishCommand extends PublishBaseCommand
         $pathPrefix = config('infyom.laravel_generator.prefixes.path');
 
         if (!empty($pathPrefix)) {
-            $controllerNamespace .= '\\'.Str::title($pathPrefix);
+            $controllerNamespace .= '\\' . Str::title($pathPrefix);
         }
 
         $templateData = str_replace(
@@ -140,6 +101,45 @@ class GeneratorPublishCommand extends PublishBaseCommand
         );
 
         return $templateData;
+    }
+
+    private function publishTestCases()
+    {
+        $traitPath = __DIR__ . '/../../../templates/test/api_test_trait.stub';
+
+        $testsPath = config('infyom.laravel_generator.path.api_test', base_path('tests/'));
+
+        $this->publishFile($traitPath, $testsPath . 'ApiTestTrait.php', 'ApiTestTrait.php');
+
+        if (!file_exists($testsPath . 'traits/')) {
+            mkdir($testsPath . 'traits/');
+            $this->info('traits directory created');
+        }
+    }
+
+    private function publishBaseController()
+    {
+        $templateData = TemplateUtil::getTemplate('app_base_controller', 'laravel-generator');
+
+        $templateData = $this->fillTemplate($templateData);
+
+        $controllerPath = config('infyom.laravel_generator.path.controller', app_path('Http/Controllers/'));
+
+        $pathPrefix = config('infyom.laravel_generator.prefixes.path');
+
+        if (!empty($pathPrefix)) {
+            $controllerPath .= Str::title($pathPrefix) . '/';
+        }
+
+        $fileName = 'AppBaseController.php';
+
+        if (file_exists($controllerPath . $fileName) && !$this->confirmOverwrite($fileName)) {
+            return;
+        }
+
+        FileUtil::createFile($controllerPath, $fileName, $templateData);
+
+        $this->info('AppBaseController created');
     }
 
     /**

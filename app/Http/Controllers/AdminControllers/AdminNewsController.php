@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminControllers;
 use App\Http\Controllers\Controller as Controller;
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\PressCategory;
 use File;
 use Redirect;
 use View;
@@ -33,7 +34,7 @@ class AdminNewsController extends Controller {
 
     public function index() {
         // Grab all the properties
-        $news = News::orderBy('id','desc')->paginate(5);
+        $news = News::orderBy('id', 'desc')->paginate(5);
 
         // Show the page
         return view('admin.news.index', compact('news'));
@@ -54,15 +55,16 @@ class AdminNewsController extends Controller {
      */
     public function create(Request $request, $id = '') {
         if ($id == '') {
-
+            $pressscategories = PressCategory::all();
             $project = array();
             $type = 'add';
-            return view('admin.news.createproject', compact('project', 'type'));
+            return view('admin.news.createproject', compact('project', 'type', 'pressscategories'));
         } else {
+            $pressscategories = PressCategory::all();
             $project = News::find($id);
             $coverage = DB::table('tbl_newscoverage')->where('news_pr_id', $id)->get();
             $type = 'edit';
-            return view('admin.news.createproject', compact('project', 'type', 'coverage'));
+            return view('admin.news.createproject', compact('project', 'type', 'coverage', 'pressscategories'));
         }
     }
 
@@ -73,8 +75,8 @@ class AdminNewsController extends Controller {
      */
     public function store(Request $request) {
         $content = new Content();
-        $content->title = input_trims($request->title);
-        $content->description = input_trims($request->description);
+        $content->title_en = input_trims($request->title_en);
+        $content->description_en = input_trims($request->description_en);
         $content->created = date("Y-m-d H:i:s");
         $content->save();
 
@@ -101,21 +103,21 @@ class AdminNewsController extends Controller {
             $input['imagename'] = '';
             if ($image) {
                 $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-                $destinationPath = STORE_PATH.('/assets/images/pressrelease');
+                $destinationPath = STORE_PATH . ('/assets/images/pressrelease');
                 $image->move($destinationPath, $input['imagename']);
             }
 
             $new = new News();
-            $new->title = input_trims($request->title_en);
+            $new->title_en = input_trims($request->title_en);
             $new->title_ar = input_trims($request->title_ar);
             $new->title_ch = input_trims($request->title_ch);
             $new->alt = input_trims($request->alt);
 
-            $new->description = input_trims($request->description_en);
+            $new->description_en = input_trims($request->description_en);
             $new->description_ar = input_trims($request->description_ar);
             $new->description_ch = input_trims($request->description_ch);
             $new->slug = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower(substr($request->title_en, 0, 60)))));
-            $new->description_long = input_trims($request->description_long_en);
+            $new->description_long_en = input_trims($request->description_long_en);
             $new->description_long_ar = input_trims($request->description_long_ar);
             $new->description_long_ch = input_trims($request->description_long_ch);
             $new->meta_title = input_trims($request->meta_title);
@@ -125,6 +127,7 @@ class AdminNewsController extends Controller {
             $new->image = $input['imagename'];
             $new->created = date("Y-m-d H:i:s");
             $new->status = '1';
+            $new->category = '-' . implode('-', $request->category) . '-';
 
             $new->save();
 
@@ -199,21 +202,21 @@ class AdminNewsController extends Controller {
                 $destinationPath = STORE_PATH . '/assets/images/pressrelease';
                 $image->move($destinationPath, $input['imagename']);
             }
-
+            $insertedId = $request->id;
             $path_c = STORE_PATH . '/assets/images/pressrelease/download/' . $request->id;
             if (!is_dir($path_c)) {
-                $path_c = STORE_PATH .'/assets/images/pressrelease/download/' . $request->id;
-                $sudopath = STORE_PATH ."/assets/images/pressrelease/download/" . $request->id;
+                $path_c = STORE_PATH . '/assets/images/pressrelease/download/' . $request->id;
+                $sudopath = STORE_PATH . "/assets/images/pressrelease/download/" . $request->id;
                 File::makeDirectory($path_c, $mode = 0777, true, true);
                 chmod($sudopath, 0777);
 
-                $path2 = STORE_PATH .'/assets/images/pressrelease/download/' . $insertedId . '/document';
-                $sudopath2 = STORE_PATH ."/assets/images/pressrelease/download/" . $insertedId . '/document';
+                $path2 = STORE_PATH . '/assets/images/pressrelease/download/' . $insertedId . '/document';
+                $sudopath2 = STORE_PATH . "/assets/images/pressrelease/download/" . $insertedId . '/document';
                 $result2 = File::makeDirectory($path2, $mode = 0777, true, true);
                 chmod($sudopath2, 0777);
 
-                $path3 = STORE_PATH .'/assets/images/pressrelease/download/' . $insertedId . '/image';
-                $sudopath3 = STORE_PATH ."/assets/images/pressrelease/download/" . $insertedId . '/image';
+                $path3 = STORE_PATH . '/assets/images/pressrelease/download/' . $insertedId . '/image';
+                $sudopath3 = STORE_PATH . "/assets/images/pressrelease/download/" . $insertedId . '/image';
                 $result3 = File::makeDirectory($path3, $mode = 0777, true, true);
                 chmod($sudopath3, 0777);
             }
@@ -224,7 +227,7 @@ class AdminNewsController extends Controller {
                 $success = File::cleanDirectory($url);
 
                 $doc1 = $doc->getClientOriginalName();
-                $destinationPath = STORE_PATH.('/assets/images/pressrelease/download/' . $request->id . '/document');
+                $destinationPath = STORE_PATH . ('/assets/images/pressrelease/download/' . $request->id . '/document');
                 $doc->move($destinationPath, $doc1);
             }
 
@@ -234,7 +237,7 @@ class AdminNewsController extends Controller {
                 $success = File::cleanDirectory($url);
 
                 $img = $image1->getClientOriginalName();
-                $destinationPath = STORE_PATH.('/assets/images/pressrelease/download/' . $request->id . '/image');
+                $destinationPath = STORE_PATH . ('/assets/images/pressrelease/download/' . $request->id . '/image');
                 $image1->move($destinationPath, $img);
             }
 
@@ -250,7 +253,7 @@ class AdminNewsController extends Controller {
                 $data['date'] = input_trims($request->date);
             }
             if ($request->title_en) {
-                $data['title'] = input_trims($request->title_en);
+                $data['title_en'] = input_trims($request->title_en);
                 $data['slug'] = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug))));
                 $data['meta_title'] = input_trims($request->meta_title);
                 $data['meta_keyword'] = input_trims($request->meta_keyword);
@@ -264,7 +267,7 @@ class AdminNewsController extends Controller {
             }
 
             if ($request->description_en) {
-                $data['description'] = input_trims($request->description_en);
+                $data['description_en'] = input_trims($request->description_en);
             }
             if ($request->description_ar) {
                 $data['description_ar'] = input_trims($request->description_ar);
@@ -273,7 +276,7 @@ class AdminNewsController extends Controller {
                 $data['description_ch'] = input_trims($request->description_ch);
             }
             if ($request->description_long_en) {
-                $data['description_long'] = input_trims($request->description_long_en);
+                $data['description_long_en'] = input_trims($request->description_long_en);
             }
             if ($request->description_long_ar) {
                 $data['description_long_ar'] = input_trims($request->description_long_ar);
@@ -282,10 +285,13 @@ class AdminNewsController extends Controller {
                 $data['description_long_ch'] = input_trims($request->description_long_ch);
             }
 
+            $data['category'] = '-'.implode('-', $request->category).'-';
+
             if (!empty($data)) {
                 News::where('id', $request->id)->update($data);
             }
-            $number = count($request['newstitle']);
+
+            $number = !empty($request['newstitle']) ? count($request['newstitle']) : 0;
             if ($number > 0) {
                 for ($i = 0; $i < $number; $i++) {
                     if (!empty($request['newstitle'][$i]) && !empty($request['newsurl'][$i])) {

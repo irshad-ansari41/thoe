@@ -1,6 +1,12 @@
 
 //Back to top code
 $(document).ready(function(){
+    $(function() {
+        setTimeout(function () {
+            $("#notific").remove();
+        }, 5000);
+    });
+
      $(window).scroll(function () {
             if ($(this).scrollTop() > 50) {
                 $('#back-to-top').fadeIn();
@@ -20,14 +26,15 @@ $(document).ready(function(){
         $('#back-to-top').tooltip('show');
 });
 $(document).ready(function() {
+
         $(".dropdown").hover(
             function() {
                 $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideDown("fast");
-                $(this).toggleClass('open');
+
             },
             function() {
                 $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideUp("fast");
-                $(this).toggleClass('open');
+
             }
         );
     });

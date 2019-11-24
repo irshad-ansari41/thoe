@@ -180,7 +180,7 @@ class AdminContentsController extends Controller {
         return redirect('admin/content/');
     }
 
-    /* About Azizi Development */
+    /* About THOE Development */
 
     public function about_us() {
         $contents = About::find(1);

@@ -650,7 +650,7 @@ class AdminSaleCenterController extends Controller {
         $project = db::table('tbl_projects')->where('id', $property->project_id)->where('status', '1')->orderBy("id", "ASC")->first();
         $galleries = DB::table('tbl_property_gallery')->where('property_id', $property_old_id)->where('status', '1')->whereIn('unit_type_id', $unittype)->orderBy("id", "DESC")->get();
         foreach ($galleries as $value) {
-            $images[] = "https://azizidevelopments.com/assets/images/properties/{$project->gallery_location}/{$property->gallery_location}/$value->image";
+            $images[] = "https://thoedevelopments.com/assets/images/properties/{$project->gallery_location}/{$property->gallery_location}/$value->image";
         }
 
 
@@ -718,9 +718,9 @@ class AdminSaleCenterController extends Controller {
                     'price' => $unit->Price . ' AED',
                     'property_title' => self::strip_all_tags($unit->title),
                     'property_description' => self::strip_all_tags($unit->description),
-                    'listing_agent' => 'Azizi Developments',
+                    'listing_agent' => 'The Heart of Europe',
                     'listing_agent_phone' => '80029494',
-                    'listing_agent_email' => 'info@azizidevelopments.com',
+                    'listing_agent_email' => 'info@thoedevelopments.com',
                 ];
 
 
@@ -825,12 +825,12 @@ class AdminSaleCenterController extends Controller {
                     'price' => round($unit->Price),
                     'property_title' => self::strip_all_tags($unit->title),
                     'property_description' => self::strip_all_tags($unit->description),
-                    'listing_agent_name' => 'Azizi Developments',
+                    'listing_agent_name' => 'The Heart of Europe',
                     'listing_agent_phone' => '80029494',
-                    'listing_agent_email' => 'info@azizidevelopments.com',
-                    'listing_agent_photo' => 'https://azizidevelopments.com/assets/images/logo/1512057079974431552.png',
+                    'listing_agent_email' => 'info@thoedevelopments.com',
+                    'listing_agent_photo' => 'https://thoedevelopments.com/assets/images/logo/1512057079974431552.png',
                     'listing_agent_license_no' => '',
-                    'listing_agent_info' => 'Azizi Developments is the real estate investment arm of Azizi Group. Established in 2007, the company’s diverse experience as a leading Dubai Property Developer in the market.',
+                    'listing_agent_info' => 'The Heart of Europe is the real estate investment arm of THOE Group. Established in 2007, the company’s diverse experience as a leading Dubai Property Developer in the market.',
                 ];
 
                 $xml .= '<property last_update="' . $propertyfeed['last_updated'] . '">' . "$sep";
@@ -875,7 +875,7 @@ class AdminSaleCenterController extends Controller {
                 $xml .= "<view360>" . trim($propertyfeed['view360']) . "</view360>" . "$sep";
                 $xml .= "<photo>" . "$sep";
                 foreach ($propertyfeed['images'] as $image) {
-                    $img = str_replace('https://azizidevelopments.com/assets/images/', 'https://azizidevelopments.in/uploads/', $image);
+                    $img = str_replace('https://thoedevelopments.com/assets/images/', 'https://thoedevelopments.in/uploads/', $image);
                     $xml .= "<url last_updated= '{$last_updated}' watermark='no'>{$img}</url>" . "$sep";
                 }
                 $xml .= "</photo>" . "$sep";
@@ -943,12 +943,12 @@ class AdminSaleCenterController extends Controller {
                     'price' => round($unit->Price),
                     'property_title' => self::strip_all_tags($unit->title),
                     'property_description' => self::strip_all_tags($unit->description),
-                    'listing_agent_name' => 'Azizi Developments',
+                    'listing_agent_name' => 'The Heart of Europe',
                     'listing_agent_phone' => '80029494',
-                    'listing_agent_email' => 'info@azizidevelopments.com',
-                    'listing_agent_photo' => 'https://azizidevelopments.com/assets/images/logo/1512057079974431552.png',
+                    'listing_agent_email' => 'info@thoedevelopments.com',
+                    'listing_agent_photo' => 'https://thoedevelopments.com/assets/images/logo/1512057079974431552.png',
                     'listing_agent_license_no' => '',
-                    'listing_agent_info' => 'Azizi Developments is the real estate investment arm of Azizi Group. Established in 2007, the company’s diverse experience as a leading Dubai Property Developer in the market.',
+                    'listing_agent_info' => 'The Heart of Europe is the real estate investment arm of THOE Group. Established in 2007, the company’s diverse experience as a leading Dubai Property Developer in the market.',
                 ];
 
                 $xml .= "<property>";
@@ -1048,12 +1048,12 @@ class AdminSaleCenterController extends Controller {
                     'price' => round($unit->Price),
                     'property_title' => self::strip_all_tags($unit->title),
                     'property_description' => self::strip_all_tags($unit->description),
-                    'listing_agent_name' => 'Azizi Developments',
+                    'listing_agent_name' => 'The Heart of Europe',
                     'listing_agent_phone' => '80029494',
-                    'listing_agent_email' => 'info@azizidevelopments.com',
-                    'listing_agent_photo' => 'https://azizidevelopments.com/assets/images/logo/1512057079974431552.png',
+                    'listing_agent_email' => 'info@thoedevelopments.com',
+                    'listing_agent_photo' => 'https://thoedevelopments.com/assets/images/logo/1512057079974431552.png',
                     'listing_agent_license_no' => '',
-                    'listing_agent_info' => 'Azizi Developments is the real estate investment arm of Azizi Group. Established in 2007, the company’s diverse experience as a leading Dubai Property Developer in the market.',
+                    'listing_agent_info' => 'The Heart of Europe is the real estate investment arm of THOE Group. Established in 2007, the company’s diverse experience as a leading Dubai Property Developer in the market.',
                 ];
                 $xml .= "<property>";
                 $xml .= "<status>vacant</status>" . $sep;
@@ -1219,11 +1219,11 @@ class AdminSaleCenterController extends Controller {
           ];
 
           $context = stream_context_create($opts);
-          $content = file_get_contents("https://crm.azizidevelopments.com/WebForms/websiteleads.aspx/GetUnits", false, $context);
+          $content = file_get_contents("https://crm.thoedevelopments.com/WebForms/websiteleads.aspx/GetUnits", false, $context);
           $result = json_decode($content);
           if (!empty($result->d)) {
           file_put_contents(PUBLIC_PATH . '/read-json/data.json', $result->d);
-          echo "<a href='http://azizidevelopments.com/admin/sale-center/units'>Back to Units</a>";
+          echo "<a href='http://thoedevelopments.com/admin/sale-center/units'>Back to Units</a>";
           }
           //print_r($postData); die;
 
@@ -1233,12 +1233,12 @@ class AdminSaleCenterController extends Controller {
 
         //SalesForce System GET Json File
 
-        $result = file_get_contents('https://azizidevelopments.com/salesforce-leads/getValues.php', false);
+        $result = file_get_contents('https://thoedevelopments.com/salesforce-leads/getValues.php', false);
         //$result = $this->avaliablilityListApi();
 
         if (!empty($result)) {
             file_put_contents(PUBLIC_PATH . '/read-json/data.json', $result);
-            echo "<a href='http://azizidevelopments.com/admin/sale-center/units'>Back to Units</a>";
+            echo "<a href='http://thoedevelopments.com/admin/sale-center/units'>Back to Units</a>";
         }
         //print_r($result); die(); 
     }

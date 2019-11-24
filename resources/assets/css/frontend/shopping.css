@@ -48,3 +48,6 @@ h5 a {
 .bg-default th h4{
     text-align: center;
 }
+.cart-cart{
+    min-height: 570px;
+}

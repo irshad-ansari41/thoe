@@ -18,7 +18,7 @@ $content = [
 extract($content);
 ?>
 
-@extends('layouts/error-default')
+@extends('layouts/default')
 
 <!-- page level styles -->
 @section('header_styles')
@@ -35,10 +35,13 @@ extract($content);
 <section class="az-section">
 
     <div class="container">
-
+        <div class="parallax-container valign-wrapper">
+            <div class="parallax">
+                <img alt="<?= trim($content['alt']) ?>" src="<?= asset('assets/images/page-not-found.jpg') ?>">
+            </div>
+        </div>
         <div class="row m0">
             <div class="col s12 p0">
-                <img alt="<?= trim($content['alt']) ?>" src="<?= asset('assets/images/page-not-found.jpg') ?>">
                 <div class="col s12 p0">
                     <ul>
                         <li>

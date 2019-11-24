@@ -24,7 +24,7 @@ class AboutController extends Controller {
         \App::setLocale($this->locale);
     }
 
-    public function index(Request $request) {
+    public function about_thoe(Request $request) {
 
         //if chached then return
         $cached = get_cache_page($request->fullUrl());
@@ -47,10 +47,6 @@ class AboutController extends Controller {
         ];
         //check page
         set_cache_page($request->fullUrl(), view("pages.about.index-{$this->locale}", $data)->render());
-        
-        if ($request->demo == 1) { 
-            return view("pages.about.index-demo", $data);
-        }
         
         return view("pages.about.index-{$this->locale}", $data);
     }
@@ -294,7 +290,7 @@ class AboutController extends Controller {
         $team_string = "";
         $team1 = Team::where('long_description_'.$this->locale,'!=','')->where("id", $id)->get()->first();
         $teams2 = Team::where("parent_id", $id)->where("status", "1")->orderBy('team_order', 'ASC')->get();
-        $logo_url = url("/") . "/assets/images/azizi-logo.png";
+        $logo_url = url("/") . "/assets/images/thoe-logo.png";
 
         $teamname = '';
         $designation = '';
@@ -475,9 +471,9 @@ class AboutController extends Controller {
         }
         $data = [
             "AllRatings" => DB::table('tbl_ratings')->where('menu_id',52)->first(),
-            'meta_title' => 'Construction Year | Azizi Developments',
-            'meta_keyword' => 'Azizi Developments construction-year',
-            'meta_description' => 'Azizi Developments construction-year',
+            'meta_title' => 'Construction Year | The Heart of Europe',
+            'meta_keyword' => 'The Heart of Europe construction-year',
+            'meta_description' => 'The Heart of Europe construction-year',
             'locale' => $this->locale,
         ];
         //check page

@@ -1,24 +1,39 @@
+"use strict";
+// Csrf token for all ajax calls
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
 
 var left_side_width = 220; //Sidebar width in pixels
 
 $(function() {
-    "use strict";
 
-    //Enable sidebar toggle
-    $("[data-toggle='offcanvas']").click(function(e) {
-        e.preventDefault();
+    setTimeout(function() {
+        $("#notific").remove();
+    }, 5000);
 
-        //If window is small enough, enable sidebar push menu
+    $(function() {
+        //hide menu in small screens
         if ($(window).width() <= 992) {
-            $('.row-offcanvas').toggleClass('active');
-            $('.left-side').removeClass("collapse-left");
-            $(".right-side").removeClass("strech");
-            $('.row-offcanvas').toggleClass("relative");
-        } else {
-            //Else, enable content streching
-            $('.left-side').toggleClass("collapse-left");
-            $(".right-side").toggleClass("strech");
+            $(".wrapper").addClass("hide_menu");
+            $("body").removeClass("mini_sidebar");
         }
+        //Enable sidebar toggle
+        $("[data-toggle='offcanvas'].sidebar-toggle").on('click', function(e) {
+            e.preventDefault();
+            //Toggle Menu
+            if (!$("body").hasClass("mini_sidebar")) {
+                $(".wrapper").toggleClass("hide_menu");
+            }
+
+        });
+        //leftmenu init
+        $('#menu').metisMenu();
+        // INIT popovers
+        $("[data-toggle='popover']").popover();
     });
 
     //Add hover support for touch devices
@@ -76,41 +91,6 @@ $(function() {
         var box = $(this).parents(".box").first();
         box.slideUp();
     });
-
-    /* Sidebar tree view */
-	//$(".sidebar .treeview").tree();
-
-    /* 
-     * Make sure that the sidebar is streched full height
-     * ---------------------------------------------
-     * We are gonna assign a min-height value every time the
-     * wrapper gets resized and upon page load. We will use
-     * Ben Alman's method for detecting the resize event.
-     * 
-     **/
-    function _fix() {
-        //Get window height and the wrapper height
-        var height = $(window).height() - $("body > .header").height();
-        $(".wrapper").css("min-height", height + "px");
-        var content = $(".wrapper").height();
-        //If the wrapper height is greater than the window
-        if (content > height)
-            //then set sidebar height to the wrapper
-            $(".left-side, html, body").css("min-height", content + 50 + "px");
-        else {
-            //Otherwise, set the sidebar to the height of the window
-            $(".left-side, html, body").css("min-height", height + 50 + "px");
-        }
-    }
-    //Fire upon load josh
-    _fix();
-    //Fire when wrapper is resized
-    $(".wrapper").resize(function() {
-        _fix();
-        fix_sidebar();
-    });
-    //Fix the fixed layout sidebar scroll bug
-    fix_sidebar();
 });
 function fix_sidebar() {
     //Make sure the body tag has the .fixed class
@@ -125,98 +105,6 @@ function fix_sidebar() {
     });
 }
 /*END DEMO*/
-
-
-/*
- * SIDEBAR MENU
- * ------------
- * This is a custom plugin for the sidebar menu. It provides a tree view.
- * 
- * Usage:
- * $(".sidebar).tree();
- * 
- * Note: This plugin does not accept any options. Instead, it only requires a class
- *       added to the element that contains a sub-menu.
- *       
- * When used with the sidebar, for example, it would look something like this:
- * <ul class='sidebar-menu'>
- *      <li class=" active">
- *          <a href="#>Menu</a>
- *          <ul class='treeview-menu'>
- *              <li class='active'><a href=#>Level 1</a></li>
- *          </ul>
- *      </li>
- * </ul>
- * 
- * Add .active class to <li> elements if you want the menu to be open automatically
- * on page load. See above for an example.
- 
-(function($) {
-    "use strict";
-
-    $.fn.tree = function() {
-
-        return this.each(function() {
-            var btn = $(this).children("a").first();
-            var menu = $(this).children(".treeview-menu").first();
-            var isActive = $(this).hasClass('active');
-
-            //initialize already active menus
-            if (isActive) {
-                menu.show();
-                btn.children(".fa-plus").first().removeClass("fa-plus").addClass("fa-minus");
-            }
-            //Slide open or close the menu on link click
-            btn.click(function(e) {
-                e.preventDefault();
-                $('.sidebar-menu').each(function() {
-                    $('.treeview-menu').slideUp();
-                    $('.treeview  i').removeClass("fa-minus").addClass("fa-plus");
-                    
-                })
-                if($(this).hasClass("active")) {
-                    menu.slideUp();
-                    $(this).removeClass("active");
-                    $(this).find('i').removeClass("fa-minus").addClass("fa-plus");
-                }
-                else {
-                    menu.slideDown();
-                    $(this).addClass("active");
-                    $(this).find('i').removeClass("fa-plus").addClass("fa-minus");
-                }
-                
-                //alert(($(this).position()).top);
-               
-                /*if (isActive) {
-                    //Slide up to close menu
-                    menu.slideUp();
-                    isActive = false;
-                    btn.children(".fa-minus").first().removeClass("fa-minus").addClass("fa-plus");
-                    btn.parent("li").removeClass("active");
-                } else {
-                    //Slide down to open menu
-                    //alert('opening menu');
-                    menu.slideDown();
-                    //isActive = true;
-                    btn.children(".fa-plus").first().removeClass("fa-plus").addClass("fa-minus");
-                    btn.parent("li").addClass("active");
-                }
-            });
-
-            /* Add margins to submenu elements to give it a tree look */
-            /*menu.find("li > a").each(function() {
-                var pad = parseInt($(this).css("margin-left")) + 10;
-
-                $(this).css({"margin-left": pad + "px"});
-            });
-
-        });
-
-    };
-
-
-}(jQuery));
-*/
 
 /* CENTER ELEMENTS */
 (function($) {
@@ -237,61 +125,7 @@ function fix_sidebar() {
 }(jQuery));
 
 //  jQuery resize event - v1.1 - 3/14/2010
-(function($, h, c) {
-    var a = $([]), e = $.resize = $.extend($.resize, {}), i, k = "setTimeout", j = "resize", d = j + "-special-event", b = "delay", f = "throttleWindow";
-    e[b] = 250;
-    e[f] = true;
-    $.event.special[j] = {setup: function() {
-            if (!e[f] && this[k]) {
-                return false;
-            }
-            var l = $(this);
-            a = a.add(l);
-            $.data(this, d, {w: l.width(), h: l.height()});
-            if (a.length === 1) {
-                g();
-            }
-        }, teardown: function() {
-            if (!e[f] && this[k]) {
-                return false
-            }
-            var l = $(this);
-            a = a.not(l);
-            l.removeData(d);
-            if (!a.length) {
-                clearTimeout(i);
-            }
-        }, add: function(l) {
-            if (!e[f] && this[k]) {
-                return false
-            }
-            var n;
-            function m(s, o, p) {
-                var q = $(this), r = $.data(this, d);
-                r.w = o !== c ? o : q.width();
-                r.h = p !== c ? p : q.height();
-                n.apply(this, arguments)
-            }
-            if ($.isFunction(l)) {
-                n = l;
-                return m
-            } else {
-                n = l.handler;
-                l.handler = m
-            }
-        }};
-    function g() {
-        i = h[k](function() {
-            a.each(function() {
-                var n = $(this), m = n.width(), l = n.height(), o = $.data(this, d);
-                if (m !== o.w || l !== o.h) {
-                    n.trigger(j, [o.w = m, o.h = l])
-                }
-            });
-            g()
-        }, e[b])
-    }}
-)(jQuery, this);
+
 
 // SlimScroll https://github.com/rochal/jQuery-slimScroll
 
@@ -507,3 +341,5 @@ if(!$this.hasClass('panel-collapsed')) {
 $(function () {
         $('#menu').metisMenu();
     });
+
+

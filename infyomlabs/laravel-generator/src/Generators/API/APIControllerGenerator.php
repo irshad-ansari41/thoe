@@ -22,7 +22,7 @@ class APIControllerGenerator extends BaseGenerator
     {
         $this->commandData = $commandData;
         $this->path = $commandData->config->pathApiController;
-        $this->fileName = $this->commandData->modelName.'APIController.php';
+        $this->fileName = $this->commandData->modelName . 'APIController.php';
     }
 
     public function generate()
@@ -51,8 +51,8 @@ class APIControllerGenerator extends BaseGenerator
         }
 
         foreach ($methods as $method) {
-            $key = '$DOC_'.strtoupper($method).'$';
-            $docTemplate = TemplateUtil::getTemplate($templatePrefix.'.'.$method, $templateType);
+            $key = '$DOC_' . strtoupper($method) . '$';
+            $docTemplate = TemplateUtil::getTemplate($templatePrefix . '.' . $method, $templateType);
             $docTemplate = TemplateUtil::fillTemplate($this->commandData->dynamicVars, $docTemplate);
             $templateData = str_replace($key, $docTemplate, $templateData);
         }
@@ -63,7 +63,7 @@ class APIControllerGenerator extends BaseGenerator
     public function rollback()
     {
         if ($this->rollbackFile($this->path, $this->fileName)) {
-            $this->commandData->commandComment('API Controller file deleted: '.$this->fileName);
+            $this->commandData->commandComment('API Controller file deleted: ' . $this->fileName);
         }
     }
 }

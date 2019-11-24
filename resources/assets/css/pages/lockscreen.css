@@ -168,3 +168,8 @@ html, body {
     text-overflow: ellipsis;
     margin: 0 0 -1px;
 }
+@media (max-width:320px){
+    .login-container{
+        width:100% !important;
+    }
+}

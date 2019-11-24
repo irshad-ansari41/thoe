@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
+
     $('#form_validation').bootstrapValidator({
+        excluded: [':disabled'],
         fields: {
             txtName: {
                 validators: {
@@ -68,12 +70,118 @@ $(document).ready(function() {
 
         }
     });
-    $('#activate').on('ifChanged', function(event){
+    $('#capch_form').bootstrapValidator({
+
+        fields: {
+
+            txtphone: {
+                validators: {
+                    notEmpty: {
+                        message: 'Phone number is required'
+                    }
+                }
+            },
+            CaptchaCode: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please enter Captcha code'
+                    }
+                }
+            }
+
+        }
+    });
+    $('.BDC_CaptchaImageDiv').find('a').remove();
+    $('#reset').on('click', function () {
+        $('#form_validation').bootstrapValidator("resetForm", true);
+        $("#form_validation").find(".icheckbox_minimal-blue").removeClass('checked');
+    });
+    $("#form-validation3").bootstrapValidator({
+        fields: {
+            first_name: {
+                validators: {
+                    notEmpty: {
+                        message: 'The first name is required and cannot be empty'
+                    }
+                }
+            },
+            last_name: {
+                validators: {
+                    notEmpty: {
+                        message: 'The last name is required and cannot be empty'
+                    }
+                }
+            },
+            display_name: {
+                validators: {
+                    notEmpty: {
+                        message: 'The display name is required and cannot be empty'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'The email address is required'
+                    },
+                    emailAddress: {
+                        message: 'The input is not a valid email address'
+                    }
+                }
+            },
+            terms: {
+                validators: {
+                    choice: {
+                        min: 1,
+                        message: 'Please accept the terms and conditions'
+                    }
+                }
+            },
+            password: {
+                validators: {
+                    notEmpty: {
+                        message: 'The password is required and cannot be empty'
+                    },
+                    different: {
+                        field: 'first_name,last_name',
+                        message: 'Password should not match first name or last name'
+                    }
+                }
+            },
+            confirmpassword: {
+                validators: {
+                    notEmpty: {
+                        message: 'The Confirm Password is required and cannot be empty'
+                    },
+                    identical: {
+                        field: 'password'
+                    },
+                    different: {
+                        field: 'first_name,last_name',
+                        message: 'Confirm Password should match with password'
+                    }
+                }
+            }
+        }
+    });
+    $('#terms').on('ifChanged', function (event) {
+        $('#form-validation3').bootstrapValidator('revalidateField', $('#terms'));
+    });
+    // Validation in Modal Form  Reset
+    $('.resetModal').on('click', function () {
+
+
+        if ($("#form-validation3 #terms").prop('checked') == true) {
+            $("#form-validation3").find(".icheckbox_minimal-blue").removeClass('checked');
+        }
+        $('#form-validation3').bootstrapValidator("resetForm", true);
+    });
+    $('#activate').on('ifChanged', function (event) {
         $('#form_validation').bootstrapValidator('revalidateField', $('#activate'));
     });
 
-
     $('#tryitForm').bootstrapValidator({
+        excluded: [':disabled'],
         fields: {
             firstName: {
                 validators: {
@@ -116,142 +224,71 @@ $(document).ready(function() {
                 .modal();
         }
     });
-    $('input:radio[name="gender"]').on('ifChanged', function(event){
+    $('input:radio[name="gender"]').on('ifChanged', function (event) {
         $('#tryitForm').bootstrapValidator('revalidateField', $('input:radio[name="gender"]'));
     });
 
-    $("#form-validation3").bootstrapValidator({
-        fields: {
-            first_name: {
-                validators: {
-                    notEmpty: {
-                        message: 'The first name is required and cannot be empty'
-                    }
-                }
-            },
-            last_name: {
-                validators: {
-                    notEmpty: {
-                        message: 'The last name is required and cannot be empty'
-                    }
-                }
-            },
-            display_name: {
-                validators: {
-                    notEmpty: {
-                        message: 'The display name is required and cannot be empty'
-                    }
-                }
-            },
-            email: {
-                validators: {
-                    notEmpty: {
-                        message: 'The email address is required'
-                    },
-                    emailAddress: {
-                        message: 'The input is not a valid email address'
-                    }
-                }
-            },
-            terms: {
-                validators: {
-                    choice: {
-                        min:1,
-                        message: 'Please accept the terms and conditions'
-                    }
-                }
-            },
-            password: {
-                validators: {
-                    notEmpty: {
-                        message: 'The password is required and cannot be empty'
-                    },
-                    different: {
-                        field: 'first_name,last_name',
-                        message: 'Password should not match first name or last name'
-                    }
-                }
-            },
-            confirmpassword: {
-                validators: {
-                    notEmpty: {
-                        message: 'The Confirm Password is required and cannot be empty'
-                    },
-                    identical: {
-                        field: 'password'
-                    },
-                    different: {
-                        field: 'first_name,last_name',
-                        message: 'Confirm Password should match with password'
-                    }
-                }
-            }
-        }
-    });
-    $('#terms').on('ifChanged', function(event){
-        $('#form-validation3').bootstrapValidator('revalidateField', $('#terms'));
-    });
+
     $('#form-validation1').bootstrapValidator();
-    $("input[type=password]").keyup(function(){
+    $("input[type=password]").keyup(function () {
         var ucase = new RegExp("[A-Z]+");
         var lcase = new RegExp("[a-z]+");
         var num = new RegExp("[0-9]+");
 
-        if($("#password1").val().length >= 8){
+        if ($("#password1").val().length >= 8) {
             $("#8char").removeClass("glyphicon-remove");
             $("#8char").addClass("glyphicon-ok");
-            $("#8char").css("color","#00A41E");
-        }else{
+            $("#8char").css("color", "#00A41E");
+        } else {
             $("#8char").removeClass("glyphicon-ok");
             $("#8char").addClass("glyphicon-remove");
-            $("#8char").css("color","#FF0004");
+            $("#8char").css("color", "#FF0004");
         }
 
         if (ucase.test($("#password1").val())) {
             $("#ucase").removeClass("glyphicon-remove");
             $("#ucase").addClass("glyphicon-ok");
-            $("#ucase").css("color","#00A41E");
-        }else{
+            $("#ucase").css("color", "#00A41E");
+        } else {
             $("#ucase").removeClass("glyphicon-ok");
             $("#ucase").addClass("glyphicon-remove");
-            $("#ucase").css("color","#FF0004");
+            $("#ucase").css("color", "#FF0004");
         }
 
         if (lcase.test($("#password1").val())) {
             $("#lcase").removeClass("glyphicon-remove");
             $("#lcase").addClass("glyphicon-ok");
-            $("#lcase").css("color","#00A41E");
-        }else{
+            $("#lcase").css("color", "#00A41E");
+        } else {
             $("#lcase").removeClass("glyphicon-ok");
             $("#lcase").addClass("glyphicon-remove");
-            $("#lcase").css("color","#FF0004");
+            $("#lcase").css("color", "#FF0004");
         }
 
         if (num.test($("#password1").val())) {
             $("#num").removeClass("glyphicon-remove");
             $("#num").addClass("glyphicon-ok");
-            $("#num").css("color","#00A41E");
-        }else{
+            $("#num").css("color", "#00A41E");
+        } else {
             $("#num").removeClass("glyphicon-ok");
             $("#num").addClass("glyphicon-remove");
-            $("#num").css("color","#FF0004");
+            $("#num").css("color", "#FF0004");
         }
-
 
 
         if ($("#password1").val() == $("#password2").val()) {
             $("#pwmatch").removeClass("glyphicon-remove");
             $("#pwmatch").addClass("glyphicon-ok");
-            $("#pwmatch").css("color","#00A41E");
-        }else{
+            $("#pwmatch").css("color", "#00A41E");
+        } else {
             $("#pwmatch").removeClass("glyphicon-ok");
             $("#pwmatch").addClass("glyphicon-remove");
-            $("#pwmatch").css("color","#FF0004");
+            $("#pwmatch").css("color", "#FF0004");
         }
-        if ($("#password1").val() =="" && $("#password2").val()=="") {
+        if ($("#password1").val() == "" && $("#password2").val() == "") {
             $("#pwmatch").removeClass("glyphicon-ok");
             $("#pwmatch").addClass("glyphicon-remove");
-            $("#pwmatch").css("color","#FF0004");
+            $("#pwmatch").css("color", "#FF0004");
         }
     });
     $('.input-group input[required], .input-group textarea[required], .input-group select[required]').on('keyup, change', function () {
@@ -283,40 +320,9 @@ $(document).ready(function() {
         }
     });
 
-//Phone validation
-
-    var telInput = $("#phone"),
-        errorMsg = $("#error-msg"),
-        validMsg = $("#valid-msg");
-
-// initialise plugin
-    telInput.intlTelInput({
-        utilsScript: "../assets/vendors/intl-tel-input/lib/libphonenumber/build/utils.js"
+    $('input[type="checkbox"].custom-checkbox, input[type="radio"].custom-radio').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue',
+        increaseArea: '20%'
     });
-
-// on blur: validate
-    telInput.blur(function () {
-        if ($.trim(telInput.val())) {
-            if (telInput.intlTelInput("isValidNumber")) {
-                validMsg.removeClass("hide");
-            } else {
-                telInput.addClass("error");
-                errorMsg.removeClass("hide").addClass("error");
-                validMsg.addClass("hide");
-            }
-        }
-    });
-
-// on keydown: reset
-    telInput.keydown(function () {
-        telInput.removeClass("error");
-        errorMsg.addClass("hide").removeClass("error");
-        validMsg.addClass("hide");
-    });
-});
-
-$('input[type="checkbox"].custom-checkbox, input[type="radio"].custom-radio').iCheck({
-    checkboxClass: 'icheckbox_minimal-blue',
-    radioClass: 'iradio_minimal-blue',
-    increaseArea: '20%'
 });

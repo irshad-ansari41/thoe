@@ -26,7 +26,7 @@ class ControllerGenerator extends BaseGenerator
         $this->commandData = $commandData;
         $this->path = $commandData->config->pathController;
         $this->templateType = config('infyom.laravel_generator.templates', 'core-templates');
-        $this->fileName = $this->commandData->modelName.'Controller.php';
+        $this->fileName = $this->commandData->modelName . 'Controller.php';
     }
 
     public function generate()
@@ -44,16 +44,17 @@ class ControllerGenerator extends BaseGenerator
                 $paginate = $this->commandData->getOption('paginate');
 
                 if ($paginate) {
-                    $templateData = str_replace('$RENDER_TYPE$', 'paginate('.$paginate.')', $templateData);
+                    $templateData = str_replace('$RENDER_TYPE$', 'paginate(' . $paginate . ')', $templateData);
                 } else {
                     $templateData = str_replace('$RENDER_TYPE$', 'all()', $templateData);
                 }
             }
 //dd($field['htmlType'] .$field['databaseInputs']);
-            if($field['htmlType']=='checkbox'){
-                $checkbox_name='';
+            if ($field['htmlType'] == 'checkbox') {
+                $checkbox_name = '';
                 $checkboxName = $field['fieldName'];
-                $checked_value=1;$unchecked_value=0;
+                $checked_value = 1;
+                $unchecked_value = 0;
                 $checkbox_name .= "
                         if(\$request->has('$checkboxName')){
 	                    \$request->merge(['$checkboxName' => $checked_value]);
@@ -64,16 +65,12 @@ class ControllerGenerator extends BaseGenerator
                 $templateData = str_replace('$CHECKBOX_UPDATE', $checkbox_name, $templateData);
                 $templateData = TemplateUtil::fillTemplate($this->commandData->dynamicVars, $templateData);
                 FileUtil::createFile($this->path, $this->fileName, $templateData);
-            }
-            else{
+            } else {
                 $templateData = str_replace('$CHECKBOX_UPDATE', '', $templateData);
                 $templateData = TemplateUtil::fillTemplate($this->commandData->dynamicVars, $templateData);
                 FileUtil::createFile($this->path, $this->fileName, $templateData);
             }
         }
-
-
-
 
 
         $this->commandData->commandComment("\nController created: ");
@@ -104,9 +101,9 @@ class ControllerGenerator extends BaseGenerator
 
         $path = $this->commandData->config->pathDataTables;
 
-        $fileName = $this->commandData->modelName.'DataTable.php';
+        $fileName = $this->commandData->modelName . 'DataTable.php';
 
-        $fields = implode(','.infy_nl_tab(1, 3), $headerFields);
+        $fields = implode(',' . infy_nl_tab(1, 3), $headerFields);
 
         $templateData = str_replace('$DATATABLE_COLUMNS$', $fields, $templateData);
 
@@ -119,7 +116,7 @@ class ControllerGenerator extends BaseGenerator
     public function rollback()
     {
         if ($this->rollbackFile($this->path, $this->fileName)) {
-            $this->commandData->commandComment('Controller file deleted: '.$this->fileName);
+            $this->commandData->commandComment('Controller file deleted: ' . $this->fileName);
         }
     }
 }

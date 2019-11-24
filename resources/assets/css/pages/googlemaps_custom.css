@@ -4,5 +4,9 @@
 }
 body
 {
-    margin:0px;
+    margin: 0;
+}
+
+.gm-fullscreen-control {
+    z-index: 2147483647;
 }

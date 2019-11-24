@@ -1,13 +1,16 @@
 .row {
     padding : 0 15px;
 }
+.m-t-10 {
+    margin-top: 10px;
+}
 .paddingleft_right15 {
     padding : 0 15px;
 }
 .clickable {
     cursor : pointer;
 }
-.panel-heading span {
+.panel-heading > span {
     margin-top : -20px;
     font-size  : 15px;
 }
@@ -479,4 +482,9 @@ Customized Bootstrap Buttons
 }
 .btn-default {
     background-color : #F1F1F1;
+}
+@media (min-width:320px) and (max-width:375px){
+    .panel-heading .pull-right{
+        /*display:none;*/
+    }
 }

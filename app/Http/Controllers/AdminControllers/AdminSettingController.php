@@ -407,12 +407,36 @@ class AdminSettingController extends Controller {
         if ($request->description_ur) {
             $data['description_ur'] = $request->description_ur;
         }
+        if ($request->footer_address_en) {
+            $data['footer_address_en'] = $request->footer_address_en;
+        }
+        if ($request->footer_address_ar) {
+            $data['footer_address_ar'] = $request->footer_address_ar;
+        }
+        if ($request->footer_timing_en) {
+            $data['footer_timing_en'] = $request->footer_timing_en;
+        }
+        if ($request->footer_timing_ar) {
+            $data['footer_timing_ar'] = $request->footer_timing_ar;
+        }
+        if ($request->copy_right_en) {
+            $data['copy_right_en'] = $request->copy_right_en;
+        }
+        if ($request->copy_right_ar) {
+            $data['copy_right_ar'] = $request->copy_right_ar;
+        }
 
         if ($request->contact_email) {
             $data['contact_email'] = $request->contact_email;
         }
+        if ($request->contact_phone) {
+            $data['contact_phone'] = $request->contact_phone;
+        }
         if ($request->linkedin_link) {
             $data['linkedin_link'] = $request->linkedin_link;
+        }
+        if ($request->youtube_link) {
+            $data['youtube_link'] = $request->youtube_link;
         }
         if ($request->facebook_link) {
             $data['facebook_link'] = $request->facebook_link;

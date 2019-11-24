@@ -15,8 +15,8 @@ class PaymentControllerPayFort extends Controller {
     public $language = 'en';
     public $merchantIdentifier = 'cySyhUzX'; //'JjrDnJGm';
     public $accessCode = 'IsOGFMqbS84FUF00Va0r'; //JtSGWU3wvXuVz5Qyqcsm';
-    public $SHARequestPhrase = 'AZIZISHAIN'; //TESTSHAIN';
-    public $SHAResponsePhrase = 'AZIZISHAOUT'; //TESTSHAOUT';
+    public $SHARequestPhrase = 'THOESHAIN'; //TESTSHAIN';
+    public $SHAResponsePhrase = 'THOESHAOUT'; //TESTSHAOUT';
     public $SHAType = 'sha256';
     public $command = 'PURCHASE';
     public $amount;

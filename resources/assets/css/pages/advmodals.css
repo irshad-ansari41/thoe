@@ -728,3 +728,8 @@ button, input, optgroup, select, textarea {
         -webkit-transform : scaleX(1);
     }
 }
+@media (min-width:320px) and (max-width:425px){
+    body{
+        font-size:14px;
+    }
+}

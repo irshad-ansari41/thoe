@@ -1,3 +1,4 @@
+"use strict";
 // bootstrap wizard//
 $("#gender, #gender1").select2({
     theme:"bootstrap",
@@ -140,3 +141,9 @@ $('#rootwizard .finish').click(function () {
 $('#activate').on('ifChanged', function(event){
     $('#commentForm').bootstrapValidator('revalidateField', $('#activate'));
 });
+$('#commentForm').keypress(
+    function(event){
+        if (event.which == '13') {
+            event.preventDefault();
+        }
+    });

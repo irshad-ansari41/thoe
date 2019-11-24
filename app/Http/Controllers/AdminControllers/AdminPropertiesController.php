@@ -175,20 +175,15 @@ class AdminPropertiesController extends Controller {
 
 
 
+            $project->title_en = input_trims($request->title_en);
             $project->title_ar = input_trims($request->title_ar);
-            $project->title_ch = input_trims($request->title_ch);
-            $project->title_hn = input_trims($request->title_hn);
-            $project->title_ur = input_trims($request->title_ur);
+
             $project->subtitle_en = input_trims($request->subtitle_en);
             $project->subtitle_ar = input_trims($request->subtitle_ar);
-            $project->subtitle_ch = input_trims($request->subtitle_ch);
-            $project->subtitle_hn = input_trims($request->subtitle_hn);
-            $project->subtitle_ur = input_trims($request->subtitle_ur);
+
             $project->description_en = input_trims($request->description_en);
             $project->description_ar = input_trims($request->description_ar);
-            $project->description_ch = input_trims($request->description_ch);
-            $project->description_hn = input_trims($request->description_hn);
-            $project->description_ur = input_trims($request->description_ur);
+
 
             $project->slug = input_trims($request->slug);
             $project->slug_updates = str_replace(' ', '-', input_trims(strtolower($request->slug . '-updates')));
@@ -278,30 +273,13 @@ class AdminPropertiesController extends Controller {
             // if($request->title_ar){
             $data['title_ar'] = input_trims($request->title_ar);
             // }
-            //  if($request->title_ch){
-            $data['title_ch'] = input_trims($request->title_ch);
-            //  }
-            // if($request->title_hn){
-            $data['title_hn'] = input_trims($request->title_hn);
-            //   }
-            //  if($request->title_ur){
-            $data['title_ur'] = input_trims($request->title_ur);
-            //   }
             //  if($request->subtitle_en){
             $data['subtitle_en'] = input_trims($request->subtitle_en);
             //   }
             //  if($request->subtitle_ar){
             $data['subtitle_ar'] = input_trims($request->subtitle_ar);
             //   }
-            //  if($request->subtitle_ch){
-            $data['subtitle_ch'] = input_trims($request->subtitle_ch);
-            //  }
-            //  if($request->subtitle_hn){
-            $data['subtitle_hn'] = input_trims($request->subtitle_hn);
-            //  }
-            //   if($request->subtitle_ur){
-            $data['subtitle_ur'] = input_trims($request->subtitle_ur);
-            //   }
+
             $data['slug'] = trim($request->slug);
             $data['slug_updates'] = str_replace(' ', '-', input_trims(strtolower($request->slug . '-updates')));
 
@@ -324,15 +302,7 @@ class AdminPropertiesController extends Controller {
             //   if($request->description_ar){
             $data['description_ar'] = input_trims($request->description_ar);
             //   }
-            //   if($request->description_ch){
-            $data['description_ch'] = input_trims($request->description_ch);
-            //   }
-            //   if($request->description_hn){
-            $data['description_hn'] = input_trims($request->description_hn);
-            //   }
-            //   if($request->description_ur){
-            $data['description_ur'] = input_trims($request->description_ur);
-            //   }
+
             if (!empty($data)) {
                 Project::where('id', $request->id)->update($data);
             }
@@ -408,9 +378,7 @@ class AdminPropertiesController extends Controller {
             $aminitie = new Aminities();
             $aminitie->title_en = input_trims($request->title_en);
             $aminitie->title_ar = input_trims($request->title_ar);
-            $aminitie->title_ch = input_trims($request->title_ch);
-            $aminitie->title_hn = input_trims($request->title_hn);
-            $aminitie->title_ur = input_trims($request->title_ur);
+
             $aminitie->created = date("Y-m-d H:i:s");
             $aminitie->icon = $input['imagename'];
             $aminitie->status = '1';
@@ -454,24 +422,14 @@ class AdminPropertiesController extends Controller {
             if ($request->title_ar) {
                 $data['title_ar'] = input_trims($request->title_ar);
             }
-            if ($request->title_ch) {
-                $data['title_ch'] = input_trims($request->title_ch);
-            }
-            if ($request->title_hn) {
-                $data['title_hn'] = input_trims($request->title_hn);
-            }
-            if ($request->title_ur) {
-                $data['title_ur'] = input_trims($request->title_ur);
-            }
+
             if ($request->description_en) {
                 $data['description_en'] = input_trims($request->description_en);
             }
             if ($request->description_ar) {
                 $data['description_ar'] = input_trims($request->description_ar);
             }
-            if ($request->description_ch) {
-                $data['description_ch'] = input_trims($request->description_ch);
-            }
+
 
             if (!empty($data)) {
                 Aminities::where('id', $request->id)->update($data);
@@ -959,7 +917,7 @@ class AdminPropertiesController extends Controller {
 
         $properties = Properties::with("get_project_detail", "get_unit", "get_unit.unit", "get_aminities", "get_aminities.amin", "get_category_detail")->orderBy("project_id", "desc")->
                         orderBy("sort_order", "ASC")->get();
-
+        $selectedcategories = '';
         return View('admin.properties.list', compact('properties'), compact('selectedcategories'));
     }
 
@@ -1022,12 +980,12 @@ class AdminPropertiesController extends Controller {
             $path = STORE_PATH . '/assets/images/properties/' . str_replace(' ', '-', input_trims(strtolower($project->gallery_location))) . '/' . $pname;
             $sudopath = STORE_PATH . "/assets/images/properties/" . str_replace(' ', '-', input_trims(strtolower($project->gallery_location))) . "/" . $pname;
             $result = File::makeDirectory($path, $mode = 0777, true, true);
-            chmod($sudopath, 0777);
+            @chmod($sudopath, 0777);
 
             $path2 = STORE_PATH . '/assets/images/properties/' . str_replace(' ', '-', input_trims(strtolower($project->gallery_location))) . '/' . $pname . '/brochures';
             $sudopath2 = STORE_PATH . "/assets/images/properties/" . str_replace(' ', '-', input_trims(strtolower($project->gallery_location))) . '/' . $pname . "/brochures";
             $result = File::makeDirectory($path2, $mode = 0777, true, true);
-            chmod($sudopath2, 0777);
+            @chmod($sudopath2, 0777);
             $files[] = '';
             $filename[] = '';
 
@@ -1035,7 +993,7 @@ class AdminPropertiesController extends Controller {
             $path3 = STORE_PATH . '/assets/images/properties/' . str_replace(' ', '-', input_trims(strtolower($project->gallery_location))) . '/' . $pname . '/floor-plans';
             $sudopath3 = STORE_PATH . "/assets/images/properties/" . str_replace(' ', '-', input_trims(strtolower($project->gallery_location))) . '/' . $pname . "/floor-plans";
             $result = File::makeDirectory($path3, $mode = 0777, true, true);
-            chmod($sudopath3, 0777);
+            @chmod($sudopath3, 0777);
 
 
             /* Broucher and Floor plan */
@@ -1160,7 +1118,6 @@ class AdminPropertiesController extends Controller {
             $insertedId = $properties->id;
 
             if (count($request->unit_id) > 0) {
-
                 for ($i = 0; $i < count($request->unit_id); $i++) {
                     $merge_unit = new Merge_unit();
                     $merge_unit->property_id = $insertedId;
@@ -1394,7 +1351,7 @@ class AdminPropertiesController extends Controller {
             //echo '<pre>'; print_r($data); echo '</pre>'; die();
             Merge_unit::where('property_id', $request->id)->delete();
 
-            if (count($request->unit_id) > 0) {
+            if (!empty($request->unit_id) && count($request->unit_id) > 0) {
 
                 for ($i = 0; $i < count($request->unit_id); $i++) {
                     $merge_unit = new Merge_unit();
@@ -1406,7 +1363,7 @@ class AdminPropertiesController extends Controller {
 
             Merge_aminities::where('property_id', $request->id)->delete();
 
-            if (count($request->aminity_id) > 0) {
+            if (!empty($request->aminity_id) && count($request->aminity_id) > 0) {
 
                 for ($i = 0; $i < count($request->aminity_id); $i++) {
                     $merge_aminities = new Merge_aminities();
@@ -2171,13 +2128,13 @@ class AdminPropertiesController extends Controller {
                     }
                 }
             }
-            
+
             if (!empty($old_image)) {
                 for ($i = 0; $i < count($old_image); $i++) {
 
                     $input['imagename'] = '';
                     $flag = 0;
-                    
+
                     if (empty($image[$i]) && $old_id[$i] != "") {
                         $data = array();
                         $data['property_id'] = $request->pid;
@@ -2186,11 +2143,10 @@ class AdminPropertiesController extends Controller {
                         $data['unit_type_id'] = !empty($unitid[$i]) ? $unitid[$i] : 0;
                         $data['status'] = "1";
                         //echo '<pre>'; print_r($data); echo '</pre>';
-                        Gallery::where('property_id', $request->pid )->where('id', $old_id[$i])->update($data);
+                        Gallery::where('property_id', $request->pid)->where('id', $old_id[$i])->update($data);
                         //$url = STORE_PATH . "/assets/images/properties/" . $project->gallery_location . '/' . $prop->gallery_location . "/" . @$old_image[$i];
                         //@unlink($url);
-                    }                     
-                    else if (isset($image[$i])) {
+                    } else if (isset($image[$i])) {
                         $input['imagename'] = time() . rand() . '.' . $image[$i]->getClientOriginalExtension();
                         $destinationPath = STORE_PATH . ('/assets/images/properties/' . $project->gallery_location . '/' . $prop->gallery_location);
                         $image[$i]->move($destinationPath, $input['imagename']);
@@ -2204,12 +2160,9 @@ class AdminPropertiesController extends Controller {
                             $gal->unit_type_id = !empty($unitid[$i]) ? $unitid[$i] : 0;
                             //echo '<pre>'; print_r($gal); echo '</pre>'; die();
                             $gal->save();
-                        } 
+                        }
                     }
-                    
                 }
-                
-                
             }
 
             $request->session()->flash('alert-success', 'Gallery has been updated!');
@@ -2250,7 +2203,7 @@ class AdminPropertiesController extends Controller {
     /* Construction management */
 
     public function construction() {
-        $results = Properties::orderBy('title_en','asc')->get();
+        $results = Properties::orderBy('title_en', 'asc')->get();
         return View('admin.properties.construction', compact('results'));
     }
 
@@ -2263,11 +2216,11 @@ class AdminPropertiesController extends Controller {
         $result = [];
         if ($request->id != "") {
             $data = array();
-            $data['mobilization_percentage'] = !empty($request->mobilization_percentage)?$request->mobilization_percentage:0;
-            $data['structure_percentage'] = !empty($request->structure_percentage)?$request->structure_percentage:0;
-            $data['mep_percentage'] =!empty( $request->mep_percentage)? $request->mep_percentage:0;
-            $data['finishes_percentage'] = !empty($request->finishes_percentage)?$request->finishes_percentage:0;
-            $data['nfcstatus'] = !empty($request->nfcstatus)?$request->nfcstatus:'';
+            $data['mobilization_percentage'] = !empty($request->mobilization_percentage) ? $request->mobilization_percentage : 0;
+            $data['structure_percentage'] = !empty($request->structure_percentage) ? $request->structure_percentage : 0;
+            $data['mep_percentage'] = !empty($request->mep_percentage) ? $request->mep_percentage : 0;
+            $data['finishes_percentage'] = !empty($request->finishes_percentage) ? $request->finishes_percentage : 0;
+            $data['nfcstatus'] = !empty($request->nfcstatus) ? $request->nfcstatus : '';
             $data['total_completion'] = $request->total_completion;
             $data['enquire_call_us'] = $request->enquire_call_us;
             $data['enquire_address'] = $request->enquire_address;

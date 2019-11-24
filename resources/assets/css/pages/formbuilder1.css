@@ -9,6 +9,7 @@
 
 .form-body .col-md-6, .form-body .col-md-12 {
     min-height: 400px;
+    resize:vertical;
 }
 
 .draggable {
@@ -48,4 +49,7 @@
 
 .display-no {
     display: none;
+}
+.ui-front textarea{
+    resize: vertical;
 }

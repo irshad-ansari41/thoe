@@ -5,7 +5,7 @@ $(function () {
         div: "#gmap-styled",
         lat: 41.895465,
         lng: 12.482324,
-        zoom: 5,
+        zoom: 15,
         zoomControl : true,
         zoomControlOpt: {
             style : "SMALL",
@@ -48,6 +48,7 @@ $(function () {
         el: '#gmap-types',
         lat: -12.043333,
         lng: -77.028333,
+        zoom: 13,
         mapTypeControlOptions: {
             mapTypeIds : ["hybrid", "roadmap", "satellite", "terrain", "osm", "cloudmade"]
         }
@@ -74,6 +75,7 @@ $(function () {
         el: '#gmap-top',
         lat: -12.043333,
         lng: -77.028333,
+        zoom: 13,
         zoomControl: true,
         zoomControlOpt: {
             style: 'SMALL',
@@ -88,7 +90,8 @@ $(function () {
     map4 = new GMaps({
         el: '#gmap-markers',
         lat: -12.043333,
-        lng: -77.028333
+        lng: -77.028333,
+        zoom: 13,
     });
     map4.addMarker({
         lat: -12.043333,
@@ -122,6 +125,7 @@ $(function () {
         el: '#gmap-satellite',
         lat: -12.043333,
         lng: -77.028333,
+        zoom: 13,
         zoomControl: true,
         zoomControlOpt: {
             style: 'SMALL',
@@ -139,6 +143,7 @@ $(function () {
         el: '#gmap-terrain',
         lat: -12.043333,
         lng: -77.028333,
+        zoom: 13,
         zoomControl: true,
         zoomControlOpt: {
             style: 'SMALL',
@@ -149,5 +154,8 @@ $(function () {
         mapTypeControl: false,
         overviewMapControl: false,
         mapTypeId: google.maps.MapTypeId.TERRAIN
+    });
+    $('.gmap').closest('.panel-body').on('resize', function () {
+        $(window).trigger('resize');
     });
 });

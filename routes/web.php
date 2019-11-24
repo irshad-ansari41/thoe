@@ -22,7 +22,7 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
 
     Route::any('/search', ['as' => 'search', 'uses' => 'SearchController@index']);
 
-    Route::get('/about', ['as' => 'about', 'uses' => 'AboutController@index']);
+    Route::get('/about', ['as' => 'about', 'uses' => 'AboutController@about_thoe']);
     Route::get('/our-founder', ['as' => 'our-founder', 'uses' => 'AboutController@our_founder']);
     Route::get('/management', ['as' => 'management', 'uses' => 'AboutController@management1']);
     Route::get('/board-of-directors', ['as' => 'management', 'uses' => 'AboutController@board_of_directors']);
@@ -78,13 +78,10 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
     Route::any('/online-payment-payfort/response', ['as' => 'payment-payfort.response', 'uses' => 'PaymentControllerPayFort@response']);
     Route::any('/online-payment-payfort/cancel', ['as' => 'payment-payfort.cancel', 'uses' => 'PaymentControllerPayFort@cancel']);
 
-    Route::get('/dubai/construction-updates', ['as' => 'construction.updates', 'uses' => 'ConstructionController@index']);
-    Route::get('/dubai/meydan/construction-updates', ['as' => 'community.updates', 'uses' => 'ConstructionController@community']);
-    Route::get('/dubai/meydan/{projects}/construction-updates', ['as' => 'community-area.updates', 'uses' => 'ConstructionController@projects']);
-    Route::get('/dubai/meydan/{projects}/{property}/construction-updates', ['as' => 'community-area.updates', 'uses' => 'ConstructionController@property']);
-    Route::get('/dubai/{area}/{property}/construction-updates/test', ['as' => 'community-area.updates', 'uses' => 'ConstructionController@propertytest']);
-    Route::get('/dubai/{area}/construction-updates/', ['as' => 'area.updates', 'uses' => 'ConstructionController@projects']);
-    Route::get('/dubai/{area}/{property}/construction-updates', ['as' => 'meydan.updates', 'uses' => 'ConstructionController@property']);
+    Route::get('/construction-updates', ['as' => 'construction.updates', 'uses' => 'ConstructionController@index']);
+    //Route::get('/construction-updates', ['as' => 'community.updates', 'uses' => 'ConstructionController@community']);
+    //Route::get('/construction-updates/{property}', ['as' => 'community-area.updates', 'uses' => 'ConstructionController@projects']);
+    Route::get('/construction-updates/{property}', ['as' => 'community-area.updates', 'uses' => 'ConstructionController@property']);
     Route::post('/constructiondownload', ['as' => 'constructiondownload', 'uses' => 'ConstructionController@constructiondownload']);
 
     Route::get('/dubai', ['as' => 'azizi.properties', 'uses' => 'PropertyController@index']);
@@ -97,7 +94,7 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
     Route::get('/lp/dubai/meydan/{projects}/{property}', ['as' => 'community-area.properties', 'uses' => 'PropertyController@lp_property']);
     Route::get('/lp/dubai/{area}/{property}', ['as' => 'meydan.properties', 'uses' => 'PropertyController@lp_property']);
     /* End Landing Pages */
-    
+
 
     Route::get('/dubai/{area}/{property}', ['as' => 'meydan.properties', 'uses' => 'PropertyController@property']);
     Route::get('/property-booking', ['as' => 'property-bookings', 'uses' => 'PropertyController@propertyBooking']);
@@ -190,14 +187,11 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
 
     //Route::get('{name?}', 'JoshController@showFrontEndView');
 # End of frontend views 
-
-    
     //Redirect Pages Section
-    Route::get('en/offers',function(){
+    Route::get('en/offers', function() {
         return redirect('https://azizidevelopments.com/offers');
     });
     //End Page Redirect Section
-    
 });
 
 

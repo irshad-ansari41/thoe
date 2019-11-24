@@ -4,6 +4,13 @@ namespace InfyOm\Generator\Utils;
 
 class TemplateUtil
 {
+    public static function getTemplate($templateName, $templateType)
+    {
+        $path = self::getTemplateFilePath($templateName, $templateType);
+
+        return file_get_contents($path);
+    }
+
     public static function getTemplateFilePath($templateName, $templateType)
     {
         $templateName = str_replace('.', '/', $templateName);
@@ -13,20 +20,20 @@ class TemplateUtil
             base_path('resources/infyom/infyom-generator-templates/')
         );
 
-        $path = $templatesPath.$templateName.'.stub';
+        $path = $templatesPath . $templateName . '.stub';
 
         if (file_exists($path)) {
             return $path;
         }
 
-        return base_path('vendor/infyomlabs/'.$templateType.'/templates/'.$templateName.'.stub');
+        return base_path('vendor/infyomlabs/' . $templateType . '/templates/' . $templateName . '.stub');
     }
 
-    public static function getTemplate($templateName, $templateType)
+    public static function fillTemplateWithFieldData($variables, $fieldVariables, $template, $field)
     {
-        $path = self::getTemplateFilePath($templateName, $templateType);
+        $template = self::fillTemplate($variables, $template);
 
-        return file_get_contents($path);
+        return self::fillFieldTemplate($fieldVariables, $template, $field);
     }
 
     public static function fillTemplate($variables, $template)
@@ -45,12 +52,5 @@ class TemplateUtil
         }
 
         return $template;
-    }
-
-    public static function fillTemplateWithFieldData($variables, $fieldVariables, $template, $field)
-    {
-        $template = self::fillTemplate($variables, $template);
-
-        return self::fillFieldTemplate($fieldVariables, $template, $field);
     }
 }

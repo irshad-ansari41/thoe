@@ -46,7 +46,10 @@
                 alwaysShow: true,
                 placement: 'top'
             });
+
+        $('#card').card({
+            container: $('.card-wrapper')
+        });
+
+        $('.autogrow_area').autogrow({onInitialize: true});
     });
-  $('#card').card({
-      container: $('.card-wrapper')
-  });

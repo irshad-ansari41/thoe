@@ -48,7 +48,6 @@ $(function () {
         });
     }
 
-    $(window).resize(draw);
     draw();
     //endline chart
 
@@ -84,7 +83,6 @@ $(function () {
         });
     }
 
-    $(window).resize(draw1);
     draw1();
 
 
@@ -127,7 +125,6 @@ $(function () {
             });
     }
 
-    $(window).resize(draw2);
     draw2();
 
     //end  radar chart
@@ -178,7 +175,6 @@ $(function () {
         });
     }
 
-    $(window).resize(draw3);
     draw3();
 
     //end polar area chart
@@ -216,7 +212,7 @@ $(function () {
             data: pieData
         });
     }
-    $(window).resize(draw4);
+
     draw4();
 
     //end pie chart
@@ -258,7 +254,6 @@ $(function () {
             });
     }
 
-    $(window).resize(draw5);
     draw5();
 
 

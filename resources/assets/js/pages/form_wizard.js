@@ -91,7 +91,7 @@ $("#commentForm").bootstrapValidator({
                     message: 'The home number is required'
                 },
                 regexp: {
-                    regexp: /^(\+?1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/,
+                    regexp: /^(\+\d{1,3}[- ]?)?\d{10}$/,
                     message: 'Enter valid phone number'
                 }
             }
@@ -102,7 +102,7 @@ $("#commentForm").bootstrapValidator({
                     message: 'The personal number is required'
                 },
                 regexp: {
-                    regexp: /^(\+?1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/,
+                    regexp: /^(\+\d{1,3}[- ]?)?\d{10}$/,
                     message: 'Enter valid phone number'
                 }
             }
@@ -117,7 +117,7 @@ $("#commentForm").bootstrapValidator({
                     message: 'The alternate number must be different from Home number'
                 },
                 regexp: {
-                    regexp: /^(\+?1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/,
+                    regexp: /^(\+\d{1,3}[- ]?)?\d{10}$/,
                     message: 'Enter valid phone number'
                 }
             }

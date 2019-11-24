@@ -14,7 +14,9 @@ html, body {
     transition: all .25s ease-out;
     font-family: Lato, sans-serif !important;
 }
-
+body.modal-open {
+    padding: 0 !important;
+}
 /* Layouts */
 .wrapper {
     min-height: 100%;

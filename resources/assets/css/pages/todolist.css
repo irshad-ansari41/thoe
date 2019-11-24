@@ -29,9 +29,8 @@
     background : #fe6a0a;
 }
 .todolist input {
-    border-radius : 5px;
-    font-size     : 14px;
-    padding-left  : 15px;
+    width        : 100%;
+    padding-left : 10px;
 }
 .todolist .btn {
     /*  margin-right:5px; */
@@ -64,7 +63,7 @@
     padding-top : 3px;
 }
 .strikethrough {
-    color: #ca0002;
+    color           : #ca0002;
     text-decoration : line-through;
 }
 .opacityfull {
@@ -98,6 +97,7 @@ input[type=checkbox] {
 .todoitemcheck {
     padding-top : 0;
     float       : left;
+    margin-right: 18px;
 }
 .todoitem {
     padding-top : 5px;
@@ -106,4 +106,7 @@ input[type=checkbox] {
 .todoitembtns {
     padding-top : 5px;
     text-align  : right;
+}
+.todotext input,.date input{
+    margin-bottom: 5px;
 }

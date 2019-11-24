@@ -345,4 +345,4 @@
     $(".typeahead").typeahead({
         source: icons,
         items: 12
-    })
+    });

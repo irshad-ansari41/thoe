@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\AdminControllers;
 
-use App\Http\Controllers\Controller as Controller;
+use App\Http\Controllers\JoshController as Controller;
 use App\Blog;
 use App\BlogCategory;
 use App\BlogComment;

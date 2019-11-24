@@ -13,7 +13,7 @@ class GeneratorFieldsInputUtil
 
         foreach ($fields as $field) {
             if (!self::validateFieldInput($field['fieldInput'])) {
-                throw new RuntimeException('Invalid Input '.$field['fieldInput']);
+                throw new RuntimeException('Invalid Input ' . $field['fieldInput']);
             }
 
             if (isset($field['htmlType'])) {
@@ -64,10 +64,10 @@ class GeneratorFieldsInputUtil
 
             $fieldSettings = [
                 'searchable' => $searchable,
-                'fillable'   => $fillable,
-                'primary'    => $primary,
-                'inForm'     => $inForm,
-                'inIndex'    => $inIndex,
+                'fillable' => $fillable,
+                'primary' => $primary,
+                'inForm' => $inForm,
+                'inIndex' => $inIndex,
             ];
 
             $fieldsArr[] = self::processFieldInput($field['fieldInput'], $htmlType, $validations, $fieldSettings);
@@ -103,19 +103,19 @@ class GeneratorFieldsInputUtil
         }
 
         return [
-            'fieldInput'     => $fieldInput,
-            'fieldTitle'     => Str::title(str_replace('_', ' ', $fieldName)),
-            'fieldType'      => $fieldType,
-            'fieldName'      => $fieldName,
+            'fieldInput' => $fieldInput,
+            'fieldTitle' => Str::title(str_replace('_', ' ', $fieldName)),
+            'fieldType' => $fieldType,
+            'fieldName' => $fieldName,
             'databaseInputs' => $databaseInputs,
-            'htmlType'       => $htmlType,
+            'htmlType' => $htmlType,
             'htmlTypeInputs' => $htmlTypeInputs,
-            'validations'    => $validations,
-            'searchable'     => isset($fieldSettings['searchable']) ? $fieldSettings['searchable'] : false,
-            'fillable'       => isset($fieldSettings['fillable']) ? $fieldSettings['fillable'] : true,
-            'primary'        => isset($fieldSettings['primary']) ? $fieldSettings['primary'] : false,
-            'inForm'         => isset($fieldSettings['inForm']) ? $fieldSettings['inForm'] : true,
-            'inIndex'        => isset($fieldSettings['inIndex']) ? $fieldSettings['inIndex'] : true,
+            'validations' => $validations,
+            'searchable' => isset($fieldSettings['searchable']) ? $fieldSettings['searchable'] : false,
+            'fillable' => isset($fieldSettings['fillable']) ? $fieldSettings['fillable'] : true,
+            'primary' => isset($fieldSettings['primary']) ? $fieldSettings['primary'] : false,
+            'inForm' => isset($fieldSettings['inForm']) ? $fieldSettings['inForm'] : true,
+            'inIndex' => isset($fieldSettings['inIndex']) ? $fieldSettings['inIndex'] : true,
         ];
     }
 

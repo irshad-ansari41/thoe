@@ -47,8 +47,8 @@ class ImageGalleryController extends Controller {
             foreach ($galleries as $key => $value) {
                 if ($value->id == $id || $value->slug == $id) {
                     $gallery = $galleries[$key];
-                    $meta_title = metaTitleByLocale($this->locale, ['en' => $gallery->gallery_title, 'ar' => $gallery->gallery_title_ar, 'cn' => $gallery->gallery_title_ch,]). ' | ' . $content->meta_title;
-                    $meta_desc = metaDescByLocale($this->locale, ['en' => $gallery->gallery_long_title, 'ar' => $gallery->gallery_long_title_ar, 'cn' => $gallery->gallery_long_title_ch,]). ' | ' . $content->meta_title;
+                    $meta_title = metaTitleByLocale($this->locale, ['en' => $gallery->gallery_title, 'ar' => $gallery->gallery_title_ar, 'cn' => $gallery->gallery_title_ch,]) . ' | ' . $content->meta_title;
+                    $meta_desc = metaDescByLocale($this->locale, ['en' => $gallery->gallery_long_title, 'ar' => $gallery->gallery_long_title_ar, 'cn' => $gallery->gallery_long_title_ch,]) . ' | ' . $content->meta_title;
                     break;
                 }
             }
@@ -59,7 +59,7 @@ class ImageGalleryController extends Controller {
         }
 
         $data = [
-            "AllRatings" => DB::table('tbl_ratings')->where('menu_title','Image Gallery')->where('menu_id',30)->first(),
+            "AllRatings" => DB::table('tbl_ratings')->where('menu_title', 'Image Gallery')->where('menu_id', 30)->first(),
             'content' => $content,
             'galleries' => $galleries,
             'gallery' => $gallery,

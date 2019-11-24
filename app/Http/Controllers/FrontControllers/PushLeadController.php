@@ -93,7 +93,7 @@ class PushLeadController extends Controller {
         ];
         //echo json_encode($postData);
         $context = stream_context_create($opts);
-        $content = file_get_contents("https://crm.azizidevelopments.com/WebForms/websiteleads.aspx/InsertLeadV5", false, $context);
+        $content = file_get_contents("https://crm.thoedevelopments.com/WebForms/websiteleads.aspx/InsertLeadV5", false, $context);
         $result = json_decode($content);
 
         print_r($result);

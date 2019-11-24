@@ -36,7 +36,7 @@ class CityScapeController extends Controller {
     public function send(Request $request) {
 
         $data = [
-            'subject' => "Azizi Developments World Cup Offers",
+            'subject' => "The Heart of Europe World Cup Offers",
             'fullname' => $request->fullname,
             'countrycode' => $request->countrycode,
             'phone' => $request->phone,
@@ -46,7 +46,7 @@ class CityScapeController extends Controller {
 
         Mail::send('pages.cityscape.emailer', ['data' => $data], function ($message) use ($data) {
             $message->subject($data['subject']);
-            $message->from('info@azizidevelopments.com', 'Azizi Developments');
+            $message->from('info@thoedevelopments.com', 'The Heart of Europe');
             $message->to($data['email'], $data['fullname']);
         });
 

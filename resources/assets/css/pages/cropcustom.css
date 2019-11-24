@@ -8,6 +8,11 @@
     border-left: 1px solid #F89A14 !important;
 }
 
+.tabtop .nav-tabs > li > a {
+    border-top: 4px solid transparent !important;
+    border-right: 1px solid transparent !important;
+    border-left: 1px solid transparent !important;
+}
 .navbar .nav .dropdown-toggle .caret {
     margin-top: -12px ! important;
 }
@@ -108,5 +113,10 @@
 @media (min-width: 1200px) {
     .container {
         width: 1170px;
+    }
+}
+@media (min-width:320px) and (max-width:1024px){
+    .tab-pane.active input[type=submit]{
+        margin-top:5px;
     }
 }

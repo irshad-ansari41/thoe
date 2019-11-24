@@ -1,4 +1,6 @@
- $(function () {
+"use strict";
+$(document).ready(function () {
+    $(function () {
         var i = -1;
         var toastCount = 0;
         var $toastlast;
@@ -83,12 +85,12 @@
             }
 
             $("#toastrOptions").text("Command: toastr["
-                            + shortCutFunction
-                            + "](\""
-                            + msg
-                            + (title ? "\", \"" + title : '')
-                            + "\")\n\ntoastr.options = "
-                            + JSON.stringify(toastr.options, null, 2)
+                + shortCutFunction
+                + "](\""
+                + msg
+                + (title ? "\", \"" + title : '')
+                + "\")\n\ntoastr.options = "
+                + JSON.stringify(toastr.options, null, 2)
             );
 
             var $toast = toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
@@ -105,13 +107,33 @@
                 });
             }
         });
-        function getLastToast(){
+
+        $("[value^='toast-top']").on("ifChanged", function () {
+            $("#showMethod").find('option:eq(2)').text("slideDown");
+            $("#hideMethod").find('option:eq(2)').text("slideUp");
+        });
+        $("[value^='toast-bottom']").on("ifChanged", function () {
+            $("#showMethod").find('option:eq(2)').text("slideUp");
+            $("#hideMethod").find('option:eq(2)').text("slideDown");
+        });
+
+        function getLastToast() {
             return $toastlast;
         }
-        $('#clearlasttoast').click(function () {
+
+        $('#clearlasttoast').on('click', function () {
             toastr.clear(getLastToast());
         });
-        $('#cleartoasts').click(function () {
+        $('#cleartoasts').on('click', function () {
             toastr.clear();
         });
-    })
+
+        $('#toastrOptions').hide();
+
+        $('input[type="checkbox"].custom-checkbox, input[type="radio"].custom-radio').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue',
+            increaseArea: '20%'
+        });
+    });
+});

@@ -51,13 +51,12 @@ Content List
                         </tr>
                     </thead>
                     <tbody>
-                        
+
                         @foreach ($properties as $prop)
-                        
-                        <?php //echo '<pre>'; print_r($prop->get_project_detail); echo '</pre>'; die; ?>
+
                         <tr>
                             <td>
-                                <img src="{{ asset('assets/images/properties') }}/{{ $prop->get_project_detail->gallery_location or '' }}/{{ $prop->gallery_location or '' }}/{{$prop->holder_image }}" height="100" width="100"/>
+                                <img src="{{ asset('assets/images/properties') }}/{{ $prop->get_project_detail->gallery_location }}/{{ $prop->gallery_location }}/{{$prop->holder_image }}" height="100" width="100"/>
                             </td>
                             <td>{!! $prop->title_en !!}</td>
                             <td>{{$prop->get_project_detail->title_en or '' }}</td>
@@ -100,8 +99,8 @@ Content List
                                 </a>
                                 @endif
                             </td>
-                            
-                            
+
+
                         </tr>
                         @endforeach
 

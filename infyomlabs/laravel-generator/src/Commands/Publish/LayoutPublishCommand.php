@@ -46,58 +46,6 @@ class LayoutPublishCommand extends PublishBaseCommand
         $this->publishHomeController();
     }
 
-    private function getViews()
-    {
-        if ($this->laravelVersion == '5.1') {
-            return $this->getLaravel51Views();
-        } else {
-            return $this->getLaravel52Views();
-        }
-    }
-
-    private function createDirectories($viewsPath)
-    {
-        FileUtil::createDirectoryIfNotExist($viewsPath.'layouts');
-        FileUtil::createDirectoryIfNotExist($viewsPath.'auth');
-
-        if ($this->laravelVersion == '5.1') {
-            FileUtil::createDirectoryIfNotExist($viewsPath.'emails');
-        } else {
-            FileUtil::createDirectoryIfNotExist($viewsPath.'auth/passwords');
-            FileUtil::createDirectoryIfNotExist($viewsPath.'auth/emails');
-        }
-    }
-
-    private function getLaravel51Views()
-    {
-        return [
-            'layouts/app'     => 'layouts/app.blade.php',
-            'layouts/sidebar' => 'layouts/sidebar.blade.php',
-            'layouts/menu'    => 'layouts/menu.blade.php',
-            'layouts/home'    => 'home.blade.php',
-            'auth/login'      => 'auth/login.blade.php',
-            'auth/register'   => 'auth/register.blade.php',
-            'auth/email'      => 'auth/password.blade.php',
-            'auth/reset'      => 'auth/reset.blade.php',
-            'emails/password' => 'emails/password.blade.php',
-        ];
-    }
-
-    private function getLaravel52Views()
-    {
-        return [
-            'layouts/app'     => 'layouts/app.blade.php',
-            'layouts/sidebar' => 'layouts/sidebar.blade.php',
-            'layouts/menu'    => 'layouts/menu.blade.php',
-            'layouts/home'    => 'home.blade.php',
-            'auth/login'      => 'auth/login.blade.php',
-            'auth/register'   => 'auth/register.blade.php',
-            'auth/email'      => 'auth/passwords/email.blade.php',
-            'auth/reset'      => 'auth/passwords/reset.blade.php',
-            'emails/password' => 'auth/emails/password.blade.php',
-        ];
-    }
-
     private function copyView()
     {
         $viewsPath = config('infyom.laravel_generator.path.views', base_path('resources/views/'));
@@ -108,10 +56,62 @@ class LayoutPublishCommand extends PublishBaseCommand
         $files = $this->getViews();
 
         foreach ($files as $stub => $blade) {
-            $sourceFile = TemplateUtil::getTemplateFilePath('scaffold/'.$stub, $templateType);
-            $destinationFile = $viewsPath.$blade;
+            $sourceFile = TemplateUtil::getTemplateFilePath('scaffold/' . $stub, $templateType);
+            $destinationFile = $viewsPath . $blade;
             $this->publishFile($sourceFile, $destinationFile, $blade);
         }
+    }
+
+    private function createDirectories($viewsPath)
+    {
+        FileUtil::createDirectoryIfNotExist($viewsPath . 'layouts');
+        FileUtil::createDirectoryIfNotExist($viewsPath . 'auth');
+
+        if ($this->laravelVersion == '5.1') {
+            FileUtil::createDirectoryIfNotExist($viewsPath . 'emails');
+        } else {
+            FileUtil::createDirectoryIfNotExist($viewsPath . 'auth/passwords');
+            FileUtil::createDirectoryIfNotExist($viewsPath . 'auth/emails');
+        }
+    }
+
+    private function getViews()
+    {
+        if ($this->laravelVersion == '5.1') {
+            return $this->getLaravel51Views();
+        } else {
+            return $this->getLaravel52Views();
+        }
+    }
+
+    private function getLaravel51Views()
+    {
+        return [
+            'layouts/app' => 'layouts/app.blade.php',
+            'layouts/sidebar' => 'layouts/sidebar.blade.php',
+            'layouts/menu' => 'layouts/menu.blade.php',
+            'layouts/home' => 'home.blade.php',
+            'auth/login' => 'auth/login.blade.php',
+            'auth/register' => 'auth/register.blade.php',
+            'auth/email' => 'auth/password.blade.php',
+            'auth/reset' => 'auth/reset.blade.php',
+            'emails/password' => 'emails/password.blade.php',
+        ];
+    }
+
+    private function getLaravel52Views()
+    {
+        return [
+            'layouts/app' => 'layouts/app.blade.php',
+            'layouts/sidebar' => 'layouts/sidebar.blade.php',
+            'layouts/menu' => 'layouts/menu.blade.php',
+            'layouts/home' => 'home.blade.php',
+            'auth/login' => 'auth/login.blade.php',
+            'auth/register' => 'auth/register.blade.php',
+            'auth/email' => 'auth/passwords/email.blade.php',
+            'auth/reset' => 'auth/passwords/reset.blade.php',
+            'emails/password' => 'auth/emails/password.blade.php',
+        ];
     }
 
     private function updateRoutes()
@@ -132,7 +132,7 @@ class LayoutPublishCommand extends PublishBaseCommand
             $routesTemplate = str_replace('$LOGOUT_METHOD$', 'logout', $routesTemplate);
         }
 
-        $routeContents .= "\n\n".$routesTemplate;
+        $routeContents .= "\n\n" . $routesTemplate;
 
         file_put_contents($path, $routeContents);
         $this->comment("\nRoutes added");
@@ -148,7 +148,7 @@ class LayoutPublishCommand extends PublishBaseCommand
 
         $fileName = 'HomeController.php';
 
-        if (file_exists($controllerPath.$fileName) && !$this->confirmOverwrite($fileName)) {
+        if (file_exists($controllerPath . $fileName) && !$this->confirmOverwrite($fileName)) {
             return;
         }
 

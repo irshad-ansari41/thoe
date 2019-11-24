@@ -25,9 +25,7 @@ body {
     margin:auto;
 }
 .box img{
-    margin-top:5px;
-    margin-bottom:5px;
-    margin:auto;
+    margin: 5px auto;
 }
 .box h3{
     margin-top:3px;
@@ -91,4 +89,26 @@ input[type="submit"]{
     -webkit-animation-name: flipInX;
     backface-visibility: visible !important;
     animation-name: flipInX;
+}
+.alert-success {
+    color: #fff;
+    background-color: #22ddad !important;
+    border-color: #acf6ac !important;
+}
+.alert-danger {
+    color: #fff;
+    background-color: #ff908d !important;
+    border-color: #EF6F6C !important;
+}
+.help-block{
+    color: #EF6F6C !important;
+    float: left;
+}
+.mt-15{
+    margin-top: 15px;
+}
+@media (min-width:320px) and (max-width:425px){
+    .box{
+        width:100% !important;
+    }
 }

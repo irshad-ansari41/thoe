@@ -104,3 +104,21 @@ input[type="submit"]{
 #forgot_pwd_title{
     margin-left: 20px;
 }
+.alert-success {
+    color: #fff;
+    background-color: #22ddad !important;
+    border-color: #acf6ac !important;
+}
+.alert-danger {
+    color: #fff;
+    background-color: #ff908d !important;
+    border-color: #EF6F6C !important;
+}
+span.help-block{
+    color:#a94442 !important;
+}
+@media (min-width:320px) and (max-width:425px){
+    .box{
+        width:100% !important;
+    }
+}

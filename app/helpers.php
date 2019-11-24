@@ -9,33 +9,33 @@
 include 'php-html-css-js-minifier.php';
 
 if (!defined('STORE_PATH')) {
-    define('STORE_PATH', '/var/www/html/azizi/public');
+    define('STORE_PATH', '/Applications/MAMP/htdocs/blog/public');
 }
-if(!defined('SalesForceKey')){
-    define('SalesForceKey','https://login.salesforce.com/services/oauth2/token?grant_type=password&client_id=3MVG9fTLmJ60pJ5KrRUqX1XPM76O2pql3eIKgbbff2muacjWV5XUSVDe1h3j4qmKWG8sOUrS1rcEAuoLUWi_r&client_secret=13BBC7762904A64067E05F2F3149D719326A374E56D1EC8208091CCBB6E7FAE2&username=api.integrator@azizidevelopments.com&password=Integration1234$');
+if (!defined('SalesForceKey')) {
+    define('SalesForceKey', 'https://login.salesforce.com/services/oauth2/token?grant_type=password&client_id=3MVG9fTLmJ60pJ5KrRUqX1XPM76O2pql3eIKgbbff2muacjWV5XUSVDe1h3j4qmKWG8sOUrS1rcEAuoLUWi_r&client_secret=13BBC7762904A64067E05F2F3149D719326A374E56D1EC8208091CCBB6E7FAE2&username=api.integrator@blog.com&password=Integration1234$');
 }
 if (!defined('PROPTOCOL')) {
     define('PROPTOCOL', 'https:');
 }
 
 if (!defined('APP_PATH')) {
-    define('APP_PATH', '/var/www/html/azizi');
+    define('APP_PATH', '/Applications/MAMP/htdocs/blog');
 }
 
 if (!defined('PUBLIC_PATH')) {
-    define('PUBLIC_PATH', '/var/www/html/azizi/public');
+    define('PUBLIC_PATH', '/Applications/MAMP/htdocs/blog/public');
 }
 
 if (!defined('APP_URL')) {
-    define('APP_URL', 'https://azizidevelopments.com');
+    define('APP_URL', 'http://localhost/blog/public');
 }
 
 if (!defined('SITE_URL')) {
-    define('SITE_URL', 'https://azizidevelopments.com');
+    define('SITE_URL', 'http://localhost/blog/public');
 }
 
 if (!defined('SITE_NAME')) {
-    define('SITE_NAME', 'Azizi Developments');
+    define('SITE_NAME', 'THE HEART OF EUROPE');
 }
 
 if (!defined('SITE_IP')) {
@@ -43,11 +43,11 @@ if (!defined('SITE_IP')) {
 }
 
 if (!defined('DOMAIN_NAME')) {
-    define('DOMAIN_NAME', 'azizidevelopments.com');
+    define('DOMAIN_NAME', 'blog.com');
 }
 
 if (!defined('UPLOAD_PATH')) {
-    define('UPLOAD_PATH', '/var/www/html/azizi/public/uploads/' . date('Y') . '/' . date('m'));
+    define('UPLOAD_PATH', '/Applications/MAMP/htdocs/blog/public/uploads/' . date('Y') . '/' . date('m'));
 }
 if (!defined('FB_APP_ID')) {
     define('FB_APP_ID', '136745863654131');
@@ -102,6 +102,7 @@ if (!defined('NUMBERS')) {
 /* CACHE PAFE FUNCTIONS */
 
 function get_cache_page($url) {
+    return;
 
     if (strpos($url, 'online-payments') !== false || strpos($url, 'debug') !== false) {
         return false;
@@ -191,16 +192,8 @@ function get_menu($locale, $type, $limit1 = '', $limit2 = '') {
         $i = 0;
 
         foreach ($menus as $menu) {
-
-            if ($locale == 'en') {
-                $records[$i]['title_en'] = $menu->title_en;
-            } else if ($locale == 'ar') {
-                $records[$i]['title_en'] = $menu->title_ar;
-            } else if ($locale == 'cn') {
-                $records[$i]['title_en'] = $menu->title_ch;
-            } else {
-                $records[$i]['title_en'] = $menu->title_en;
-            }
+            $records[$i]['title_en'] = $menu->title_en;
+            $records[$i]['title_ar'] = $menu->title_ar;
             $records[$i]['link'] = $menu->link;
             $records[$i]['slug'] = $menu->slug;
             $records[$i]['ordering'] = $menu->ordering;
@@ -209,24 +202,32 @@ function get_menu($locale, $type, $limit1 = '', $limit2 = '') {
             $subs = DB::table('tbl_menu')->orderBy('ordering', 'asc')->where("parent_id", $menu->id)->where('status', '1')->get();
 
             if (!empty($subs)) {
-
                 $j = 0;
                 foreach ($subs as $sub) {
-
-                    if ($locale == 'en') {
-                        $records[$i]['submenus'][$j]['title_en'] = $sub->title_en;
-                    } else if ($locale == 'ar') {
-                        $records[$i]['submenus'][$j]['title_en'] = $sub->title_ar;
-                    } else if ($locale == 'cn') {
-                        $records[$i]['submenus'][$j]['title_en'] = $sub->title_ch;
-                    } else {
-                        $records[$i]['submenus'][$j]['title_en'] = $sub->title_en;
-                    }
+                    $records[$i]['submenus'][$j]['title_en'] = $sub->title_en;
+                    $records[$i]['submenus'][$j]['title_ar'] = $sub->title_ar;
                     $records[$i]['submenus'][$j]['id'] = $sub->id;
                     $records[$i]['submenus'][$j]['link'] = $sub->link;
                     $records[$i]['submenus'][$j]['slug'] = $sub->slug;
                     $records[$i]['submenus'][$j]['ordering'] = $sub->ordering;
                     $records[$i]['submenus'][$j]['parent_id'] = $sub->parent_id;
+
+                    $nest_subs = DB::table('tbl_menu')->orderBy('ordering', 'asc')->where("parent_id", $sub->id)->where('status', '1')->get();
+
+                    if (!empty($nest_subs)) {
+                        $k = 0;
+                        foreach ($nest_subs as $nest_sub) {
+                            $records[$i]['submenus'][$j]['nest'][$k]['title_en'] = $nest_sub->title_en;
+                            $records[$i]['submenus'][$j]['nest'][$k]['title_ar'] = $sub->title_ar;
+                            $records[$i]['submenus'][$j]['nest'][$k]['id'] = $nest_sub->id;
+                            $records[$i]['submenus'][$j]['nest'][$k]['link'] = $nest_sub->link;
+                            $records[$i]['submenus'][$j]['nest'][$k]['slug'] = $nest_sub->slug;
+                            $records[$i]['submenus'][$j]['nest'][$k]['ordering'] = $nest_sub->ordering;
+                            $records[$i]['submenus'][$j]['nest'][$k]['parent_id'] = $nest_sub->parent_id;
+                            $k++;
+                        }
+                    }
+
                     $j++;
                 }
             } else {
@@ -277,10 +278,10 @@ function get_setting($locale) {
     $data['twitter_link'] = $record->twitter_link;
     $data['instagram_link'] = $record->instagram_link;
     $data['google_link'] = $record->google_link;
-    $data['mobile_wh_en'] =$record->mobile_wh_en;
-    $data['mobile_bl_en'] =$record->mobile_bl_en;
-    $data['mobile_wh_ar'] =$record->mobile_wh_ar;
-    $data['mobile_bl_ar'] =$record->mobile_bl_ar;
+    $data['mobile_wh_en'] = $record->mobile_wh_en;
+    $data['mobile_bl_en'] = $record->mobile_bl_en;
+    $data['mobile_wh_ar'] = $record->mobile_wh_ar;
+    $data['mobile_bl_ar'] = $record->mobile_bl_ar;
 
     return $data;
 }
@@ -482,13 +483,15 @@ function get_nearby_project($project_id, $locale = 'en') {
 
 function generate_breadcrumb($links, $locale = null) {
 
-    $html = '<ul class="breadcrumb' . ($locale == 'ar' ? '-ar' : "") . '"><li>';
+    $html = "<ul class='breadcrumb-{$locale}'>";
     $i = 1;
     foreach ($links as $key => $value) {
-        $html .= ($i > 1 ? ' / ' : '') . ($i != count($links) ? "<a href=" . $key . ">" . $value . "</a>" : "<strong>{$value}</strong>");
+        $html .= "<li class='breadcrumbs__item'>";
+        $html .= ($i != count($links) ? "<a href='{$key}' class='breadcrumbs__link'>{$value}</a>" : "<span href='#' class='breadcrumbs__link'>{$value}</span><li>");
         $i++;
+        $html .= "</li>";
     }
-    $html .= '<li></ul>';
+    $html .= '</ul>';
     return $html;
 }
 
@@ -643,7 +646,7 @@ function subscribe_newsletter($name, $email, $locale) {
     $data = [
         'name' => $name,
         'email' => $email,
-        'subject' => "Please Confirm Subscription - Azizi Developments Newsletter",
+        'subject' => "Please Confirm Subscription - THE HEART OF EUROPE Newsletter",
         'site_url' => SITE_URL,
         'nl_url' => url("{$locale}/newsletter/confirm/$sid/$token"),
     ];
@@ -654,7 +657,7 @@ function subscribe_newsletter($name, $email, $locale) {
     } else {
         Mail::send('emails.confirm-subscription', ['data' => $data], function ($message) use ($data) {
             $message->subject($data['subject']);
-            $message->from('subscription@azizidevelopments.com', 'Azizi Developments');
+            $message->from('subscription@blog.com', 'THE HEART OF EUROPE');
             $message->to($data['email'], $data['name']);
         });
         $msg = '<p>Thank you for subscribing to our newsletter! We’ll keep you up-to-date on the latest Azizi projects.</p>
@@ -685,7 +688,7 @@ function getPropertiesImage($unit) {
     $project = db::table('tbl_projects')->where('id', $property->project_id)->where('status', '1')->orderBy("id", "ASC")->first();
     $galleries = DB::table('tbl_property_gallery')->where('property_id', $property_old_id)->where('status', '1')->whereIn('unit_type_id', $unittype)->orderBy("id", "DESC")->get();
     foreach ($galleries as $value) {
-        $images[] = "https://azizidevelopments.com/assets/images/properties/{$project->gallery_location}/{$property->gallery_location}/$value->image";
+        $images[] = "https://blog.com/assets/images/properties/{$project->gallery_location}/{$property->gallery_location}/$value->image";
     }
     shuffle($images);
     return $images;
@@ -711,22 +714,47 @@ function viewMenuByRole(array $role) {
 function social_share($title, $content, $picture, $url) {
     $via = 'AZIZI Developments';
     $hash_tags = '#AZIZI Developments';
-    $text = $title;//az_trim_words(az_strip_all_tags($content),10);
+    $text = $title; //az_trim_words(az_strip_all_tags($content),10);
     $url = urlencode($url);
 
     return (object) $share = [
         'facebook' => 'https://www.facebook.com/dialog/feed?app_id=' . FB_APP_ID . '&redirect_uri=' . $url . '&link=' . $url . '&picture=' . $picture . '&caption=' . $title . '&description=' . $text,
         'linkedin' => 'https://www.linkedin.com/shareArticle?mini=true&url=' . $url . '&title=' . $title . '&summary=' . $text . '&source=' . SITE_NAME,
         'twitter' => 'https://twitter.com/intent/tweet?url=' . $url . '&text=' . $text . '&via=' . $via . '&hashtags=' . $hash_tags,
-    ]; 
-}  
+    ];
+}
 
-function Ratings(){ $record = DB::table('tbl_setting')->first(); return $record->ratings; }
+function Ratings() {
+    $record = DB::table('tbl_setting')->first();
+    return $record->ratings;
+}
 
 //Offer Page Settings
-if (!defined('OFFERS_Name')) { define('OFFERS_Name', 'offers'); }
-if (!defined('OFFERS_URL')) { define('OFFERS_URL', 'offers'); }
+if (!defined('OFFERS_Name')) {
+    define('OFFERS_Name', 'offers');
+}
+if (!defined('OFFERS_URL')) {
+    define('OFFERS_URL', 'offers');
+}
 
-function str_limit($text,$len=null){
+function makeDirectory($path) {
+    $old = umask(0);
+    if (!is_dir($path)) {
+        mkdir($path, 0777, true) || chmod($path, 0777);
+    }
+    umask($old);
+}
+
+function str_limit($text, $limit) {
+    if (str_word_count($text, 0) > $limit) {
+        $words = str_word_count($text, 2);
+        $pos = array_keys($words);
+        $text = substr($text, 0, $pos[$limit]) . '...';
+    }
     return $text;
 }
+
+function get_category_name($category) {
+    return DB::table('tbl_press_categories')->whereIn('id', explode('-', $category))->get()->toArray();
+}
+

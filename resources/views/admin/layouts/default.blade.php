@@ -27,7 +27,7 @@
     <body class="skin-josh">
         <header class="header">
             <a href="{{ SITE_URL }}" class="logo" target="_azizi">
-                <img src="{{ asset('assets/images/azizi-logo-white.png') }}" alt="logo" height="40" width="100">
+                <img src="{{ asset('assets/images/logo.jpg') }}" alt="logo" height="40" width="100">
             </a>
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->

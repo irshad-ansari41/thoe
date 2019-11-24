@@ -74,8 +74,8 @@ class SwaggerGenerator
 
             if (!empty($fieldType)) {
                 $fieldType = [
-                    'name'   => $field['fieldName'],
-                    'type'   => $fieldType,
+                    'name' => $field['fieldName'],
+                    'type' => $fieldType,
                     'format' => $fieldFormat,
                 ];
 
@@ -127,7 +127,7 @@ class SwaggerGenerator
             $propertyTemplate = str_replace('$DESCRIPTION$', $description, $propertyTemplate);
             $propertyTemplate = str_replace('$FIELD_TYPE$', $type, $propertyTemplate);
             if (!empty($format)) {
-                $format = ",\n *          format=\"".$format.'"';
+                $format = ",\n *          format=\"" . $format . '"';
             }
             $propertyTemplate = str_replace('$FIELD_FORMAT$', $format, $propertyTemplate);
             $templates[] = $propertyTemplate;

@@ -1,13 +1,21 @@
-.grid1{
-    padding:50px 0;
-    background-color: #fafafa;
-    border: 1px solid #ccc;
-    margin-top: 20px;
-    margin-left: 10px;
-    text-align: center;
-    width: 100%;
-    cursor: move;
-    border-radius:5px;
+#sortable1 li {
+    padding          : 50px 0;
+    background-color : #fafafa;
+    border           : 1px solid #ccc;
+    margin-top       : 15px;
+    margin-bottom    : 15px;
+    margin-left      : 1.60%;
+    margin-right     : 1.60%;
+    text-align       : center;
+    width            : 30%;
+    cursor           : move;
+    border-radius    : 0;
+    float : left;
+}
+ul#sortable1 {
+    padding-left : 0;
+    list-style   : none;
+    min-height   : 60px;
 }
 #sortable2 li,#sortable3 li{
     padding:5px;

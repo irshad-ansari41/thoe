@@ -216,3 +216,8 @@ Licensed under MIT
   border-bottom: 1px solid #eee;
   padding-bottom: 15px;
 }
+@media (min-width:769px) and (max-width:1024px){
+  .tooltip_middle{
+    margin-left:122px;
+  }
+}

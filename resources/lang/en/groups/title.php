@@ -10,6 +10,6 @@ return array(
     'edit' 				=> 'Edit Group',
     'management'	=> 'Manage Groups',
     'groups' => 'Groups',
-    'groupslist' => 'Groups List',
+    'groups_list' => 'Groups List',
 
 );

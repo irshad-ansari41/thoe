@@ -38,6 +38,7 @@ News List
                         <tr class="filters">
                             <th>Image</th>
                             <th>Title</th>
+                            <th>Category</th>
                             <th>News release date</th>
                             <th>Status</th>
                             <th>Actions</th>
@@ -47,7 +48,13 @@ News List
                         @foreach($news as $new)
                         <tr>
                             <td><img src="{{ asset('assets/images/pressrelease') }}/{!! $new->image !!}" width="100"/></td>
-                            <td> <a href="news/{!! $new->id !!}/edit">{!! $new->title !!}</a></td>
+                            <td> <a href="news/{!! $new->id !!}/edit">{!! $new->title_en !!}</a></td>
+                            <td> <?php
+                                $categories = get_category_name($new->category);
+                                foreach ($categories as $category) {
+                                    echo $category->title.'<br/>';
+                                }
+                                ?></td>
 
                             <td>{!! $new->date !!}</td>
                             <td>

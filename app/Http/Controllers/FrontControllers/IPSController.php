@@ -75,7 +75,7 @@ class IPSController extends Controller {
             //'brochuresdownloadlink'=> $brochuresdownloadlink,
             //'floorplandownloadlink'=> $floorplandownloadlink,
             //'websiteurl'=>$websiteurl,
-            'subject' => "Azizi Developments IPS Offers",
+            'subject' => "The Heart of Europe IPS Offers",
             'fullname' => $request->fullname,
             'countrycode' => $request->countrycode,
             'phone' => $request->phone,
@@ -88,7 +88,7 @@ class IPSController extends Controller {
         //return view('pages.test-form.newletter', $data);
         Mail::send('pages.ips.ipsnewsLetter', ['data' => $data], function ($message) use ($data) {
             $message->subject($data['subject']);
-            $message->from('info@azizidevelopments.com', 'Azizi Developments');
+            $message->from('info@thoedevelopments.com', 'The Heart of Europe');
             $message->to($data['email'], $data['fullname']);
         });
         
@@ -120,14 +120,14 @@ class IPSController extends Controller {
             
             //echo $rows->ullname. ' Email: '.$rows->email;
             $data = [
-                'subject' => "Azizi Developments IPS Offers",
+                'subject' => "The Heart of Europe IPS Offers",
                 'fullname' => $rows->fullname,
                 'email' => $rows->email,
             ];
             //print_r($data);
             Mail::send('pages.ips.ipsnewsLetter', ['data' => $data], function ($message) use ($data) {
                 $message->subject($data['subject']);
-                $message->from('info@azizidevelopments.com', 'Azizi Developments');
+                $message->from('info@thoedevelopments.com', 'The Heart of Europe');
                 $message->to($data['email'], $data['fullname']);
             });   
             DB::table('tbl_ips_leads')->where('status','No')->where('email',$rows->email)->update(['status'=>'Yes']);

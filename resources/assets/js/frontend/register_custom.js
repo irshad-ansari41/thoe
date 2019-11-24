@@ -29,7 +29,8 @@ $("#reg_form").bootstrapValidator({
                 notEmpty: {
                     message: 'The email address is required'
                 },
-                emailAddress: {
+                regexp: {
+                    regexp: /^(\w+)([\-+.\'0-9A-Za-z_]+)*@(\w[\-\w]*\.){1,5}([A-Za-z]){2,6}$/,
                     message: 'The input is not a valid email address'
                 }
             }
@@ -61,4 +62,18 @@ $("#reg_form").bootstrapValidator({
         }
     }
 });
+});
+
+$('#reg_form input').on('keyup', function (){
+
+    $('#reg_form input').each(function(){
+        var pswd = $("#reg_form input[name='password']").val();
+        var pswd_cnf = $("#reg_form input[name='password_confirm']").val();
+            if(pswd != '' ){
+                $('#reg_form').bootstrapValidator('revalidateField', 'password');
+            }
+            if(pswd_cnf != '' ){
+                $('#reg_form').bootstrapValidator('revalidateField', 'password_confirm');
+            }
+    });
 });

@@ -129,7 +129,7 @@ class PageController extends Controller {
         return View("pages.media-center.index-{$this->locale}", $data);
     }
 
-    public function careersAtAzizi(Request $request) {
+    public function careersAtTHOE(Request $request) {
         return abort(404);
         /*
           //if chached then return
@@ -153,8 +153,8 @@ class PageController extends Controller {
 
           return abort(404);
           //check page
-          //set_cache_page($request->fullUrl(), View("pages.careers-at-azizi", $data)->render());
-          //return View('pages.careers-at-azizi', $data);
+          //set_cache_page($request->fullUrl(), View("pages.careers-at-thoe", $data)->render());
+          //return View('pages.careers-at-thoe', $data);
          */
     }
 

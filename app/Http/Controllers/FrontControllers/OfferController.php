@@ -28,9 +28,9 @@ class OfferController extends Controller {
             return $cached;
         }
         $data = [
-            'meta_title' => 'Azizi Developments Offers 2019',
-            'meta_keyword' => 'Azizi Developments Offers  2019',
-            'meta_description' => 'Azizi Developments Offers  2019',
+            'meta_title' => 'The Heart of Europe Offers 2019',
+            'meta_keyword' => 'The Heart of Europe Offers  2019',
+            'meta_description' => 'The Heart of Europe Offers  2019',
             'locale' => $this->locale,
         ];
         /* $IPaddress = $_SERVER['REMOTE_ADDR'];
@@ -120,9 +120,9 @@ class OfferController extends Controller {
             return $cached;
         }
         $data = [
-            'meta_title' => 'Azizi Developments Offers 2019',
-            'meta_keyword' => 'Azizi Developments Offers  2019',
-            'meta_description' => 'Azizi Developments Offers  2019',
+            'meta_title' => 'The Heart of Europe Offers 2019',
+            'meta_keyword' => 'The Heart of Europe Offers  2019',
+            'meta_description' => 'The Heart of Europe Offers  2019',
             'locale' => $this->locale,
         ];
         //check page
@@ -139,9 +139,9 @@ class OfferController extends Controller {
             return $cached;
         }
         $data = [
-            'meta_title' => 'Azizi Developments Offers 2019',
-            'meta_keyword' => 'Azizi Developments Offers  2019',
-            'meta_description' => 'Azizi Developments Offers  2019',
+            'meta_title' => 'The Heart of Europe Offers 2019',
+            'meta_keyword' => 'The Heart of Europe Offers  2019',
+            'meta_description' => 'The Heart of Europe Offers  2019',
             'locale' => $this->locale,
         ];
         //check page
@@ -158,9 +158,9 @@ class OfferController extends Controller {
             return $cached;
         }
         $data = [
-            'meta_title' => 'Azizi Developments Offers 2019',
-            'meta_keyword' => 'Azizi Developments Offers  2019',
-            'meta_description' => 'Azizi Developments Offers  2019',
+            'meta_title' => 'The Heart of Europe Offers 2019',
+            'meta_keyword' => 'The Heart of Europe Offers  2019',
+            'meta_description' => 'The Heart of Europe Offers  2019',
             'locale' => $this->locale,
         ];
         //check page
@@ -177,9 +177,9 @@ class OfferController extends Controller {
             return $cached;
         }
         $data = [
-            'meta_title' => 'Azizi Developments Offers 2019',
-            'meta_keyword' => 'Azizi Developments Offers  2019',
-            'meta_description' => 'Azizi Developments Offers  2019',
+            'meta_title' => 'The Heart of Europe Offers 2019',
+            'meta_keyword' => 'The Heart of Europe Offers  2019',
+            'meta_description' => 'The Heart of Europe Offers  2019',
             'locale' => $this->locale,
         ];
         //check page
@@ -196,9 +196,9 @@ class OfferController extends Controller {
             return $cached;
         }
         $data = [
-            'meta_title' => 'Azizi Developments Offers 2019',
-            'meta_keyword' => 'Azizi Developments Offers  2019',
-            'meta_description' => 'Azizi Developments Offers  2019',
+            'meta_title' => 'The Heart of Europe Offers 2019',
+            'meta_keyword' => 'The Heart of Europe Offers  2019',
+            'meta_description' => 'The Heart of Europe Offers  2019',
             'locale' => $this->locale,
         ];
         //check page
@@ -215,9 +215,9 @@ class OfferController extends Controller {
             return $cached;
         }
         $data = [
-            'meta_title' => 'Azizi Developments Offers 2019',
-            'meta_keyword' => 'Azizi Developments Offers  2019',
-            'meta_description' => 'Azizi Developments Offers  2019',
+            'meta_title' => 'The Heart of Europe Offers 2019',
+            'meta_keyword' => 'The Heart of Europe Offers  2019',
+            'meta_description' => 'The Heart of Europe Offers  2019',
             'locale' => $this->locale,
         ];
         //check page
@@ -234,9 +234,9 @@ class OfferController extends Controller {
             return $cached;
         }
         $data = [
-            'meta_title' => 'Azizi Developments Offers 2019',
-            'meta_keyword' => 'Azizi Developments Offers  2019',
-            'meta_description' => 'Azizi Developments Offers  2019',
+            'meta_title' => 'The Heart of Europe Offers 2019',
+            'meta_keyword' => 'The Heart of Europe Offers  2019',
+            'meta_description' => 'The Heart of Europe Offers  2019',
             'locale' => $this->locale,
         ];
         //check page
@@ -252,9 +252,9 @@ class OfferController extends Controller {
             return $cached;
         }
         $data = [
-            'meta_title' => 'Azizi Developments Offers 2019',
-            'meta_keyword' => 'Azizi Developments Offers  2019',
-            'meta_description' => 'Azizi Developments Offers  2019',
+            'meta_title' => 'The Heart of Europe Offers 2019',
+            'meta_keyword' => 'The Heart of Europe Offers  2019',
+            'meta_description' => 'The Heart of Europe Offers  2019',
             'locale' => $this->locale,
         ];
         //check page

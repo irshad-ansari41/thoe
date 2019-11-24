@@ -86,3 +86,8 @@ label {;
 #destroyEx5Slider {
     margin-left :15px;
 }
+@media (min-width:320px) and (max-width:425px){
+    #destroyEx5Slider{
+        margin-top:5px;
+    }
+}

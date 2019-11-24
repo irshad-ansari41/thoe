@@ -18,6 +18,8 @@ $(document).ready(function () {
                 $('#taskcount').text(count);
                 $("#task_description").val('');
                 $("#task_deadline").val('');
+
+                $(".datepicker").data('DateTimePicker').date(moment()).date(null);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.responseText);

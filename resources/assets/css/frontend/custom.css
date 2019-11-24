@@ -593,6 +593,7 @@ footer .btn-primary.text-white {
     opacity       : 0.7;
     width         : 51px;
     height        : 51px;
+    z-index: 9;
 }
 .back-to-top:hover {
     opacity : 1;
@@ -678,4 +679,42 @@ footer .btn-primary.text-white {
 }
 #hr_border2 {
     border-top : 1px solid #999;
+}
+.alert-success {
+    color: #fff;
+    background-color: #22ddad !important;
+    border-color: #acf6ac !important;
+}
+.alert-info {
+    color: #fff;
+    background-color: #67C5DF !important;
+    border-color: #67C5DF !important;
+}
+.alert-warning {
+    color: #fff;
+    background-color: #F89A14 !important;
+    border-color: #F89A14 !important;
+}
+.alert-danger {
+    color: #fff;
+    background-color: #ff908d !important;
+    border-color: #EF6F6C !important;
+}
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline, .has-error.radio label, .has-error.checkbox label, .has-error.radio-inline label, .has-error.checkbox-inline label{
+    color:#EF6F6C;
+}
+.has-error .input-group-addon{
+    border-color: #EF6F6C;
+    background-color: #EF6F6C;
+    color:#418bca;
+}
+.has-error .form-control{
+    border-color:#EF6F6C;
+}
+
+.pager li > a, .pager li > span {
+    border-radius: 0;
+}
+.nav>li>a{
+    padding: 8px 13px !important;
 }

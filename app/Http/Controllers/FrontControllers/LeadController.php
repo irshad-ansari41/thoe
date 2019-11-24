@@ -58,7 +58,7 @@ class LeadController extends Controller {
 
         //Server API
         $this->API_KEY = 'jdsflkjl09238490@#$@#$SDFflkwej923432wdmffks@#$@#$sdfk';
-        $this->API_URL = 'https://crm.azizidevelopments.com/WebForms/websiteleads.aspx/InsertLeadV6';
+        $this->API_URL = 'https://crm.thoedevelopments.com/WebForms/websiteleads.aspx/InsertLeadV6';
 
         //Post Fields
         $this->name = !empty($request->name) ? $this->clear_input($request->name) : '';
@@ -102,7 +102,7 @@ class LeadController extends Controller {
             return "invalid Request";
         }
         $origin = request()->headers->get('origin');
-        if ($origin != 'https://azizidevelopments.com') {
+        if ($origin != 'https://thoedevelopments.com') {
             //return "invalid Host";
         }
 
@@ -120,7 +120,7 @@ class LeadController extends Controller {
             //subscribe_newsletter($this->name, $this->email, $this->locale);
             $result = ['status' => 'success', 'msg' => 'Successfully submit.', 'redirect_url' => $this->redirect_url, 'response' => $validCaptcha];
         } else {
-            $result = ['status' => 'success', 'msg' => 'Successfully submit.', 'redirect_url' => 'https://azizidevelopments.com', 'response' => $validCaptcha];
+            $result = ['status' => 'success', 'msg' => 'Successfully submit.', 'redirect_url' => 'https://thoedevelopments.com', 'response' => $validCaptcha];
         }
         $this->sendmail();
         return Response::json($result);
@@ -135,7 +135,7 @@ class LeadController extends Controller {
             return "invalid Request";
         }
         $origin = request()->headers->get('origin');
-        if ($origin != 'https://azizidevelopments.com') {
+        if ($origin != 'https://thoedevelopments.com') {
             //return "invalid Host";
         }
 
@@ -144,7 +144,7 @@ class LeadController extends Controller {
             $this->salesForceLead($lead_id);
             $result = ['status' => 'success', 'msg' => 'Successfully submit.', 'redirect_url' => $this->redirect_url];
         } else {
-            $result = ['status' => 'success', 'msg' => 'Successfully submit.', 'redirect_url' => 'https://azizidevelopments.com'];
+            $result = ['status' => 'success', 'msg' => 'Successfully submit.', 'redirect_url' => 'https://thoedevelopments.com'];
         }
         return Response::json($result);
     }
@@ -390,7 +390,7 @@ class LeadController extends Controller {
         $name = $request->first_name . ' ' . $request->last_name;
         $msg = subscribe_newsletter($name, $request->email, $this->locale);
 
-        return Response::json(['status' => 'success', 'msg' => $msg, 'url' => 'https://azizidevelopments.com/en/lead-form/newsletter']);
+        return Response::json(['status' => 'success', 'msg' => $msg, 'url' => 'https://thoedevelopments.com/en/lead-form/newsletter']);
     }
 
     /**
@@ -453,7 +453,7 @@ class LeadController extends Controller {
         $result['floorplandownloadlink'] = !empty($floorplandownloadlink) ? $floorplandownloadlink : '';
         $result['websiteurl'] = !empty($websiteurl) ? $websiteurl : '';
         $result['Name'] = !empty($this->name) ? $this->name : 'Zubair Moinuddin khan';
-        $result['EmailAddress'] = !empty($this->email) ? $this->email : 'zubair.khan@azizidevelopments.com';
+        $result['EmailAddress'] = !empty($this->email) ? $this->email : 'zubair.khan@thoedevelopments.com';
         $result['country_code'] = $this->country_code;
         $result['mobile'] = $this->mobile;
         $result['source'] = $this->source;
@@ -471,11 +471,11 @@ class LeadController extends Controller {
         //insert data end
 
         Mail::send('csu.thankyou-emailer-project', ['CSUpdate' => $result], function($msg) use ($result) {
-            $msg->from('info@azizidevelopments.com', 'Azizi Developments')
+            $msg->from('info@thoedevelopments.com', 'The Heart of Europe')
                     ->to($result['EmailAddress'], $result['Name'])
-                    //->to('zubair.khan@azizidevelopments.com', 'Azizi Developments')
-                    //->to('ankit.kathuria@azizidevelopments.com', 'Azizi Developments')
-                    //->to('mohammed.abulkhair@azizidevelopments.com', 'Azizi Developments')                  
+                    //->to('zubair.khan@thoedevelopments.com', 'The Heart of Europe')
+                    //->to('ankit.kathuria@thoedevelopments.com', 'The Heart of Europe')
+                    //->to('mohammed.abulkhair@thoedevelopments.com', 'The Heart of Europe')                  
                     ->subject($result['Subject']);
         });
         //sleep(2);
@@ -535,7 +535,7 @@ class LeadController extends Controller {
         $result['floorplandownloadlink'] = !empty($floorplandownloadlink) ? $floorplandownloadlink : '';
         $result['websiteurl'] = !empty($websiteurl) ? $websiteurl : '';
         $result['Name'] = !empty($EmailInfo->fullname) ? $EmailInfo->fullname : 'Zubair Moinuddin khan';
-        $result['EmailAddress'] = !empty($EmailInfo->email) ? $EmailInfo->email : 'zubair.khan@azizidevelopments.com';
+        $result['EmailAddress'] = !empty($EmailInfo->email) ? $EmailInfo->email : 'zubair.khan@thoedevelopments.com';
         $result['country_code'] = !empty($EmailInfo->countrycode) ? $EmailInfo->countrycode : '+971';
         $result['mobile'] = !empty($EmailInfo->mobile) ? $EmailInfo->mobile : '568670592';
         $result['source'] = !empty($EmailInfo->source) ? $EmailInfo->source : 'Website';

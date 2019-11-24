@@ -6,10 +6,10 @@ use $NAMESPACE_REQUEST$;
 use $NAMESPACE_REQUEST$\Create$MODEL_NAME$Request;
 use $NAMESPACE_REQUEST$\Update$MODEL_NAME$Request;
 use $NAMESPACE_REPOSITORY$\$MODEL_NAME$Repository;
-use $NAMESPACE_CONTROLLER$\AppBaseController as InfyOmBaseController;
+use App\Http\Controllers\AppBaseController as InfyOmBaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
-use App\Models\$MODEL_NAME$;
+use $NAMESPACE_MODEL$\$MODEL_NAME$;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
@@ -32,9 +32,9 @@ class $MODEL_NAME$Controller extends InfyOmBaseController
      */
     public function index(Request $request)
     {
+
         $this->$MODEL_NAME_CAMEL$Repository->pushCriteria(new RequestCriteria($request));
         $$MODEL_NAME_PLURAL_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->$RENDER_TYPE$;
-
         return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index')
             ->with('$MODEL_NAME_PLURAL_CAMEL$', $$MODEL_NAME_PLURAL_CAMEL$);
     }
@@ -146,7 +146,7 @@ class $MODEL_NAME$Controller extends InfyOmBaseController
           $error = '';
           $model = '';
           $confirm_route =  route('$VIEW_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.delete',['id'=>$id]);
-          return View('$VIEW_PREFIX$layouts/modal_confirmation', compact('error','model', 'confirm_route'));
+          return View('admin.layouts/modal_confirmation', compact('error','model', 'confirm_route'));
 
       }
 

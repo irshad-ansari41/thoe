@@ -1,4 +1,4 @@
-@extends('$VIEW_PREFIX$/layouts/default')
+@extends('admin/layouts/default')
 
 @section('title')
 $MODEL_NAME_PLURAL$
@@ -11,7 +11,7 @@ $MODEL_NAME_PLURAL$
     <h1>$MODEL_NAME_PLURAL$</h1>
     <ol class="breadcrumb">
         <li>
-            <a href="{{ route('$ROUTE_NAMED_PREFIX$dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
+            <a href="{{ route('admin.dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
                 Dashboard
             </a>
         </li>

@@ -60,4 +60,22 @@
 .portlet .tabbable-line > .tab-content {
   padding-bottom: 0;
 }
+@media (min-width:320px) and (max-width:425px){
+  .flip-3d{
+    width:100% !important;
+  }
+  .flip-3d:hover figure figcaption{
+    font-size:16px;
+    margin:auto;
+
+  }
+}
+@media (max-width:320px){
+  .clear_both{
+    clear:both;
+  }
+  .tabbable-line li{
+    margin-bottom:10px;
+  }
+}
 /* _________ //Accordion-Tabbular Section End _________ */

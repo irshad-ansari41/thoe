@@ -115,7 +115,8 @@
                                                 <?php $select = ($unittype->id == $res->unit_type_id) ? 'selected' : '' ?>
                                                 <option value="<?= $unittype->id ?>" <?= $select ?>><?= $unittype->title_en ?></option>
                                             <?php endforeach;
-                                        endif; ?>
+                                        endif;
+                                        ?>
                                     </select>    
                                 </div>
                                 <input type="hidden" name="old_images[]" value="{{ $res->image }}">
@@ -189,7 +190,8 @@
             <option value="0">ALL</option>
             <?php if (!empty($UnitTypes)): foreach ($UnitTypes as $unittype): ?>
                     <option value="<?= $unittype->id ?>"><?= $unittype->title_en ?></option>
-                <?php endforeach;
+                <?php
+                endforeach;
             endif;
             ?>
         </select>    

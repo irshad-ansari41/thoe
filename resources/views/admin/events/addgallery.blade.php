@@ -160,7 +160,7 @@
                         </div>
 
                         <input type="hidden" id="form_lang" name="form_lang" value="1">
-                        <input type="hidden" name="type" value="{{$type or '' }}">
+                        <input type="hidden" name="type" value="{{$type}}">
                         <input type="hidden" name="id" value="{{$type== "edit"?$id:'' }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     </form>

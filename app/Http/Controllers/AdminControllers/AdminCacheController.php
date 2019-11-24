@@ -23,19 +23,19 @@ class AdminCacheController extends Controller {
         } else if ($request->action == 'bulk') {
             $this->clear_bulk_pages($request->url_keyword);
             return view('cache-clear', ['url' => '', 'msg' => 'Cache has been cleared']);
-        } else if ($request->action == 'all' && $request->token == 'Azizi@2018') {
+        } else if ($request->action == 'all' && $request->token == 'THOE@2018') {
             DB::table('cache')->truncate();
             $this->delete_files('/var/www/html/caches/*');
             DB::table('cache')->update(['status' => 0]);
             Cache::flush();
             return view('cache-clear', ['url' => '', 'msg' => 'Cache has been cleared']);
-        } else if ($request->action == 'files' && $request->token == 'Azizi@2018') {
+        } else if ($request->action == 'files' && $request->token == 'THOE@2018') {
             $this->clear_session_views();
             return view('cache-clear', ['url' => '', 'msg' => 'Session and Views has been delete.', 'token' => $request->token]);
-        } else if ($request->action == 'store_all' && $request->token == 'Azizi@2018') {
+        } else if ($request->action == 'store_all' && $request->token == 'THOE@2018') {
             $this->store_all();
             return view('cache-clear', ['url' => '', 'msg' => 'Pages has been Cached']);
-        } elseif (!empty($request->token) && $request->token != 'Azizi@2018') {
+        } elseif (!empty($request->token) && $request->token != 'THOE@2018') {
             return view('cache-clear', ['url' => '', 'msg' => 'Invalid Token']);
         }
 

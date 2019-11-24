@@ -10,9 +10,19 @@ html, body {
     transition             : all .25s ease-out;
     font-family            : Lato, sans-serif !important;
 }
+body.modal-open {
+    padding: 0 !important;
+}
 /* Layouts */
 .wrapper {
-    min-height : 100%;
+    display: table;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    top:-2px;
+    table-layout: fixed;
+
 }
 .wrapper:before, .wrapper:after {
     display : table;
@@ -30,26 +40,44 @@ body > .header {
     z-index    : 1030;
     background : #f1f1f1;
 }
+
 /* Define 2 column template */
-.right-side, .left-side {
-    min-height : 100%;
-    display    : block;
-}
-/*right side - contins main content*/
-.right-side {
-    margin-left : 250px;
-}
-/*left side - contains sidebar*/
+.right-side,
 .left-side {
-    position : absolute;
-    width    : 250px;
-    top      : 0;
-}
-.left-side .sidebar-offcanvas a {
-    padding        : 0;
-    margin         : 0;
+    padding: 0;
+    display: table-cell;
     vertical-align : top;
 }
+
+.wrapper.hide_menu > .left-side {
+    display: none; }
+
+@media (max-width: 992px) {
+    .wrapper > .right-side {
+        width: 100vw;
+        min-width: 100vw;
+         }
+}
+.right-side {
+    width: 100%;
+    max-width: 100vw; }
+
+@media screen and (min-width: 993px) {
+    .left-aside {
+        top: 60px; } }
+body > .header .navbar .sidebar-toggle {
+    float: left;
+}
+
+/******* 2.1 HEADER LEFT ******/
+/*side bar nav */
+.sidebar {
+    display: block;
+    width: 250px; }
+.left-side{
+ width:250px;
+}
+
 @media screen and (min-width : 992px) {
     .left-side {
         top : 50px;
@@ -60,10 +88,6 @@ body > .header {
     }
     .right-side.strech > .content-header {
         margin-top : 0;
-    }
-    /* Left side collapse */
-    .left-side.collapse-left {
-        left : -250px;
     }
 }
 /*Give content full width on xs screens*/
@@ -115,19 +139,6 @@ a, a:hover, li.active a {
 .nopadmar {
     margin  : 0;
     padding : 0;
-}
-body > .header .navbar .sidebar-toggle {
-    float                 : left;
-    padding               : 9px 5px;
-    margin-top            : 8px;
-    margin-right          : 0;
-    margin-bottom         : 8px;
-    margin-left           : 5px;
-    color                 : #f9c3c3;
-    border                : 1px solid transparent;
-    -webkit-border-radius : 0;
-    -moz-border-radius    : 0;
-    border-radius         : 0;
 }
 .navbar-nav > li > a {
     line-height    : 20px;
@@ -185,12 +196,11 @@ body > .header .navbar {
 body > .header .navbar .sidebar-toggle {
     float                 : left;
     padding               : 15px 10px 10px 10px;
-    margin-top            : 8px;
-    margin-right          : 0;
-    margin-bottom         : 8px;
-    margin-left           : 5px;
+    margin                : 8px 0 8px 5px;
     background-color      : #444954;
     background-image      : none;
+    color                 : #f9c3c3;
+    border                : 1px solid transparent;
     -webkit-border-radius : 0;
     -moz-border-radius    : 0;
     border-radius         : 0;
@@ -756,7 +766,7 @@ body > .header .logo .icon {
     }
     .navbar-nav > .notifications-menu > .dropdown-menu {
         position : absolute;
-        right    : -87px;
+        right    : -110px;
         left     : auto;
     }
     .navbar-nav > .messages-menu > .dropdown-menu {
@@ -1058,7 +1068,7 @@ li.dropdown-footer {
     padding       : 15px;
     font-size     : 10px;
     opacity       : 0.7;
-    z-index       : 9999;
+    z-index       : 1049;
 }
 .navbar-right .nav .open > a, .navbar-right .nav .open > a:hover, .navbar-right .nav .open > a:focus, .navbar-right .nav > li > a:hover, .navbar-right .nav > li > a:focus {
     background-color : #414151;
@@ -1071,9 +1081,7 @@ li.dropdown-footer {
 .riot .caret {
     margin-top : -10px;
 }
-.riot span i {
-    margin-top : 0 !important;
-}
+
 .riot div {
     margin-top : -10px;
 }
@@ -1102,9 +1110,9 @@ li.dropdown-footer {
 /*side bar nav */
 
 .sidebar {
-    display : block;
-    float   : left;
-    width   : 250px;
+    /*display : block;*/
+    /*float   : left;*/
+    /*width   : 250px;*/
 }
 .content {
     display : block;
@@ -1370,4 +1378,11 @@ img.flag {
 }
 .resize_vertical {
     resize : vertical;
+}
+.panel-default > .panel-heading{
+    color:#555;
+}
+.header .user-menu .dropdown-menu .livicon{
+    position: relative;
+    top:2px;
 }

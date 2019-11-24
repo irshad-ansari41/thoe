@@ -117,6 +117,18 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
         Route::get('{blogCategory}/restore', array('as' => 'blogcategory.restore', 'uses' => 'AdminBlogCategoryController@getRestore'));
     });
 
+    /* routes for press category */
+    Route::group(array('prefix' => 'presscategory'), function () {
+        Route::get('/', array('as' => 'presscategories', 'uses' => 'AdminPressCategoryController@index'));
+        Route::get('create', array('as' => 'presscategory.create', 'uses' => 'AdminPressCategoryController@create'));
+        Route::post('create', 'AdminPressCategoryController@store');
+        Route::get('{pressCategory}/edit', array('as' => 'presscategory.edit', 'uses' => 'AdminPressCategoryController@edit'));
+        Route::post('{pressCategory}/edit', 'AdminPressCategoryController@update');
+        Route::get('{pressCategory}/delete', array('as' => 'presscategory.delete', 'uses' => 'AdminPressCategoryController@destroy'));
+        Route::get('{pressCategory}/confirm-delete', array('as' => 'presscategory.confirm-delete', 'uses' => 'AdminPressCategoryController@getModalDelete'));
+        Route::get('{pressCategory}/restore', array('as' => 'presscategory.restore', 'uses' => 'AdminPressCategoryController@getRestore'));
+    });
+
     /* routes for file */
     Route::group(array('prefix' => 'file'), function () {
         Route::post('create', 'FileController@store');
@@ -567,83 +579,6 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
     Route::get('/content/jobs/{id}/deletejobs', array('uses' => 'AdminContentsController@delete_jobs'));
     Route::get('/content/{id}/status_jobs/{flag}', array('uses' => 'AdminContentsController@status_jobs'));
 
-
-    # User Management
-    Route::group(array('prefix' => 'users'), function () {
-        Route::get('/', array('as' => 'users', 'uses' => 'AdminUsersController@index'));
-        Route::get('create', 'AdminUsersController@create');
-        Route::post('create', 'AdminUsersController@store');
-        Route::get('{userId}/delete', array('as' => 'delete/user', 'uses' => 'AdminUsersController@destroy'));
-        Route::get('{userId}/confirm-delete', array('as' => 'confirm-delete/user', 'uses' => 'AdminUsersController@getModalDelete'));
-        Route::get('{userId}/restore', array('as' => 'restore/user', 'uses' => 'AdminUsersController@getRestore'));
-        Route::get('{userId}', array('as' => 'users.show', 'uses' => 'AdminUsersController@show'));
-        Route::post('passwordreset', 'AdminUsersController@passwordreset');
-    });
-    Route::resource('users', 'AdminUsersController');
-
-    Route::get('deleted_users', array('as' => 'deleted_users', 'before' => 'Sentinel', 'uses' => 'AdminUsersController@getDeletedUsers'));
-
-    # Group Management
-    Route::group(array('prefix' => 'groups'), function () {
-        Route::get('/', array('as' => 'groups', 'uses' => 'AdminGroupsController@index'));
-        Route::get('create', array('as' => 'create/group', 'uses' => 'AdminGroupsController@create'));
-        Route::post('create', 'GroupsController@store');
-        Route::get('{groupId}/edit', array('as' => 'update/group', 'uses' => 'AdminGroupsController@edit'));
-        Route::post('{groupId}/edit', 'GroupsController@update');
-        Route::get('{groupId}/delete', array('as' => 'delete/group', 'uses' => 'AdminGroupsController@destroy'));
-        Route::get('{groupId}/confirm-delete', array('as' => 'confirm-delete/group', 'uses' => 'AdminGroupsController@getModalDelete'));
-        Route::get('{groupId}/restore', array('as' => 'restore/group', 'uses' => 'AdminGroupsController@getRestore'));
-    });
-    /* routes for blog */
-    Route::group(array('prefix' => 'blog'), function () {
-        Route::get('/', array('as' => 'blogs', 'uses' => 'AdminBlogController@index'));
-        Route::get('create', array('as' => 'create/blog', 'uses' => 'AdminBlogController@create'));
-        Route::post('create', 'BlogController@store');
-        Route::get('{blog}/edit', array('as' => 'update/blog', 'uses' => 'AdminBlogController@edit'));
-        Route::post('{blog}/edit', 'BlogController@update');
-        Route::get('{blog}/delete', array('as' => 'delete/blog', 'uses' => 'AdminBlogController@destroy'));
-        Route::get('{blog}/confirm-delete', array('as' => 'confirm-delete/blog', 'uses' => 'AdminBlogController@getModalDelete'));
-        Route::get('{blog}/restore', array('as' => 'restore/blog', 'uses' => 'AdminBlogController@getRestore'));
-        Route::get('{blog}/show', array('as' => 'blog/show', 'uses' => 'AdminBlogController@show'));
-        Route::post('{blog}/storecomment', array('as' => 'restore/blog', 'uses' => 'AdminBlogController@storecomment'));
-    });
-
-    /* routes for blog category */
-    Route::group(array('prefix' => 'blogcategory'), function () {
-        Route::get('/', array('as' => 'blogcategories', 'uses' => 'AdminBlogCategoryController@index'));
-        Route::get('create', array('as' => 'create/blogcategory', 'uses' => 'AdminBlogCategoryController@create'));
-        Route::post('create', 'BlogCategoryController@store');
-        Route::get('{blogcategory}/edit', array('as' => 'update/blogcategory', 'uses' => 'AdminBlogCategoryController@edit'));
-        Route::post('{blogcategory}/edit', 'BlogCategoryController@update');
-        Route::get('{blogcategory}/delete', array('as' => 'delete/blogcategory', 'uses' => 'AdminBlogCategoryController@destroy'));
-        Route::get('{blogcategory}/confirm-delete', array('as' => 'confirm-delete/blogcategory', 'uses' => 'AdminBlogCategoryController@getModalDelete'));
-        Route::get('{blogcategory}/restore', array('as' => 'restore/blogcategory', 'uses' => 'AdminBlogCategoryController@getRestore'));
-    });
-
-    /* routes for file */
-    Route::group(array('prefix' => 'file'), function () {
-        Route::post('create', 'FileController@store');
-        Route::post('createmulti', 'FileController@postFilesCreate');
-        Route::delete('delete', 'FileController@delete');
-    });
-
-    Route::get('crop_demo', function () {
-        return redirect('admin/imagecropping');
-    });
-    Route::post('crop_demo', 'AdminJoshController@crop_demo');
-
-    /* laravel example routes */
-    # datatables
-    Route::get('datatables', 'DataTablesController@index');
-    Route::get('datatables/data', array('as' => 'datatables.data', 'uses' => 'AdminDataTablesController@data'));
-
-    //tasks section
-    Route::post('task/create', 'TaskController@store');
-    Route::get('task/data', 'TaskController@data');
-    Route::post('task/{task}/edit', 'TaskController@update');
-    Route::post('task/{task}/delete', 'TaskController@delete');
-
-    
     Route::get('get-availability', 'AdminSalesForceController@avaliablilityListApi');
 
     # Remaining pages will be called from below controller method

@@ -330,7 +330,7 @@ class AdminAuthController extends JoshController {
     public function Password_Update(Request $request) {
 
         /*$input = [
-            'email'    => 'zubair.khan@azizidevelopments.com',
+            'email'    => 'zubair.khan@thoedevelopments.com',
             'password' => 'P@ass123',
         ];
 
@@ -338,7 +338,7 @@ class AdminAuthController extends JoshController {
         $Users = Sentinel::update($user, $input);
 
         return 'User successfully updated.<br>'.$Users;*/
-        //Azizi Developments Cms username and password
+        //The Heart of Europe Cms username and password
         //return  Hash::make('#k$koTKN386jEPthKvl@5fEv');
         
         // Hanna Password

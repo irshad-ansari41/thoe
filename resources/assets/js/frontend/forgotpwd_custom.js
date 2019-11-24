@@ -12,3 +12,8 @@ $(".omb_loginForm").bootstrapValidator({
         }
     }
 });
+$(function() {
+    setTimeout(function () {
+        $("#notific").remove();
+    }, 5000);
+});

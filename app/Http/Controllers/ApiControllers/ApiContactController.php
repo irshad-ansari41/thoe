@@ -35,9 +35,9 @@ class ApiContactController extends Controller {
 
         Mail::send('emails.contact', ['data' => $data], function ($message) use ($data) {
             $message->subject('New Contact has been generated');
-            $message->from('mobile@azizidevelopments.com', 'Azizi Developments');
-            $message->to('marketing@azizidevelopmets.com', 'Digital Marketing Team');
-            //$message->bcc('irshad.ansari@azizidevelopments.com', 'Irshad Ansari');
+            $message->from('mobile@thoedevelopments.com', 'The Heart of Europe');
+            $message->to('marketing@thoedevelopmets.com', 'Digital Marketing Team');
+            //$message->bcc('irshad.ansari@thoedevelopments.com', 'Irshad Ansari');
             //$message->bcc('irshad.ansari41@gmail.com', 'Irshad Ansari');
         });
 

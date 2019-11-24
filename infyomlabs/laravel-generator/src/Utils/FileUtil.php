@@ -10,7 +10,7 @@ class FileUtil
             mkdir($path, 0755, true);
         }
 
-        $path = $path.$fileName;
+        $path = $path . $fileName;
 
         file_put_contents($path, $contents);
     }
@@ -28,8 +28,8 @@ class FileUtil
 
     public static function deleteFile($path, $fileName)
     {
-        if (file_exists($path.$fileName)) {
-            return unlink($path.$fileName);
+        if (file_exists($path . $fileName)) {
+            return unlink($path . $fileName);
         }
 
         return false;

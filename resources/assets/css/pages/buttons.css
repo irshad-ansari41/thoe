@@ -258,6 +258,7 @@ input {
 }
 .btn_sizes {
     margin-right: 9px!important;
+    margin-top:5px;
 }
 
 .btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {

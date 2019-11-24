@@ -24,19 +24,19 @@ class CacheController extends Controller {
         } else if ($request->action == 'bulk') {
             $this->clear_bulk_pages($request->url_keyword);
             return view('cache-clear', ['url' => '', 'msg' => 'Cache has been cleared']);
-        } else if ($request->action == 'all' && $request->token == 'Azizi@2018') {
+        } else if ($request->action == 'all' && $request->token == 'THOE@2018') {
             DB::table('cache')->truncate();
             $this->delete_files('/var/www/html/caches/*');
             DB::table('cache')->update(['status' => 0]);
             Cache::flush();
             return view('cache-clear', ['url' => '', 'msg' => 'Cache has been cleared']);
-        } else if ($request->action == 'files' && $request->token == 'Azizi@2018') {
+        } else if ($request->action == 'files' && $request->token == 'THOE@2018') {
             $this->clear_session_views();
             return view('cache-clear', ['url' => '', 'msg' => 'Session and Views has been delete.', 'token' => $request->token]);
-        } else if ($request->action == 'store_all' && $request->token == 'Azizi@2018') {
+        } else if ($request->action == 'store_all' && $request->token == 'THOE@2018') {
             $this->store_all();
             return view('cache-clear', ['url' => '', 'msg' => 'Pages has been Cached']);
-        } elseif (!empty($request->token) && $request->token != 'Azizi@2018') {
+        } elseif (!empty($request->token) && $request->token != 'THOE@2018') {
             return view('cache-clear', ['url' => '', 'msg' => 'Invalid Token']);
         }
 
@@ -108,8 +108,8 @@ class CacheController extends Controller {
         if ((strpos($newurl, 'http') === false)) {
             $newurl = 'https:' . $newurl;
         }
-        if ($newurl == 'https://azizidevelopments.com') {
-            $newurl = 'https://azizidevelopments.com/';
+        if ($newurl == 'https://thoedevelopments.com') {
+            $newurl = 'https://thoedevelopments.com/';
         }
         //$page_url = str_replace(['http:'], ['https:'], $newurl);
         $page_url = str_replace(['https:'], ['http:'], $newurl);
@@ -157,7 +157,7 @@ class CacheController extends Controller {
             $content2 = minify_html(ob_get_clean());
             $content3 = str_replace('/"', '"', $content2);
             Cache::put($key, $content3, $time1); //30 days cache in minutes
-            file_put_contents("/var/www/html/azizi/public/caches/$key.html", $content3);
+            file_put_contents("/var/www/html/thoe/public/caches/$key.html", $content3);
             echo $page_url . '<br/>Successfully Cached';
         }
 

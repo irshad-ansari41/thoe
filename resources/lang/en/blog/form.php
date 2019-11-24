@@ -14,6 +14,8 @@ return array(
     'lb-featured-img' => 'Featured image',
     'select-file' => 'Select file',
     'change' => 'Change',
+    'cancel' => 'Cancel',
+    'update' => 'Update',
     'publish' => 'Publish',
     'discard' => 'Discard',
     'ph-name' => 'Your name',

@@ -22,7 +22,7 @@ class TestTraitGenerator extends BaseGenerator
     {
         $this->commandData = $commandData;
         $this->path = $commandData->config->pathApiTestTraits;
-        $this->fileName = 'Make'.$this->commandData->modelName.'Trait.php';
+        $this->fileName = 'Make' . $this->commandData->modelName . 'Trait.php';
     }
 
     public function generate()
@@ -41,7 +41,7 @@ class TestTraitGenerator extends BaseGenerator
     {
         $templateData = TemplateUtil::fillTemplate($this->commandData->dynamicVars, $templateData);
 
-        $templateData = str_replace('$FIELDS$', implode(','.infy_nl_tab(1, 3), $this->generateFields()), $templateData);
+        $templateData = str_replace('$FIELDS$', implode(',' . infy_nl_tab(1, 3), $this->generateFields()), $templateData);
 
         return $templateData;
     }
@@ -55,7 +55,7 @@ class TestTraitGenerator extends BaseGenerator
                 continue;
             }
 
-            $fieldData = "'".$field['fieldName']."' => ".'$fake->';
+            $fieldData = "'" . $field['fieldName'] . "' => " . '$fake->';
 
             switch ($field['fieldType']) {
                 case 'integer':
@@ -72,7 +72,7 @@ class TestTraitGenerator extends BaseGenerator
                     $fakerData = "date('Y-m-d H:i:s')";
                     break;
                 case 'enum':
-                    $fakerData = 'randomElement('.GeneratorFieldsInputUtil::prepareValuesArrayStr(explode(',', $field['htmlTypeInputs'])).')';
+                    $fakerData = 'randomElement(' . GeneratorFieldsInputUtil::prepareValuesArrayStr(explode(',', $field['htmlTypeInputs'])) . ')';
                     break;
                 default:
                     $fakerData = 'word';
@@ -89,7 +89,7 @@ class TestTraitGenerator extends BaseGenerator
     public function rollback()
     {
         if ($this->rollbackFile($this->path, $this->fileName)) {
-            $this->commandData->commandComment('Test trait file deleted: '.$this->fileName);
+            $this->commandData->commandComment('Test trait file deleted: ' . $this->fileName);
         }
     }
 }

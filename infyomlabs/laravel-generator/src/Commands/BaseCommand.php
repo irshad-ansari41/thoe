@@ -72,6 +72,15 @@ class BaseCommand extends Command
         }
     }
 
+    public function isSkip($skip)
+    {
+        if ($this->commandData->getOption('skip')) {
+            return in_array($skip, (array)$this->commandData->getOption('skip'));
+        }
+
+        return false;
+    }
+
     public function generateAPIItems()
     {
         if (!$this->isSkip('requests') and !$this->isSkip('api_requests')) {
@@ -129,6 +138,11 @@ class BaseCommand extends Command
         }
     }
 
+    public function performPostActionsWithMigration()
+    {
+        $this->performPostActions(true);
+    }
+
     public function performPostActions($runMigration = false)
     {
         if ($this->commandData->getOption('save')) {
@@ -150,42 +164,28 @@ class BaseCommand extends Command
         }
     }
 
-    public function isSkip($skip)
-    {
-        if ($this->commandData->getOption('skip')) {
-            return in_array($skip, (array) $this->commandData->getOption('skip'));
-        }
-
-        return false;
-    }
-
-    public function performPostActionsWithMigration()
-    {
-        $this->performPostActions(true);
-    }
-
     private function saveSchemaFile()
     {
         $fileFields = [];
 
         foreach ($this->commandData->inputFields as $field) {
             $fileFields[] = [
-                'fieldInput'  => $field['fieldInput'],
-                'htmlType'    => $field['htmlType'],
+                'fieldInput' => $field['fieldInput'],
+                'htmlType' => $field['htmlType'],
                 'validations' => $field['validations'],
-                'searchable'  => $field['searchable'],
-                'fillable'    => $field['fillable'],
-                'primary'     => $field['primary'],
-                'inForm'      => $field['inForm'],
-                'inIndex'     => $field['inIndex'],
+                'searchable' => $field['searchable'],
+                'fillable' => $field['fillable'],
+                'primary' => $field['primary'],
+                'inForm' => $field['inForm'],
+                'inIndex' => $field['inIndex'],
             ];
         }
 
         $path = config('infyom.laravel_generator.path.schema_files', base_path('resources/model_schemas/'));
 
-        $fileName = $this->commandData->modelName.'.json';
+        $fileName = $this->commandData->modelName . '.json';
 
-        if (file_exists($path.$fileName) && !$this->confirmOverwrite($fileName)) {
+        if (file_exists($path . $fileName) && !$this->confirmOverwrite($fileName)) {
             return;
         }
         FileUtil::createFile($path, $fileName, json_encode($fileFields, JSON_PRETTY_PRINT));
@@ -202,7 +202,7 @@ class BaseCommand extends Command
     protected function confirmOverwrite($fileName, $prompt = '')
     {
         $prompt = (empty($prompt))
-            ? $fileName.' already exists. Do you want to overwrite it? [y|N]'
+            ? $fileName . ' already exists. Do you want to overwrite it? [y|N]'
             : $prompt;
 
         return $this->confirm($prompt, false);

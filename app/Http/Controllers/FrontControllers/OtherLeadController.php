@@ -54,7 +54,7 @@ class OtherLeadController extends Controller {
 
         //Server API
         $this->API_KEY = 'jdsflkjl09238490@#$@#$SDFflkwej923432wdmffks@#$@#$sdfk';
-        $this->API_URL = 'https://crm.azizidevelopments.com/WebForms/websiteleads.aspx/InsertLeadV6';
+        $this->API_URL = 'https://crm.thoedevelopments.com/WebForms/websiteleads.aspx/InsertLeadV6';
 
         //Post Fields
         $this->name = !empty($request->name) ? $this->clear_input($request->name) : '';
@@ -97,7 +97,7 @@ class OtherLeadController extends Controller {
             return "invalid Request";
         }
         $origin = request()->headers->get('origin');
-        if ($origin != 'https://azizidevelopments.com') {
+        if ($origin != 'https://thoedevelopments.com') {
             //return "invalid Host";
         }
         
@@ -145,13 +145,13 @@ class OtherLeadController extends Controller {
         
         $result['Subject'] = 'White Door Estate - New enquiry has been generated!';
         Mail::send('csu.leads-emailer', ['CSUpdate' => $result], function($msg) use ($result) {
-            $msg->from('info@azizidevelopments.com', 'White Door Estate')
-                    //->to($result['EmailAddress'], 'Azizi Developments')
-                    //->to('Gibran@whitedoorestate.com','Azizi Developments') 
-                    //->to('gibran@azizidevelopments.com','White Door Estate') 
-                    //->to('natasha.gomes@azizidevelopments.com','White Door Estate')
-                    //->to('tariq.khan@azizidevelopments.com','White Door Estate')
-                    //->to('zubair.khan@azizidevelopments.com','White Door Estate')
+            $msg->from('info@thoedevelopments.com', 'White Door Estate')
+                    //->to($result['EmailAddress'], 'The Heart of Europe')
+                    //->to('Gibran@whitedoorestate.com','The Heart of Europe') 
+                    //->to('gibran@thoedevelopments.com','White Door Estate') 
+                    //->to('natasha.gomes@thoedevelopments.com','White Door Estate')
+                    //->to('tariq.khan@thoedevelopments.com','White Door Estate')
+                    //->to('zubair.khan@thoedevelopments.com','White Door Estate')
                     ->to('ramina.Ibrokhimova@whitedoorestate.com','White Door Estate')
                     ->subject($result['Subject']);
         });

@@ -30,6 +30,10 @@ class RollbackGeneratorCommand extends Command
      */
     public $commandData;
     /**
+     * @var Composer
+     */
+    public $composer;
+    /**
      * The console command name.
      *
      * @var string
@@ -41,11 +45,6 @@ class RollbackGeneratorCommand extends Command
      * @var string
      */
     protected $description = 'Rollback a full CRUD API and Scaffold for given model';
-
-    /**
-     * @var Composer
-     */
-    public $composer;
 
     /**
      * Create a new command instance.

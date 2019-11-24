@@ -100,3 +100,17 @@ input[type="submit"]{
     backface-visibility: visible !important;
     animation-name: flipInX;
 }
+.help-block{
+    float: left;
+}
+.bv-form .help-block{
+    margin-bottom: 10px;
+}
+span.help-block{
+    color:#a94442 !important;
+}
+@media (min-width:320px) and (max-width:425px){
+    .box{
+        width:100% !important;
+    }
+}

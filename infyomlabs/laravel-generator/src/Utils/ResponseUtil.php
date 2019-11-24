@@ -6,7 +6,7 @@ class ResponseUtil
 {
     /**
      * @param string $message
-     * @param mixed  $data
+     * @param mixed $data
      *
      * @return array
      */
@@ -14,14 +14,14 @@ class ResponseUtil
     {
         return [
             'success' => true,
-            'data'    => $data,
+            'data' => $data,
             'message' => $message,
         ];
     }
 
     /**
      * @param string $message
-     * @param array  $data
+     * @param array $data
      *
      * @return array
      */

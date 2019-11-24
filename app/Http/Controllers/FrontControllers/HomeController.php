@@ -7,15 +7,14 @@ use Illuminate\Http\Request;
 use App\Models\Banner;
 use App\Models\Content;
 use App\Models\Event;
+use App\Models\Press;
 use DB;
-use Jenssegers\Agent\Agent;
 
 class HomeController extends Controller {
 
     public $locale;
 
     /**
-     * Initializer.
      *
      * @return void
      */
@@ -35,18 +34,13 @@ class HomeController extends Controller {
         $content = Content::find(27);
 
         $data = [
-            'Testimonials'=>DB::table('tbl_testimonials')->where(['status'=>'Yes'])->get(),
-            "AllRatings" => DB::table('tbl_ratings')->where('menu_id',0)->first(),
-            'sliders' => Banner::where('status', '1')->orderBy('banner_order', 'ASC')->get(),
+            'Testimonials' => DB::table('tbl_testimonials')->where(['status' => 'Yes'])->get(),
+            "AllRatings" => DB::table('tbl_ratings')->where('menu_id', 0)->first(),
+            'sliders' => Banner::where('status', '1')->orderBy('banner_order', 'ASC')->get()->toArray(),
             'content' => $content,
-            'events' => Event::where('event_date', '>=', date('Y-m-d'))->where('status', '1', date('Y-m-d'))->where("event_title_{$this->locale}",'!=','')->orderBy('event_order', 'asc')->paginate(5),
-            //'bannersliders' => FeatureBanner::where("status", "1")->orderBy('banner_order', 'asc')->get(),
-            'bannersliders' => DB::table('tbl_feature_banner_slider')
-            ->join('tbl_menu', 'tbl_menu.id', '=',  'tbl_feature_banner_slider.menu_id')
-            ->where('tbl_menu.status','1')     
-            ->select('tbl_feature_banner_slider.*', 'tbl_menu.id','tbl_menu.status')
-            ->orderby('tbl_feature_banner_slider.banner_order','ASC')        
-            ->get(),
+            'events' => Event::where('event_date', '>=', date('Y-m-d'))->where('status', '1', date('Y-m-d'))->where("event_title_{$this->locale}", '!=', '')->orderBy('event_order', 'asc')->limit(6)->get()->toArray(),
+            'press' => Press::where('status', '1', date('Y-m-d'))->where("title_{$this->locale}", '!=', '')->orderBy('press_order', 'asc')->limit(6)->get()->toArray(),
+            'bannersliders' => DB::table('tbl_feature_banner_slider')->orderby('tbl_feature_banner_slider.banner_order', 'ASC')->get()->toArray(),
             'meta_title' => $content->meta_title,
             'meta_keyword' => $content->meta_keyword,
             'meta_description' => $content->meta_desc,
@@ -57,19 +51,10 @@ class HomeController extends Controller {
         ];
 
         /* Start Cache */
-        set_cache_page($request->fullUrl(), view("pages.home.dview.homevform-{$this->locale}", $data)->render());
+        set_cache_page($request->fullUrl(), view("pages.home.index-{$this->locale}", $data)->render());
         /* end Cache */
-        
-        if ($request->demo == 1) {
-            return view("pages.home.expriments-{$this->locale}", $data);
-        }elseif($request->demo == 2){
-           return view("pages.home.expriments2-{$this->locale}", $data); 
-        }
 
-        $agent = new Agent();
-        if($agent->isMobile() || $agent->isTablet()){ return redirect()->route('MobileTwo'); }
-        return view("pages.home.dview.homevform-{$this->locale}", $data);
-        
+        return view("pages.home.index-{$this->locale}", $data);
     }
-    
+
 }

@@ -10,6 +10,7 @@ use App\Models\Properties;
 use DB;
 use File;
 use Jenssegers\Agent\Agent;
+
 class PropertyController extends Controller {
 
     public $locale;
@@ -36,11 +37,11 @@ class PropertyController extends Controller {
 
         $meta_title = metaTitleByLocale($this->locale, ['en' => $content->short_description_en, 'ar' => $content->short_description_ar, 'cn' => $content->short_description_ch,]);
         $meta_desc = metaDescByLocale($this->locale, ['en' => $content->description_en, 'ar' => $content->description_ar, 'cn' => $content->description_ch,]);
-        
+
         $data = [
-            "AllRatings" => DB::table('tbl_ratings')->where('menu_id',19)->first(),
-            'agent'=>$agent,
-            'Community' =>DB::table('tbl_community_place')->get(),
+            "AllRatings" => DB::table('tbl_ratings')->where('menu_id', 19)->first(),
+            'agent' => $agent,
+            'Community' => DB::table('tbl_community_place')->get(),
             'himage' => '',
             'abc' => $request->segment(2),
             'construction_content' => $content,
@@ -56,7 +57,7 @@ class PropertyController extends Controller {
 
         //check page
         set_cache_page($request->fullUrl(), view("pages.property.index", $data)->render());
-        if(!empty($_GET['demo']) && $_GET['demo'] ==1){
+        if (!empty($_GET['demo']) && $_GET['demo'] == 1) {
             return view('pages.property.devs', $data);
         }
         return view('pages.property.index', $data);
@@ -120,11 +121,8 @@ class PropertyController extends Controller {
 
         $meta_title = metaTitleByLocale($this->locale, ['en' => $project->title_en, 'ar' => $project->title_ar, 'cn' => $project->title_ch,]);
         $meta_desc = metaDescByLocale($this->locale, ['en' => $project->description_en, 'ar' => $project->description_ar, 'cn' => $project->description_ch,]);
-        $ratingpage;
-        if($project->title_en == 'Dubai Sports City'): $ratingpage = 'Sports City'; else: $ratingpage = $project->title_en; endif;
+
         $data = [
-            "AllRatings" => DB::table('tbl_ratings')->where('menu_title',$ratingpage)->first(),
-            'himage' => '',
             'abc' => $request->segment(2),
             'project' => $project,
             'properties' => $properties,
@@ -156,17 +154,19 @@ class PropertyController extends Controller {
         if (strpos($request->fullurl(), '?afm=1') !== false) {
             return $this->projects($request, $area, $propertySLug);
         }
-        
+
         $property;
-        if(!empty($_GET['demo']) && $_GET['demo'] == 1){
-          $property = Properties::where('slug', $propertySLug)->where('status', '0')->first();  
-        }else{ $property = Properties::where('slug', $propertySLug)->where('status', '1')->first(); }
-        
+        if (!empty($_GET['demo']) && $_GET['demo'] == 1) {
+            $property = Properties::where('slug', $propertySLug)->where('status', '0')->first();
+        } else {
+            $property = Properties::where('slug', $propertySLug)->where('status', '1')->first();
+        }
+
         if (empty($property)) {
             return redirect("$this->locale/dubai/$area");
         }
         $project = Project::where('slug', $area)->where('status', '1')->orderBy("id", "ASC")->first();
-        $galleries = DB::table('tbl_property_gallery')->where('property_id', $property->id)->where('status', '1')->where('unit_type_id',0)->orderBy("id", "DESC")->get();
+        $galleries = DB::table('tbl_property_gallery')->where('property_id', $property->id)->where('status', '1')->where('unit_type_id', 0)->orderBy("id", "DESC")->get();
         $aminities = DB::table('tbl_property_merge_aminities as t1')->leftjoin('tbl_aminities as t2', 't1.aminity_id', '=', 't2.id')->where('t1.property_id', $property->id)->orderBy("t2.id", "DESC")->get();
         $units = DB::table('tbl_property_merge_unit as t1')->leftjoin('tbl_property_unit as t2', 't1.unit_id', '=', 't2.id')->where('t1.property_id', $property->id)->orderBy("t2.id", "ASC")->get();
         $nears = DB::table('tbl_near_place')->where("project_id", $project->id)->get();
@@ -242,9 +242,9 @@ class PropertyController extends Controller {
 
     public function offers(Request $request) {
         $data = [
-            'meta_title' => 'Property Offers | Azizi Developments',
-            'meta_keyword' => 'Azizi Developments Property Offers',
-            'meta_description' => 'Azizi Developments Property Offers',
+            'meta_title' => 'Property Offers | The Heart of Europe',
+            'meta_keyword' => 'The Heart of Europe Property Offers',
+            'meta_description' => 'The Heart of Europe Property Offers',
             'locale' => $this->locale,
         ];
         return view("pages.property.offers-" . $this->locale, $data);
@@ -268,7 +268,7 @@ class PropertyController extends Controller {
         $meta_desc = metaDescByLocale($this->locale, ['en' => 'Completed Properties', 'ar' => 'Completed Properties', 'cn' => 'Completed Properties',]);
 
         $data = [
-            "AllRatings" => DB::table('tbl_ratings')->where('menu_id',51)->first(),
+            "AllRatings" => DB::table('tbl_ratings')->where('menu_id', 51)->first(),
             'completed' => $completed,
             'meta_title' => $meta_title,
             'meta_keyword' => $project->meta_keyword,
@@ -310,17 +310,19 @@ class PropertyController extends Controller {
         if (strpos($request->fullurl(), '?afm=1') !== false) {
             return $this->projects($request, $area, $propertySLug);
         }
-        
+
         $property;
-        if(!empty($_GET['demo']) && $_GET['demo'] == 1){
-          $property = Properties::where('slug', $propertySLug)->where('status', '0')->first();  
-        }else{ $property = Properties::where('slug', $propertySLug)->where('status', '1')->first(); }
-        
+        if (!empty($_GET['demo']) && $_GET['demo'] == 1) {
+            $property = Properties::where('slug', $propertySLug)->where('status', '0')->first();
+        } else {
+            $property = Properties::where('slug', $propertySLug)->where('status', '1')->first();
+        }
+
         if (empty($property)) {
             return redirect("$this->locale/dubai/$area");
         }
         $project = Project::where('slug', $area)->where('status', '1')->orderBy("id", "ASC")->first();
-        $galleries = DB::table('tbl_property_gallery')->where('property_id', $property->id)->where('status', '1')->where('unit_type_id',0)->orderBy("id", "DESC")->get();
+        $galleries = DB::table('tbl_property_gallery')->where('property_id', $property->id)->where('status', '1')->where('unit_type_id', 0)->orderBy("id", "DESC")->get();
         $aminities = DB::table('tbl_property_merge_aminities as t1')->leftjoin('tbl_aminities as t2', 't1.aminity_id', '=', 't2.id')->where('t1.property_id', $property->id)->orderBy("t2.id", "DESC")->get();
         $units = DB::table('tbl_property_merge_unit as t1')->leftjoin('tbl_property_unit as t2', 't1.unit_id', '=', 't2.id')->where('t1.property_id', $property->id)->orderBy("t2.id", "ASC")->get();
         $nears = DB::table('tbl_near_place')->where("project_id", $project->id)->get();
@@ -354,6 +356,5 @@ class PropertyController extends Controller {
         set_cache_page($request->fullUrl(), view("pages.property.details", $data)->render());
         return view('pages.property.lp.details-lp', $data);
     }
-    
 
 }

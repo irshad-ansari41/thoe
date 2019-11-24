@@ -60,7 +60,7 @@ class AdminMobileAppsController extends Controller {
      *
      * @return Response
      */
-    public function aziziAppGetSetting(Request $request) {
+    public function thoeAppGetSetting(Request $request) {
         $options = DB::table('options')->select('option_key', 'option_value')->where('option_key', 'like', 'AZD_APP_%')->get();
 
         $setting = [];
@@ -68,7 +68,7 @@ class AdminMobileAppsController extends Controller {
             $setting[$value->option_key] = $value->option_value;
         }
 
-        return view('admin.mobileapps.azizi-app-setting', ['setting' => (object) $setting]);
+        return view('admin.mobileapps.thoe-app-setting', ['setting' => (object) $setting]);
     }
 
     /**
@@ -76,7 +76,7 @@ class AdminMobileAppsController extends Controller {
      *
      * @return Response
      */
-    public function aziziAppSetSetting(Request $request) {
+    public function thoeAppSetSetting(Request $request) {
 
         $options = $request->all();
 
@@ -87,7 +87,7 @@ class AdminMobileAppsController extends Controller {
         }
 
 
-        return redirect(route('azizi-app-setting.index'));
+        return redirect(route('thoe-app-setting.index'));
     }
  
    

@@ -1,34 +1,29 @@
-$(document).ready(function() {
+$(document).ready(function () {
     //table tools example
-    var table = $('#table1').DataTable({
-        dom: 'Bfrtip',
+    $('#table1').DataTable({
+        "dom": '<"m-t-10"B><"m-t-10 pull-left"f><"m-t-10 pull-right"l>rt<"pull-left m-t-10"i><"m-t-10 pull-right"p>',
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
     });
 
-
     //re-order columns
-    var table2 = $('#table2').dataTable({
-        responsive:true
-    });
+    var table2 = $('#table2').dataTable();
 
     new $.fn.dataTable.ColReorder(table2);
-
 
     // add row, delete row example
     var table3 = $('#table3').DataTable({
         "order": [
             [0, "desc"]
         ],
-        responsive:true
+        responsive: true
     });
     //total number of existing rows
     var counter = 18;
 
-
     //row addition code
-    $('#addButton').on('click', function() {
+    $('#addButton').on('click', function () {
         table3.row.add([
             counter,
             counter + ' new',
@@ -42,7 +37,7 @@ $(document).ready(function() {
 
     //row deletion code
 
-    $('#table3 tbody').on('click', 'tr', function() {
+    $('#table3 tbody').on('click', 'tr', function () {
         if ($(this).hasClass('danger')) {
             $(this).removeClass('danger');
         } else {
@@ -51,7 +46,7 @@ $(document).ready(function() {
         }
     });
 
-    $('#delButton').click(function() {
+    $('#delButton').click(function () {
         if (!$("#table3 tr").hasClass('danger')) {
             alert('please select a row first');
             //exit;
@@ -60,28 +55,28 @@ $(document).ready(function() {
     });
 
 });
-    $('#sample_5').dataTable( {
-
-        "scrollY": "200px",
-        "dom": "frtiS",
-        "deferRender": true,
-        responsive:true
+$('#sample_5').dataTable({
+    "scrollY": "200px",
+    "dom": "frtiS",
+    "deferRender": true,
+    responsive: true
 });
-$(document).ready(function() {
+$(document).ready(function () {
     var oTable;
     /* Apply the jEditable handlers to the table */
-    $('#inline_edit tbody td').editable( function( sValue ) {
+    $('#inline_edit tbody td').editable(function (sValue) {
         /* Get the position of the current data from the node */
-        var aPos = oTable.fnGetPosition( this );
+        var aPos = oTable.fnGetPosition(this);
 
         /* Get the data array for this row */
-        var aData = oTable.fnGetData( aPos[0] );
+        var aData = oTable.fnGetData(aPos[0]);
 
         /* Update the data array and return the value */
-        aData[ aPos[1] ] = sValue;
+        aData[aPos[1]] = sValue;
         return sValue;
-    }, { "onblur": 'submit' } ); /* Submit the form when bluring a field */
+    }, {"onblur": 'submit'});
+    /* Submit the form when bluring a field */
 
     /* Init DataTables */
     oTable = $('#inline_edit').dataTable();
-} );
+});

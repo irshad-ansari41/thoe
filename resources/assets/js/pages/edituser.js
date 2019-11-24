@@ -107,6 +107,7 @@ $('#rootwizard').bootstrapWizard({
         }
     }});
 
+
 $('#rootwizard .finish').click(function () {
     var $validator = $('#commentForm').data('bootstrapValidator').validate();
     if ($validator.isValid()) {

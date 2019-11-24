@@ -54,6 +54,11 @@ $(document).ready(function() {
                 title: 'Seminar',
                 start: new Date(y, m, 12),
                 backgroundColor: ('#67C5DF')
+            }, {
+                title: 'Product Seminar',
+                start: '2017-04-18',
+                end: '2017-04-20',
+                backgroundColor: "#A9B6BC"
             },{
                 title: 'Anniversary Celebrations',
                 start: new Date(y, m, 22),
@@ -62,10 +67,42 @@ $(document).ready(function() {
                 title: 'Event Day',
                 start: new Date(y, m, 31),
                 backgroundColor: ('#EF6F6C')
+            }, {
+                title: 'Product Seminar',
+                start: '2017-05-18',
+                end: '2017-05-20',
+                backgroundColor: "#A9B6BC"
+            }, {
+                title: 'Product Seminar',
+                start: '2017-06-18',
+                end: '2017-06-20',
+                backgroundColor: "#A9B6BC"
+            }, {
+                title: 'Product Seminar',
+                start: '2017-07-18',
+                end: '2017-07-20',
+                backgroundColor: "#A9B6BC"
+            }, {
+                title: 'Product Seminar',
+                start: '2017-08-18',
+                end: '2017-08-20',
+                backgroundColor: "#A9B6BC"
+            }, {
+                title: 'Product Seminar',
+                start: '2017-09-18',
+                end: '2017-09-20',
+                backgroundColor: "#A9B6BC"
             }],
+        eventClick:  function(event, jsEvent, view) {
+            $('#modalTitle, #eventInfo').html(event.title);
+            $('#modalBody').html(event.description);
+            $("#startTime").html(moment(event.start).format('MMM Do h:mm A'));
+            $("#endTime").html(moment(event.end).format('MMM Do h:mm A'));
+            $('#eventUrl').attr('href',event.url);
+            $('#fullCalModal').modal();
+        },
         editable: true,
         droppable: true,
-        height:450,
         drop: function(date, allDay) { // this function is called when something is dropped
 
             // retrieve the dropped element's stored Event Object
@@ -101,6 +138,9 @@ $(document).ready(function() {
     $("#color-chooser-btn").css({ "background-color": defaultColor, "color": lettercolor });
     //Color chooser button
     var colorChooser = $("#color-chooser-btn");
+    $('.reset').on('click',function(){
+        $('#new-event').val('');
+    });
     $("#color-chooser > li > a").click(function(e) {
         e.preventDefault();
         //Save color

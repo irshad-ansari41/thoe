@@ -37,7 +37,8 @@ $(document).ready(function() {
                     notEmpty: {
                         message: 'The email address is required'
                     },
-                    emailAddress: {
+                    regexp: {
+                        regexp: /^(\w+)([\-+.\'0-9A-Za-z_]+)*@(\w[\-\w]*\.){1,5}([A-Za-z]){2,6}$/,
                         message: 'The input is not a valid email address'
                     }
                 }
@@ -89,4 +90,22 @@ $(document).ready(function() {
     });
 $('#activate').on('ifChanged', function(event){
     $('#register_here').bootstrapValidator('revalidateField', $('#activate'));
+});
+$('#register_here input').on('keyup', function (){
+
+    $('#register_here input').each(function(){
+        var pswd = $("#register_here input[name='password']").val();
+        var pswd_cnf = $("#register_here input[name='password_confirm']").val();
+        var email_cnf = $("#register_here input[name='email_confirm']").val();
+
+        if(pswd != '' ){
+            $('#register_here').bootstrapValidator('revalidateField', 'password');
+        }
+         if(pswd_cnf != '' ){
+             $('#register_here').bootstrapValidator('revalidateField', 'password_confirm');
+         }
+         if(email_cnf != '' ){
+             $('#register_here').bootstrapValidator('revalidateField', 'email_confirm');
+         }
+    });
 });

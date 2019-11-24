@@ -85,7 +85,7 @@ class FormTestController extends Controller {
         //return view('pages.test-form.newletter', $data);
         Mail::send('pages.test-form.newletter', ['data' => $data], function ($message) use ($data) {
           $message->subject($data['subject']);
-          $message->from('info@azizidevelopments.com', 'Azizi Developments');
+          $message->from('info@thoedevelopments.com', 'The Heart of Europe');
           $message->to($data['email'],$data['fullname']);
           });
 

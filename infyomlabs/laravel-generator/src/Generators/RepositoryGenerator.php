@@ -21,7 +21,7 @@ class RepositoryGenerator extends BaseGenerator
     {
         $this->commandData = $commandData;
         $this->path = $commandData->config->pathRepository;
-        $this->fileName = $this->commandData->modelName.'Repository.php';
+        $this->fileName = $this->commandData->modelName . 'Repository.php';
     }
 
     public function generate()
@@ -34,11 +34,11 @@ class RepositoryGenerator extends BaseGenerator
 
         foreach ($this->commandData->inputFields as $field) {
             if ($field['searchable']) {
-                $searchables[] = "'".$field['fieldName']."'";
+                $searchables[] = "'" . $field['fieldName'] . "'";
             }
         }
 
-        $templateData = str_replace('$FIELDS$', implode(','.infy_nl_tab(1, 2), $searchables), $templateData);
+        $templateData = str_replace('$FIELDS$', implode(',' . infy_nl_tab(1, 2), $searchables), $templateData);
 
         FileUtil::createFile($this->path, $this->fileName, $templateData);
 
@@ -49,7 +49,7 @@ class RepositoryGenerator extends BaseGenerator
     public function rollback()
     {
         if ($this->rollbackFile($this->path, $this->fileName)) {
-            $this->commandData->commandComment('Repository file deleted: '.$this->fileName);
+            $this->commandData->commandComment('Repository file deleted: ' . $this->fileName);
         }
     }
 }

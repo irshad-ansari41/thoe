@@ -12,13 +12,13 @@ $("#sparkline_line").sparkline([9, 10, 9, 10, 10, 11, 12, 10, 10, 11, 11, 12, 11
     type: 'line',
     width: '100',
     height: '55',
-    fillColor:'#fff',
+    fillColor: '#fff',
     lineColor: '#fff'
 });
 
 /* Calendar */
 function ini_events(ele) {
-    ele.each(function() {
+    ele.each(function () {
 
         // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
         // it doesn't need to have a start or end
@@ -44,7 +44,6 @@ ini_events($('#external-events div.external-event'));
 /* initialize the calendar
  -----------------------------------------------------------------*/
 //Date for the calendar events (dummy data)
-//Date for the calendar events (dummy data)
 var date = new Date();
 var d = date.getDate(),
     m = date.getMonth(),
@@ -63,25 +62,63 @@ $('#calendar').fullCalendar({
     },
         {
             title: 'Holiday',
-            start: new Date(y, m,  10),
+            start: new Date(y, m, 10),
             backgroundColor: ('#01BC8C')
         }, {
             title: 'Seminar',
             start: new Date(y, m, 12),
             backgroundColor: ('#67C5DF')
-        },{
+        }, {
+            title: 'Product Seminar',
+            start: '2017-04-18',
+            end: '2017-04-20',
+            backgroundColor: "#A9B6BC"
+        }, {
             title: 'Anniversary Celebrations',
             start: new Date(y, m, 22),
             backgroundColor: ('#EF6F6C')
-        },{
+        }, {
             title: 'Event Day',
             start: new Date(y, m, 31),
             backgroundColor: ('#EF6F6C')
+        }, {
+            title: 'Product Seminar',
+            start: '2017-05-18',
+            end: '2017-05-20',
+            backgroundColor: "#A9B6BC"
+        }, {
+            title: 'Product Seminar',
+            start: '2017-06-18',
+            end: '2017-06-20',
+            backgroundColor: "#A9B6BC"
+        }, {
+            title: 'Product Seminar',
+            start: '2017-07-18',
+            end: '2017-07-20',
+            backgroundColor: "#A9B6BC"
+        }, {
+            title: 'Product Seminar',
+            start: '2017-08-18',
+            end: '2017-08-20',
+            backgroundColor: "#A9B6BC"
+        }, {
+            title: 'Product Seminar',
+            start: '2017-09-18',
+            end: '2017-09-20',
+            backgroundColor: "#A9B6BC"
         }],
+    eventClick: function (event, jsEvent, view) {
+        $('#modalTitle, #eventInfo').html(event.title);
+        $('#modalBody').html(event.description);
+        $("#startTime").html(moment(event.start).format('MMM Do h:mm A'));
+        $("#endTime").html(moment(event.end).format('MMM Do h:mm A'));
+        $('#eventUrl').attr('href', event.url);
+        $('#fullCalModal').modal();
+    },
     editable: true,
     droppable: true,
-    height:450,
-    drop: function(date, allDay) { // this function is called when something is dropped
+    height: 450,
+    drop: function (date, allDay) { // this function is called when something is dropped
 
         // retrieve the dropped element's stored Event Object
         var originalEventObject = $(this).data('eventObject');
@@ -112,10 +149,10 @@ $('#calendar').fullCalendar({
 /* ADDING EVENTS */
 var defaultColor = "#A9B6BC";
 var lettercolor = "#fff"; //default
-$("#color-chooser-btn").css({ "background-color": defaultColor, "color": lettercolor });
+$("#color-chooser-btn").css({"background-color": defaultColor, "color": lettercolor});
 //Color chooser button
 var colorChooser = $("#color-chooser-btn");
-$("#color-chooser > li > a").click(function(e) {
+$("#color-chooser > li > a").click(function (e) {
     e.preventDefault();
     //Save color
     currColor = $(this).css("background-color");
@@ -127,7 +164,7 @@ $("#color-chooser > li > a").click(function(e) {
         }).html($(this).text() + ' <span class="caret"></span>');
 
 });
-$("#add-new-event").click(function(e) {
+$("#add-new-event").click(function (e) {
     e.preventDefault();
     //Get value and make sure it is not null
     var val = $("#new-event").val();
@@ -138,7 +175,7 @@ $("#add-new-event").click(function(e) {
     //Create event
     var event = $("<div />");
     event.css({
-        "background-color":currColor,
+        "background-color": currColor,
         "border-color": currColor,
         "color": "#fff"
     }).addClass("external-event");
@@ -150,10 +187,10 @@ $("#add-new-event").click(function(e) {
 
 });
 //Remove event from text input and reset teh type button
-$('.createevent_btn').on("click", function() {
+$('.createevent_btn').on("click", function () {
     $("#new-event").val(" ");
 });
-$(document).on('click', '.event-clear', function() {
+$(document).on('click', '.event-clear', function () {
     $(this).closest('div').remove();
 });
 
@@ -196,21 +233,22 @@ $("#updateInterval").val(updateInterval).change(function () {
 });
 
 
-if($("#realtimechart").length)
-{
+if ($("#realtimechart").length) {
     var options = {
-        series: { shadowSize: 1 },
-        lines: { fill: true, fillColor: { colors: [ { opacity: 1 }, { opacity: 0.1 } ] }},
-        yaxis: { min: 0, max: 100 },
-        xaxis: { show: false },
+        series: {shadowSize: 1},
+        lines: {fill: true, fillColor: {colors: [{opacity: 1}, {opacity: 0.1}]}},
+        yaxis: {min: 0, max: 100},
+        xaxis: {show: false},
         colors: ["rgba(65,139,202,0.5)"],
-        grid: { tickColor: "#dddddd",
+        grid: {
+            tickColor: "#dddddd",
             borderWidth: 0
         }
     };
-    var plot = $.plot($("#realtimechart"), [ getRandomData() ], options);
+    var plot = $.plot($("#realtimechart"), [getRandomData()], options);
+
     function update() {
-        plot.setData([ getRandomData() ]);
+        plot.setData([getRandomData()]);
         // since the axes don't change, we don't need to call plot.setupGrid()
         plot.draw();
 
@@ -225,10 +263,10 @@ var useOnComplete = false,
     useEasing = false,
     useGrouping = false,
     options = {
-        useEasing : useEasing, // toggle easing
-        useGrouping : useGrouping, // 1,000,000 vs 1000000
-        separator : ',', // character to use as a separator
-        decimal : '.' // character to use as a decimal
+        useEasing: useEasing, // toggle easing
+        useGrouping: useGrouping, // 1,000,000 vs 1000000
+        separator: ',', // character to use as a separator
+        decimal: '.' // character to use as a decimal
     };
 
 var demo = new CountUp("myTargetElement1", 12.52, 9500, 0, 6, options);
@@ -274,48 +312,41 @@ for (i = 0; i < my_posts.length; i++) {
     }
 }
 //Percentage Monitor
-$(document).ready(function()
-
-{
+$(document).ready(function () {
 
     /** BEGIN WIDGET PIE FUNCTION **/
-    if ($('.widget-easy-pie-1').length > 0)
-    {
+    if ($('.widget-easy-pie-1').length > 0) {
         $('.widget-easy-pie-1').easyPieChart({
             easing: 'easeOutBounce',
-            barColor : '#F9AE43',
+            barColor: '#F9AE43',
             lineWidth: 5
         });
     }
-    if ($('.widget-easy-pie-2').length > 0)
-    {
+    if ($('.widget-easy-pie-2').length > 0) {
         $('.widget-easy-pie-2').easyPieChart({
             easing: 'easeOutBounce',
-            barColor : '#F9AE43',
+            barColor: '#F9AE43',
             lineWidth: 5,
-            onStep: function(from, to, percent) {
+            onStep: function (from, to, percent) {
                 $(this.el).find('.percent').text(Math.round(percent));
             }
         });
     }
 
-    if ($('.widget-easy-pie-3').length > 0)
-    {
+    if ($('.widget-easy-pie-3').length > 0) {
         $('.widget-easy-pie-3').easyPieChart({
             easing: 'easeOutBounce',
-            barColor : '#EF6F6C',
+            barColor: '#EF6F6C',
             lineWidth: 5
         });
     }
     /** END WIDGET PIE FUNCTION **/
 
 
-
-
 });
 
 //world map
-$(function(){
+$(function () {
     $('#world-map-markers').vectorMap({
         map: 'world_mill_en',
         scaleColors: ['#C8EEFF', '#0071A4'],
@@ -330,7 +361,7 @@ $(function(){
         },
         backgroundColor: '#515763',
         markers: [
-            {latLng: [60,-100], name: 'canada - 1222 views'},
+            {latLng: [60, -100], name: 'canada - 1222 views'},
             {latLng: [43.93, 12.46], name: 'San Marino- 300 views'},
             {latLng: [47.14, 9.52], name: 'Liechtenstein- 52 views'},
             {latLng: [12.05, -61.75], name: 'Grenada- 5 views'},
@@ -347,7 +378,7 @@ $(function(){
         ]
     });
 });
-$(document).ready(function() {
+$(document).ready(function () {
     var composeHeight = $('#calendar').height() + 21 - $('.adds').height();
     $('.list_of_items').slimScroll({
         color: '#A9B6BC',

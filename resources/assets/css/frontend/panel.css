@@ -163,6 +163,13 @@
     background-color: #F89A14;
     border-color: "";
 }
-
+@media (max-width:320px){
+    .form_padding{
+        padding-right:0px;
+    }
+    .form_padding input{
+        padding:9px 9px;
+    }
+}
 /* ---------- //Customized Bootstrap Button End---------- */
 /*** ---------- //Panel custom css End----------***/

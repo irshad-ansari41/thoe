@@ -12,6 +12,10 @@
 <link href="<?= asset('assets/css/pages/editor.css') ?>" rel="stylesheet" type="text/css"/>
 <link href="<?= asset('assets/css/pages/buttons.css') ?>" rel="stylesheet"/>
 <link href="<?= asset('assets/css/timepicki.css') ?>" rel="stylesheet">
+<link rel="stylesheet" href="https://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
+<link rel="stylesheet" href="https://demo.itsolutionstuff.com/plugin/croppie.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
 <style>
     input.timepicki-input
     {
@@ -79,14 +83,7 @@
                                        placeholder="" value="{{ !empty($project->event_title_ar)?$project->event_title_ar: old('event_title_ar') }}" />
                             </div>
                         </div>
-                        <div class="form-group ch_field">
-                            <label class="col-md-3 control-label hidden-xs">Title(Chinese) </label>
-
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" name="event_title_ch"
-                                       placeholder="" value="{{ !empty($project->event_title_ch)?$project->event_title_ch: old('event_title_ch') }}" />
-                            </div>
-                        </div>
+                        
 
                         <div class="form-group ">
                             <label class="col-md-3 control-label hidden-xs en_field">Slug(English)</label>
@@ -102,20 +99,14 @@
                                 <textarea class="form-control" name="slug_ar">{{ !empty($project->slug_ar)?$project->slug_ar : old('slug_ar') }}</textarea>
                             </div>
                         </div>
-                        <div class="form-group ">
-                            <label class="col-md-3 control-label hidden-xs ch_field">Slug(Chinese)</label>
-
-                            <div class="col-md-8">
-                                <textarea class="form-control" name="slug_ch">{{ !empty($project->slug_ch)?$project->slug_ch: old('slug_ch') }}</textarea>
-                            </div>
-                        </div>
+                       
 
                         <div class="form-group">
                             <label class="col-md-3 control-label" name="description">Thumbnail photo (English) <br><br> </label>
                             <div class="col-md-8">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                        <img src="{{asset('assets/images/events')}}/{{ !empty($project->event_photo_en)?$project->event_photo_en:'' }}" height="190" width="190" /> </div>
+                                        <img src="{{asset('assets/images/events')}}/{{ !empty($project->event_photo_en)?$project->event_photo_en:'100-blank-img.jpg' }}" height="190" width="190" /> </div>
                                     <div>
                                         <span class="btn btn-default btn-file">
                                             <span class="fileinput-new">Select</span>
@@ -133,7 +124,7 @@
                             <div class="col-md-8">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                        <img src="{{asset('assets/images/events')}}/{{!empty($project->event_photo_ar)?$project->event_photo_ar:''}}" height="190" width="190" /> </div>
+                                        <img src="{{asset('assets/images/events')}}/{{!empty($project->event_photo_ar)?$project->event_photo_ar:'100-blank-img.jpg'}}" height="190" width="190" /> </div>
                                     <div>
                                         <span class="btn btn-default btn-file">
                                             <span class="fileinput-new">Select</span>
@@ -146,30 +137,14 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" name="description">Thumbnail photo (Chinese) <br><br> </label>
-                            <div class="col-md-8">
-                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                        <img src="{{asset('assets/images/events')}}/{{ !empty($project->event_photo_cn)?$project->event_photo_cn:'' }}" height="190" width="190" /> </div>
-                                    <div>
-                                        <span class="btn btn-default btn-file">
-                                            <span class="fileinput-new">Select</span>
-                                            <span class="fileinput-exists">Change</span>
-                                            <input type="file" name="image_ch"></span>
-                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                        
                         
                         <div class="form-group">
                             <label class="col-md-3 control-label" name="description">Main Photo (English) <br><br> </label>
                             <div class="col-md-8">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                        <img src="{{asset('assets/images/events/main')}}/{{ !empty($project->event_main_photo_en)?$project->event_main_photo_en:'' }}" height="190" width="190" /> </div>
+                                        <img src="{{asset('assets/images/events/main')}}/{{ !empty($project->event_main_photo_en)?$project->event_main_photo_en:'100-blank-img.jpg' }}" height="190" width="190" /> </div>
 
                                     <div>
                                         <span class="btn btn-default btn-file">
@@ -188,7 +163,7 @@
                             <div class="col-md-8">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                        <img src="{{asset('assets/images/events/main')}}/{{ !empty($project->event_main_photo_ar)?$project->event_main_photo_ar:'' }}" height="190" width="190" /></div>
+                                        <img src="{{asset('assets/images/events/main')}}/{{ !empty($project->event_main_photo_ar)?$project->event_main_photo_ar:'100-blank-img.jpg' }}" height="190" width="190" /></div>
 
                                     <div>
                                         <span class="btn btn-default btn-file">
@@ -202,24 +177,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" name="description">Main Photo (Chinese) <br><br> </label>
-                            <div class="col-md-8">
-                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                        <img src="{{asset('assets/images/events/main')}}/{{ !empty($project->event_main_photo_cn)?$project->event_main_photo_cn:'' }}" height="190" width="190" /> </div>
-
-                                    <div>
-                                        <span class="btn btn-default btn-file">
-                                            <span class="fileinput-new">Select</span>
-                                            <span class="fileinput-exists">Change</span>
-                                            <input type="file" name="main_image_ch"></span>
-                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                        
 
                         <div class="form-group en_field">
                             <label class="col-md-3 control-label" name="">Short Description(English) </label>
@@ -235,13 +193,7 @@
                                 <textarea id="" class="form-control"  name="extra_desc_ar" rows="5">{{ !empty($project->extra_desc_ar)?$project->extra_desc_ar: old('extra_desc_ar') }}</textarea>
                             </div>
                         </div>
-                        <div class="form-group ch_field">
-                            <label class="col-md-3 control-label" name="">Short Description(Chinese) </label>
-
-                            <div class="col-md-8">
-                                <textarea id="" class="form-control"  name="extra_desc_ch" rows="5">{{ !empty($project->extra_desc_ch)?$project->extra_desc_ch: old('extra_desc_ch') }}</textarea>
-                            </div>
-                        </div>
+                        
 
                         <div class="form-group en_field">
                             <label class="col-md-3 control-label" name="">Long Description(English) </label>
@@ -257,13 +209,7 @@
                                 <textarea id="ckeditor_standard1" name="long_desc_ar">{{ !empty($project->long_desc_ar)?$project->long_desc_ar: old('long_desc_ar') }}</textarea>
                             </div>
                         </div>
-                        <div class="form-group ch_field">
-                            <label class="col-md-3 control-label" name="">Long Description(Chinese) </label>
-
-                            <div class="col-md-8">
-                                <textarea id="ckeditor_standard2" name="long_desc_ch">{{ !empty($project->long_desc_ch)?$project->long_desc_ch:old('long_desc_ch') }}</textarea>
-                            </div>
-                        </div>
+                       
 
                         <div class="form-group en_field">
                             <label class="col-md-3 control-label hidden-xs">Starting From</label>
@@ -302,12 +248,7 @@
                                 <input id="" value="{{ !empty($project->payment_plan_ar)?$project->payment_plan_ar: old('payment_plan_ar') }}" type="text" class="form-control" name="payment_plan_ar">
                             </div>
                         </div>
-                        <div class="form-group ch_field">
-                            <label class="col-md-3 control-label hidden-xs">Payment Plan(Chinese)</label>
-                            <div class="col-md-8">
-                                <input id="" value="{{ !empty($project->payment_plan_ch)?$project->payment_plan_ch: old('payment_plan_ch') }}" type="text" class="form-control" name="payment_plan_ch">
-                            </div>
-                        </div>
+                        
                         <div class="form-group en_field">
                             <label class="col-md-3 control-label hidden-xs">Mortgage Starting</label>
                             <div class="col-md-8">
@@ -326,12 +267,7 @@
                                 <textarea id="" class="form-control"  name="visit_us_at_ar">{{ !empty($project->visit_us_at_ar)?$project->visit_us_at_ar: old('visit_us_at_ar') }}</textarea>
                             </div>
                         </div>
-                        <div class="form-group en_field">
-                            <label class="col-md-3 control-label" name="">Visit Us (Chinese) </label>
-                            <div class="col-md-8">
-                                <textarea id="" class="form-control"  name="visit_us_at_ch">{{ !empty($project->visit_us_at_ch)?$project->visit_us_at_ch: old('visit_us_at_ch') }}</textarea>
-                            </div>
-                        </div>
+                        
                         <div class="form-group en_field">
                             <label class="col-md-3 control-label hidden-xs">Event Date</label>
 
@@ -378,13 +314,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group ch_field">
-                            <label class="col-md-3 control-label hidden-xs">Event Location (Chinese)</label>
-
-                            <div class="col-md-8">
-                                <input id="" value="{{ !empty($project->event_location_ch)?$project->event_location_ch: old('event_location_ch') }}" type="text" class="form-control" name="event_location_ch">
-                            </div>
-                        </div>
+                       
 
                         <div class="form-group en_field">
                             <label class="col-md-3 control-label hidden-xs">Event Place (English)</label>
@@ -402,13 +332,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group ch_field">
-                            <label class="col-md-3 control-label hidden-xs">Event Place (Chinese)</label>
-
-                            <div class="col-md-8">
-                                <input id="" value="{{ !empty($project->event_place_ch)?$project->event_place_ch: old('event_place_ch') }}" type="text" class="form-control" name="event_place_ch">
-                            </div>
-                        </div>
 
                         <div class="form-group ">
                             <label class="col-md-3 control-label hidden-xs">Meta keyword</label>
@@ -453,22 +376,17 @@
 @section('footer_scripts')
 
 <script src="<?= asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') ?>"type="text/javascript"></script>
-<!--script src="<?= asset('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') ?>"></script-->
 <script src="<?= asset('assets/js/pages/validation.js') ?>" type="text/javascript"></script>
-
 <script src="<?= asset('assets/vendors/tinymce/tinymce.min.js') ?>" type="text/javascript"></script>
 <script  src="<?= asset('assets/vendors/ckeditor/js/ckeditor.js') ?>"  type="text/javascript"></script>
 <script  src="<?= asset('assets/vendors/ckeditor/js/jquery.js') ?>"  type="text/javascript" ></script>
 <script  src="<?= asset('assets/vendors/ckeditor/js/config.js') ?>"  type="text/javascript"></script>
 <script  src="<?= asset('assets/js/pages/editor.js') ?>"  type="text/javascript"></script>
 <script src="https://demo.itsolutionstuff.com/plugin/croppie.js"></script>
-<link rel="stylesheet" href="https://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
-<link rel="stylesheet" href="https://demo.itsolutionstuff.com/plugin/croppie.css">
 <script src="<?= asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') ?>" ></script>
 <script src="<?= asset('assets/js/jquery.min.js') ?>"></script>
 <script src="<?= asset('assets/js/timepicki.js') ?>"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>

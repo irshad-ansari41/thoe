@@ -55,7 +55,7 @@
                                 <div class="col-md-8">
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                            <img src="{!! url("/") !!}/assets/images/media/{!! $master->path !!}/images/{!! $res->image !!}">
+                                            <img src="{{ url("/") }}/assets/images/media/{!! $master->path !!}/images/{!! $res->image !!}">
                                         </div>
 
                                         <div>
@@ -129,10 +129,8 @@
 {{-- page level scripts --}}
 @section('footer_scripts')
 
-<script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
-type="text/javascript"></script>
-{{--<script src="{{ asset('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') }}"></script>--}}
-<script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}" type="text/javascript"></script>
+<!--<script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>-->
 <script src="{{asset('assets/vendors/tinymce/tinymce.min.js')}}" type="text/javascript"></script>
 <script  src="{{ asset('assets/vendors/ckeditor/js/ckeditor.js') }}"  type="text/javascript"></script>
 <script  src="{{ asset('assets/vendors/ckeditor/js/jquery.js') }}"  type="text/javascript" ></script>
@@ -160,7 +158,7 @@ $(document).ready(function () {
 
     $("#add").click(function () {
         $("#pimages").append($("#one").clone().attr({"style": "display:block", "id": ""}));
-    })
+    });
 
 
     $(document).on("click", ".remove", function () {

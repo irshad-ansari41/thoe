@@ -1,194 +1,104 @@
 @extends('layouts/default')
 
+@section('title')
+About us
+@parent
+@stop
 
 @section('header_styles')
-<!-- Time line css -->
-<link rel="stylesheet" type="text/css" href="<?= asset('assets/css/timeline_style.css') ?>">
-<style>.parallax-container .parallax img {    top: initial;}.cd-horizontal-timeline .timeline {position: relative;height: 100px;margin: 0 auto;width: 60%;}
-</style>
 
 @stop
 
-@section('main_div_wrapper')
-
-@stop
-
-@section('section_content')
-
-<!-- Header -->
-<section class="az-section">
-    <div id="img-container" class="container">
-        <div class="parallax-container valign-wrapper only-heading">
-            <div class="parallax">
-                @if($about->banner_image!="")
-                <img alt="<?= $about->banner_image_alt ?>" src="<?= asset('assets/images/about/') ?>/<?= $about->banner_image ?>">
-                @endif
-            </div>
-            <div class="col s12 center-align card tag-pro">
-                <h1> <?= $about->title_en ?></h1>
-            </div>
-        </div>
-        <div class="row m0">
-            <div class="col s12 p0">
-                <div class="col s12 p0">
-                    <?= generate_breadcrumb([url("$locale") => trans('words.home'), '' => trans('words.About Us')]) ?>
-                </div>
-            </div>
-        </div>
-    </div>
+@section('breadcrumbs')
+<nav class="breadcrumbs">
     <div class="container">
-        <div class="row" style="margin-bottom: 3em;">
-            <div class="col s12">
-                <p class="about-title-text short-desc">
-                    <?= $about->description_en ?>
-                </p>
-            </div>
-        </div>
-        <div class="row" style="margin-bottom: 5rem;">
-            <div class="col s12 m4" style="margin-right: 3em;">
-                @if($about->chairmen_image!="")
-                <img alt="<?= $about->chairment_image_alt ?>" src="<?= asset('assets/images/about/') ?>/<?= $about->chairmen_image ?>" class="responsive-img">
-                @endif
-            </div>
-            <div class="col s12 m7 about-chairman-sec">                
-                <h5 class="m0"><?= trans('words.chairman_message') ?></h5>                
-                <div class="divider az-header-divider"></div>
-                <p class="az-pcontent">
-                    <?= $about->chairment_description_en ?>
-                </p>
-                <div class="desig-person" style="margin-top: 3em;">
-                    <div class="person-name" style="font-size: 15px;margin: 0;"><?= trans('words.mirwais_azizi') ?></div>
-                    <i style="font-size: 12px;"><?= trans('words.chirman_azizi_group') ?></i>
-                </div>
-            </div>
-        </div>
+        <ul>
+            <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">Home</a></li>
+            <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">News & PR</a></li>
+        </ul>
     </div>
-    <div class="about-timeline">
-        <div class="container">
-            <div class="row m0">
-                <div class="cols 12 center-align">
-                    <h5 class="white">                       
-                        <?= trans('words.azizi_development_at_glance') ?>                        
-                    </h5>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <section class="cd-horizontal-timeline m0">
-                        <div class="timeline">
-                            <div class="events-wrapper">
-                                <div class="events">
-                                    <ol style="list-style: none;" class="p0">
-                                        <?php
-                                        if (!empty($years)) {
-                                            foreach ($years as $key => $value) {
-                                                ?>
-                                                <li><a href="#0" data-date="01/01/<?= $value['year'] ?>" class="<?= $key == 0 ? 'selected' : '' ?>"><?= $value['year'] ?></a></li>
-                                                <?php
-                                            }
-                                        }
-                                        ?>
-                                    </ol>
-                                    <span class="filling-line" aria-hidden="true"></span>
+</nav>
+@stop
+
+@section('content')
+<div class="center">
+    <div class="container">
+        <div class="row">
+            <div class="site site--main">
+                <header class="site__header">
+                    <h1 class="site__title">The Heart of Europe</h1>
+                </header>
+                <div class="site__main">
+                    <div class="widget js-widget widget--main widget--no-margin">
+                        <div class="widget__content">
+                            <article class="article article--list article--details">
+                                <div class="article__body">
+                                    <p><strong>All The Heart of Europe’s hotels, palaces, villas, vessels and underwater living experiences are inspired by iconic European experiences and culture. 4,000+ units tailored for the most refined vacationers and staycationers. With breath-taking entertainment, beaches, pools, snow streets, yacht culture and culinary delights. Along with the perfect climate, breathtaking natural beauty and a wealth of cultural prestige.</strong></p>
+                                    <p>
+                                        The four-bedroom, two-bathroom home offers 1,978 square feet of living space and a spacious backyard designed for entertaining.
+                                        Elegance, sophistication and innovation without equal. A vision that redefines exceptional living. Welcome to The Heart of Europe: the world’s most inspirational luxury destination with sustainability and innovation at its core.
+                                    </p><img src="<?=asset('frontend-assets/media-demo/banner/banner-1.jpg')?>" alt="">
+                                    <p>Their proximity to so many world-famous attractions would be reason alone to invest. Yet The Floating Seahorse Villas’ true allure is a unique world first – an authentic luxury underwater living experience. Connected to Honeymoon island by floating jetties, the Signature Edition of The Floating Seahorse Villa is designed especially for families with children and groups of friends. Extending over 4,000 square feet across three levels, each will be home to enviable special features, state-of-the-art technology and outdoor climate-controlled areas. But the crowning glory is undoubtedly the underwater level and its wide views onto coral reefs full of beauty and life.</p>
+                                    <blockquote>&ldquo;A feat of innovation achieved by a marriage of engineering and imagination; The Floating Seahorse Villas are breathtakingly unique home from which to enjoy the best The Heart of Europe has to offer.&rdquo; Josef Kleindienst.</blockquote>
+                                    <p>The ambience will be refined and exclusive, with carefully curated events – including extraordinary Swedish Midsummer, National Day, St Martin’s Day, Walpurgis Eve, Saint Lucia, and crayfish parties. The calendar will also pay homage to the country’s increasingly-popular film, music, and arts scene. And naturally, restaurants will take their lead from Sweden’s exciting cuisine, with delicacies such as sour herring, meatballs, Raggmunkar, toast Skagen, smörgåsbord, mouth-watering crayfish, hot mulled wine, Snaps, and Glὃgg.</p>
+                                    <ul>
+                                        <li>Main Europe</li>
+                                        <li>Sweden</li>
+                                        <li>Floating Seahorse</li>
+                                        <li>Germany</li>
+                                        <li>St. Petersberg</li>
+                                        <li>Switzerland</li>
+                                        <li>Floating Lido</li>
+                                    </ul>
+                                    <p>Innovative sustainability features will be embedded in the beautiful design. And the Island’s public spaces will brim with the country’s rich cultural heritage. Traditional carnivals, Christmas markets, Schützenfest, wine festivals, and internationally-acclaimed Oktoberfest will draw crowds from across the Heart of Europe. National and regional cuisines will also star, as expert chefs plate up the finest examples of Eintopf, Bratwurst, and Spätzle; accompanied by vintage Schnaps and Glühwein and the finest German beers and wines.</p>
                                 </div>
-                            </div>
-                            <ul class="cd-timeline-navigation">
-                                <li><a href="#0" class="prev inactive">Prev</a></li>
-                                <li><a href="#0" class="next">Next</a></li>
-                            </ul>
+                                <div class="article__footer">
+                                    <div class="social social--article"><span>Share on social:</span><a href="#" class="social__item"><i class="fa fa-facebook"></i></a><a href="#" class="social__item"><i class="fa fa-twitter"></i></a></div>
+                                </div>
+                            </article>
                         </div>
-                        <div class="events-content">
-                            <ol style="list-style: none;margin:0;" class="p0">
-                                <?php if (!empty($timelines)) {
-                                    foreach ($years as $k => $v) {
-                                        ?>
-                                        <li data-date="01/01/<?= $v['year'] ?>" class="<?= $k == 0 ? 'selected' : '' ?> roffset-0">
-                                            <div class="row">
-                                                <?php
-                                                foreach ($timelines as $key => $value) {
-                                                    if (array_count_values(array_column($timelines, 'year'))[$v['year']] == "1" && $value['year'] == $v['year']) {
-                                                        ?>
-                                                        <div class="col s12 roffset-0">
-                                                            <div class="col s12 m6">
-                                                                @if($value['image']!="")
-                                                                <img alt="<?= $value['alt'] ?>" src="<?= asset('assets/images/timeline/') ?>/<?= $value['image'] ?>" class="responsive-img">
-                                                                @endif
-                                                            </div>
-                                                            <div class="col s12 m6">
-                                                                <h5 class="az-title" style="font-weight: 800;font-size: 13px;height: 4em;overflow: hidden;text-overflow: ellipsis;width: 100%;">
-                <?= !empty($value['title_en']) ? $value['title_en'] : '' ?></h5>
-                                                                <div class="divider az-header-divider mb0" style="background: white;"></div>
-                                                                <p class="az-pcontent az-pright"><?= !empty($value['description_en']) ? $value['description_en'] : '' ?></p>
-                                                            </div>
-                                                        </div>
-            <?php } elseif (array_count_values(array_column($timelines, 'year'))[$v['year']] == "2" && $value['year'] == $v['year']) { ?>
-                                                        <div class="col s12 m6">
-                                                            <div class="col s12">
-                                                                @if($value['image']!="")
-                                                                <img alt="<?= $value['alt'] ?>" src="<?= asset('assets/images/timeline/') ?>/<?= $value['image'] ?>" class="responsive-img">
-                                                                @endif
-                                                            </div>
-                                                            <div class="col s12 ">
-                                                                <h5 class="az-title" style="font-weight: 800;font-size: 13px;height: 4em;overflow: hidden;text-overflow: ellipsis;width: 100%;">
-                <?= !empty($value['title_en']) ? $value['title_en'] : '' ?></h5>
-                                                                <div class="divider az-header-divider mb0" style="background: white;"></div>
-                                                                <p class="az-pcontent az-pright"><?= !empty($value['description_en']) ? $value['description_en'] : '' ?></p>
-                                                            </div>
-                                                        </div>
-            <?php } elseif (array_count_values(array_column($timelines, 'year'))[$v['year']] == "3" && $value['year'] == $v['year']) { ?>
-                                                        <div class="col s12 m4 p0">
-                                                            <div class="col s12">
-                                                                @if($value['image']!="")
-                                                                <img alt="<?= $value['alt'] ?>" src="<?= asset('assets/images/timeline/') ?>/<?= $value['image'] ?>" class="responsive-img">
-                                                                @endif
-                                                            </div>
-                                                            <div class="col s12" style="margin-top: 2em;">
-                                                                <h5 class="az-title" style="font-weight: 800;font-size: 13px;height: 4em;overflow: hidden;text-overflow: ellipsis;width: 100%;">
-                <?= !empty($value['title_en']) ? $value['title_en'] : '' ?></h5>
-                                                                <div class="divider az-header-divider mb0" style="background: white;"></div>
-                                                                <p class="az-pcontent az-pright"><?= !empty($value['description_en']) ? $value['description_en'] : '' ?></p>
-                                                            </div>
-                                                        </div>
-            <?php } elseif (array_count_values(array_column($timelines, 'year'))[$v['year']] == "4" && $value['year'] == $v['year']) { ?>
-
-                                                        <div class="col s12 m3 p0">
-                                                            <div class="col s12">
-                                                                @if($value['image']!="")
-                                                                <img alt="<?= $value['alt'] ?>" src="<?= asset('assets/images/timeline/') ?>/<?= $value['image'] ?>" class="responsive-img">
-                                                                @endif
-                                                            </div>
-                                                            <div class="col s12" style="margin-top: 2em;">
-                                                                <h5 class="az-title" style="font-weight: 800;font-size: 13px;height: 4em;overflow: hidden;text-overflow: ellipsis;width: 100%;">
-                <?= !empty($value['title_en']) ? $value['title_en'] : '' ?></h5>
-                                                                <div class="divider az-header-divider mb0" style="background: white;"></div>
-                                                                <p class="az-pcontent az-pright"><?= !empty($value['description_en']) ? $value['description_en'] : '' ?></p>
-                                                            </div>
-                                                        </div>
-                                                    <?php } ?>
-
-        <?php } ?>
-                                            </div>
-                                        </li>
-                                        <?php
-                                    }
-                                }
-                                ?>
-                            </ol>
-                        </div>
-                    </section>
+                    </div>
                 </div>
+                <!-- END site-->
             </div>
+            <!-- END Site-->
+            <!-- BEGIN SIDEBAR-->
+            <div class="sidebar">
+                <div class="widget js-widget widget--sidebar">
+                    <div class="widget__header">
+                        <h2 class="widget__title"> </h2>
+                        <h5 class="widget__headline"> </h5>
+                        <a class="widget__btn js-widget-btn widget__btn--toggle">View More</a>
+                    </div>
+                    <div class="widget__content">
+                        <!-- BEGIN ARTICLE CATEGORIES-->
+                        <div class="article-categories">
+                            <div class="article-categories__list js-categories-article">
+                                <ul>
+                                    <li class="article-categories__item"><a href="#" class="article-categories__name">About THOE</a></li>
+                                    <li class="article-categories__item"><a href="#" class="article-categories__name">About The World</a></li>
+                                    <li class="article-categories__item"><a href="#" class="article-categories__name">About Developer</a></li>
+                                    <li class="article-categories__item"><a href="#" class="article-categories__name">Chairman's Message</a></li>
+                                    <li class="article-categories__item"><a href="#" class="article-categories__name">Management Team</a></li>
+                                    <li class="article-categories__item"><a href="#" class="article-categories__name">Awards</a></li>
+                                </ul>
+                            </div>
+                            <!-- end of block .article-categories__list-->
+                        </div>
+                        <!-- END ARTICLE CATEGORIES-->
+                    </div>
+                </div>
+                <!-- END SIDEBAR-->
+            </div>
+            <!-- END SIDEBAR-->
+            <div class="clearfix"></div>
         </div>
     </div>
-</section>
-<!-- End -->
+</div>
 @stop
 
-@section('footer_main_scripts')
 
-@stop
 @section('footer_scripts')
-<!-- Timeline -->
-<script type="text/javascript" src="<?= asset('assets/js/timeline-main.js') ?>"></script>
-<script> sessionStorage.setItem("utm_source", 'Website');sessionStorage.setItem("utm_campaign", 'Others');</script>
+
 @stop
+

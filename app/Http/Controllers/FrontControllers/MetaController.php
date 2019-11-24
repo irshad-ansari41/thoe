@@ -20,8 +20,8 @@ class MetaController extends Controller {
             $exist = DB::table('tbl_meta')->where('page_url', $meta['page_url'])->count();
             $data = [
                 'page_url' => $meta['page_url'],
-                'meta_title' => !empty($meta['meta_title']) ? $this->checkTitle($meta['meta_title']) : 'Property Developer in Dubai, Azizi Developments | ' . time(),
-                'meta_desc' => !empty($meta['meta_desc']) ? $this->checkTitle($meta['meta_desc']) : 'Property Developer in Dubai, Azizi Developments | ' . time(),
+                'meta_title' => !empty($meta['meta_title']) ? $this->checkTitle($meta['meta_title']) : 'Property Developer in Dubai, The Heart of Europe | ' . time(),
+                'meta_desc' => !empty($meta['meta_desc']) ? $this->checkTitle($meta['meta_desc']) : 'Property Developer in Dubai, The Heart of Europe | ' . time(),
                 'meta_key' => $meta['meta_key']
             ];
 

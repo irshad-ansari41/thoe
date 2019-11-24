@@ -168,14 +168,14 @@ class AdminAgentController extends Controller {
 
         $message = "
 				Hi, " . $name . "<br>
-				Your account has been approved by AZIZI Development.<br/> 
+				Your account has been approved by THOE Development.<br/> 
 				Following are the credentials for login.<br/><br/>
 				URL : <a href='http://54.161.55.240/public/agentlogin'>Agent Login</a><br/>
 				Username : " . $send_email . "<br/>
 				Password : " . $random_apss . "<br/><br/>
 				
 				Thanks,<br>
-				Azizi Development
+				THOE Development
 		";
 
         $headers = "From: $name < $send_email >\n";
@@ -184,7 +184,7 @@ class AdminAgentController extends Controller {
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=iso-8859-1\n";
 
-        mail($send_email, "AZIZI - Your Account is approve !!", $message, $headers);
+        mail($send_email, "THOE - Your Account is approve !!", $message, $headers);
 
         $request->session()->flash('alert-success', 'Agent is approve!');
         return redirect('admin/agents');

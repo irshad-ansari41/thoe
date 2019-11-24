@@ -294,7 +294,12 @@
             <span class="fa arrow"></span>
         </a>
         <ul class="sub-menu">
-
+            <li <?= (Request::is('admin/news') ? 'class="active"' : '') ?>>
+                <a href="{{ URL::to('admin/presscategory') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Press Category
+                </a>
+            </li>
             <li <?= (Request::is('admin/news') ? 'class="active"' : '') ?>>
                 <a href="{{ URL::to('admin/news') }}">
                     <i class="fa fa-angle-double-right"></i>

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
 $(document).on('click', '.panel-heading .removepanel', function(){
     var $this = $(this);
     $this.parents('.panel').hide("slow");

@@ -33,3 +33,22 @@
     margin-top: 0;
     border-top: 2px solid #b7b0b0;
 }
+
+.help-block {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #737373;
+}
+.input-group .form-control{
+    z-index:0;
+}
+@media(min-width:320px) and (max-width:768px){
+    .margin_right_left {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .select2.select2-container.select2-container--bootstrap{
+        width:100%;
+    }
+}

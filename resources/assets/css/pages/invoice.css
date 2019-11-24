@@ -40,3 +40,16 @@ hr{
     .right-side{margin-left:0;}
 
 }
+.btn_marTop{
+    margin-top:10px;
+}
+@media (max-width:320px) {
+       .colors_right{
+        float:none !important;
+    }
+    .colors{
+        margin-top:10px;
+        margin-left:0px !important;
+    }
+
+}

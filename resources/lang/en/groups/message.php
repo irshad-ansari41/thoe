@@ -26,7 +26,8 @@ return array(
     'error' => array(
         'group_exists' => 'A group already exists with that name, names must be unique for groups.',
         'group_role_exists' => 'Another role with same slug exists, please choose another name',
-        'no_role_exists' => 'No Role exists with that id'
+        'no_role_exists' => 'No Role exists with that id.',
+
     ),
 
 );

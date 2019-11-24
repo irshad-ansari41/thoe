@@ -53,9 +53,9 @@ class LeadFormController extends Controller {
         $data = [
             'countries' => $countries,
             'country_codes' => $country_codes,
-            'meta_title' => "Lead Form | {$this->locale} | Azizi Developments",
-            'meta_keyword' => "Lead Form | {$this->locale} | Azizi Developments",
-            'meta_description' => "Lead Form | {$this->locale} | Azizi Developments",
+            'meta_title' => "Lead Form | {$this->locale} | The Heart of Europe",
+            'meta_keyword' => "Lead Form | {$this->locale} | The Heart of Europe",
+            'meta_description' => "Lead Form | {$this->locale} | The Heart of Europe",
             'locale' => $this->locale,
         ];
 
@@ -116,9 +116,9 @@ class LeadFormController extends Controller {
             'countries' => $countries,
             'user' => Sentinel::getUser(),
             'country_codes' => $country_codes,
-            'meta_title' => "Lead Form | {$this->locale} | Azizi Developments",
-            'meta_keyword' => "Lead Form | {$this->locale} | Azizi Developments",
-            'meta_description' => "Lead Form | {$this->locale} | Azizi Developments",
+            'meta_title' => "Lead Form | {$this->locale} | The Heart of Europe",
+            'meta_keyword' => "Lead Form | {$this->locale} | The Heart of Europe",
+            'meta_description' => "Lead Form | {$this->locale} | The Heart of Europe",
             'locale' => $this->locale,
         ];
 
@@ -143,9 +143,9 @@ class LeadFormController extends Controller {
         $data = [
             'countries' => $countries,
             'country_codes' => $country_codes,
-            'meta_title' => "Lead Form | {$this->locale} | Azizi Developments",
-            'meta_keyword' => "Lead Form | {$this->locale} | Azizi Developments",
-            'meta_description' => "Lead Form | {$this->locale} | Azizi Developments",
+            'meta_title' => "Lead Form | {$this->locale} | The Heart of Europe",
+            'meta_keyword' => "Lead Form | {$this->locale} | The Heart of Europe",
+            'meta_description' => "Lead Form | {$this->locale} | The Heart of Europe",
             'locale' => $this->locale,
         ];
 

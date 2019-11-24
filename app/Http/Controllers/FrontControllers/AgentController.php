@@ -245,7 +245,7 @@ class AgentController extends Controller {
                 Company 		: $company<br>
                 Comment 		: $comment<br><br>
                 Thanks...<br>
-                Azizi Development..
+                THOE Development..
                             ";
 
 

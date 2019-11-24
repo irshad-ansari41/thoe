@@ -923,3 +923,22 @@ svg:not(:root) {
     border: 1px solid #418BCA;
     background-color: #418BCA;
 }
+@-moz-document url-prefix() {
+    .right_lable .btn-label{
+        left:12px;
+        top:-20px;
+    }
+    .right_lable .label-text{
+
+        left:-25px !important;
+    }
+    button.right_lable{
+        height: 34px;
+    }
+}
+@media (max-width:320px){
+    .btn_padding .btn-label{
+        padding:6px 12px !important;
+    }
+
+}

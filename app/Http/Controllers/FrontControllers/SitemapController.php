@@ -62,11 +62,11 @@ class SitemapController extends Controller {
             'vgalleries' => $vgalleries,
             'events' => $events,
             'press' => $press,
-            'meta_title' => 'Sitemap | Azizi Developments',
-            'meta_keyword' => 'Sitemap | Azizi Developments',
-            'meta_description' => 'Sitemap | Azizi Developments',
-            'og_title' => 'Sitemap | Azizi Developments',
-            'og_desc' => 'Sitemap | Azizi Developments',
+            'meta_title' => 'Sitemap | The Heart of Europe',
+            'meta_keyword' => 'Sitemap | The Heart of Europe',
+            'meta_description' => 'Sitemap | The Heart of Europe',
+            'og_title' => 'Sitemap | The Heart of Europe',
+            'og_desc' => 'Sitemap | The Heart of Europe',
             'og_pic' => '',
             'banner' => '',
             'locale' => $this->locale,
@@ -117,7 +117,7 @@ class SitemapController extends Controller {
 //        if (file_exists($file) && date("dmy", filemtime($file)) == date('dmy')) {
 //            $content = file_get_contents($file);
 //        }
-//        file_put_contents($file, $content . str_replace('https://www.azizidevelopments.com/', '', implode("\n", $sitemaps)));
+//        file_put_contents($file, $content . str_replace('https://www.thoedevelopments.com/', '', implode("\n", $sitemaps)));
 
         return SITE_URL . $filename;
     }
@@ -146,7 +146,7 @@ class SitemapController extends Controller {
             $content = file_get_contents($file);
         }
 
-        file_put_contents($file, $content . str_replace('https://www.azizidevelopments.com/', '', implode("\n", $uni_xmlurls)));
+        file_put_contents($file, $content . str_replace('https://www.thoedevelopments.com/', '', implode("\n", $uni_xmlurls)));
         return SITE_URL . $filename;
     }
 
@@ -315,7 +315,7 @@ class SitemapController extends Controller {
 
                 $post_title = str_replace(['&', '/', '<br/>', '<br>'], ['&amp;', '-', '', ''], strip_tags($video->gallery_title . ', Id - ' . $video->id));
                 $post_content = str_replace(['&', '/', '<br/>', '<br>'], ['&amp;', '-', '', ''], strip_tags($video->gallery_long_title));
-                $tags = [$post_title, $post_content, 'off plan properties', 'dubai off plan', 'real estate', 'Azizi developments', 'off plan property', 'real estate developer',
+                $tags = [$post_title, $post_content, 'off plan properties', 'dubai off plan', 'real estate', 'THOE developments', 'off plan property', 'real estate developer',
                     'dubai properties'];
 
                 $xml .= "<url>" . $sep;

@@ -53,7 +53,7 @@ class AdminSyncController extends Controller {
         $files = [];
         foreach ($result as $key => $value) {
             $pathinfo = pathinfo($value);
-            $filepath = str_replace(['http://d20tuhk9p77p3f.cloudfront.net/', 'http://azizidevelopments.in/'], ['/home/aziziin/public_html/'], $value);
+            $filepath = str_replace(['http://d20tuhk9p77p3f.cloudfront.net/', 'http://thoedevelopments.in/'], ['/home/thoein/public_html/'], $value);
             $filetime = date("Y-m-d", filemtime($filepath));
             $files[$key]['path'] = $filepath;
             $files[$key]['url'] = $value;

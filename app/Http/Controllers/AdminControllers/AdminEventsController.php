@@ -153,15 +153,19 @@ class AdminEventsController extends Controller {
 
             $pname = str_replace(' ', '_', $request->title_en);
             $path = STORE_PATH . '/assets/images/media/' . $pname;
-            File::makeDirectory($path, $mode = 777, true, true);
+            if (!file_exists($path)) {
+                File::makeDirectory($path);
+            }
             $spath = STORE_PATH . '/assets/images/media' . $pname;
-            chmod($spath, 0777);
+            @chmod($spath, 0777);
 
 
             $path1 = STORE_PATH . '/assets/images/media/' . $pname . '/images';
-            File::makeDirectory($path1, $mode = 777, true, true);
+            if (!file_exists($path1)) {
+                File::makeDirectory($path1, $mode = 777, true, true);
+            }
             $spath1 = STORE_PATH . '/assets/images/media/' . $pname . "/images";
-            chmod($spath1, 0777);
+            @chmod($spath1, 0777);
 
 
 
@@ -381,6 +385,7 @@ class AdminEventsController extends Controller {
         $results = Gallery_child::where("gallery_id", $id)->get();
         $master = Gallery_master::find($id);
         $path = $master->path;
+        $type = $props = $project_id = $ptitle = '';
         return View('admin.events.editupload', compact('results', 'type', 'master', 'id', 'props', 'project_id', 'ptitle'));
     }
 
@@ -493,30 +498,30 @@ class AdminEventsController extends Controller {
     }
 
     public function store_events(Request $request, $id = '') {
-        
-        
+
+
         if ($request->type == "add") {
-            
+
             $this->validate($request, [
-                'event_title'=>'required',
-                'extra_desc'=>'required',
-                'long_desc'=>'required',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
-                'main_image' => 'required|image|mimes:jpeg,png,jpg,gif|dimensions:width=845,height=592|max:150',
-                //'image_ar' => 'mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
-                //'image_cn' => 'mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
-            ],[
-                'event_title.required'=>'Sales event title required !',
-                'extra_desc.required'=>'Sales event short description requried !',
-                'long_desc.required'=>'Sales event Details !',
-                'image.required'=>'Thumbnail image required !',
-                'image.dimensions:width=313,height=197'=>'Image width must be 313X197 px!',
-                'image.max'=>'Image size must be less then 50kb !',
-                'main_image.required'=>'Main image required',
-                'main_image.dimensions:width=845,height=592'=>'Image width must be 845X592 px',
-                'main_image.max'=>'Image size must be less then 50kb'            
+                'event_title' => 'required',
+                'extra_desc' => 'required',
+                'long_desc' => 'required',
+                    //'image' => 'required|image|mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
+                    //'main_image' => 'required|image|mimes:jpeg,png,jpg,gif|dimensions:width=845,height=592|max:150',
+                    //'image_ar' => 'mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
+                    //'image_cn' => 'mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
+                    ], [
+                'event_title.required' => 'Sales event title required !',
+                'extra_desc.required' => 'Sales event short description requried !',
+                'long_desc.required' => 'Sales event Details !',
+                'image.required' => 'Thumbnail image required !',
+                'image.dimensions:width=313,height=197' => 'Image width must be 313X197 px!',
+                'image.max' => 'Image size must be less then 50kb !',
+                'main_image.required' => 'Main image required',
+                'main_image.dimensions:width=845,height=592' => 'Image width must be 845X592 px',
+                'main_image.max' => 'Image size must be less then 50kb'
             ]);
-            
+
             $slugdate = date_create($request->date);
             $image = $request->file('image');
             $image_ar = $request->file('image_ar');
@@ -594,9 +599,9 @@ class AdminEventsController extends Controller {
             $new->event_photo_alt = input_trims($request->event_title);
             $new->event_main_photo_alt = input_trims($request->event_title);
 
-            $new->slug_en = !empty($request->slug)? str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug . ' ' . date_format($slugdate, "jS F Y"))))) :'';
-            $new->slug_ar = !empty($request->slug_ar)? str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug_ar . ' ' . date_format($slugdate, "jS F Y"))))): '';
-            $new->slug_cn = !empty($request->slug_ch)? str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug_ch . ' ' . date_format($slugdate, "jS F Y"))))): '';
+            $new->slug_en = !empty($request->slug) ? str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug . ' ' . date_format($slugdate, "jS F Y"))))) : '';
+            $new->slug_ar = !empty($request->slug_ar) ? str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug_ar . ' ' . date_format($slugdate, "jS F Y"))))) : '';
+            $new->slug_cn = !empty($request->slug_ch) ? str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug_ch . ' ' . date_format($slugdate, "jS F Y"))))) : '';
 
             $new->meta_title = input_trims($request->event_title);
             $new->meta_keyword = input_trims($request->meta_keyword);
@@ -620,7 +625,7 @@ class AdminEventsController extends Controller {
             // if(isset($request->date)){
             $new->event_date = input_trims($request->date);
             $new->symbols = input_trims($request->symbols);
-            $new->levent_date = !empty($request->ldate) ? input_trims($request->ldate): '';
+            $new->levent_date = !empty($request->ldate) ? input_trims($request->ldate) : '';
             /* }else{
               $new->event_date = date("Y-m-d");
               } */
@@ -635,23 +640,23 @@ class AdminEventsController extends Controller {
         if ($request->type == "edit") {
 
             $this->validate($request, [
-                'event_title'=>'required',
-                'extra_desc'=>'required',
-                'long_desc'=>'required',
+                'event_title' => 'required',
+                'extra_desc' => 'required',
+                'long_desc' => 'required',
                 'image' => 'image|mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
                 'main_image' => 'image|mimes:jpeg,png,jpg,gif|dimensions:width=845,height=592|max:150',
-                //'image_ar' => 'mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
-                //'image_cn' => 'mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
-            ],[
-                'event_title.required'=>'Sales event title required !',
-                'extra_desc.required'=>'Sales event short description requried !',
-                'long_desc.required'=>'Sales event Details !',                
-                'image.dimensions:width=313,height=197'=>'Image width must be 313X197 px!',
-                'image.max'=>'Image size must be less then 50kb !',
-                'main_image.dimensions:width=845,height=592'=>'Image width must be 845X592 px',
-                'main_image.max'=>'Image size must be less then 50kb'            
+                    //'image_ar' => 'mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
+                    //'image_cn' => 'mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
+                    ], [
+                'event_title.required' => 'Sales event title required !',
+                'extra_desc.required' => 'Sales event short description requried !',
+                'long_desc.required' => 'Sales event Details !',
+                'image.dimensions:width=313,height=197' => 'Image width must be 313X197 px!',
+                'image.max' => 'Image size must be less then 50kb !',
+                'main_image.dimensions:width=845,height=592' => 'Image width must be 845X592 px',
+                'main_image.max' => 'Image size must be less then 50kb'
             ]);
-            
+
             $image = $request->file('image');
             $image_ar = $request->file('image_ar');
             $image_ch = $request->file('image_ch');
@@ -778,7 +783,7 @@ class AdminEventsController extends Controller {
               } */
             $data['event_date'] = input_trims($request->date);
             $data['symbols'] = input_trims($request->symbols);
-            $data['levent_date'] = !empty($request->ldate) ? input_trims($request->ldate):'';            
+            $data['levent_date'] = !empty($request->ldate) ? input_trims($request->ldate) : '';
             // }			   
 
 

@@ -74,8 +74,8 @@ class AdminMetaController extends Controller {
             if (empty($exist)) {
                 DB::table('tbl_meta')->insert([
                     'page_url' => $meta['page_url'],
-                    'meta_title' => !empty($meta['meta_title']) ? $meta['meta_title'] : 'Property Developer in Dubai, Azizi Developments | ' . time(),
-                    'meta_desc' => !empty($meta['meta_desc']) ? $meta['meta_desc'] : 'Property Developer in Dubai, Azizi Developments | ' . time(),
+                    'meta_title' => !empty($meta['meta_title']) ? $meta['meta_title'] : 'Property Developer in Dubai, The Heart of Europe | ' . time(),
+                    'meta_desc' => !empty($meta['meta_desc']) ? $meta['meta_desc'] : 'Property Developer in Dubai, The Heart of Europe | ' . time(),
                     'meta_key' => $meta['meta_key'],
                 ]);
             }

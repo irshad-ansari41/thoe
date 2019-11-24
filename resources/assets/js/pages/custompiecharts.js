@@ -183,11 +183,19 @@ function setCode(lines) {
 }
 
 // d3pie chart code
-
+if($(window).width()<426){
+    var x=$("#pie1").width();
+}
+else if($(window).width()>426 && $(window).width()<769){
+    var x=$("#pie1").width()-300;
+}
+else if($(window).width()>769){
+	var x=350;
+}
 var pie = new d3pie("#pie1", {
 	size: {
-		canvasHeight: 350,
-		canvasWidth: 350
+		canvasHeight: x,
+		canvasWidth: x
 	},
     labels: {
         mainLabel: {
@@ -208,10 +216,19 @@ var pie = new d3pie("#pie1", {
 		]
 	}
 });
+if($(window).width()<426){
+    var x=$("#pie2").width();
+}
+else if($(window).width()>426 && $(window).width()<769){
+    var x=$("#pie2").width()-300;
+}
+else if($(window).width()>769){
+    var x=350;
+}
 var pie = new d3pie("#pie2", {
 	size: {
-		canvasHeight: 350,
-		canvasWidth: 350
+		canvasHeight: x,
+		canvasWidth: x
 	},
 	labels: {
 		inner: {
@@ -241,10 +258,20 @@ var pie = new d3pie("#pie2", {
 		string: "{label}, {value}, {percentage}%"
 	}
 });
+if($(window).width()<426){
+    var x=$("#pie3").width();
+}
+else if($(window).width()>426 && $(window).width()<769){
+    var x=$("#pie3").width()-300;
+}
+else if($(window).width()>769){
+    var x=350;
+}
 var pie = new d3pie("#pie3", {
 	size: {
 		pieOuterRadius: "100%",
-		canvasHeight: 350
+		canvasHeight: x,
+        canvasWidth: x
 	},
     labels: {
         mainLabel: {
@@ -290,11 +317,20 @@ var pie = new d3pie("#pie3", {
 		string: "{label}, {value}, {percentage}%"
 	}
 });
+if($(window).width()<426){
+    var x=$("#pie4").width();
+}
+else if($(window).width()>426 && $(window).width()<769){
+    var x=$("#pie4").width()-300;
+}
+else if($(window).width()>769){
+    var x=350;
+}
 var pie = new d3pie("pie4", {
 	size: {
 		pieInnerRadius: "80%",
-		canvasHeight: 350,
-		canvasWidth: 350
+		canvasHeight: x,
+		canvasWidth: x
 	},
     labels: {
         mainLabel: {

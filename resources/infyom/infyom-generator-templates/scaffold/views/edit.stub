@@ -1,22 +1,21 @@
-@extends('$VIEW_PREFIX$/layouts/default')
+@extends('admin/layouts/default')
 
 @section('title')
 $MODEL_NAME_PLURAL$
 @parent
 @stop
-
 @section('content')
   @include('core-templates::common.errors')
     <section class="content-header">
      <h1>$MODEL_NAME_PLURAL$ Edit</h1>
      <ol class="breadcrumb">
          <li>
-             <a href="{{ route('$ROUTE_NAMED_PREFIX$dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
+             <a href="{{ route('admin.dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
                  Dashboard
              </a>
          </li>
          <li>$MODEL_NAME_PLURAL$</li>
-         <li class="active">Edit $MODEL_NAME_PLURAL$ </li>
+         <li class="active">Edit $MODEL_NAME$ </li>
      </ol>
     </section>
     <section class="content paddingleft_right15">
@@ -38,3 +37,13 @@ $MODEL_NAME_PLURAL$
     </div>
    </section>
  @stop
+@section('footer_scripts')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("form").submit(function() {
+                $('input[type=submit]').attr('disabled', 'disabled');
+                return true;
+            });
+        });
+    </script>
+@stop

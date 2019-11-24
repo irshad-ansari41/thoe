@@ -150,11 +150,11 @@ class ContactController extends Controller {
         if ($request->frm == "contact") {
 
             $departments = [
-                1 => ['text' => 'Corporate Communication', 'email' => 'marcom@azizidevelopments.com'],
-                2 => ['text' => 'Marketing', 'email' => 'marcom@azizidevelopments.com'],
-                3 => ['text' => 'Customer Service', 'email' => 'customercare@azizidevelopments.com'],
-                4 => ['text' => 'Legal', 'email' => 'legal@azizidevelopments.com'],
-                5 => ['text' => 'Sales', 'email' => 'marketing@azizidevelopments.com']
+                1 => ['text' => 'Corporate Communication', 'email' => 'marcom@thoedevelopments.com'],
+                2 => ['text' => 'Marketing', 'email' => 'marcom@thoedevelopments.com'],
+                3 => ['text' => 'Customer Service', 'email' => 'customercare@thoedevelopments.com'],
+                4 => ['text' => 'Legal', 'email' => 'legal@thoedevelopments.com'],
+                5 => ['text' => 'Sales', 'email' => 'marketing@thoedevelopments.com']
             ];
 
             $data = [
@@ -176,7 +176,7 @@ class ContactController extends Controller {
                     $this->salesForceLead($lead_id);
                     $res = ['status' => 'success', 'msg' => 'Successfully submit.', 'redirect_url' => $this->redirect_url];
                 else:
-                    $res = ['status' => 'success', 'msg' => 'Successfully submit.', 'redirect_url' => 'https://azizidevelopments.com'];
+                    $res = ['status' => 'success', 'msg' => 'Successfully submit.', 'redirect_url' => 'https://thoedevelopments.com'];
                 endif;
                 //return Response::json($result);
                 return redirect()->route('contact.index', ['msg' => $this->locale == 'en' ? $en_msg : $ar_msg, 'response' => $res]);
@@ -187,9 +187,9 @@ class ContactController extends Controller {
 
                 $res = Mail::send('emails.contact', ['data' => $data], function ($message) use ($data) {
                     $message->subject($data['subject']);
-                    $message->from('website@azizidevelopments.com', 'Azizi Developments');
+                    $message->from('website@thoedevelopments.com', 'The Heart of Europe');
                     $message->to($data['emailTo'], $data['nameTo']);
-                    //$message->to('zubair.khan@azizidevelopments.com', 'ZUBAIR KHAN');
+                    //$message->to('zubair.khan@thoedevelopments.com', 'ZUBAIR KHAN');
                 });
                 //return redirect()->route('contact.index', ['dedug' => 1, 'msg' => $this->locale == 'en' ? $en_msg : $ar_msg, 'response' => $res]);
                 return redirect()->route('contact.index', ['msg' => $this->locale == 'en' ? $en_msg : $ar_msg, 'response' => $res]);

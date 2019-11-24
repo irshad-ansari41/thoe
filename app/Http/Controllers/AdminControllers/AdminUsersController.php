@@ -327,8 +327,8 @@ class AdminUsersController extends Controller {
             $data = ['user' => $user];
             Mail::send('emails.account-login', $data, function ($m) use ($user) {
                 $m->to($user->email, $user->first_name . ' ' . $user->last_name);
-                $m->replyTo('irshad.ansari@azizidevelopments.com', 'Irshad Ansari');
-                $m->subject('Account Active: Azizi Availability List Application ');
+                $m->replyTo('irshad.ansari@thoedevelopments.com', 'Irshad Ansari');
+                $m->subject('Account Active: THOE Availability List Application ');
             });
             return;
         }
@@ -337,8 +337,8 @@ class AdminUsersController extends Controller {
             $data = ['user' => $user];
             Mail::send('emails.change-password', $data, function ($m) use ($user) {
                 $m->to($user->email, $user->first_name . ' ' . $user->last_name);
-                $m->replyTo('zubair.khan@azizidevelopments.com', 'Zubair Khan');
-                $m->subject('Password changed: Azizi Availability List Application');
+                $m->replyTo('zubair.khan@thoedevelopments.com', 'Zubair Khan');
+                $m->subject('Password changed: THOE Availability List Application');
             });
             return;
         }

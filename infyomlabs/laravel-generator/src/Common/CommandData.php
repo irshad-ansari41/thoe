@@ -30,7 +30,7 @@ class CommandData
 
     /**
      * @param Command $commandObj
-     * @param string  $commandType
+     * @param string $commandType
      *
      * @return CommandData
      */
@@ -41,15 +41,10 @@ class CommandData
 
         $this->fieldNamesMapping = [
             '$FIELD_NAME_TITLE$' => 'fieldTitle',
-            '$FIELD_NAME$'       => 'fieldName',
+            '$FIELD_NAME$' => 'fieldName',
         ];
 
         $this->config = new GeneratorConfig();
-    }
-
-    public function commandError($error)
-    {
-        $this->commandObj->error($error);
     }
 
     public function commandComment($message)
@@ -62,29 +57,14 @@ class CommandData
         $this->commandObj->warn($warning);
     }
 
-    public function commandInfo($message)
-    {
-        $this->commandObj->info($message);
-    }
-
     public function initCommandData()
     {
         $this->config->init($this);
     }
 
-    public function getOption($option)
-    {
-        return $this->config->getOption($option);
-    }
-
     public function getAddOn($option)
     {
         return $this->config->getAddOn($option);
-    }
-
-    public function setOption($option, $value)
-    {
-        $this->config->setOption($option, $value);
     }
 
     public function addDynamicVariable($name, $val)
@@ -103,6 +83,75 @@ class CommandData
         } else {
             $this->getInputFromConsole();
         }
+    }
+
+    public function getOption($option)
+    {
+        return $this->config->getOption($option);
+    }
+
+    private function getInputFromFileOrJson()
+    {
+        // fieldsFile option will get high priority than json option if both options are passed
+        try {
+            if ($this->getOption('fieldsFile')) {
+                if (file_exists($this->getOption('fieldsFile'))) {
+                    $filePath = $this->getOption('fieldsFile');
+                } else {
+                    $filePath = base_path($this->getOption('fieldsFile'));
+                }
+
+                if (!file_exists($filePath)) {
+                    $this->commandError('Fields file not found');
+                    exit;
+                }
+
+                $fileContents = file_get_contents($filePath);
+                $jsonData = json_decode($fileContents, true);
+                $this->inputFields = array_merge($this->inputFields, GeneratorFieldsInputUtil::validateFieldsFile($jsonData));
+            } else {
+                $fileContents = $this->getOption('jsonFromGUI');
+                $jsonData = json_decode($fileContents, true);
+                $this->inputFields = array_merge($this->inputFields, GeneratorFieldsInputUtil::validateFieldsFile($jsonData['fields']));
+                $this->config->overrideOptionsFromJsonFile($jsonData);
+                if (isset($jsonData['migrate'])) {
+                    $this->config->forceMigrate = $jsonData['migrate'];
+                }
+            }
+
+            $this->checkForDiffPrimaryKey();
+        } catch (Exception $e) {
+            $this->commandError($e->getMessage());
+            exit;
+        }
+    }
+
+    public function commandError($error)
+    {
+        $this->commandObj->error($error);
+    }
+
+    private function checkForDiffPrimaryKey()
+    {
+        foreach ($this->inputFields as $field) {
+            if (isset($field['primary']) && $field['primary'] && $field['fieldName'] != 'id') {
+                $this->setOption('primary', $field['fieldName']);
+                break;
+            }
+        }
+    }
+
+    public function setOption($option, $value)
+    {
+        $this->config->setOption($option, $value);
+    }
+
+    private function getInputFromTable()
+    {
+        $tableName = $this->dynamicVars['$TABLE_NAME$'];
+
+        $this->inputFields = TableFieldsGenerator::generateFieldsFromTable($tableName);
+        $this->checkForDiffPrimaryKey();
     }
 
     private function getInputFromConsole()
@@ -152,19 +201,24 @@ class CommandData
         $this->addTimestamps();
     }
 
+    public function commandInfo($message)
+    {
+        $this->commandObj->info($message);
+    }
+
     private function addPrimaryKey()
     {
         if ($this->getOption('primary')) {
             $this->inputFields[] = GeneratorFieldsInputUtil::processFieldInput(
-                $this->getOption('primary').':increments',
+                $this->getOption('primary') . ':increments',
                 '',
                 '',
                 [
                     'searchable' => false,
-                    'fillable'   => false,
-                    'primary'    => true,
-                    'inForm'     => false,
-                    'inIndex'    => false,
+                    'fillable' => false,
+                    'primary' => true,
+                    'inForm' => false,
+                    'inIndex' => false,
                 ]
             );
         } else {
@@ -174,10 +228,10 @@ class CommandData
                 '',
                 [
                     'searchable' => false,
-                    'fillable'   => false,
-                    'primary'    => true,
-                    'inForm'     => false,
-                    'inIndex'    => false,
+                    'fillable' => false,
+                    'primary' => true,
+                    'inForm' => false,
+                    'inIndex' => false,
                 ]
             );
         }
@@ -191,9 +245,9 @@ class CommandData
             '',
             [
                 'searchable' => false,
-                'fillable'   => false,
-                'inForm'     => false,
-                'inIndex'    => false,
+                'fillable' => false,
+                'inForm' => false,
+                'inIndex' => false,
             ]
         );
 
@@ -203,64 +257,10 @@ class CommandData
             '',
             [
                 'searchable' => false,
-                'fillable'   => false,
-                'inForm'     => false,
-                'inIndex'    => false,
+                'fillable' => false,
+                'inForm' => false,
+                'inIndex' => false,
             ]
         );
-    }
-
-    private function getInputFromFileOrJson()
-    {
-        // fieldsFile option will get high priority than json option if both options are passed
-        try {
-            if ($this->getOption('fieldsFile')) {
-                if (file_exists($this->getOption('fieldsFile'))) {
-                    $filePath = $this->getOption('fieldsFile');
-                } else {
-                    $filePath = base_path($this->getOption('fieldsFile'));
-                }
-
-                if (!file_exists($filePath)) {
-                    $this->commandError('Fields file not found');
-                    exit;
-                }
-
-                $fileContents = file_get_contents($filePath);
-                $jsonData = json_decode($fileContents, true);
-                $this->inputFields = array_merge($this->inputFields, GeneratorFieldsInputUtil::validateFieldsFile($jsonData));
-            } else {
-                $fileContents = $this->getOption('jsonFromGUI');
-                $jsonData = json_decode($fileContents, true);
-                $this->inputFields = array_merge($this->inputFields, GeneratorFieldsInputUtil::validateFieldsFile($jsonData['fields']));
-                $this->config->overrideOptionsFromJsonFile($jsonData);
-                if (isset($jsonData['migrate'])) {
-                    $this->config->forceMigrate = $jsonData['migrate'];
-                }
-            }
-
-            $this->checkForDiffPrimaryKey();
-        } catch (Exception $e) {
-            $this->commandError($e->getMessage());
-            exit;
-        }
-    }
-
-    private function checkForDiffPrimaryKey()
-    {
-        foreach ($this->inputFields as $field) {
-            if (isset($field['primary']) && $field['primary'] && $field['fieldName'] != 'id') {
-                $this->setOption('primary', $field['fieldName']);
-                break;
-            }
-        }
-    }
-
-    private function getInputFromTable()
-    {
-        $tableName = $this->dynamicVars['$TABLE_NAME$'];
-
-        $this->inputFields = TableFieldsGenerator::generateFieldsFromTable($tableName);
-        $this->checkForDiffPrimaryKey();
     }
 }

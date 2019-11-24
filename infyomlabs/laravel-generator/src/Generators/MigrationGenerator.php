@@ -38,7 +38,7 @@ class MigrationGenerator extends BaseGenerator
 
         $templateData = str_replace('$TABLE_CLASS_NAME$', str_plural($modelName), $templateData);
 
-        $fileName = date('Y_m_d_His').'_'.'create_'.$tableName.'_table.php';
+        $fileName = date('Y_m_d_His') . '_' . 'create_' . $tableName . '_table.php';
 
         FileUtil::createFile($this->path, $fileName, $templateData);
 
@@ -59,8 +59,8 @@ class MigrationGenerator extends BaseGenerator
 
         $fields[] = '$table->timestamps();';
 
-        if (explode(":",explode(",",$this->commandData->config->options['jsonFromGUI'])['6'])['2']=='true') {
-           
+        if (explode(":", explode(",", $this->commandData->config->options['jsonFromGUI'])['6'])['2'] == 'true') {
+
             $fields[] = '$table->softDeletes();';
         }
 
@@ -69,7 +69,7 @@ class MigrationGenerator extends BaseGenerator
 
     public function rollback()
     {
-        $fileName = 'create_'.$this->commandData->config->tableName.'_table.php';
+        $fileName = 'create_' . $this->commandData->config->tableName . '_table.php';
 
         /** @var SplFileInfo $allFiles */
         $allFiles = File::allFiles($this->path);
@@ -85,7 +85,7 @@ class MigrationGenerator extends BaseGenerator
         foreach ($files as $file) {
             if (Str::contains($file, $fileName)) {
                 if ($this->rollbackFile($this->path, $file)) {
-                    $this->commandData->commandComment('Migration file deleted: '.$file);
+                    $this->commandData->commandComment('Migration file deleted: ' . $file);
                 }
                 break;
             }

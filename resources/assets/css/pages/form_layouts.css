@@ -95,4 +95,14 @@
  .has-error .input-group-addon {
     border-color : #ef6f6c;
 }
-
+.select_margin select{
+    margin-top:5px;
+}
+.btn_margin_top{
+    margin-top:5px;
+}
+@media (min-width:320px) and (max-width:1024px){
+    .checkbox-inline+.checkbox-inline, .radio-inline+.radio-inline{
+        margin-left:0px;
+    }
+}
