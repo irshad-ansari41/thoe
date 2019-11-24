@@ -198,6 +198,8 @@ class AdminPropertiesController extends Controller {
             $project->image = str_replace('', '-', input_trims(strtolower($input['imagename'])));
             $project->header_image = str_replace('', '-', input_trims(strtolower($input['headerimagename'])));
             $project->construction_header_image = str_replace('', '-', input_trims(strtolower($input['construction_header_image'])));
+            $project->total_completion = input_trims($request->total_completion);
+            $project->completion_date = input_trims($request->completion_date);
             $project->status = '1';
 
             $project->save();
@@ -267,41 +269,22 @@ class AdminPropertiesController extends Controller {
             if ($input['construction_header_image'] != "") {
                 $data['construction_header_image'] = str_replace('', '-', input_trims(strtolower($input['construction_header_image'])));
             }
-            //if($request->title_en){
             $data['title_en'] = input_trims($request->title_en);
-            // }
-            // if($request->title_ar){
             $data['title_ar'] = input_trims($request->title_ar);
-            // }
-            //  if($request->subtitle_en){
             $data['subtitle_en'] = input_trims($request->subtitle_en);
-            //   }
-            //  if($request->subtitle_ar){
             $data['subtitle_ar'] = input_trims($request->subtitle_ar);
-            //   }
-
             $data['slug'] = trim($request->slug);
             $data['slug_updates'] = str_replace(' ', '-', input_trims(strtolower($request->slug . '-updates')));
-
-            //$data['latitude'] = trim($request->latitude);
-            //$data['longitude'] = trim($request->longitude);
-
-
             $data['meta_title'] = input_trims($request->meta_title);
             $data['meta_keyword'] = input_trims($request->meta_keyword);
             $data['meta_desc'] = input_trims($request->meta_desc);
-
             $data['holder_alt'] = input_trims($request->holder_alt);
-
             $data['header_alt'] = input_trims($request->header_alt);
             $data['construction_alt'] = input_trims($request->construction_alt);
-
-            //   if($request->description_en){
             $data['description_en'] = input_trims($request->description_en);
-            //   }
-            //   if($request->description_ar){
             $data['description_ar'] = input_trims($request->description_ar);
-            //   }
+            $data['total_completion'] = input_trims($request->total_completion);
+            $data['completion_date'] = input_trims($request->completion_date);
 
             if (!empty($data)) {
                 Project::where('id', $request->id)->update($data);

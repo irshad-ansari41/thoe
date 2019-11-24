@@ -58,7 +58,7 @@ class AdminEventsController extends Controller {
             $i = 0;
             foreach ($results as $res) {
                 $response[$i]['id'] = $res->id;
-                $response[$i]['title'] = $res->gallery_title;
+                $response[$i]['title'] = $res->gallery_title_en;
                 $response[$i]['holder_image'] = $res->holder_image;
 
                 $text = '';
@@ -87,7 +87,7 @@ class AdminEventsController extends Controller {
             $i = 0;
             foreach ($results as $res) {
                 $response[$i]['id'] = $res->id;
-                $response[$i]['title'] = $res->gallery_title;
+                $response[$i]['title'] = $res->gallery_title_en;
                 $response[$i]['holder_image'] = $res->holder_image;
                 $response[$i]['image'] = $res->image;
 
@@ -151,7 +151,7 @@ class AdminEventsController extends Controller {
         if ($request->type == "add") {
 
 
-            $pname = str_replace(' ', '_', $request->title_en);
+            $pname = str_replace(' ', '_', $request->gallery_title_en);
             $path = STORE_PATH . '/assets/images/media/' . $pname;
             if (!file_exists($path)) {
                 File::makeDirectory($path);
@@ -180,17 +180,14 @@ class AdminEventsController extends Controller {
 
             $gal = new Gallery_master();
 
-            $gal->gallery_title = $request->title_en;
-            $gal->gallery_title_ar = $request->title_ar;
-            $gal->gallery_title_ch = $request->title_ch;
+            $gal->gallery_title_en = $request->gallery_title_en;
+            $gal->gallery_title_ar = $request->gallery_title_ar;
 
-            $gal->gallery_long_title = $request->gallery_long_title;
+            $gal->gallery_long_title_en = $request->gallery_long_title_en;
             $gal->gallery_long_title_ar = $request->gallery_long_title_ar;
-            $gal->gallery_long_title_ch = $request->gallery_long_title_ch;
 
-            $gal->short_description = $request->short_description;
+            $gal->short_description_en = $request->short_description_en;
             $gal->short_description_ar = $request->short_description_ar;
-            $gal->short_description_ch = $request->short_description_ch;
 
             $gal->slug = $request->slug;
             $gal->path = $pname;
@@ -221,20 +218,17 @@ class AdminEventsController extends Controller {
 
 
             $data = array();
-            $data['gallery_title'] = $request->title_en;
-            $data['gallery_title_ar'] = $request->title_ar;
-            $data['gallery_title_ch'] = $request->title_ch;
+            $data['gallery_title_en'] = $request->gallery_title_en;
+            $data['gallery_title_ar'] = $request->gallery_title_ar;
 
-            $data['gallery_long_title'] = $request->gallery_long_title;
+            $data['gallery_long_title_en'] = $request->gallery_long_title_en;
             $data['gallery_long_title_ar'] = $request->gallery_long_title_ar;
-            $data['gallery_long_title_ch'] = $request->gallery_long_title_ch;
 
             if ($input['imagename'] != "") {
                 $data['holder_image'] = $input['imagename'];
             }
-            $data['short_description'] = $request->short_description;
+            $data['short_description_en'] = $request->short_description_en;
             $data['short_description_ar'] = $request->short_description_ar;
-            $data['short_description_ch'] = $request->short_description_ch;
 
             $data['slug'] = $request->slug;
             $data['gallery_type'] = $request->gallery_type;
@@ -263,17 +257,14 @@ class AdminEventsController extends Controller {
             }
 
             $gal = new VGallery_master();
-            $gal->gallery_title = $request->title_en;
-            $gal->gallery_title_ar = $request->title_ar;
-            $gal->gallery_title_ch = $request->title_ch;
-            $gal->slug = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->title_en))));
-            $gal->gallery_long_title = $request->gallery_long_title;
+            $gal->gallery_title_en = $request->gallery_title_en;
+            $gal->gallery_title_ar = $request->gallery_title_ar;
+            $gal->slug = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->gallery_title_en))));
+            $gal->gallery_long_title_en = $request->gallery_long_title_en;
             $gal->gallery_long_title_ar = $request->gallery_long_title_ar;
-            $gal->gallery_long_title_ch = $request->gallery_long_title_ch;
 
-            $gal->short_description = $request->short_description;
+            $gal->short_description_en = $request->short_description_en;
             $gal->short_description_ar = $request->short_description_ar;
-            $gal->short_description_ch = $request->short_description_ch;
 
             $gal->holder_image = $input['imagename'];
             $gal->image = $request->image;
@@ -303,22 +294,19 @@ class AdminEventsController extends Controller {
 
 
             $data = array();
-            $data['gallery_title'] = $request->title_en;
-            $data['gallery_title_ar'] = $request->title_ar;
-            $data['gallery_title_ch'] = $request->title_ch;
-            $data['slug'] = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->title_en))));
-            $data['gallery_long_title'] = $request->gallery_long_title;
+            $data['gallery_title_en'] = $request->gallery_title_en;
+            $data['gallery_title_ar'] = $request->gallery_title_ar;
+            $data['slug'] = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->gallery_title_en))));
+            $data['gallery_long_title_en'] = $request->gallery_long_title_en;
             $data['gallery_long_title_ar'] = $request->gallery_long_title_ar;
-            $data['gallery_long_title_ch'] = $request->gallery_long_title_ch;
 
 
             if ($input['imagename'] != "") {
                 $data['holder_image'] = $input['imagename'];
             }
             $data['image'] = $request->image;
-            $data['short_description'] = $request->short_description;
+            $data['short_description_en'] = $request->short_description_en;
             $data['short_description_ar'] = $request->short_description_ar;
-            $data['short_description_ch'] = $request->short_description_ch;
 
             $data['gallery_type'] = $request->gallery_type;
             $data['year'] = $request->year;

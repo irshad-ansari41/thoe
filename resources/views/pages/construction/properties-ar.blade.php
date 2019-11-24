@@ -12,7 +12,7 @@ Events
 @section('breadcrumbs')
 <nav class="breadcrumbs">
     <div class="container">
-        <?= generate_breadcrumb([url("/$locale") => 'home', url("/$locale/construction-updates") => 'Construction Update']) ?>
+        <?= generate_breadcrumb([url("/$locale") => 'home', url("/$locale/construction-updates") => 'Construction Update', url("/$locale/construction-updates/$project->slug") => $project['title_' . $locale]]) ?>
     </div>
 </nav>
 @stop
@@ -23,29 +23,29 @@ Events
         <div class="row">
             <div class="site">
                 <header class="site__header">
-                    <h1 class="site__title">Construction Updates</h1>
+                    <h1 class="site__title"><?= $project['title_' . $locale] ?></h1>
                 </header>
                 <div class="site__main">
                     <div class="widget js-widget widget--main widget--no-margin">
                         <div class="widget__content">
-                            <br/><br/>
+                            </br></br>
                             <div class="listing listing--grid">
                                 <?php
-                                foreach ($projects as $project) {
+                                foreach ($properties as $property) {
                                     ?>
                                     <div class="listing__item">
                                         <div class="properties properties--grid">
-                                            <div class="properties__thumb"><a href="<?= url("/$locale/construction-updates/{$project->slug}") ?>" class="item-photo">
-                                                    <img src="{{asset('assets/images/projects')}}/{{ $project->image }}" alt=""/>
-                                                    <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro"><?= str_limit($project['description_' . $locale], 35) ?></span>
-                                                    </figure></a><span class="properties__ribon"><?= $project->total_completion ?>% Completed</span>
+                                            <div class="properties__thumb"><a href="<?= url("/$locale/construction-updates/$project->slug/$property->slug") ?>" class="item-photo">
+                                                    <img src="{{asset('assets/images/properties')}}/{{ $project->gallery_location }}/{{ $property->gallery_location }}/{{ $property->holder_image }}" alt=""/>
+                                                    <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro"><?= str_limit($property['long_description_' . $locale], 35) ?></span>
+                                                    </figure></a><span class="properties__ribon"><?= $property->total_completion ?>% Completed</span>
                                             </div>
                                             <!-- end of block .properties__thumb-->
                                             <div class="properties__details">
-                                                <div class="properties__info"><a href="<?= url("/$locale/construction-updates/{{$project->slug}}") ?>" class="properties__address"><span class="properties__address-street"><?= $project['title_' . $locale] ?></span></a>
+                                                <div class="properties__info"><a href="<?= url("/$locale/construction-updates/$project->slug/$property->slug") ?>" class="properties__address"><span class="properties__address-street"><?= $property['title_' . $locale] ?></span></a>
                                                     <div class="properties__offer">
                                                         <div class="properties__offer-column">
-                                                            <div class="properties__offer-label"><?= date_format(date_create($project->completion_date), 'F Y') ?></div>
+                                                            <div class="properties__offer-label"><?= date_format(date_create($property->plan_end_date), 'F Y') ?></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -62,7 +62,7 @@ Events
                     <div class="site__footer">
                         <!-- BEGIN PAGINATION-->
                         <nav class="listing__pagination">
-                            <?= $projects->links() ?>
+                            <?= $properties->links() ?>
                         </nav>
                         <!-- END PAGINATION-->
                     </div>

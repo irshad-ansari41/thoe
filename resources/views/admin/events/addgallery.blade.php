@@ -70,7 +70,7 @@
                         <div class="form-group en_field">
                             <label class="col-md-3 control-label hidden-xs">Title(English)</label>
                             <div class="col-md-8">
-                                <input type="text" name="title_en" id="title_en" class="form-control" value="{{!empty($results)?$results->gallery_title:''}}">
+                                <input type="text" name="gallery_title_en" id="gallery_title_en" class="form-control" value="{{!empty($results)?$results->gallery_title_en:''}}">
                             </div>
                         </div>
                         <div class="form-group en_field">
@@ -82,20 +82,15 @@
                         <div class="form-group ar_field">
                             <label class="col-md-3 control-label hidden-xs">Title(Arabic)</label>
                             <div class="col-md-8">
-                                <input type="text" name="title_ar" class="form-control" value="{{!empty($results)?$results->gallery_title_ar:''}}">
+                                <input type="text" name="gallery_title_ar" class="form-control" value="{{!empty($results)?$results->gallery_title_ar:''}}">
                             </div>
                         </div>
-                        <div class="form-group ch_field">
-                            <label class="col-md-3 control-label hidden-xs">Title(Chinese)</label>
-                            <div class="col-md-8">
-                                <input type="text" name="title_ch" class="form-control" value="{{!empty($results)?$results->gallery_title_ch:''}}">
-                            </div>
-                        </div>
+
 
                         <div class="form-group en_field">
                             <label class="col-md-3 control-label hidden-xs">Long Title(English)</label>
                             <div class="col-md-8">
-                                <textarea name="gallery_long_title" class="form-control">{{!empty($results)?$results->gallery_long_title:''}}</textarea>
+                                <textarea name="gallery_long_title_en" class="form-control">{{!empty($results)?$results->gallery_long_title_en:''}}</textarea>
                             </div>
                         </div>
                         <div class="form-group ar_field">
@@ -104,31 +99,21 @@
                                 <textarea name="gallery_long_title_ar" class="form-control">{{!empty($results)?$results->gallery_long_title_ar:''}}</textarea>
                             </div>
                         </div>
-                        <div class="form-group ch_field">
-                            <label class="col-md-3 control-label hidden-xs">Long Title(Chinese)</label>
-                            <div class="col-md-8">
-                                <textarea name="gallery_long_title_ch" class="form-control">{{!empty($results)?$results->gallery_long_title_ch:''}}</textarea>
-                            </div>
-                        </div>
+
 
                         <div class="form-group en_field">
                             <label class="col-md-3 control-label hidden-xs">Short Description(English)</label>
                             <div class="col-md-8">
-                                <textarea name="short_description" class="form-control">{{!empty($results)?$results->short_description:''}}</textarea>
+                                <textarea id="ckeditor_standard" name="short_description_en" class="form-control">{{!empty($results)?$results->short_description_en:''}}</textarea>
                             </div>
                         </div>
                         <div class="form-group en_field">
                             <label class="col-md-3 control-label hidden-xs ar_field">Short Description(Arabic)</label>
                             <div class="col-md-8">
-                                <textarea name="short_description_ar" class="form-control">{{!empty($results)?$results->short_description_ar:''}}</textarea>
+                                <textarea id="ckeditor_standard1" name="short_description_ar" class="form-control">{{!empty($results)?$results->short_description_ar:''}}</textarea>
                             </div>
                         </div>
-                        <div class="form-group en_field">
-                            <label class="col-md-3 control-label hidden-xs ch_field">Short Description(Chinese)</label>
-                            <div class="col-md-8">
-                                <textarea name="short_description_ch" class="form-control">{{!empty($results)?$results->short_description_ch:''}}</textarea>
-                            </div>
-                        </div>
+
 
                         <div class="form-group" id="one">
                             <label class="col-md-3 control-label" >Holder Image
@@ -178,7 +163,7 @@
 @section('footer_scripts')
 
 <script src="<?= asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') ?>" type="text/javascript"></script>
-<script src="<?= asset('assets/js/pages/validation.js') ?>" type="text/javascript"></script>
+<!--<script src="<?= asset('assets/js/pages/validation.js') ?>" type="text/javascript"></script>-->
 <script src="<?= asset('assets/vendors/tinymce/tinymce.min.js') ?>" type="text/javascript"></script>
 <script  src="<?= asset('assets/vendors/ckeditor/js/ckeditor.js') ?>"  type="text/javascript"></script>
 <script  src="<?= asset('assets/vendors/ckeditor/js/jquery.js') ?>"  type="text/javascript" ></script>
@@ -189,6 +174,8 @@
 <link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/croppie.css">
 <script src="<?= asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') ?>" ></script>
 <script>
+CKEDITOR.replace('ckeditor_standard');
+CKEDITOR.replace('ckeditor_standard1');
 $(document).ready(function () {
     $("#project").change(function () {
         $.ajax({

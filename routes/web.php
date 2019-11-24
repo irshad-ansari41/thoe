@@ -53,8 +53,11 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
     //Constrction Emailer 
     Route::any('/news-pr', ['as' => 'news-pr.index', 'uses' => 'NewsPRController@index']);
     Route::get('/news-pr/{slug}', ['as' => 'news-pr.details', 'uses' => 'NewsPRController@details']);
-    Route::get('/image-gallery/{type?}/{id?}', ['as' => 'image-gallery.index', 'uses' => 'ImageGalleryController@index']);
-    Route::get('/video-gallery/{type?}/{id?}', ['as' => 'video-gallery.index', 'uses' => 'VideoGalleryController@index']);
+    Route::get('/media-gallery', ['as' => 'media-gallery.index', 'uses' => 'MediaGalleryController@index']);
+    Route::get('/image-gallery', ['as' => 'image-gallery.index', 'uses' => 'MediaGalleryController@image_gallery']);
+    Route::get('/image-gallery/{gallery}', ['as' => 'image-gallery.index', 'uses' => 'MediaGalleryController@view_image']);
+    Route::get('/video-gallery', ['as' => 'video-gallery.index', 'uses' => 'MediaGalleryController@video_gallery']);
+    Route::get('/video-gallery/{gallery}', ['as' => 'video-gallery.index', 'uses' => 'MediaGalleryController@view_video']);
     Route::any('/interviews', ['as' => 'interviews.index', 'uses' => 'InterviewsController@index']);
 
     Route::get('/survey', ['as' => 'survey.index', 'uses' => 'SurveyController@index']);
@@ -80,8 +83,8 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
 
     Route::get('/construction-updates', ['as' => 'construction.updates', 'uses' => 'ConstructionController@index']);
     //Route::get('/construction-updates', ['as' => 'community.updates', 'uses' => 'ConstructionController@community']);
-    //Route::get('/construction-updates/{property}', ['as' => 'community-area.updates', 'uses' => 'ConstructionController@projects']);
-    Route::get('/construction-updates/{property}', ['as' => 'community-area.updates', 'uses' => 'ConstructionController@property']);
+    Route::get('/construction-updates/{projects}', ['as' => 'community-area.updates', 'uses' => 'ConstructionController@properties']);
+    Route::get('/construction-updates/{projects}/{property}', ['as' => 'community-area.updates', 'uses' => 'ConstructionController@property']);
     Route::post('/constructiondownload', ['as' => 'constructiondownload', 'uses' => 'ConstructionController@constructiondownload']);
 
     Route::get('/dubai', ['as' => 'azizi.properties', 'uses' => 'PropertyController@index']);

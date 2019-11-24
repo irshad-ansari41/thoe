@@ -33,8 +33,7 @@ class ConstructionController extends Controller {
         }
 
         $content = Content::find(13);
-        //$projects = Project::where("status", "1")->where("cons_status", "Yes")->orderBy('project_order', 'ASC')->pagination(6);
-        $properties = Properties::where("status", "1")->paginate(6);
+        $projects = Project::where("status", "1")->where("cons_status", "Yes")->orderBy('project_order', 'ASC')->paginate(6);
         $meta_title = metaTitleByLocale($this->locale, [
             'en' => "The Heart of Europe Construction Updates – Dubai Region",
             'ar' => "The Heart of Europe Construction Updates – Dubai Region, AR",]);
@@ -43,8 +42,7 @@ class ConstructionController extends Controller {
             'ar' => "View latest construction updates and news of all projects that are currently being developed by The Heart of Europe. AR",]);
         $data = [
             'construction_content' => $content,
-            //'projects' => $projects,
-            'properties' => $properties,
+            'projects' => $projects,
             'meta_title' => $meta_title,
             'meta_keyword' => "THOE developments, thoedevelopments, thoe development construction",
             'meta_description' => $meta_desc,
@@ -60,47 +58,7 @@ class ConstructionController extends Controller {
         return view("pages.construction.index-{$this->locale}", $data);
     }
 
-    public function community(Request $request) {
-
-        //if chached then return
-        $cached = get_cache_page($request->fullUrl());
-        if (!empty($cached)) {
-            return $cached;
-        }
-
-        $content = Content::find(13);
-
-        $meta_title = metaTitleByLocale($this->locale, [
-            'en' => trim($content->title_en) . " Meydan Projects Construction Updates – The Heart of Europe",
-            'ar' => trim($content->title_ar) . " Meydan Projects Construction Updates – The Heart of Europe",
-            'cn' => trim($content->title_ch) . " Meydan Projects Construction Updates – The Heart of Europe"]);
-        $meta_desc = metaDescByLocale($this->locale, [
-            'en' => "Last Updated on " . date('M d,Y') . " – View latest construction updates of all " . trim($content->title_en) . " Meydan projects that are currently being developed by The Heart of Europe",
-            'ar' => "Last Updated on " . date('M d,Y') . " – View latest construction updates of all " . trim($content->title_ar) . " Meydan projects that are currently being developed by The Heart of Europe",
-            'cn' => "Last Updated on " . date('M d,Y') . " – View latest construction updates of all " . trim($content->title_ch) . " Meydan projects that are currently being developed by The Heart of Europe",]);
-
-
-        $data = [
-            'himage' => '',
-            'abc' => $request->segment(2),
-            'construction_content' => $content,
-            'projects' => Project::where("status", "1")->where("cons_status", "Yes")->orderBy('project_order', 'ASC')->get(),
-            'meta_title' => $meta_title,
-            'meta_keyword' => trim($content->title_en) . " Meydan construction update, thoe Meydan" . trim($content->title_en) . ", thoe developments Meydan" . trim($content->title_en),
-            'meta_description' => $meta_desc,
-            'og_title' => $meta_title,
-            'og_desc' => $meta_desc,
-            'og_pic' => ($content->image != "") ? url("/") . "/assets/images/banner/" . $content->image : '',
-            'locale' => $this->locale,
-        ];
-
-        //check page
-        set_cache_page($request->fullUrl(), view("pages.construction.community", $data)->render());
-
-        return view('pages.construction.community', $data);
-    }
-
-    public function projects(Request $request, $area) {
+    public function properties(Request $request, $project_slug) {
 
 
         //if chached then return
@@ -108,33 +66,25 @@ class ConstructionController extends Controller {
         if (!empty($cached)) {
             return $cached;
         }
-
-        $project = Project::where('slug', $area)->where('status', '1')->orderBy("id", "ASC")->first();
-        if (empty($project)) {
-            return redirect("$this->locale/dubai/construction-updates", 301);
+        $project = Project::where("slug", $project_slug)->first();
+        $properties = Properties::where('project_id', $project->id)->where('status', '1')->orderBy("id", "ASC")->paginate(6);
+        if (empty(count($properties))) {
+            return redirect("$this->locale/construction-updates", 301);
         }
 
         $meta_title = metaTitleByLocale($this->locale, [
             'en' => trim($project->title_en) . " Projects Construction Updates – The Heart of Europe",
-            'ar' => trim($project->title_ar) . " Projects Construction Updates – The Heart of Europe",
-            'cn' => trim($project->title_ch) . " Projects Construction Updates – The Heart of Europe"]);
+            'ar' => trim($project->title_ar) . " Projects Construction Updates – The Heart of Europe",]);
+
         $meta_desc = metaDescByLocale($this->locale, [
             'en' => "Last Updated on " . date('M d,Y') . " – View latest construction updates of all " . trim($project->title_en) . " projects that are currently being developed by The Heart of Europe",
             'ar' => "Last Updated on " . date('M d,Y') . " – View latest construction updates of all " . trim($project->title_ar) . " projects that are currently being developed by The Heart of Europe",
-            'cn' => "Last Updated on " . date('M d,Y') . " – View latest construction updates of all " . trim($project->title_ch) . " projects that are currently being developed by The Heart of Europe",]);
+        ]);
 
-        $ratingpage;
-        if ($project->title_en == 'Dubai Sports City'): $ratingpage = 'Sports City';
-        else: $ratingpage = $project->title_en;
-        endif;
 
         $data = [
-            "AllRatings" => DB::table('tbl_ratings')->where('menu_title', $ratingpage)->first(),
-            'himage' => '',
-            'abc' => $request->segment(2),
             'project' => $project,
-            'properties' => Properties::where("project_id", $project->id)->where("status", "1")->where("constrution_show", "Yes")->orderBy('sort_order', 'ASC')->get(),
-            'area' => $area,
+            'properties' => $properties,
             'meta_title' => $meta_title,
             'meta_keyword' => trim($project->title_en) . " construction update, thoe " . trim($project->title_en) . ", thoe developments " . trim($project->title_en),
             'meta_description' => $meta_desc,
@@ -144,42 +94,30 @@ class ConstructionController extends Controller {
             'locale' => $this->locale,
         ];
 
-
-
         //check page
-        set_cache_page($request->fullUrl(), view("pages.construction.projects", $data)->render());
+        set_cache_page($request->fullUrl(), view("pages.construction.properties-{$this->locale}", $data)->render());
 
-        return view('pages.construction.projects', $data);
+        return view("pages.construction.properties-{$this->locale}", $data);
     }
 
-    public function property(Request $request, $area, $propertySLug) {
+    public function property(Request $request, $project_slug, $property_slug) {
 
         //if chached then return
         $cached = get_cache_page($request->fullUrl());
         if (!empty($cached)) {
             return $cached;
         }
-        $galleries = [];
-        $property = Properties::where('slug', $propertySLug)->where('constrution_show', 'Yes')->where('status', '1')->first();
+        $property = Properties::where('slug', $property_slug)->where('constrution_show', 'Yes')->where('status', '1')->first();
         if (empty($property)) {
-            return redirect("$this->locale/dubai/$area/construction-updates", 301);
+            return redirect("$this->locale/construction-updates/$project_slug", 301);
         }
-        $project = Project::where('slug', $area)->where('status', '1')->orderBy("id", "ASC")->first();
+
+        $project = Project::where('slug', $project_slug)->where('status', '1')->orderBy("id", "ASC")->first();
         if (empty($project)) {
-            return redirect("$this->locale/dubai/$area/construction-updates", 301);
+            return redirect("$this->locale/construction-updates", 301);
         }
-        if ($area == 'riviera') {
-            $month = date("m", strtotime("-1 months"));
-            $counts = DB::table('tbl_construction_gallery')->where('property_id', $property->id)->where('status', '1')->whereYear('caption_date', '=', date('Y'))->whereMonth('caption_date', '=', date('m'))->count();
-            if ($counts == 0) {
-                $counts = DB::table('tbl_construction_gallery')->where('property_id', $property->id)->where('status', '1')->whereYear('caption_date', '=', date('Y'))->whereMonth('caption_date', '=', $month)->count();
-            }
-            $galleries = DB::table('tbl_construction_gallery')->where('property_id', $property->id)
-                            ->where('status', '1')->orderBy("id", "DESC")->limit($counts)->get();
-        } else {
-            $galleries = DB::table('tbl_construction_gallery')->where('property_id', $property->id)
-                            ->where('status', '1')->orderBy("created", "DESC")->orderBy("id", "DESC")->limit(5)->get();
-        }
+
+        $galleries = DB::table('tbl_construction_gallery')->where('property_id', $property->id)->where('status', '1')->orderBy("created", "DESC")->orderBy("id", "DESC")->limit(5)->get();
 
         $og_pic = '';
         if (!empty($property->construction_header)) {
@@ -203,7 +141,6 @@ class ConstructionController extends Controller {
             'property' => $property,
             'project' => $project,
             'galleries' => $galleries,
-            'area' => $area,
             'meta_title' => $meta_title,
             'meta_keyword' => "{$property->title_en}, {$property->title_en} {$project->title_en}, {$property->title_en} thoe developments",
             'meta_description' => $meta_desc,
@@ -214,9 +151,9 @@ class ConstructionController extends Controller {
         ];
 
         //check page
-        set_cache_page($request->fullUrl(), view("pages.construction.details", $data)->render());
+        set_cache_page($request->fullUrl(), view("pages.construction.property-{$this->locale}", $data)->render());
 
-        return view('pages.construction.details', $data);
+        return view("pages.construction.property-{$this->locale}", $data);
     }
 
     public function constructiondownload() {
