@@ -56,8 +56,8 @@
                                             <div class="field-title">Select Community</div>
                                             <div class="field-inner">
                                                 <select class="custom-select-box">
-                                                    <option>Meydan - Azizi Victoria</option>
-                                                    <option>Meydan - Azizi Riveria</option>
+                                                    <option>Meydan - Thoe Victoria</option>
+                                                    <option>Meydan - Thoe Riveria</option>
                                                     <option>Al Furjan</option>
                                                     <option>Dubai Healthcare City</option>
                                                     <option>Palm Jumeirah</option>

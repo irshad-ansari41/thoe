@@ -130,7 +130,7 @@
             </div>
         </div>
 
-        <!-- Mr. Azizi Chairman -->
+        <!-- Mr. Thoe Chairman -->
         <div class="row" style="margin-bottom: 5em;">
             <div class="col s12 m4">
                 @if($executive['chairmen_image']!="")
@@ -141,14 +141,14 @@
                 <div class="desig-person mt0">
                     <div class="person-name">{{ $executive['chairmen_name_en'] }}</div>
                     <div class="divider az-header-divider"></div>
-                    <i>Chairman, Azizi Group</i>
+                    <i>Chairman, Thoe Group</i>
                 </div>
                 <p class="az-pcontent">{!! $executive['chairmen_description_en'] !!}</p>
             </div>
         </div>
         <!-- end -->
 
-        <!-- Farhad Azizi Ceo -->
+        <!-- Farhad Thoe Ceo -->
         <div class="row" style="margin-bottom: 2em;">
             <div class="col s12 m4 small hide">
                 @if($executive['ceo_image']!="")
@@ -159,7 +159,7 @@
                 <div class="desig-person mt0">
                     <div class="person-name">{{ $executive['ceo_name_en'] }}</div>
                     <div class="divider az-header-divider"></div>
-                    <i>CEO, AZIZI DEVELOPMENTS</i> 
+                    <i>CEO, THOE DEVELOPMENTS</i> 
                 </div>
                 <p class="az-pcontent">{!! $executive['ceo_description_en'] !!}</p>
             </div>
@@ -172,7 +172,7 @@
         <!-- end -->
 
 
-        <!-- Fawad Azizi Dep: Ceo -->
+        <!-- Fawad Thoe Dep: Ceo -->
         <div class="row" style="margin-bottom: 2em;">
             <div class="col s12 m4 ">
                 @if($executive['deputy_ceo_image']!="")
@@ -183,7 +183,7 @@
                 <div class="desig-person mt0">
                     <div class="person-name">{{ $executive['deputy_ceo_name_en'] }}</div>
                     <div class="divider az-header-divider"></div>
-                    <i>Deputy CEO, Azizi Developments</i>                    
+                    <i>Deputy CEO, Thoe Developments</i>                    
                 </div>
                 <p class="az-pcontent">{!! $executive['deputy_ceo_description_en'] !!}</p>
             </div>

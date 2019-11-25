@@ -17,7 +17,7 @@
                     <div class="overlay"></div>
                     <!-- h2 class="big-title">Meydan</h2 -->
                     <div class="lower-content">
-                        <h3>Azizi Victoria <span class="theme_color"></span></h3>
+                        <h3>Thoe Victoria <span class="theme_color"></span></h3>
                         <div class="text">But I must explain to you how all this mistaken idea of denouncing </div>
                     </div>
                     <a href="{{asset('assets/new_wb_layout/images/gallery/6.jpg') }}" 
@@ -36,7 +36,7 @@
                     <div class="overlay"></div>
                     <!-- h2 class="big-title">Meydan</h2 -->
                     <div class="lower-content">
-                        <h3>Azizi Riviera <span class="theme_color"></span></h3>
+                        <h3>Thoe Riviera <span class="theme_color"></span></h3>
                         <div class="text">But I must explain to you how all this mistaken idea of denouncing </div>
                     </div>
                     <a href="{{asset('assets/new_wb_layout/images/gallery/7.jpg') }}" 
@@ -90,7 +90,7 @@
                     <div class="overlay"></div>
                     <!-- h2 class="big-title">Meydan</h2 -->
                     <div class="lower-content">
-                        <h3>Azizi Grand <span class="theme_color"></span></h3>
+                        <h3>Thoe Grand <span class="theme_color"></span></h3>
                         <div class="text">But I must explain to you how all this mistaken idea of denouncing </div>
                     </div>
                     <a href="{{asset('assets/new_wb_layout/images/gallery/6.jpg') }}" 
@@ -108,7 +108,7 @@
                     <div class="overlay"></div>
                     <!-- h2 class="big-title">Meydan</h2 -->
                     <div class="lower-content">
-                        <h3>Azizi Miraj <span class="theme_color"></span></h3>
+                        <h3>Thoe Miraj <span class="theme_color"></span></h3>
                         <div class="text">But I must explain to you how all this mistaken idea of denouncing </div>
                     </div>
                     <a href="{{asset('assets/new_wb_layout/images/gallery/7.jpg') }}" 
@@ -126,7 +126,7 @@
                     <div class="overlay"></div>
                     <!-- h2 class="big-title">Meydan</h2 -->
                     <div class="lower-content">
-                        <h3>Azizi Mina <span class="theme_color"></span></h3>
+                        <h3>Thoe Mina <span class="theme_color"></span></h3>
                         <div class="text">But I must explain to you how all this mistaken idea of denouncing </div>
                     </div>
                     <a href="{{asset('assets/new_wb_layout/images/gallery/8.jpg') }}" 

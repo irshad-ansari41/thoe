@@ -31,13 +31,13 @@
     <div class="container">
         <div id="bannerImg" class="row extend-row">
             <div class="col-12 col-sm-6 block0">
-                <div class="block1 bg-azizi-blue">
+                <div class="block1 bg-thoe-blue">
                     <h5 class="text-white">Best Price</h5>
                     <span class="text-white">Guaranteed Online</span>
                 </div><br/>
             </div>
             <div class="col-12 col-sm-6 block0">
-                <div class="block1 bg-azizi-blue">
+                <div class="block1 bg-thoe-blue">
                     <h5 class="text-white">Flexibility to Change</h5>
                     <span class="text-white">After Booking</span>
                 </div><br/>
@@ -85,8 +85,8 @@
 
             <div class="col-12 col-sm-12">
                 <ul class="breadcrumb">
-                    <li><a href="<?= url("/$locale") ?>" class="text-azizi-blue">Home</a></li>
-                    <li><a href="<?= url("/$locale/online-booking") ?>"  class="text-azizi-blue">&nbsp; &Rang; Booking</a></li>
+                    <li><a href="<?= url("/$locale") ?>" class="text-thoe-blue">Home</a></li>
+                    <li><a href="<?= url("/$locale/online-booking") ?>"  class="text-thoe-blue">&nbsp; &Rang; Booking</a></li>
                     <li>&nbsp; &Rang; Projects</li>
                 </ul>
             </div>
@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <hr/>
-                <a class="btn btn-azizi-blue btn-block" data-target="#project-units-list" href="{{url($locale.'/online-booking/'.$project->slug.'/book') }}"> Book a unit for AED 20,000</a>
+                <a class="btn btn-thoe-blue btn-block" data-target="#project-units-list" href="{{url($locale.'/online-booking/'.$project->slug.'/book') }}"> Book a unit for AED 20,000</a>
                 <br/>
             </div>
         </div>

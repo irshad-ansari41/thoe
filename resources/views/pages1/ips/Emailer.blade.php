@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
-        <title>Azizi Retail</title>
+        <title>Thoe Retail</title>
         <style type="text/css">
             *{ margin:0; padding:0; line-height: 0;}
             table,tr,td{ margin:0; padding:0; line-height: 0; }
@@ -24,7 +24,7 @@
                             <td colspan="2" style="border: 0; padding:0; margin:0; line-height: 30px;">
                                 <a target="_blank" href="<?=SITE_URL?>/en" style="text-decoration: none; color: #163e71 !important; 
                                    font-family:Helvetica; font-size:12px; border: 0;">
-                                    <img src="http://aziziriviera.com/azizi-emailer/images/azizi-riviera/13-April-Riviera-Retail-Invite-01.jpg"  
+                                    <img src="http://thoeriviera.com/thoe-emailer/images/thoe-riviera/13-April-Riviera-Retail-Invite-01.jpg"  
                                          width="595" height="66" border="0"  style="display: block; width: 595px; height: 66px; border: 0;" hspace="0" vspace="0" />
                                 </a>
                             </td>
@@ -32,7 +32,7 @@
 
                         <tr valign="top">
                             <td colspan="2" style="border: 0;  padding:0; margin:0; line-height: 30px;">
-                                <img src="http://aziziriviera.com/azizi-emailer/images/azizi-riviera/13-April-Riviera-Retail-Invite-02.jpg"  
+                                <img src="http://thoeriviera.com/thoe-emailer/images/thoe-riviera/13-April-Riviera-Retail-Invite-02.jpg"  
                                      width="595" border="0" style="display: block; border: 0;"  hspace="0" vspace="0" />
                             </td>
                         </tr>
@@ -48,11 +48,11 @@
                                             <div style="font-family:Helvetica; font-size:13px; color: #4c4c4c; line-height: 20px;">
 
                                                 <p style="margin-top:0px; line-height: 20px;">
-                                                    Azizi Developments invites you to discover Aziz Retail. With a vast array of retail space options embedded into thriving and carefully-thought-out master-planned communities that comprise bustling social spaces.  Azizi Developments offers some of the most lucrative retail units in Dubai.
+                                                    Thoe Developments invites you to discover Aziz Retail. With a vast array of retail space options embedded into thriving and carefully-thought-out master-planned communities that comprise bustling social spaces.  Thoe Developments offers some of the most lucrative retail units in Dubai.
                                                 </p>
 
                                                 <p style="margin-top:15px; line-height: 20px;">
-                                                    Join us at our next sales event to learn more about our exceptional Azizi Retail offers on developments across some of the most sought-after and iconic locations across Dubai, including Palm Jumeirah, Azizi Riviera, Al Furjan, and Dubai Healthcare City.
+                                                    Join us at our next sales event to learn more about our exceptional Thoe Retail offers on developments across some of the most sought-after and iconic locations across Dubai, including Palm Jumeirah, Thoe Riviera, Al Furjan, and Dubai Healthcare City.
                                                 </p>
 
                                                 <br/>
@@ -146,7 +146,7 @@
 
                                             </table>
 
-                                            <img src="http://aziziriviera.com/azizi-emailer/images/azizi-riviera/13-April-Riviera-Retail-Invite-05.jpg" 
+                                            <img src="http://thoeriviera.com/thoe-emailer/images/thoe-riviera/13-April-Riviera-Retail-Invite-05.jpg" 
                                                  width="243" height="150" style="line-height: 20px;" />                        
 
                                         </td>
@@ -162,7 +162,7 @@
                             <td colspan="2" style="padding: 0px 20px 5px 20px;  text-align: left;font-size: 9px; color: #4c4c4c; line-height: 20px;">
                                 <p style="text-align: right; padding-bottom: 15px; line-height: 20px;">*Terms and Conditions Apply</p>
                                 <!--hr width="555" style="height: 1px; color: rgba(0, 77, 148, 0.73); background-color: rgba(0, 77, 148, 0.73); border: none;"-->
-                                <img src="http://aziziriviera.com/azizi-emailer/images/azizi-riviera/13-April-Riviera-Retail-Invite-05.jpg" width="555" height="2" />
+                                <img src="http://thoeriviera.com/thoe-emailer/images/thoe-riviera/13-April-Riviera-Retail-Invite-05.jpg" width="555" height="2" />
 
                             </td>
                         </tr>                                    
@@ -170,7 +170,7 @@
                         <tr valign="top">
 
                             <td style="padding:0px 0px 30px 20px; line-height: 20px;">
-                                <img src="http://aziziriviera.com/azizi-emailer/images/plam/mina-by-azizi/6-April-Mina-Invite_800.jpg" 
+                                <img src="http://thoeriviera.com/thoe-emailer/images/plam/mina-by-thoe/6-April-Mina-Invite_800.jpg" 
                                      width="90" height="30" />
                             </td>
 

@@ -28,7 +28,7 @@
     <div class="container" style="margin-bottom: 5rem;">
         <div class="parallax-container valign-wrapper" style="min-height: 600px;margin-top: 6rem;">
             <div class="parallax">
-                <img alt="thank you" src="http://aziziriviera.com/azizi-emailer/images/ips-2019/26-28_Mar_IPS_Emailer_New.jpg" style="display: block; transform: translate3d(-50%, 137px, 0px);">
+                <img alt="thank you" src="http://thoeriviera.com/thoe-emailer/images/ips-2019/26-28_Mar_IPS_Emailer_New.jpg" style="display: block; transform: translate3d(-50%, 137px, 0px);">
             </div>
             <div class="row m0 center-align" style="background: #ffffffd6;padding: 5rem;width: 100%;">
                 <div class="col s12">

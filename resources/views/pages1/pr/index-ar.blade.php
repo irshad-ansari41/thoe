@@ -163,7 +163,7 @@ $page = !empty($get['page']) ? $get['page'] : '';
                         <div class="row">
                             <div class="col s12 m4">
                                 <a href="<?=$urllinks?>" style="text-decoration:none;"> 
-                                    <img alt="{{ trim($pres->alt) }}" src="{{ asset('assets/images/100-blank-img.jpg') }}" data-src="{{ asset('assets/images/pressrelease/') }}/{{ $pres->image or 'azizi.jpg' }}" class="responsive-img"> 
+                                    <img alt="{{ trim($pres->alt) }}" src="{{ asset('assets/images/100-blank-img.jpg') }}" data-src="{{ asset('assets/images/pressrelease/') }}/{{ $pres->image or 'thoe.jpg' }}" class="responsive-img"> 
                                 </a>
                             </div>
 
@@ -266,7 +266,7 @@ $page = !empty($get['page']) ? $get['page'] : '';
                                                     <i class="ion-social-facebook"></i>
                                                 </a>
 
-                                                <a href="https://twitter.com/share?url={{ url('/') }}/mediacenter-newspress-detail/{{ $pres->id }}&via=AZIZI Developments&text={{ $pres->title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter">
+                                                <a href="https://twitter.com/share?url={{ url('/') }}/mediacenter-newspress-detail/{{ $pres->id }}&via=THOE Developments&text={{ $pres->title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter">
                                                     <i class="ion-social-twitter"></i>
                                                 </a>
 

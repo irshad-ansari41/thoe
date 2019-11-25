@@ -142,7 +142,7 @@ Leads
                             }
                             ?>
                         </table>
-                        <br/><br/><a href="http://azizidevelopments.in/leads/ <?= $filename ?>" download>Export as CSV</a>
+                        <br/><br/><a href="http://thoe.com/leads/ <?= $filename ?>" download>Export as CSV</a>
                     </div>
                 </div>
             </div>

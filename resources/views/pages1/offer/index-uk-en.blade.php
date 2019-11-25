@@ -86,7 +86,7 @@
 
 <section>
     <div class="parallax-container valign-wrapper only-heading" style="background-image:url('<?= SITE_URL ?>/emailer/uk-offers/offer-slider-image-7-2.jpg');">
-        <!--img  src="<?= SITE_URL ?>/emailer/uk-offers/offer-slider-image-7-2.jpg" alt="Berton - Azizi Developments" class="imgtag"/-->
+        <!--img  src="<?= SITE_URL ?>/emailer/uk-offers/offer-slider-image-7-2.jpg" alt="Berton - Thoe Developments" class="imgtag"/-->
         <img srcset="<?= SITE_URL ?>/emailer/uk-offers/offer-slider-image-7-2.jpg 320w,
         <?= SITE_URL ?>/emailer/uk-offers/offer-slider-image-7-2.jpg 480w,
         <?= SITE_URL ?>/emailer/uk-offers/offer-slider-image-7-2.jpg 768w,
@@ -95,13 +95,13 @@
         (max-width: 480px) 300px,
         (max-width: 768px) 500px,
         100vh"
-        src="<?= SITE_URL ?>/emailer/uk-offers/offer-slider-image-7-2.jpg" alt="Uk Offers - Azizi Developments" width="100%" height="100%" />
+        src="<?= SITE_URL ?>/emailer/uk-offers/offer-slider-image-7-2.jpg" alt="Uk Offers - Thoe Developments" width="100%" height="100%" />
 
         <div id='stick-form' class="mobileds">
             <h5 class="info-color white-text text-center" style="text-transform: uppercase; font-size: 24px!important; text-align: center; margin: 10px;display: block;">
                 <strong>ENQUIRE NOW</strong>
             </h5>
-            <iframe src="https://azizidevelopments.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="width:320px;height:330px;border:none;" scrolling="No"></iframe>                            
+            <iframe src="https://thoe.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="width:320px;height:330px;border:none;" scrolling="No"></iframe>                            
         </div>
 
         <div class="col s12 center-align card tag-pro">
@@ -117,7 +117,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h2 class="title1">Azizi Gives Back</h2>
+                <h2 class="title1">Thoe Gives Back</h2>
             </div>
             <div class="col s12 m2">
                 <img class="img-responsive" style="width:150px" src="<?= SITE_URL ?>/emailer/ramadan/Ramadan-offers-mailer-dollar.jpg">
@@ -129,12 +129,12 @@
                 </ul>
                 <span>OR</span>
                 <ul style="padding-left: 15px;">
-                   <li style="list-style: circle;"> Up to <b>AED 20,000</b> of Azizi Credit when purchasing a <b>studio</b></li>
-                    <li style="list-style: circle;"> Up to <b>AED 165,000</b> of Azizi Credit when purchasing a <b>1-bedroom unit</b></li>
-                    <li style="list-style: circle;"> Up to <b>AED 245,000</b> of Azizi Credit when purchasing a <b>2-bedroom unit</b></li>
+                   <li style="list-style: circle;"> Up to <b>AED 20,000</b> of Thoe Credit when purchasing a <b>studio</b></li>
+                    <li style="list-style: circle;"> Up to <b>AED 165,000</b> of Thoe Credit when purchasing a <b>1-bedroom unit</b></li>
+                    <li style="list-style: circle;"> Up to <b>AED 245,000</b> of Thoe Credit when purchasing a <b>2-bedroom unit</b></li>
                 </ul>
                 <br>
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Azizi Riviera Select">Enquire Now <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Thoe Riviera Select">Enquire Now <i class="fa fa-angle-right"></i></a>
             </div>
         </div>  
     </div>
@@ -180,7 +180,7 @@
                 <h5 class="info-color white-text text-center" style="text-transform: uppercase; font-size: 24px!important; text-align: center; margin: 10px;display: block;">
                     <strong>ENQUIRE NOW</strong>
                 </h5>
-                <iframe src="https://azizidevelopments.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="" scrolling="No"></iframe>                            
+                <iframe src="https://thoe.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="" scrolling="No"></iframe>                            
             </div>
         </div> 
         <!--row One end-->
@@ -200,7 +200,7 @@
             <div class="col s12 m6 pro-holder center-align Completed DPborder">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Azizi Riviera" src="<?= SITE_URL ?>/emailer/uk-offers/riviera-offer-image1.jpg" data-src="<?= SITE_URL ?>/emailer/uk-offers/riviera-offer-image1.jpg" class="responsive-img pro-image">
+                    <img alt="Thoe Riviera" src="<?= SITE_URL ?>/emailer/uk-offers/riviera-offer-image1.jpg" data-src="<?= SITE_URL ?>/emailer/uk-offers/riviera-offer-image1.jpg" class="responsive-img pro-image">
                     <div class="col s12 title-holder">
                         <h5>Riviera <br/>Dubai’s new waterfront landmark <br/> Starting From GBP 115k</h5>                       
                     </div>
@@ -238,9 +238,9 @@
             <div class="col s12 m6 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Azizi Mina" src="<?= SITE_URL ?>/emailer/uk-offers/mina-offer-image11.jpg" data-src="<?= SITE_URL ?>/emailer/uk-offers/mina-offer-image11.jpg" class="responsive-img pro-image">
+                    <img alt="Thoe Mina" src="<?= SITE_URL ?>/emailer/uk-offers/mina-offer-image11.jpg" data-src="<?= SITE_URL ?>/emailer/uk-offers/mina-offer-image11.jpg" class="responsive-img pro-image">
                     <div class="col s12 title-holder">
-                        <h5>Azizi Mina <br/> Sea views and the Arabian Gulf <br/> Starting From GBP 480k </h5>                       
+                        <h5>Thoe Mina <br/> Sea views and the Arabian Gulf <br/> Starting From GBP 480k </h5>                       
                     </div>
                 </div>
 

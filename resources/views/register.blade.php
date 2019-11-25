@@ -21,7 +21,7 @@
     <!--Content Section Start -->
     <div class="row">
         <div class="box animation flipInX">
-            <img src="{{ asset('assets/images/azizi-logo.png') }}" alt="logo" class="img-responsive mar">
+            <img src="{{ asset('assets/images/thoe-logo.png') }}" alt="logo" class="img-responsive mar">
             <h3 class="text-primary">Sign Up</h3>
             <!-- Notifications -->
             @include('notifications')

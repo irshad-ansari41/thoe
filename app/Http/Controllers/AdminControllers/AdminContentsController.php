@@ -75,12 +75,7 @@ class AdminContentsController extends Controller {
         $content->description_en = input_trims($request->description_en);
         $content->title_ar = input_trims($request->title_ar);
         $content->description_ar = input_trims($request->description_ar);
-        $content->title_ch = input_trims($request->title_ch);
-        $content->description_ch = input_trims($request->description_ch);
-        $content->title_hn = input_trims($request->title_hn);
-        $content->description_hn = input_trims($request->description_hn);
-        $content->title_ur = input_trims($request->title_ur);
-        $content->description_ur = input_trims($request->description_ur);
+       
         $content->created = date("Y-m-d H:i:s");
         $content->image = $input['imagename'];
         $content->save();
@@ -109,18 +104,12 @@ class AdminContentsController extends Controller {
                         "description_en" => input_trims($request->description_en), 
                         "title_ar" => input_trims($request->title_ar), 
                         "description_ar" => input_trims($request->description_ar), 
-                        "title_ch" => input_trims($request->title_ch), 
-                        "description_ch" => input_trims($request->description_ch), 
+                        
                         "image" => $input['imagename'], 
-                        "title_hn" => input_trims($request->title_hn), 
-                        "description_hn" => input_trims($request->description_hn), 
-                        "title_ur" => input_trims($request->title_ur), 
-                        "description_ur" => input_trims($request->description_ur), 
+                        
                         "short_description_en" => input_trims($request->short_description_en), 
                         "short_description_ar" => input_trims($request->short_description_ar), 
-                        "short_description_ch" => input_trims($request->short_description_ch), 
-                        "short_description_hn" => input_trims($request->short_description_hn), 
-                        "short_description_ur" => input_trims($request->short_description_ur), 
+                       
                         "meta_title" => input_trims($request->meta_title), 
                         "meta_keyword" => input_trims($request->meta_keyword), 
                         "meta_desc" => input_trims($request->meta_desc), 
@@ -135,17 +124,10 @@ class AdminContentsController extends Controller {
                         "description_en" => input_trims($request->description_en), 
                         "title_ar" => input_trims($request->title_ar), 
                         "description_ar" => input_trims($request->description_ar), 
-                        "title_ch" => input_trims($request->title_ch), 
-                        "description_ch" => input_trims($request->description_ch), 
-                        "title_hn" => input_trims($request->title_hn), 
-                        "description_hn" => input_trims($request->description_hn), 
-                        "title_ur" => input_trims($request->title_ur), 
-                        "description_ur" => input_trims($request->description_ur), 
+                        
                         "short_description_en" => input_trims($request->short_description_en), 
                         "short_description_ar" => input_trims($request->short_description_ar), 
-                        "short_description_ch" => input_trims($request->short_description_ch), 
-                        "short_description_hn" => input_trims($request->short_description_hn), 
-                        "short_description_ur" => input_trims($request->short_description_ur), 
+                        
                         "meta_title" => input_trims($request->meta_title), 
                         "meta_keyword" => input_trims($request->meta_keyword), 
                         "meta_desc" => input_trims($request->meta_desc), 
@@ -232,15 +214,7 @@ class AdminContentsController extends Controller {
         if ($request->title_ar != "") {
             $data['title_ar'] = input_trims($request->title_ar);
         }
-        if ($request->title_ch != "") {
-            $data['title_ch'] = input_trims($request->title_ch);
-        }
-        if ($request->title_hn != "") {
-            $data['title_hn'] = input_trims($request->title_hn);
-        }
-        if ($request->title_ur != "") {
-            $data['title_ur'] = input_trims($request->title_ur);
-        }
+        
 
         if ($request->description_en != "") {
             $data['description_en'] = input_trims($request->description_en);
@@ -248,15 +222,7 @@ class AdminContentsController extends Controller {
         if ($request->description_ar != "") {
             $data['description_ar'] = input_trims($request->description_ar);
         }
-        if ($request->description_ch != "") {
-            $data['description_ch'] = input_trims($request->description_ch);
-        }
-        if ($request->description_hn != "") {
-            $data['description_hn'] = input_trims($request->description_hn);
-        }
-        if ($request->description_ur != "") {
-            $data['description_ur'] = input_trims($request->description_ur);
-        }
+        
 
         if ($request->slug != "") {
             $data['slug'] = input_trims($request->slug);
@@ -279,15 +245,7 @@ class AdminContentsController extends Controller {
         if ($request->chairment_description_ar != "") {
             $data['chairment_description_ar'] = input_trims($request->chairment_description_ar);
         }
-        if ($request->chairment_description_ch != "") {
-            $data['chairment_description_ch'] = input_trims($request->chairment_description_ch);
-        }
-        if ($request->chairment_description_hn != "") {
-            $data['chairment_description_hn'] = input_trims($request->chairment_description_hn);
-        }
-        if ($request->chairment_description_ur != "") {
-            $data['chairment_description_ur'] = input_trims($request->chairment_description_ur);
-        }
+        
 
         if (!empty($data)) {
             About::where('id', 1)->update($data);
@@ -337,15 +295,11 @@ class AdminContentsController extends Controller {
             $timeline->alt = input_trims($request->alt);
             $timeline->title_en = input_trims($request->title_en);
             $timeline->title_ar = input_trims($request->title_ar);
-            $timeline->title_ch = input_trims($request->title_ch);
-            $timeline->title_hn = input_trims($request->title_hn);
-            $timeline->title_ur = input_trims($request->title_ur);
+           
 
             $timeline->description_en = input_trims($request->description_en);
             $timeline->description_ar = input_trims($request->description_ar);
-            $timeline->description_ch = input_trims($request->description_ch);
-            $timeline->description_hn = input_trims($request->description_hn);
-            $timeline->description_ur = input_trims($request->description_ur);
+           
             $timeline->created = date("Y-m-d H:i:s");
             $timeline->image = $timage;
             $timeline->save();
@@ -389,17 +343,7 @@ class AdminContentsController extends Controller {
             if ($request->title_ar) {
                 $data['title_ar'] = input_trims($request->title_ar);
             }
-            if ($request->title_ch) {
-                $data['title_ch'] = input_trims($request->title_ch);
-            }
-
-            if ($request->title_hn) {
-                $data['title_hn'] = input_trims($request->title_hn);
-            }
-
-            if ($request->title_ur) {
-                $data['title_ur'] = input_trims($request->title_ur);
-            }
+            
 
             if ($request->description_en) {
                 $data['description_en'] = input_trims($request->description_en);
@@ -407,15 +351,7 @@ class AdminContentsController extends Controller {
             if ($request->description_ar) {
                 $data['description_ar'] = input_trims($request->description_ar);
             }
-            if ($request->description_ch) {
-                $data['description_ch'] = input_trims($request->description_ch);
-            }
-            if ($request->description_hn) {
-                $data['description_hn'] = input_trims($request->description_hn);
-            }
-            if ($request->description_ur) {
-                $data['description_ur'] = input_trims($request->description_ur);
-            }
+           
 
             if (!empty($data)) {
                 Timeline::where('id', $request->id)->update($data);
@@ -545,15 +481,7 @@ class AdminContentsController extends Controller {
         if ($request->title_ar != "") {
             $data['title_ar'] = input_trims($request->title_ar);
         }
-        if ($request->title_ch != "") {
-            $data['title_ch'] = input_trims($request->title_ch);
-        }
-        /*if ($request->title_hn != "") {
-            $data['title_hn'] = $request->title_hn;
-        }
-        if ($request->title_ur != "") {
-            $data['title_ur'] = $request->title_ur;
-        }*/
+        
 
         $data['slug'] = input_trims($request->slug);
         $data['meta_title'] = input_trims($request->meta_title);
@@ -571,15 +499,7 @@ class AdminContentsController extends Controller {
         if ($request->description_ar != "") {
             $data['description_ar'] = input_trims($request->description_ar);
         }
-        if ($request->description_ch != "") {
-            $data['description_ch'] = input_trims($request->description_ch);
-        }
-        /*if ($request->description_hn != "") {
-            $data['description_hn'] = $request->description_hn;
-        }
-        if ($request->description_ur != "") {
-            $data['description_ur'] = $request->description_ur;
-        }*/
+        
 
         if ($request->chairmen_name_en != "") {
             $data['chairmen_name_en'] = input_trims($request->chairmen_name_en);
@@ -590,15 +510,7 @@ class AdminContentsController extends Controller {
         if ($request->chairmen_description_ar != "") {
             $data['chairmen_description_ar'] = input_trims($request->chairmen_description_ar);
         }
-        if ($request->chairmen_description_ch != "") {
-            $data['chairmen_description_ch'] = input_trims($request->chairmen_description_ch);
-        }
-        /*if ($request->chairmen_description_hn != "") {
-            $data['chairmen_description_hn'] = $request->chairmen_description_hn;
-        }
-        if ($request->chairmen_description_ur != "") {
-            $data['chairmen_description_ur'] = $request->chairmen_description_ur;
-        }*/
+       
 
 
         if ($request->ceo_name_en != "") {
@@ -610,15 +522,7 @@ class AdminContentsController extends Controller {
         if ($request->ceo_description_ar != "") {
             $data['ceo_description_ar'] = input_trims($request->ceo_description_ar);
         }
-        if ($request->ceo_description_ch != "") {
-            $data['ceo_description_ch'] = input_trims($request->ceo_description_ch);
-        }
-        /*if ($request->ceo_description_hn != "") {
-            $data['ceo_description_hn'] = $request->ceo_description_hn;
-        }
-        if ($request->ceo_description_ur != "") {
-            $data['ceo_description_ur'] = $request->ceo_description_ur;
-        }*/
+        
 
         if ($request->deputy_ceo_name_en != "") {
             $data['deputy_ceo_name_en'] = input_trims($request->deputy_ceo_name_en);
@@ -629,15 +533,7 @@ class AdminContentsController extends Controller {
         if ($request->deputy_ceo_description_ar != "") {
             $data['deputy_ceo_description_ar'] = input_trims($request->deputy_ceo_description_ar);
         }
-        if ($request->deputy_ceo_description_ch != "") {
-            $data['deputy_ceo_description_ch'] = input_trims($request->deputy_ceo_description_ch);
-        }
-        /*if ($request->deputy_ceo_description_hn != "") {
-            $data['deputy_ceo_description_hn'] = $request->deputy_ceo_description_hn;
-        }
-        if ($request->deputy_ceo_description_ur != "") {
-            $data['deputy_ceo_description_ur'] = $request->deputy_ceo_description_ur;
-        }*/
+       
 
 
         if (!empty($data)) {
@@ -685,33 +581,23 @@ class AdminContentsController extends Controller {
             $team = new Team();
             $team->name = input_trims($request->name);
             $team->name_ar = input_trims($request->name_ar);
-            $team->name_cn = input_trims($request->name_ch);
-            $team->name_hn = input_trims($request->name_hn);
-            $team->name_ur = input_trims($request->name_ur);
+           
 
             $team->alt = input_trims($request->alt);
             $team->designation = input_trims($request->designation);
             $team->designation_ar = input_trims($request->designation_ar);
-            $team->designation_cn = input_trims($request->designation_ch);
-            $team->designation_hn = input_trims($request->designation_hn);
-            $team->designation_ur = input_trims($request->designation_ur);
+            
 
             $team->image = $timage;
             $team->description_en = input_trims($request->description_en);
             $team->description_ar = input_trims($request->description_ar);
-            $team->description_cn = input_trims($request->description_ch);
-            $team->description_hn = input_trims($request->description_hn);
-            $team->description_ur = input_trims($request->description_ur);
+            
             $team->long_description_en = input_trims($request->long_description_en);
             $team->long_description_ar = input_trims($request->long_description_ar);
-            $team->long_description_cn = input_trims($request->long_description_ch);
-            $team->long_description_hn = input_trims($request->long_description_hn);
-            $team->long_description_ur = input_trims($request->long_description_ur);
+            
             $team->team_short_description_en = input_trims($request->team_short_description_en);
             $team->team_short_description_ar = input_trims($request->team_short_description_ar);
-            $team->team_short_description_cn = input_trims($request->team_short_description_ch);
-            $team->team_short_description_hn = input_trims($request->team_short_description_hn);
-            $team->team_short_description_ur = input_trims($request->team_short_description_ur);
+            
             $team->tag1 = input_trims($request->tag1);
             $team->tag2 = input_trims($request->tag2);
             $team->tag3 = input_trims($request->tag3);
@@ -754,45 +640,27 @@ class AdminContentsController extends Controller {
             if ($request->name_ar) {
                 $data['name_ar'] = input_trims($request->name_ar);
             }
-            if ($request->name_ch) {
-                $data['name_cn'] = input_trims($request->name_ch);
-            }
-
-            if ($request->name_hn) {
-                $data['name_hn'] = input_trims($request->name_hn);
-            }
-
-            if ($request->name_ur) {
-                $data['name_ur'] = input_trims($request->name_ur);
-            }
+            
 
             if ($request->designation) {
                 $data['designation'] = input_trims($request->designation);
             }
 
             $data['designation_ar'] = input_trims($request->designation_ar);
-            $data['designation_ur'] = input_trims($request->designation_ur);
-            $data['designation_hn'] = input_trims($request->designation_hn);
-            $data['designation_cn'] = input_trims($request->designation_ch);
+           
 
 
             $data['description_en'] = input_trims($request->description_en);
             $data['description_ar'] = input_trims($request->description_ar);
-            $data['description_cn'] = input_trims($request->description_ch);
-            $data['description_hn'] = input_trims($request->description_hn);
-            $data['description_ur'] = input_trims($request->description_ur);
+            
 
             $data['long_description_en'] = input_trims($request->long_description_en);
             $data['long_description_ar'] = input_trims($request->long_description_ar);
-            $data['long_description_cn'] = input_trims($request->long_description_ch);
-            $data['long_description_hn'] = input_trims($request->long_description_hn);
-            $data['long_description_ur'] = input_trims($request->long_description_ur);
+            
 
             $data['team_short_description_en'] = input_trims($request->team_short_description_en);
             $data['team_short_description_ar'] = input_trims($request->team_short_description_ar);
-            $data['team_short_description_cn'] = input_trims($request->team_short_description_ch);
-            $data['team_short_description_hn'] = input_trims($request->team_short_description_hn);
-            $data['team_short_description_ur'] = input_trims($request->team_short_description_ur);
+           
 
             $data['alt'] = input_trims($request->alt);
 
@@ -918,19 +786,15 @@ class AdminContentsController extends Controller {
             }
             $team->name = input_trims($request->name);
             $team->name_ar = input_trims($request->name_ar);
-            $team->name_ch = input_trims($request->name_ch);
 
 
             $team->alt = input_trims($request->alt);
             $team->designation = input_trims($request->designation);
             $team->designation_ar = input_trims($request->designation_ar);
-            $team->designation_ch = input_trims($request->designation_ch);
             $team->image = $timage;
             $team->description_en = input_trims($request->description_en);
             $team->description_ar = input_trims($request->description_ar);
-            $team->description_ch = input_trims($request->description_ch);
-            $team->description_hn = input_trims($request->description_hn);
-            $team->description_ur = input_trims($request->description_ur);
+           
             $team->created = date("Y-m-d H:i:s");
 
             $team->save();
@@ -978,9 +842,7 @@ class AdminContentsController extends Controller {
             if ($request->name_ar) {
                 $data['name_ar'] = input_trims($request->name_ar);
             }
-            if ($request->name_ch) {
-                $data['name_ch'] = input_trims($request->name_ch);
-            }
+           
 
             if ($request->designation) {
                 $data['designation'] = input_trims($request->designation);
@@ -990,9 +852,7 @@ class AdminContentsController extends Controller {
                 $data['designation_ar'] = input_trims($request->designation_ar);
             }
 
-            if ($request->designation_ch) {
-                $data['designation_ch'] = input_trims($request->designation_ch);
-            }
+           
 
 
             if ($request->description_en) {
@@ -1001,15 +861,7 @@ class AdminContentsController extends Controller {
             if ($request->description_ar) {
                 $data['description_ar'] = input_trims($request->description_ar);
             }
-            if ($request->description_ch) {
-                $data['description_ch'] = input_trims($request->description_ch);
-            }
-            if ($request->description_hn) {
-                $data['description_hn'] = input_trims($request->description_hn);
-            }
-            if ($request->description_ur) {
-                $data['description_ur'] = input_trims($request->description_ur);
-            }
+            
 
             $data['alt'] = $request->alt;
 
@@ -1161,19 +1013,13 @@ class AdminContentsController extends Controller {
             $step = new Steps();
             $step->title_en = $request->title_en;
             $step->title_ar = $request->title_ar;
-            $step->title_ch = $request->title_ch;
-            $step->title_hn = $request->title_hn;
-            $step->title_ur = $request->title_ur;
+           
             $step->short_description_en = $request->short_description_en;
             $step->short_description_ar = $request->short_description_ar;
-            $step->short_description_ch = $request->short_description_ch;
-            $step->short_description_hn = $request->short_description_hn;
-            $step->short_description_ur = $request->short_description_ur;
+           
             $step->long_description_en = $request->long_description_en;
             $step->long_description_ar = $request->long_description_ar;
-            $step->long_description_ch = $request->long_description_ch;
-            $step->long_description_hn = $request->long_description_hn;
-            $step->long_description_ur = $request->long_description_ur;
+           
 
             $step->created = date("Y-m-d H:i:s");
             $step->status = '1';
@@ -1190,15 +1036,7 @@ class AdminContentsController extends Controller {
             if ($request->title_ar) {
                 $data['title_ar'] = $request->title_ar;
             }
-            if ($request->title_ch) {
-                $data['title_ch'] = $request->title_ch;
-            }
-            if ($request->title_hn) {
-                $data['title_hn'] = $request->title_hn;
-            }
-            if ($request->title_ur) {
-                $data['title_ur'] = $request->title_ur;
-            }
+           
 
             if ($request->short_description_en) {
                 $data['short_description_en'] = $request->short_description_en;
@@ -1206,15 +1044,7 @@ class AdminContentsController extends Controller {
             if ($request->short_description_ar) {
                 $data['short_description_ar'] = $request->short_description_ar;
             }
-            if ($request->short_description_ch) {
-                $data['short_description_ch'] = $request->short_description_ch;
-            }
-            if ($request->short_description_hn) {
-                $data['short_description_hn'] = $request->short_description_hn;
-            }
-            if ($request->short_description_ur) {
-                $data['short_description_ur'] = $request->short_description_ur;
-            }
+           
 
             if ($request->long_description_en) {
                 $data['long_description_en'] = $request->long_description_en;
@@ -1222,15 +1052,7 @@ class AdminContentsController extends Controller {
             if ($request->long_description_ar) {
                 $data['long_description_ar'] = $request->long_description_ar;
             }
-            if ($request->long_description_ch) {
-                $data['long_description_ch'] = $request->long_description_ch;
-            }
-            if ($request->long_description_hn) {
-                $data['long_description_hn'] = $request->long_description_hn;
-            }
-            if ($request->long_description_ur) {
-                $data['long_description_ur'] = $request->long_description_ur;
-            }
+            
 
             if (!empty($data)) {
                 Steps::where('id', $request->id)->update($data);
@@ -1292,19 +1114,13 @@ class AdminContentsController extends Controller {
             $job = new Jobs();
             $job->title_en = $request->title_en;
             $job->title_ar = $request->title_ar;
-            $job->title_ch = $request->title_ch;
-            $job->title_hn = $request->title_hn;
-            $job->title_ur = $request->title_ur;
+            
             $job->short_description_en = $request->short_description_en;
             $job->short_description_ar = $request->short_description_ar;
-            $job->short_description_ch = $request->short_description_ch;
-            $job->short_description_hn = $request->short_description_hn;
-            $job->short_description_ur = $request->short_description_ur;
+            
             $job->long_description_en = $request->long_description_en;
             $job->long_description_ar = $request->long_description_ar;
-            $job->long_description_ch = $request->long_description_ch;
-            $job->long_description_hn = $request->long_description_hn;
-            $job->long_description_ur = $request->long_description_ur;
+           
             $job->page_link = $request->page_link;
 
             $job->created = date("Y-m-d H:i:s");
@@ -1322,15 +1138,7 @@ class AdminContentsController extends Controller {
             if ($request->title_ar) {
                 $data['title_ar'] = $request->title_ar;
             }
-            if ($request->title_ch) {
-                $data['title_ch'] = $request->title_ch;
-            }
-            if ($request->title_hn) {
-                $data['title_hn'] = $request->title_hn;
-            }
-            if ($request->title_ur) {
-                $data['title_ur'] = $request->title_ur;
-            }
+            
 
             if ($request->short_description_en) {
                 $data['short_description_en'] = $request->short_description_en;
@@ -1338,15 +1146,7 @@ class AdminContentsController extends Controller {
             if ($request->short_description_ar) {
                 $data['short_description_ar'] = $request->short_description_ar;
             }
-            if ($request->short_description_ch) {
-                $data['short_description_ch'] = $request->short_description_ch;
-            }
-            if ($request->short_description_hn) {
-                $data['short_description_hn'] = $request->short_description_hn;
-            }
-            if ($request->short_description_ur) {
-                $data['short_description_ur'] = $request->short_description_ur;
-            }
+            
 
             if ($request->long_description_en) {
                 $data['long_description_en'] = $request->long_description_en;
@@ -1354,15 +1154,7 @@ class AdminContentsController extends Controller {
             if ($request->long_description_ar) {
                 $data['long_description_ar'] = $request->long_description_ar;
             }
-            if ($request->long_description_ch) {
-                $data['long_description_ch'] = $request->long_description_ch;
-            }
-            if ($request->long_description_hn) {
-                $data['long_description_hn'] = $request->long_description_hn;
-            }
-            if ($request->long_description_ur) {
-                $data['long_description_ur'] = $request->long_description_ur;
-            }
+           
             if ($request->page_link) {
                 $data['page_link'] = $request->page_link;
             }

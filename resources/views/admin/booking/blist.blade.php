@@ -471,11 +471,11 @@ Content List
                                                     buttons: [
                                                         {
                                                             extend: 'excelHtml5',
-                                                            title: 'AZIZI_payment_data'
+                                                            title: 'THOE_payment_data'
                                                         },
                                                         {
                                                             extend: 'pdfHtml5',
-                                                            title: 'AZIZI_payment_data'
+                                                            title: 'THOE_payment_data'
                                                         }
                                                     ],
                                                     "ordering": false,

@@ -205,7 +205,7 @@
 
         <!--section  class="sectiontwo">
             <div class="container">    
-                <!-- Mr. Azizi Chairman --
+                <!-- Mr. Thoe Chairman --
                 <div class="row rowgaps" >
                     <div class="col s12 m12 l3 xl3" data-aos="fade-right" data-aos-once="true">
                         @if($executive['chairmen_image']!="")
@@ -216,7 +216,7 @@
                         <div class="desig-person mt0">
                             <div class="person-name">{{ $executive['chairmen_name_en'] }}</div>
                             <div class="divider az-header-divider"></div>
-                            <i>{{trans('words.Chairman, Azizi Group')}}</i>
+                            <i>{{trans('words.Chairman, Thoe Group')}}</i>
                         </div>
                         <p class="az-pcontent">{!! $executive['chairmen_description_en'] !!}</p>
                     </div>
@@ -226,7 +226,7 @@
         </section>
         <!--Chairman -->
         
-        <!-- Farhad Azizi Ceo -->
+        <!-- Farhad Thoe Ceo -->
         <section>
             <div class="container" >   
                 <div class="row rowgaps">
@@ -239,7 +239,7 @@
                         <div class="desig-person mt0">
                             <div class="person-name">{{ $executive['ceo_name_en'] }}</div>
                             <div class="divider az-header-divider"></div>
-                            <i>{{trans('words.CEO AZIZI DEVELOPMENTS')}}</i> 
+                            <i>{{trans('words.CEO THOE DEVELOPMENTS')}}</i> 
                         </div>
                         <p class="az-pcontent">{!! $executive['ceo_description_en'] !!}</p>
                     </div>
@@ -250,7 +250,7 @@
 
         <section class="sectiontwo">
             <div class="container" >   
-                <!-- Fawad Azizi Dep: Ceo -->
+                <!-- Fawad Thoe Dep: Ceo -->
                 <div class="row rowgaps">
                     <div class="col s12 m12 l3 xl3 " data-aos="fade-right" data-aos-once="true">
                         @if($executive['deputy_ceo_image']!="")
@@ -261,7 +261,7 @@
                         <div class="desig-person mt0">
                             <div class="person-name">{{ $executive['deputy_ceo_name_en'] }}</div>
                             <div class="divider az-header-divider"></div>
-                            <i>{{trans('words.Deputy CEO, Azizi Developments')}}</i> 
+                            <i>{{trans('words.Deputy CEO, Thoe Developments')}}</i> 
                         </div>
                         <p class="az-pcontent">{!! $executive['deputy_ceo_description_en'] !!}</p>
                     </div>

@@ -50,7 +50,7 @@
                             <a style="font-weight: 600;">{{trans('words.About Us')}}</a>
                             @elseif($locale=='cn')
                             <a href="{{ url('/') }}" style="color: #5a5a5a;">主页 / </a>
-                            <a style="font-weight: 600;">关于AZIZI地产公司</a>
+                            <a style="font-weight: 600;">关于THOE地产公司</a>
                             @elseif($locale=='ar')
                             <a href="{{ url('/') }}" style="color: #5a5a5a;">{{trans('words.home')}} / </a>
                             <a style="font-weight: 600;">{{trans('words.About Us')}}</a>
@@ -105,8 +105,8 @@
                 </p>
 
                 <div class="desig-person" style="margin-top: 3em;">
-                    <div class="person-name" style="font-size: 15px;margin: 0;">{{ trans('words.mirwais_azizi')}}</div>
-                    <i style="font-size: 12px;">{{ trans('words.chirman_azizi_group') }}</i>
+                    <div class="person-name" style="font-size: 15px;margin: 0;">{{ trans('words.mirwais_thoe')}}</div>
+                    <i style="font-size: 12px;">{{ trans('words.chirman_thoe_group') }}</i>
                 </div>
             </div>
         </div>
@@ -121,15 +121,15 @@
                     <h5 class="white">
 
                         @if($locale=='en')
-                        {{ trans('words.azizi_development_at_glance') }}
+                        {{ trans('words.thoe_development_at_glance') }}
                         @elseif($locale=='cn')
-                        AZIZI地产公司一览
+                        THOE地产公司一览
                         @elseif($locale=='ar')
-                        {{ trans('words.azizi_development_at_glance') }}
+                        {{ trans('words.thoe_development_at_glance') }}
                         @endif
 
                     </h5>
-                    <!-- <h6 class="az-title white">Azizi Group was founded in 1989</h6> -->
+                    <!-- <h6 class="az-title white">Thoe Group was founded in 1989</h6> -->
                 </div>
             </div>
 

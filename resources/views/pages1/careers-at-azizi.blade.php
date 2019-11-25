@@ -82,7 +82,7 @@
                 <p class="az-pcontent">{!! $content->recruitment_description_en !!}</p>
             </div>
             <div class="col s12 m9 offset-m1" style="margin-top: 3rem;">
-                <!-- <p class="az-pcontent">At Azizi, we aim to be completely fair and consistent with every candidate. All applications are screened based on our job requirements and when we feel that the fit is right, we’ll contact you. </p> -->
+                <!-- <p class="az-pcontent">At Thoe, we aim to be completely fair and consistent with every candidate. All applications are screened based on our job requirements and when we feel that the fit is right, we’ll contact you. </p> -->
                 @if(!empty($steps))
                 @foreach($steps as $step)
                 <div class="row">

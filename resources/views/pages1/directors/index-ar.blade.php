@@ -206,7 +206,7 @@
         
         <section  class="sectiontwo">
             <div class="container">    
-                <!-- Mr. Azizi Chairman -->
+                <!-- Mr. Thoe Chairman -->
                 <div class="row rowgaps" >
                     <div class="col s12 m12 l3 xl3" data-aos="fade-left" data-aos-once="true">
                         @if($executive['chairmen_image']!="")
@@ -217,7 +217,7 @@
                         <div class="desig-person mt0">
                             <div class="person-name">{{ $executive['chairmen_name_ar'] }}</div>
                             <div class="divider az-header-divider"></div>
-                            <i>{{trans('words.Chairman, Azizi Group')}}</i>
+                            <i>{{trans('words.Chairman, Thoe Group')}}</i>
                         </div>
                         <p class="az-pcontent">{!! $executive['chairmen_description_ar'] !!}</p>
                     </div>

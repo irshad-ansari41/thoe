@@ -191,8 +191,8 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
     Route::get('availability-app-setting', ['as' => 'availability-app-setting.index', 'uses' => 'AdminMobileAppsController@availabilityAppGetSetting']);
     Route::post('availability-app-setting', ['as' => 'availability-app-setting.store', 'uses' => 'AdminMobileAppsController@availabilityAppSetSetting']);
 
-    Route::get('azizi-app-setting', ['as' => 'azizi-app-setting.index', 'uses' => 'AdminMobileAppsController@aziziAppGetSetting']);
-    Route::post('azizi-app-setting', ['as' => 'azizi-app-setting.store', 'uses' => 'AdminMobileAppsController@aziziAppSetSetting']);
+    Route::get('thoe-app-setting', ['as' => 'thoe-app-setting.index', 'uses' => 'AdminMobileAppsController@thoeAppGetSetting']);
+    Route::post('thoe-app-setting', ['as' => 'thoe-app-setting.store', 'uses' => 'AdminMobileAppsController@thoeAppSetSetting']);
 
     Route::get('app-sync-version', ['as' => 'app-sync-version.index', 'uses' => 'SyncAdminController@getSyncVersion']);
     Route::post('app-sync-version', ['as' => 'app-sync-version.store', 'uses' => 'SyncAdminController@setSyncVersion']);
@@ -282,7 +282,7 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
     Route::get('/content/create', array('uses' => 'AdminContentsController@create'));
     Route::post('/content/create', array('uses' => 'AdminContentsController@store'));
 
-    /* About Azizi Development */
+    /* About Thoe Development */
     Route::get('/content/about', array('uses' => 'AdminContentsController@about_us'));
     Route::post('/content/about', array('uses' => 'AdminContentsController@update_about'));
 

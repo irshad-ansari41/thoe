@@ -126,12 +126,10 @@ class ConstructionController extends Controller {
 
         $meta_title = metaTitleByLocale($this->locale, [
             'en' => "$property->title_en, $project->title_en Construction Updates – The Heart of Europe",
-            'ar' => "$property->title_ar, $project->title_ar Construction Updates – The Heart of Europe|",
-            'cn' => "$property->title_ch, $project->title_ch Construction Updates – The Heart of Europe"]);
+            'ar' => "$property->title_ar, $project->title_ar Construction Updates – The Heart of Europe|",]);
         $meta_desc = metaDescByLocale($this->locale, [
             'en' => "Last Updated on " . date('M d,Y') . " – View latest construction updates of {$property->title_en} project in {$project->title_en} which is under construction by THOE Development",
-            'ar' => "Last Updated on " . date('M d,Y') . " – View latest construction updates of {$property->title_ar} project in {$project->title_ar} which is under construction by THOE Development",
-            'cn' => "Last Updated on " . date('M d,Y') . " – View latest construction updates of {$property->title_ch} project in {$project->title_ch} which is under construction by THOE Development",]);
+            'ar' => "Last Updated on " . date('M d,Y') . " – View latest construction updates of {$property->title_ar} project in {$project->title_ar} which is under construction by THOE Development",]);
 
 
 

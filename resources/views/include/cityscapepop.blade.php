@@ -81,14 +81,14 @@
     }
 </style>
 
-<img id="myImg" src="{{asset('assets/images/dubai-healthcare-city-azizi.jpg')}}" alt="Cityscape Global 2018" style="display:none;">
+<img id="myImg" src="{{asset('assets/images/dubai-healthcare-city-thoe.jpg')}}" alt="Cityscape Global 2018" style="display:none;">
 
 <!-- The Modal -->
 <div id="cityscape">
     <div id="myModal" class="modal">
         <div id="img-con" style="max-width: 530px;width:100%;margin: auto;padding:15px;">
             <span class="close">&times;</span>
-            <a target="_blank" href="http://azizidevelopments.com/cityscape-lp/index.html">
+            <a target="_blank" href="http://thoe.com/cityscape-lp/index.html">
                 <img class="modal-content" id="img01">
             </a>
             <div id="caption"></div>

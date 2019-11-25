@@ -361,32 +361,25 @@ class AdminPropertiesController extends Controller {
             $aminitie = new Aminities();
             $aminitie->title_en = input_trims($request->title_en);
             $aminitie->title_ar = input_trims($request->title_ar);
-
             $aminitie->created = date("Y-m-d H:i:s");
             $aminitie->icon = $input['imagename'];
             $aminitie->status = '1';
-
             $aminitie->save();
-
             $request->session()->flash('alert-success', 'Aminity has been added!');
         }
         if ($request->type == "edit") {
-
             $validator = $this->validator_image_aminity($request->all());
-
             if ($validator->fails()) {
                 $this->throwValidationException(
                         $request, $validator
                 );
             }
-
             $image = $request->file('image');
             $input['imagename'] = '';
             if ($image) {
                 $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
                 $destinationPath = STORE_PATH . ('/assets/images/icon');
                 $image->move($destinationPath, $input['imagename']);
-
                 $aminitie = Aminities::find($request->id);
                 if ($aminitie->icon != "") {
                     $url = STORE_PATH . "/assets/images/icon/" . $aminitie->icon;
@@ -394,30 +387,13 @@ class AdminPropertiesController extends Controller {
                 }
             }
 
-
             $data = array();
             if ($input['imagename'] != "") {
                 $data['icon'] = $input['imagename'];
             }
-            if ($request->title_en) {
-                $data['title_en'] = input_trims($request->title_en);
-            }
-            if ($request->title_ar) {
-                $data['title_ar'] = input_trims($request->title_ar);
-            }
-
-            if ($request->description_en) {
-                $data['description_en'] = input_trims($request->description_en);
-            }
-            if ($request->description_ar) {
-                $data['description_ar'] = input_trims($request->description_ar);
-            }
-
-
-            if (!empty($data)) {
-                Aminities::where('id', $request->id)->update($data);
-            }
-
+            $data['title_en'] = input_trims($request->title_en);
+            $data['title_ar'] = input_trims($request->title_ar);
+            Aminities::where('id', $request->id)->update($data);
             $request->session()->flash('alert-success', 'Aminity has been updated!');
         }
 
@@ -740,9 +716,6 @@ class AdminPropertiesController extends Controller {
             $unity = new Unities();
             $unity->title_en = $request->title_en;
             $unity->title_ar = $request->title_ar;
-            $unity->title_ch = $request->title_ch;
-            $unity->title_hn = $request->title_hn;
-            $unity->title_ur = $request->title_ur;
             $unity->created = date("Y-m-d H:i:s");
             $unity->icon = $input['imagename'];
             $unity->status = '1';
@@ -785,15 +758,7 @@ class AdminPropertiesController extends Controller {
             if ($request->title_ar) {
                 $data['title_ar'] = $request->title_ar;
             }
-            if ($request->title_ch) {
-                $data['title_ch'] = $request->title_ch;
-            }
-            if ($request->title_hn) {
-                $data['title_hn'] = $request->title_hn;
-            }
-            if ($request->title_ur) {
-                $data['title_ur'] = $request->title_ur;
-            }
+
 
             if (!empty($data)) {
                 Unities::where('id', $request->id)->update($data);
@@ -848,9 +813,7 @@ class AdminPropertiesController extends Controller {
             $category = new Category();
             $category->title_en = input_trims($request->title_en);
             $category->title_ar = input_trims($request->title_ar);
-            $category->title_ch = input_trims($request->title_ch);
-            $category->title_hn = input_trims($request->title_hn);
-            $category->title_ur = input_trims($request->title_ur);
+
             $category->created = date("Y-m-d H:i:s");
             $category->status = '1';
             $category->save();
@@ -866,15 +829,7 @@ class AdminPropertiesController extends Controller {
             if ($request->title_ar) {
                 $data['title_ar'] = input_trims($request->title_ar);
             }
-            if ($request->title_ch) {
-                $data['title_ch'] = input_trims($request->title_ch);
-            }
-            if ($request->title_hn) {
-                $data['title_hn'] = input_trims($request->title_hn);
-            }
-            if ($request->title_ur) {
-                $data['title_ur'] = input_trims($request->title_ur);
-            }
+
 
             if (!empty($data)) {
                 Category::where('id', $request->id)->update($data);
@@ -1030,9 +985,7 @@ class AdminPropertiesController extends Controller {
             $properties->project_id = input_trims($request->project_id);
             $properties->title_en = input_trims($request->title_en);
             $properties->title_ar = input_trims($request->title_ar);
-            $properties->title_ch = input_trims($request->title_ch);
-            $properties->title_hn = input_trims($request->title_hn);
-            $properties->title_ur = input_trims($request->title_ur);
+
 
             $properties->holder_alt = input_trims($request->holder_alt);
             $properties->header_alt = input_trims($request->header_alt);
@@ -1048,9 +1001,7 @@ class AdminPropertiesController extends Controller {
 
             $properties->short_description_en = input_trims($request->short_description_en);
             $properties->short_description_ar = input_trims($request->short_description_ar);
-            $properties->short_description_ch = input_trims($request->short_description_ch);
-            $properties->short_description_ur = input_trims($request->short_description_ur);
-            $properties->short_description_hn = input_trims($request->short_description_hn);
+
 
             $properties->slug = !empty($request->slug) ? str_replace(' ', '-', input_trims(strtolower($request->slug))) : str_replace(' ', '-', input_trims(strtolower($request->title_en)));
 
@@ -1062,9 +1013,7 @@ class AdminPropertiesController extends Controller {
 
             $properties->long_description_en = input_trims($request->long_description_en);
             $properties->long_description_ar = input_trims($request->long_description_ar);
-            $properties->long_description_ch = input_trims($request->long_description_ch);
-            $properties->long_description_ur = input_trims($request->long_description_ur);
-            $properties->long_description_hn = input_trims($request->long_description_hn);
+
 
 
             $properties->featured = input_trims($request->featured);
@@ -1078,9 +1027,6 @@ class AdminPropertiesController extends Controller {
             $properties->video_url = input_trims($request->video_url);
             $properties->building_height = input_trims($request->building_height);
             $properties->building_height_ar = input_trims($request->building_height_ar);
-            $properties->building_height_ch = input_trims($request->building_height_ch);
-            $properties->building_height_hn = input_trims($request->building_height_hn);
-            $properties->building_height_ur = input_trims($request->building_height_ur);
 
 
             $properties->status = 1;
@@ -1235,15 +1181,7 @@ class AdminPropertiesController extends Controller {
             if ($request->title_ar) {
                 $data['title_ar'] = input_trims($request->title_ar);
             }
-            if ($request->title_ch) {
-                $data['title_ch'] = input_trims($request->title_ch);
-            }
-            if ($request->title_hn) {
-                $data['title_hn'] = input_trims($request->title_hn);
-            }
-            if ($request->title_ur) {
-                $data['title_ur'] = input_trims($request->title_ur);
-            }
+
             if ($request->location) {
                 $data['location'] = input_trims($request->location);
             }
@@ -1264,39 +1202,21 @@ class AdminPropertiesController extends Controller {
             if ($request->short_description_ar) {
                 $data['short_description_ar'] = input_trims($request->short_description_ar);
             }
-            if ($request->short_description_ch) {
-                $data['short_description_ch'] = input_trims($request->short_description_ch);
-            }
-            if ($request->short_description_ur) {
-                $data['short_description_ur'] = input_trims($request->short_description_ur);
-            }
-            if ($request->short_description_hn) {
-                $data['short_description_hn'] = input_trims($request->short_description_hn);
-            }
+
             if ($request->long_description_en) {
                 $data['long_description_en'] = input_trims($request->long_description_en);
             }
             if ($request->long_description_ar) {
                 $data['long_description_ar'] = input_trims($request->long_description_ar);
             }
-            if ($request->long_description_ch) {
-                $data['long_description_ch'] = input_trims($request->long_description_ch);
-            }
-            if ($request->long_description_ur) {
-                $data['long_description_ur'] = input_trims($request->long_description_ur);
-            }
-            if ($request->long_description_hn) {
-                $data['long_description_hn'] = input_trims($request->long_description_hn);
-            }
+
 
             $data['holder_alt'] = input_trims($request->holder_alt);
             $data['header_alt'] = input_trims($request->header_alt);
             $data['construction_alt'] = input_trims($request->construction_alt);
             $data['footer_alt'] = input_trims($request->footer_alt);
             $data['building_height_ar'] = input_trims($request->building_height_ar);
-            $data['building_height_ch'] = input_trims($request->building_height_ch);
-            $data['building_height_hn'] = input_trims($request->building_height_hn);
-            $data['building_height_ur'] = input_trims($request->building_height_ur);
+
 
             $data['featured'] = input_trims($request->featured);
             $data['recent'] = input_trims($request->recent);
@@ -1493,16 +1413,12 @@ class AdminPropertiesController extends Controller {
         if ($request->type == "add") {
 
             $titles_en = $request->title_en;
-            $titles_ch = $request->title_ch;
-            $titles_hn = $request->title_hn;
-            $titles_ur = $request->title_ur;
+
             $titles_ar = $request->title_ar;
 
             $des_en = $request->description_en;
             $des_ar = $request->description_ar;
-            $des_ch = $request->description_ch;
-            $des_hn = $request->description_hn;
-            $des_ur = $request->description_ur;
+
             $image = $request->file('image');
 
             if (!empty($titles_en)) {
@@ -1519,15 +1435,11 @@ class AdminPropertiesController extends Controller {
                     $near->project_id = input_trims($request->project_id);
                     $near->title_en = input_trims($titles_en[$i]);
                     $near->title_ar = input_trims($titles_ar[$i]);
-                    $near->title_ch = input_trims($titles_ch[$i]);
-                    $near->title_hn = input_trims($titles_hn[$i]);
-                    $near->title_ur = input_trims($titles_ur[$i]);
+
 
                     $near->description_en = input_trims($des_en[$i]);
                     $near->description_ar = input_trims($des_ar[$i]);
-                    $near->description_ch = input_trims($des_ch[$i]);
-                    $near->description_hn = input_trims($des_hn[$i]);
-                    $near->description_ur = input_trims($des_ur[$i]);
+
 
                     $near->created = date("Y-m-d H:i:s");
                     $near->image = input_trims($input['imagename']);
@@ -1546,17 +1458,13 @@ class AdminPropertiesController extends Controller {
             // insert	
 
             $titles_en = $request->title_en;
-            $titles_ch = $request->title_ch;
-            $titles_hn = $request->title_hn;
-            $titles_ur = $request->title_ur;
+
             $titles_ar = $request->title_ar;
             $old_image = $request->old_images;
 
             $des_en = $request->description_en;
             $des_ar = $request->description_ar;
-            $des_ch = $request->description_ch;
-            $des_hn = $request->description_hn;
-            $des_ur = $request->description_ur;
+
             $image = $request->file('image');
 
 
@@ -1579,15 +1487,11 @@ class AdminPropertiesController extends Controller {
                     $near->project_id = input_trims($request->project_id);
                     $near->title_en = input_trims($titles_en[$i]);
                     $near->title_ar = input_trims($titles_ar[$i]);
-                    $near->title_ch = input_trims($titles_ch[$i]);
-                    $near->title_hn = input_trims($titles_hn[$i]);
-                    $near->title_ur = input_trims($titles_ur[$i]);
+
 
                     $near->description_en = input_trims($des_en[$i]);
                     $near->description_ar = input_trims($des_ar[$i]);
-                    $near->description_ch = input_trims($des_ch[$i]);
-                    $near->description_hn = input_trims($des_hn[$i]);
-                    $near->description_ur = input_trims($des_ur[$i]);
+
 
                     $near->created = date("Y-m-d H:i:s");
                     $near->image = input_trims($input['imagename']);
@@ -2506,9 +2410,7 @@ class AdminPropertiesController extends Controller {
             $unity = new Unitfloors();
             $unity->title_en = $request->title_en;
             $unity->title_ar = $request->title_ar;
-            $unity->title_ch = $request->title_ch;
-            $unity->title_hn = $request->title_hn;
-            $unity->title_ur = $request->title_ur;
+
             $unity->created = date("Y-m-d H:i:s");
             $unity->icon = $input['imagename'];
             $unity->status = '1';
@@ -2543,15 +2445,7 @@ class AdminPropertiesController extends Controller {
             if ($request->title_ar) {
                 $data['title_ar'] = $request->title_ar;
             }
-            if ($request->title_ch) {
-                $data['title_ch'] = $request->title_ch;
-            }
-            if ($request->title_hn) {
-                $data['title_hn'] = $request->title_hn;
-            }
-            if ($request->title_ur) {
-                $data['title_ur'] = $request->title_ur;
-            }
+
 
             if (!empty($data)) {
                 Unitfloors::where('id', $request->id)->update($data);
@@ -2622,9 +2516,7 @@ class AdminPropertiesController extends Controller {
             $unity = new Unitfeatures();
             $unity->title_en = $request->title_en;
             $unity->title_ar = $request->title_ar;
-            $unity->title_ch = $request->title_ch;
-            $unity->title_hn = $request->title_hn;
-            $unity->title_ur = $request->title_ur;
+
             $unity->created = date("Y-m-d H:i:s");
             $unity->icon = $input['imagename'];
             $unity->status = '1';
@@ -2660,15 +2552,7 @@ class AdminPropertiesController extends Controller {
             if ($request->title_ar) {
                 $data['title_ar'] = $request->title_ar;
             }
-            if ($request->title_ch) {
-                $data['title_ch'] = $request->title_ch;
-            }
-            if ($request->title_hn) {
-                $data['title_hn'] = $request->title_hn;
-            }
-            if ($request->title_ur) {
-                $data['title_ur'] = $request->title_ur;
-            }
+
 
             if (!empty($data)) {
                 Unitfeatures::where('id', $request->id)->update($data);

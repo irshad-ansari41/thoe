@@ -97,7 +97,7 @@
                                     <img alt="{{ trim($event->event_photo_alt) }}"  src="{{ asset('assets/images/events/') }}/{{ $event->event_photo_cn }}" class="responsive-img"
                                 </a>
                                 @else
-                                <a href="{{$locale}}/events/{{ $event->slug }}"><img alt="{{ trim($event->event_photo_alt) }}"  src="{{ asset('assets/images/events/') }}/aziziaura.jpg" class="responsive-img">	</a>
+                                <a href="{{$locale}}/events/{{ $event->slug }}"><img alt="{{ trim($event->event_photo_alt) }}"  src="{{ asset('assets/images/events/') }}/thoeaura.jpg" class="responsive-img">	</a>
                                 @endif
 
                             </div>
@@ -160,7 +160,7 @@
 
                                                 <a href="https://www.facebook.com/dialog/feed?app_id=136745863654131&redirect_uri={{ url('/'.$locale.'/') }}/events/{{ $event->slug_cn }}&link={{ url('/'.$locale.'/') }}/events/{{ $event->slug_cn }}&picture={{ asset('assets/images/events/') }}/{{ $event->event_photo_cn }}&caption={{ $event->event_title_cn }}&description={{ $event->event_title_cn }}" target="_blank"><i class="ion-social-facebook"></i></a>
 
-                                                <a href="https://twitter.com/share?url={{ url('/'.$locale.'/') }}/events/{{ $event->slug_cn }}&via=AZIZI Developments&text={{ $event->event_title_cn }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter"><i class="ion-social-twitter"></i></a>
+                                                <a href="https://twitter.com/share?url={{ url('/'.$locale.'/') }}/events/{{ $event->slug_cn }}&via=THOE Developments&text={{ $event->event_title_cn }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter"><i class="ion-social-twitter"></i></a>
 
                                                 <a href="https://www.youtube.com/channel/UCmUtuRMwJxaovjGBNSXx-Jw"  target="_blank" ><i class="ion-social-youtube"></i></a>
 
@@ -188,7 +188,7 @@
                                                               "endDate": "' . $event->event_date . ' T ' . $event->event_end_time . '",
                                                               "performer": {
                                                                     "@type": "Person",
-                                                                    "name": "Azizi Developments",
+                                                                    "name": "Thoe Developments",
                                                                "telephone": "+97143596673"
                                                               },
                                                               "location": {
@@ -342,7 +342,7 @@
         ref.parentNode.insertBefore(js, ref);
     }(document, /*debug*/ false));
     function postToFeed(title, desc, url, image) {
-        var obj = {method: 'share', href: '<?=SITE_URL?>/events/85', picture: '<?=SITE_URL?>/assets/images/events/1512462314270004696.jpg', title: "himani", description: "azizi test"};
+        var obj = {method: 'share', href: '<?=SITE_URL?>/events/85', picture: '<?=SITE_URL?>/assets/images/events/1512462314270004696.jpg', title: "himani", description: "thoe test"};
         function callback(response) {}
         FB.ui(obj, callback);
     }

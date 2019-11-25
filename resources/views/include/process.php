@@ -1,11 +1,11 @@
 <?php
 echo 3223423;die;
-define('CRM_HOST', 'azizi.bitrix24.com'); // your CRM domain name
+define('CRM_HOST', 'thoe.bitrix24.com'); // your CRM domain name
 define('CRM_PORT', '443'); // CRM server port
 define('CRM_PATH', '/crm/configs/import/lead.php'); // CRM server REST service path
 define('CRM_AUTH', '9037daaaffdc545097d8315c43b7bbb8'); // authorization hash
 // define variables and set to empty values
-$redirect_url = "https://www.azizidevelopments.com/en";
+$redirect_url = "https://www.thoe.com/en";
 echo 2323213; die;
 $post = filter_input_array(INPUT_POST);
 

@@ -177,7 +177,7 @@
                 @endif
                 <div class="row">
                     <div class="col s12" style="margin: 20px 0px;">
-                        <h4 class="m0" style="font-size: 1.5rem;padding: 15px;background: #f9f9f9;">No result for "<span style="font-weight: 100;    font-style: italic;">Offers in AZIZI</span>"</h4>
+                        <h4 class="m0" style="font-size: 1.5rem;padding: 15px;background: #f9f9f9;">No result for "<span style="font-weight: 100;    font-style: italic;">Offers in THOE</span>"</h4>
                     </div>
 
                     <div class="col s12 center-align" style="margin: 5rem 0rem;">

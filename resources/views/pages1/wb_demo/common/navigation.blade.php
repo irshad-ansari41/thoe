@@ -11,7 +11,7 @@
                         <a href="{{ url('/') }}">
                             
                             <img alt="logo" src="{{asset('assets/images/logo/1512057079483688018.png') }}" 
-                            alt="Azizi Developments" title="Azzi Developments" />
+                            alt="Thoe Developments" title="Azzi Developments" />
                         </a>
                         
                         
@@ -40,7 +40,7 @@
                                         <a href="{{ $menus->slug }}">{{$menus->title_en}}</a>
                                         <ul>
                                             <?php  
-                                                $sql = " SELECT DISTINCT * FROM azizi_live_db.tbl_menu Where parent_id =". $menus->id ." And status = '1' And type = '1' ";
+                                                $sql = " SELECT DISTINCT * FROM thoe_live_db.tbl_menu Where parent_id =". $menus->id ." And status = '1' And type = '1' ";
                                                 $subMenus = DB::select($sql);
                                             ?>
                                             @if(!empty($subMenus)) @foreach($subMenus as $Submenus)

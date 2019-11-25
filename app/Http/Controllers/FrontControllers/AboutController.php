@@ -193,45 +193,11 @@ class AboutController extends Controller {
                     $result->deputy_ceo_name_en;
             $executive['deputy_ceo_description_en'] = !empty($result->deputy_ceo_description_ar) ?
                     $result->deputy_ceo_description_ar : $result->deputy_ceo_description_en;
-        } else if ($this->locale == 'cn') {
-            $executive['title_en'] = !empty($result->title_ch) ? $result->title_ch : $result->title_en;
-            $executive['description_en'] = !empty($result->description_ch) ? $result->description_ch :
-                    $result->description_en;
-
-            $executive['chairmen_name_en'] = !empty($result->chairmen_name_ch) ? $result->chairmen_name_ch :
-                    $result->chairmen_name_en;
-            $executive['chairmen_description_en'] = !empty($result->chairmen_description_ch) ?
-                    $result->chairmen_description_ch : $result->chairmen_description_en;
-
-            $executive['ceo_name_en'] = !empty($result->ceo_name_ch) ? $result->ceo_name_ch : $result->ceo_name_en;
-            $executive['ceo_description_en'] = !empty($result->ceo_description_ch) ? $result->ceo_description_ch :
-                    $result->ceo_description_en;
-
-            $executive['deputy_ceo_name_en'] = !empty($result->deputy_ceo_name_ch) ? $result->deputy_ceo_name_ch :
-                    $result->deputy_ceo_name_en;
-            $executive['deputy_ceo_description_en'] = !empty($result->deputy_ceo_description_ch) ?
-                    $result->deputy_ceo_description_ch : $result->deputy_ceo_description_en;
-        }
+        } 
 
 
-        $executive['title_ur'] = $result->title_ur;
         $executive['title_ar'] = $result->title_ar;
 
-
-        $executive['description_hn'] = $result->description_hn;
-        $executive['description_ur'] = $result->description_ur;
-
-
-        $executive['chairmen_description_hn'] = $result->chairmen_description_hn;
-        $executive['chairmen_description_ur'] = $result->chairmen_description_ur;
-
-
-        $executive['ceo_description_hn'] = $result->ceo_description_hn;
-        $executive['ceo_description_ur'] = $result->ceo_description_ur;
-
-
-        $executive['deputy_ceo_description_hn'] = $result->deputy_ceo_description_hn;
-        $executive['deputy_ceo_description_ur'] = $result->deputy_ceo_description_ur;
 
         //Get Team Data
 
@@ -250,11 +216,7 @@ class AboutController extends Controller {
                     $teams[$k]['description'] = !empty($res->description_ar) ? $res->description_ar : $res->description_en;
                     $teams[$k]['name'] = !empty($res->name_ar) ? $res->name_ar : $res->name;
                     $teams[$k]['designation'] = !empty($res->designation_ar) ? $res->designation_ar : $res->designation;
-                } else if ($this->locale == 'cn') {
-                    $teams[$k]['description'] = !empty($res->description_cn) ? $res->description_cn : $res->description_en;
-                    $teams[$k]['name'] = !empty($res->name_ch) ? $res->name_cn : $res->name;
-                    $teams[$k]['designation'] = !empty($res->designation_cn) ? $res->designation_cn : $res->designation;
-                }
+                } 
 
                 $teams[$k]['alt'] = $res->alt;
                 $teams[$k]['image'] = $res->image;

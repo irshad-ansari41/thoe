@@ -146,15 +146,15 @@ class MediaGalleryController extends Controller {
             foreach ($galleries as $key => $value) {
                 if ($value->id == $id || $value->slug == $id) {
                     $gallery = $galleries[$key];
-                    $meta_title = metaTitleByLocale($this->locale, ['en' => $gallery->gallery_title, 'ar' => $gallery->gallery_title_ar, 'cn' => $gallery->gallery_title_ch,]) . ' | ' . $content->meta_title;
-                    $meta_desc = metaDescByLocale($this->locale, ['en' => $gallery->gallery_long_title, 'ar' => $gallery->gallery_long_title_ar, 'cn' => $gallery->gallery_long_title_ch,]) . ' | ' . $content->meta_title;
+                    $meta_title = metaTitleByLocale($this->locale, ['en' => $gallery->gallery_title, 'ar' => $gallery->gallery_title_ar, ]) . ' | ' . $content->meta_title;
+                    $meta_desc = metaDescByLocale($this->locale, ['en' => $gallery->gallery_long_title, 'ar' => $gallery->gallery_long_title_ar, ]) . ' | ' . $content->meta_title;
                     break;
                 }
             }
         } else {
             $gallery = $galleries[0];
-            $meta_title = metaTitleByLocale($this->locale, ['en' => $content->short_description_en, 'ar' => $content->short_description_ar, 'cn' => $content->short_description_ch,]) . ' | ' . $content->meta_title . ' | ' . $type;
-            $meta_desc = metaDescByLocale($this->locale, ['en' => $content->description_en, 'ar' => $content->description_ar, 'cn' => $content->description_ch,]) . ' | ' . $content->meta_title . ' | ' . $type;
+            $meta_title = metaTitleByLocale($this->locale, ['en' => $content->short_description_en, 'ar' => $content->short_description_ar, ]) . ' | ' . $content->meta_title . ' | ' . $type;
+            $meta_desc = metaDescByLocale($this->locale, ['en' => $content->description_en, 'ar' => $content->description_ar, ]) . ' | ' . $content->meta_title . ' | ' . $type;
         }
 
         $data = [
@@ -211,15 +211,15 @@ class MediaGalleryController extends Controller {
             foreach ($galleries as $key => $value) {
                 if ($value->id == $id || $value->slug == $id) {
                     $gallery = $galleries[$key];
-                    $meta_title = metaTitleByLocale($this->locale, ['en' => $gallery->gallery_title, 'ar' => $gallery->gallery_title_ar, 'cn' => $gallery->gallery_title_ch,]) . ' | ' . $content->meta_title;
-                    $meta_desc = metaDescByLocale($this->locale, ['en' => $gallery->gallery_long_title, 'ar' => $gallery->gallery_long_title_ar, 'cn' => $gallery->gallery_long_title_ch,]) . ' | ' . $content->meta_title;
+                    $meta_title = metaTitleByLocale($this->locale, ['en' => $gallery->gallery_title, 'ar' => $gallery->gallery_title_ar, ]) . ' | ' . $content->meta_title;
+                    $meta_desc = metaDescByLocale($this->locale, ['en' => $gallery->gallery_long_title, 'ar' => $gallery->gallery_long_title_ar, ]) . ' | ' . $content->meta_title;
                     break;
                 }
             }
         } else {
             $gallery = $galleries[0];
-            $meta_title = metaTitleByLocale($this->locale, ['en' => $content->short_description_en, 'ar' => $content->short_description_ar, 'cn' => $content->short_description_ch,]) . ' | ' . $content->meta_title . ' | ' . $type;
-            $meta_desc = metaDescByLocale($this->locale, ['en' => $content->description_en, 'ar' => $content->description_ar, 'cn' => $content->description_ch,]) . ' | ' . $content->meta_title . ' | ' . $type;
+            $meta_title = metaTitleByLocale($this->locale, ['en' => $content->short_description_en, 'ar' => $content->short_description_ar, ]) . ' | ' . $content->meta_title . ' | ' . $type;
+            $meta_desc = metaDescByLocale($this->locale, ['en' => $content->description_en, 'ar' => $content->description_ar, ]) . ' | ' . $content->meta_title . ' | ' . $type;
         }
 
         if (empty($gallery)) {

@@ -4,7 +4,7 @@
         <title>Lead Form</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet"  href="https://azizidevelopments.com/lead-form/css/bootstrap-chosen-compress.css"  />
+        <link rel="stylesheet"  href="https://thoe.com/lead-form/css/bootstrap-chosen-compress.css"  />
         <script src="https://www.google.com/recaptcha/api.js?render=6LdRBpkUAAAAAKaRIKEKbbspNqp_joj6_-epmRk0"></script>
         <style>
             body{background: transparent;}
@@ -87,7 +87,7 @@
             </h4>
             
             
-            <form id="lead-form" action="https://azizidevelopments.com/save-lead" method="post" >
+            <form id="lead-form" action="https://thoe.com/save-lead" method="post" >
                 <table width="440" cellpadding="7"  cellspacing="7" style="background: #fff;margin-top: 50px;">
                     <tr>
                         <td colspan="3">
@@ -301,8 +301,8 @@
                 </table>                
             </form>
         </div>
-        <script src="https://azizidevelopments.com/lead-form/js/jquery-popper-bootstrap-chosen-compress.js"></script>
-        <script src="https://azizidevelopments.com/lead-form/js/agents-custom.js"></script>
+        <script src="https://thoe.com/lead-form/js/jquery-popper-bootstrap-chosen-compress.js"></script>
+        <script src="https://thoe.com/lead-form/js/agents-custom.js"></script>
         <script>jQuery.ajax({url: '<?= url('cache-page') ?>', cache: false, data: {page_url: '<?= Request::url() ?>', user_id: '1'}, success: function (html) { }});
             grecaptcha.ready(function () {
                 grecaptcha.execute('6LdRBpkUAAAAAKaRIKEKbbspNqp_joj6_-epmRk0', {action: 'validate_captcha_Agent'}).then(function (token) {

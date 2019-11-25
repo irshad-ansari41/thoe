@@ -383,7 +383,7 @@
             <a href="construction-projects/{{ $project['slug_updates'] }}">
                 @endif
                 @if($project['id']=="16" )
-                <a href="{{ url("/") }}/azizi-victoria-updates">
+                <a href="{{ url("/") }}/thoe-victoria-updates">
                     @endif
                     <div class="card col s12 p0">  
                         @if($project['image']!="")

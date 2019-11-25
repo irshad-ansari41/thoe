@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Azizi Developments</title>
+        <title>Thoe Developments</title>
         <!-- Stylesheets -->
         <link href="{{asset('assets/new_wb_layout/css/bootstrap.css') }}" rel="stylesheet">
         <link href="{{asset('assets/new_wb_layout/css/jquery.mCustomScrollbar.min.css') }}" rel="stylesheet">
@@ -60,7 +60,7 @@
                                             <ul class="navigation clearfix">
                                                 <li class="current home dropdown"><a href="#">About Us</a>
                                                     <ul>
-                                                        <li><a href="index.html">About Azizi Developments</a></li>
+                                                        <li><a href="index.html">About Thoe Developments</a></li>
                                                         <li><a href="index-2.html">Our Founder</a></li>
                                                         <li><a href="index-3.html">Corporate Executives</a></li>
                                                     </ul>
@@ -164,8 +164,8 @@
                                                         <div class="field-title">Select Community</div>
                                                         <div class="field-inner">
                                                             <select class="custom-select-box">
-                                                                <option>Meydan - Azizi Victoria</option>
-                                                                <option>Meydan - Azizi Riveria</option>
+                                                                <option>Meydan - Thoe Victoria</option>
+                                                                <option>Meydan - Thoe Riveria</option>
                                                                 <option>Al Furjan</option>
                                                                 <option>Dubai Healthcare City</option>
                                                                 <option>Palm Jumeirah</option>
@@ -239,7 +239,7 @@
                                 <div class="overlay"></div>
                                 <!-- h2 class="big-title">Meydan</h2 -->
                                 <div class="lower-content">
-                                    <h3>Azizi Victoria <span class="theme_color"></span></h3>
+                                    <h3>Thoe Victoria <span class="theme_color"></span></h3>
                                     <div class="text">But I must explain to you how all this mistaken idea of denouncing </div>
                                 </div>
                                 <a href="{{asset('assets/new_wb_layout/images/gallery/6.jpg') }}" class="lightbox-image image-link" title="Image Caption" data-fancybox-group="full-gallery"><span class="fa fa-search"></span></a>
@@ -253,7 +253,7 @@
                                 <div class="overlay"></div>
                                 <!-- h2 class="big-title">Meydan</h2 -->
                                 <div class="lower-content">
-                                    <h3>Azizi Riviera <span class="theme_color"></span></h3>
+                                    <h3>Thoe Riviera <span class="theme_color"></span></h3>
                                     <div class="text">But I must explain to you how all this mistaken idea of denouncing </div>
                                 </div>
                                 <a href="{{asset('assets/new_wb_layout/images/gallery/7.jpg') }}" class="lightbox-image image-link" title="Image Caption" data-fancybox-group="full-gallery"><span class="fa fa-search"></span></a>
@@ -294,7 +294,7 @@
                                 <div class="overlay"></div>
                                 <!-- h2 class="big-title">Meydan</h2 -->
                                 <div class="lower-content">
-                                    <h3>Azizi Grand <span class="theme_color"></span></h3>
+                                    <h3>Thoe Grand <span class="theme_color"></span></h3>
                                     <div class="text">But I must explain to you how all this mistaken idea of denouncing </div>
                                 </div>
                                 <a href="{{asset('assets/new_wb_layout/images/gallery/6.jpg') }}" class="lightbox-image image-link" title="Image Caption" data-fancybox-group="full-gallery"><span class="fa fa-search"></span></a>
@@ -308,7 +308,7 @@
                                 <div class="overlay"></div>
                                 <!-- h2 class="big-title">Meydan</h2 -->
                                 <div class="lower-content">
-                                    <h3>Azizi Miraj <span class="theme_color"></span></h3>
+                                    <h3>Thoe Miraj <span class="theme_color"></span></h3>
                                     <div class="text">But I must explain to you how all this mistaken idea of denouncing </div>
                                 </div>
                                 <a href="{{asset('assets/new_wb_layout/images/gallery/7.jpg') }}" class="lightbox-image image-link" title="Image Caption" data-fancybox-group="full-gallery"><span class="fa fa-search"></span></a>
@@ -322,7 +322,7 @@
                                 <div class="overlay"></div>
                                 <!-- h2 class="big-title">Meydan</h2 -->
                                 <div class="lower-content">
-                                    <h3>Azizi Mina <span class="theme_color"></span></h3>
+                                    <h3>Thoe Mina <span class="theme_color"></span></h3>
                                     <div class="text">But I must explain to you how all this mistaken idea of denouncing </div>
                                 </div>
                                 <a href="{{asset('assets/new_wb_layout/images/gallery/8.jpg') }}" class="lightbox-image image-link" title="Image Caption" data-fancybox-group="full-gallery"><span class="fa fa-search"></span></a>
@@ -347,7 +347,7 @@
         <div class="footer-bottom">
             <div class="bottom-container">
                 <div class="clearfix">
-                    <div class="copyright-text">Azizi Developments &copy; 2018. All rights are reserved.</div>
+                    <div class="copyright-text">Thoe Developments &copy; 2018. All rights are reserved.</div>
                     <div class="author-info"></div>
                 </div>
             </div>

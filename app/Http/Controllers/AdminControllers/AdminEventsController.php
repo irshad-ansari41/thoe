@@ -513,10 +513,8 @@ class AdminEventsController extends Controller {
             $slugdate = date_create($request->date);
             $image = $request->file('image');
             $image_ar = $request->file('image_ar');
-            $image_ch = $request->file('image_ch');
             $input['imagename'] = '';
             $input['imagename_ar'] = '';
-            $input['imagename_ch'] = '';
             if ($image) {
                 $input['imagename'] = time() . rand() . '.' . $image->getClientOriginalExtension();
                 $destinationPath = STORE_PATH . '/assets/images/events';
@@ -528,19 +526,13 @@ class AdminEventsController extends Controller {
                 $image_ar->move($destinationPath, $input['imagename_ar']);
             }
 
-            if ($image_ch) {
-                $input['imagename_ch'] = time() . rand() . '.' . $image_ch->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . '/assets/images/events';
-                $image_ch->move($destinationPath, $input['imagename_ch']);
-            }
+           
 
             $main_image = $request->file('main_image');
             $main_image_ar = $request->file('main_image_ar');
-            $main_image_ch = $request->file('main_image_ch');
 
             $input['mimagename'] = '';
             $input['mimagename_ar'] = '';
-            $input['mimagename_ch'] = '';
             if ($main_image) {
                 $input['mimagename'] = time() . rand() . '.' . $main_image->getClientOriginalExtension();
                 $destinationPath = STORE_PATH . '/assets/images/events/main';
@@ -552,44 +544,34 @@ class AdminEventsController extends Controller {
                 $main_image_ar->move($destinationPath, $input['mimagename_ar']);
             }
 
-            if ($main_image_ch) {
-                $input['mimagename_ch'] = time() . rand() . '.' . $main_image_ch->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . '/assets/images/events/main';
-                $main_image_ch->move($destinationPath, $input['mimagename_ch']);
-            }
+           
 
             $new = new Event();
             $new->event_title_en = input_trims($request->event_title);
             $new->event_title_ar = input_trims($request->event_title_ar);
-            $new->event_title_cn = input_trims($request->event_title_ch);
             $new->event_date = input_trims($request->event_date);
             $new->event_start_time = input_trims($request->event_start_time);
             $new->event_end_time = input_trims($request->event_end_time);
 
             $new->event_location_en = input_trims($request->event_location);
             $new->event_location_ar = input_trims($request->event_location_ar);
-            $new->event_location_cn = input_trims($request->event_location_ch);
             $new->event_place_en = input_trims($request->event_place);
             $new->event_place_ar = input_trims($request->event_place_ar);
-            $new->event_place_cn = input_trims($request->event_place_ch);
 
             $new->long_desc_en = input_trims($request->long_desc);
             $new->long_desc_ar = input_trims($request->long_desc_ar);
-            $new->long_desc_cn = input_trims($request->long_desc_ch);
 
             $new->event_photo_en = $input['imagename'];
             $new->event_main_photo_en = $input['mimagename'];
             $new->event_photo_ar = $input['imagename_ar'];
             $new->event_main_photo_ar = $input['mimagename_ar'];
-            $new->event_photo_cn = $input['imagename_ch'];
-            $new->event_main_photo_cn = $input['mimagename_ch'];
 
             $new->event_photo_alt = input_trims($request->event_title);
             $new->event_main_photo_alt = input_trims($request->event_title);
 
             $new->slug_en = !empty($request->slug) ? str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug . ' ' . date_format($slugdate, "jS F Y"))))) : '';
             $new->slug_ar = !empty($request->slug_ar) ? str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug_ar . ' ' . date_format($slugdate, "jS F Y"))))) : '';
-            $new->slug_cn = !empty($request->slug_ch) ? str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug_ch . ' ' . date_format($slugdate, "jS F Y"))))) : '';
+            
 
             $new->meta_title = input_trims($request->event_title);
             $new->meta_keyword = input_trims($request->meta_keyword);
@@ -597,18 +579,15 @@ class AdminEventsController extends Controller {
 
             $new->extra_desc_en = input_trims($request->extra_desc);
             $new->extra_desc_ar = input_trims($request->extra_desc_ar);
-            $new->extra_desc_cn = input_trims($request->extra_desc_ch);
             $new->starting_from = input_trims($request->starting_from);
             $new->currency_type = input_trims($request->currency_type);
             $new->booking_fees = input_trims($request->booking_fees);
             $new->payment_plan_en = input_trims($request->payment_plan);
             $new->payment_plan_ar = input_trims($request->payment_plan_ar);
-            $new->payment_plan_cn = input_trims($request->payment_plan_ch);
 
             $new->mortgage_starting = input_trims($request->mortgage_starting);
             $new->visit_us_at_en = input_trims($request->visit_us_at);
             $new->visit_us_at_ar = input_trims($request->visit_us_at_ar);
-            $new->visit_us_at_cn = input_trims($request->visit_us_at_ch);
 
             // if(isset($request->date)){
             $new->event_date = input_trims($request->date);
@@ -647,11 +626,9 @@ class AdminEventsController extends Controller {
 
             $image = $request->file('image');
             $image_ar = $request->file('image_ar');
-            $image_ch = $request->file('image_ch');
 
             $input['imagename'] = '';
             $input['imagename_ar'] = '';
-            $input['imagename_ch'] = '';
             if ($image) {
                 $project = Event::find($request->id);
                 if ($project->event_photo_en != "") {
@@ -676,25 +653,12 @@ class AdminEventsController extends Controller {
                 $image_ar->move($destinationPath, $input['imagename_ar']);
             }
 
-            if ($image_ch) {
-                $project = Event::find($request->id);
-                if ($project->event_photo_cn != "") {
-                    $url = STORE_PATH . "/assets/images/events/" . $project->event_photo_cn;
-                    @unlink($url);
-                }
-
-                $input['imagename_ch'] = time() . rand() . '.' . $image_ch->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . '/assets/images/events';
-                $image_ch->move($destinationPath, $input['imagename_ch']);
-            }
 
 
             $main_image = $request->file('main_image');
             $main_image_ar = $request->file('main_image_ar');
-            $main_image_ch = $request->file('main_image_ch');
             $input['mimagename'] = '';
             $input['mimagename_ar'] = '';
-            $input['mimagename_ch'] = '';
             if ($main_image) {
                 $project = Event::find($request->id);
                 if ($project->event_main_photo_en != "") {
@@ -718,17 +682,7 @@ class AdminEventsController extends Controller {
                 $main_image_ar->move($destinationPath, $input['mimagename_ar']);
             }
 
-            if ($main_image_ch) {
-                $project = Event::find($request->id);
-                if ($project->event_main_photo_cn != "") {
-                    $url = STORE_PATH . "/assets/images/events/main/" . $project->event_main_photo_cn;
-                    @unlink($url);
-                }
-
-                $input['mimagename_ch'] = time() . rand() . '.' . $main_image_ch->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . '/assets/images/events/main';
-                $main_image_ch->move($destinationPath, $input['mimagename_ch']);
-            }
+           
 
 
             $data = array();
@@ -748,15 +702,9 @@ class AdminEventsController extends Controller {
                 $data['event_main_photo_ar'] = $input['mimagename_ar'];
             }
 
-            if ($input['imagename_ch'] != "") {
-                $data['event_photo_cn'] = $input['imagename_ch'];
-            }
-            if ($input['mimagename_ch'] != "") {
-                $data['event_main_photo_cn'] = $input['mimagename_ch'];
-            }
+           
             $data['slug_en'] = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug))));
             $data['slug_ar'] = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug_ar))));
-            $data['slug_cn'] = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug_ch))));
 
             $data['meta_title'] = input_trims($request->event_title);
             $data['meta_keyword'] = input_trims($request->meta_keyword);
@@ -779,38 +727,24 @@ class AdminEventsController extends Controller {
             $data['event_end_time'] = input_trims($request->event_end_time);
             $data['event_location_en'] = input_trims($request->event_location);
             $data['event_location_ar'] = input_trims($request->event_location_ar);
-            $data['event_location_cn'] = input_trims($request->event_location_ch);
             $data['event_place_en'] = input_trims($request->event_place);
             $data['event_place_ar'] = input_trims($request->event_place_ar);
-            $data['event_place_cn'] = input_trims($request->event_place_ch);
             $data['event_title_en'] = input_trims($request->event_title);
             $data['event_title_ar'] = input_trims($request->event_title_ar);
-            $data['event_title_cn'] = input_trims($request->event_title_ch);
 
 
             /* if($request->title_ar){
               $data['title_ar']=$request->title_ar;
-              }
-              if($request->title_ch){
-              $data['title_ch']=$request->title_ch;
-              }
-              if($request->title_hn){
-              $data['title_hn']=$request->title_hn;
-              }
-              if($request->title_ur){
-              $data['title_ur']=$request->title_ur;
               } */
 
             //if($request->long_desc){
             $data['long_desc_en'] = input_trims($request->long_desc);
             $data['long_desc_ar'] = input_trims($request->long_desc_ar);
-            $data['long_desc_cn'] = input_trims($request->long_desc_ch);
 
             // }
             //  if($request->extra_desc){
             $data['extra_desc_en'] = input_trims($request->extra_desc);
             $data['extra_desc_ar'] = input_trims($request->extra_desc_ar);
-            $data['extra_desc_cn'] = input_trims($request->extra_desc_ch);
 
             // }
             // if($request->starting_from){
@@ -824,7 +758,6 @@ class AdminEventsController extends Controller {
             //if($request->payment_plan){
             $data['payment_plan_en'] = input_trims($request->payment_plan);
             $data['payment_plan_ar'] = input_trims($request->payment_plan_ar);
-            $data['payment_plan_cn'] = input_trims($request->payment_plan_ch);
 
 
             // }
@@ -834,7 +767,6 @@ class AdminEventsController extends Controller {
             //   if($request->visit_us_at){
             $data['visit_us_at_en'] = input_trims($request->visit_us_at);
             $data['visit_us_at_ar'] = input_trims($request->visit_us_at_ar);
-            $data['visit_us_at_cn'] = input_trims($request->visit_us_at_ch);
 
             // }
 

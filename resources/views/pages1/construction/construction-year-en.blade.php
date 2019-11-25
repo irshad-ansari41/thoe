@@ -123,10 +123,10 @@
             <div class="col s12">
                 <!--<h1>2019, Year of Construction</h1>-->
                 <div style="text-align:center">
-                    <img id="cons-img" src="<?=SITE_URL?>/uploads/2019/04/Azizi-Construction-Logo.png" style="">
+                    <img id="cons-img" src="<?=SITE_URL?>/uploads/2019/04/Thoe-Construction-Logo.png" style="">
                 </div>
                 <p>
-                    Azizi Developments follows a construction-driven approach, driven by our commitment to build quality and timely project delivery. 2019, marked as the ‘Year of Construction,’ we are making dedicated efforts to ensure the swift construction and completion of our launched projects. This is being accomplished by carefully choosing our contractors and working closely with them to confirm that all work is completed per the initial schedule, and by foreseeing and announcing realistic completion dates. With delivering on our promises to customers being the absolute priority, 2019 will be defined by rapid progress in construction and on-schedule handovers.
+                    Thoe Developments follows a construction-driven approach, driven by our commitment to build quality and timely project delivery. 2019, marked as the ‘Year of Construction,’ we are making dedicated efforts to ensure the swift construction and completion of our launched projects. This is being accomplished by carefully choosing our contractors and working closely with them to confirm that all work is completed per the initial schedule, and by foreseeing and announcing realistic completion dates. With delivering on our promises to customers being the absolute priority, 2019 will be defined by rapid progress in construction and on-schedule handovers.
                 </p>
             </div>
         </div>

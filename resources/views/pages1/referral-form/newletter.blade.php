@@ -16,7 +16,7 @@
     <h1><?=$data['subject']; ?></h1>      
     <p>HI <?=$data['fullname']; ?>, This only Email Testing Purpose.</p>
   </div>
-  <p>Azizi Developments.</p>      
+  <p>Thoe Developments.</p>      
   <p>Aziz Riviera.</p>      
 </div>
 

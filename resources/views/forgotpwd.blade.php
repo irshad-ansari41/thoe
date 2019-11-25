@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="box animation flipInX">
-            <img src="{{ asset('assets/images/azizi-logo.png') }}" alt="logo" class="img-responsive mar">
+            <img src="{{ asset('assets/images/thoe-logo.png') }}" alt="logo" class="img-responsive mar">
             <h3 class="text-primary">Forgot Password</h3>
             <p>Enter your email to reset your password</p>
             @include('notifications')

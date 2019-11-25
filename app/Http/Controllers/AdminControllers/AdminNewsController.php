@@ -110,16 +110,13 @@ class AdminNewsController extends Controller {
             $new = new News();
             $new->title_en = input_trims($request->title_en);
             $new->title_ar = input_trims($request->title_ar);
-            $new->title_ch = input_trims($request->title_ch);
             $new->alt = input_trims($request->alt);
 
             $new->description_en = input_trims($request->description_en);
             $new->description_ar = input_trims($request->description_ar);
-            $new->description_ch = input_trims($request->description_ch);
             $new->slug = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower(substr($request->title_en, 0, 60)))));
             $new->description_long_en = input_trims($request->description_long_en);
             $new->description_long_ar = input_trims($request->description_long_ar);
-            $new->description_long_ch = input_trims($request->description_long_ch);
             $new->meta_title = input_trims($request->meta_title);
             $new->meta_keyword = input_trims($request->meta_keyword);
             $new->meta_desc = input_trims($request->meta_desc);
@@ -262,9 +259,7 @@ class AdminNewsController extends Controller {
             if ($request->title_ar) {
                 $data['title_ar'] = input_trims($request->title_ar);
             }
-            if ($request->title_ch) {
-                $data['title_ch'] = input_trims($request->title_ch);
-            }
+           
 
             if ($request->description_en) {
                 $data['description_en'] = input_trims($request->description_en);
@@ -272,18 +267,14 @@ class AdminNewsController extends Controller {
             if ($request->description_ar) {
                 $data['description_ar'] = input_trims($request->description_ar);
             }
-            if ($request->description_ch) {
-                $data['description_ch'] = input_trims($request->description_ch);
-            }
+           
             if ($request->description_long_en) {
                 $data['description_long_en'] = input_trims($request->description_long_en);
             }
             if ($request->description_long_ar) {
                 $data['description_long_ar'] = input_trims($request->description_long_ar);
             }
-            if ($request->description_long_ch) {
-                $data['description_long_ch'] = input_trims($request->description_long_ch);
-            }
+           
 
             $data['category'] = '-'.implode('-', $request->category).'-';
 

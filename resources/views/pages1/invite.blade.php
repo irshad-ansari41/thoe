@@ -6,10 +6,10 @@
         <meta http-equiv=X-UA-Compatible content="IE=edge" />
         <meta name=viewport content="width=device-width,  minimum-scale=1.0, initial-scale=1" />
         <title>Visit us at Cityscape Global 2018 </title> 
-        <meta name="description"  content="Discover Azizi Developments unique lineup of projects across Dubai and take advantage of flexible payment plans, fee waivers, and much more!" />
+        <meta name="description"  content="Discover Thoe Developments unique lineup of projects across Dubai and take advantage of flexible payment plans, fee waivers, and much more!" />
         <meta property="fb:app_id" content="136745863654131"/>
         <meta property="og:title" content="Visit us at Cityscape Global 2018" />
-        <meta property="og:description" content="Discover Azizi Developments unique lineup of projects across Dubai and take advantage of flexible payment plans, fee waivers, and much more!" />
+        <meta property="og:description" content="Discover Thoe Developments unique lineup of projects across Dubai and take advantage of flexible payment plans, fee waivers, and much more!" />
         <meta property="og:site_name" content="<?=DOMAIN_NAME?>" />
         <meta property="og:image" content="<?=SITE_URL?>/assets/images/Cityscape-Customers-small.jpg" />
         <meta property="og:image:secure_url" content="<?=SITE_URL?>/assets/images/Cityscape-Customers-small.jpg" />

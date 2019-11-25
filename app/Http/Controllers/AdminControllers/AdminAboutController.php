@@ -60,12 +60,7 @@ class AdminAboutController extends Controller {
         $content->description_en = $request->description_en;
         $content->title_ar = $request->title_ar;
         $content->description_ar = $request->description_ar;
-        $content->title_ch = $request->title_ch;
-        $content->description_ch = $request->description_ch;
-        $content->title_hn = $request->title_hn;
-        $content->description_hn = $request->description_hn;
-        $content->title_ur = $request->title_ur;
-        $content->description_ur = $request->description_ur;
+       
         $content->created = date("Y-m-d H:i:s");
         $content->image = $input['imagename'];
         $content->save();
@@ -93,9 +88,9 @@ class AdminAboutController extends Controller {
         }
 
         if ($input['imagename'] != "") {
-            Content::where('id', $request->id)->update(array("title_en" => $request->title_en, "description_en" => $request->description_en, "title_ar" => $request->title_ar, "description_ar" => $request->description_ar, "title_ch" => $request->title_ch, "description_ch" => $request->description_ch, "image" => $input['imagename'], "title_hn" => $request->title_hn, "description_hn" => $request->description_hn, "title_ur" => $request->title_ur, "description_ur" => $request->description_ur));
+            Content::where('id', $request->id)->update(array("title_en" => $request->title_en, "description_en" => $request->description_en, "title_ar" => $request->title_ar, "description_ar" => $request->description_ar,  "image" => $input['imagename'],));
         } else {
-            Content::where('id', $request->id)->update(array("title_en" => $request->title_en, "description_en" => $request->description_en, "title_ar" => $request->title_ar, "description_ar" => $request->description_ar, "title_ch" => $request->title_ch, "description_ch" => $request->description_ch, "title_hn" => $request->title_hn, "description_hn" => $request->description_hn, "title_ur" => $request->title_ur, "description_ur" => $request->description_ur));
+            Content::where('id', $request->id)->update(array("title_en" => $request->title_en, "description_en" => $request->description_en, "title_ar" => $request->title_ar, "description_ar" => $request->description_ar, ));
         }
 
 
@@ -175,15 +170,7 @@ class AdminAboutController extends Controller {
         if ($request->title_ar != "") {
             $data['title_ar'] = $request->title_ar;
         }
-        if ($request->title_ch != "") {
-            $data['title_ch'] = $request->title_ch;
-        }
-        if ($request->title_hn != "") {
-            $data['title_hn'] = $request->title_hn;
-        }
-        if ($request->title_ur != "") {
-            $data['title_ur'] = $request->title_ur;
-        }
+        
 
         if ($request->description_en != "") {
             $data['description_en'] = $request->description_en;
@@ -191,15 +178,7 @@ class AdminAboutController extends Controller {
         if ($request->description_ar != "") {
             $data['description_ar'] = $request->description_ar;
         }
-        if ($request->description_ch != "") {
-            $data['description_ch'] = $request->description_ch;
-        }
-        if ($request->description_hn != "") {
-            $data['description_hn'] = $request->description_hn;
-        }
-        if ($request->description_ur != "") {
-            $data['description_ur'] = $request->description_ur;
-        }
+        
 
         if ($request->chairment_description_en != "") {
             $data['chairment_description_en'] = $request->chairment_description_en;
@@ -207,15 +186,7 @@ class AdminAboutController extends Controller {
         if ($request->chairment_description_ar != "") {
             $data['chairment_description_ar'] = $request->chairment_description_ar;
         }
-        if ($request->chairment_description_ch != "") {
-            $data['chairment_description_ch'] = $request->chairment_description_ch;
-        }
-        if ($request->chairment_description_hn != "") {
-            $data['chairment_description_hn'] = $request->chairment_description_hn;
-        }
-        if ($request->chairment_description_ur != "") {
-            $data['chairment_description_ur'] = $request->chairment_description_ur;
-        }
+        
 
         if (!empty($data)) {
             About::where('id', 1)->update($data);

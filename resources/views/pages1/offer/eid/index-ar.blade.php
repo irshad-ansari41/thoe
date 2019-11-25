@@ -61,7 +61,7 @@
 
 <section>
     <div class="parallax-container valign-wrapper only-heading" style="background-image:url('<?=SITE_URL?>/uploads/2019/05/Victoria-Ramadan-Hero-Images-1280x400.jpg');">
-        <img alt="Cityscape - Azizi Developments" src="<?=SITE_URL?>/uploads/2019/05/Victoria-Ramadan-Hero-Images-1280x400.jpg" class="imgtag"/>
+        <img alt="Cityscape - Thoe Developments" src="<?=SITE_URL?>/uploads/2019/05/Victoria-Ramadan-Hero-Images-1280x400.jpg" class="imgtag"/>
         <div class="col s12 center-align card tag-pro">
             <h1>رمضان عروضنا </h1>
         </div>
@@ -90,7 +90,7 @@
                     <li style="list-style: circle;">	احصلوا على سلفة عزيزي بقيمة تصل إلى 245 ألف درهم عند شراء شقة بغرفتي نوم</li>
                 </ul>
                 <br>
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Azizi Gives Back">استفسر الآن <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Thoe Gives Back">استفسر الآن <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>
@@ -136,7 +136,7 @@
                 <div class="span2">شقق بغرفة نوم واحدة: 30 - 70 </div>
                 <div class="span2">شقق بغرفتي نوم: 30 - 70 </div>
 
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Azizi Riviera">استفسر الآن <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Thoe Riviera">استفسر الآن <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>

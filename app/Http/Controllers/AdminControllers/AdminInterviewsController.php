@@ -83,7 +83,6 @@ class AdminInterviewsController extends Controller {
             $new = new Interviews();
             $new->interview_title_en = trim($request->event_title);
             $new->interview_title_ar = trim($request->event_title_ar);
-            $new->interview_title_cn = trim($request->event_title_ch);
             $new->interview_date = trim($request->date);
 
             $new->interview_photo = $input['imagename'];
@@ -91,7 +90,6 @@ class AdminInterviewsController extends Controller {
 
             $new->slug_en = trim($request->slug);
             $new->slug_ar = trim($request->slug_ar);
-            $new->slug_cn = trim($request->slug_ch);
 
             $new->meta_title = trim($request->meta_title);
             $new->meta_keyword = trim($request->meta_keyword);
@@ -99,7 +97,6 @@ class AdminInterviewsController extends Controller {
 
             $new->long_desc_en = trim($request->extra_desc);
             $new->long_desc_ar = trim($request->extra_desc_ar);
-            $new->long_desc_cn = trim($request->extra_desc_ch);
 
             $new->created = date("Y-m-d H:i:s");
             $new->status = '1';
@@ -129,11 +126,9 @@ class AdminInterviewsController extends Controller {
             }
             $data['interview_title_en'] = trim($request->event_title);
             $data['interview_title_ar'] = trim($request->event_title_ar);
-            $data['interview_title_cn'] = trim($request->event_title_ch);
             
             $data['slug_en'] = trim($request->slug);
             $data['slug_ar'] = trim($request->slug_ar);
-            $data['slug_cn'] = trim($request->slug_ch);
 
             $data['meta_title'] = trim($request->meta_title);
             $data['meta_keyword'] = trim($request->meta_keyword);
@@ -143,7 +138,6 @@ class AdminInterviewsController extends Controller {
 
             $data['long_desc_en'] = trim($request->extra_desc);
             $data['long_desc_ar'] = trim($request->extra_desc_ar);
-            $data['long_desc_cn'] = trim($request->extra_desc_ch);
 
             if (!empty($data)) {
                 Interviews::where('id', $request->id)->update($data);

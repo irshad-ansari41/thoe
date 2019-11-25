@@ -2,7 +2,7 @@
 <div id="header-nav-offset"></div>
 <nav id="header-nav" class="navbar navbar--header">
     <div class="container">
-        <div class="navbar__row js-navbar-row"><a href="<?= url("/$locale")?>" class="navbar__brand">
+        <div class="navbar__row js-navbar-row"><a href="<?= url("/$locale") ?>" class="navbar__brand">
                 <img class="navbar__brand-logo" src="<?= asset('frontend-assets/img/thoe-logo-web-gold.png') ?>" /></a>
             <div id="navbar-collapse-1" class="navbar__wrap">
                 <ul class="navbar__nav">
@@ -22,29 +22,31 @@
                                 <h5 class="navbar__subtitle">Islands</h5>
                                 <ul class="navbar__subnav">
                                     <?php
-                                    foreach ($header_menu[1]['submenus']as $k=>$menu) {
+                                    foreach ($header_menu[1]['submenus']as $k => $menu) {
                                         $hasnest = !empty($header_menu[1]['submenus'][$k]['nest']) ? 1 : 0;
                                         ?>
                                         <li class="navbar__subitem navbar__subitem-dropdown js-dropdown">
-                                            <a href="<?= url("/$locale/{$menu['link']}") ?>" class="navbar__sublink js-navbar-sublink"><?= $menu['title_' . $locale] ?>
+                                            <a href="<?= url("/$locale/projects/{$menu['link']}") ?>" class="navbar__sublink js-navbar-sublink"><?= $menu['title_' . $locale] ?>
                                                 <?= $hasnest ? ' <svg class="navbar__arrow">
                                             <use xlink:href="#icon-arrow-right"></use>
                                                 </svg>' : '' ?></a>
                                             <?php if ($hasnest) { ?>
-                                        <div class="navbar__submenu navbar__submenu--level">
-                                            <button class="navbar__back js-navbar-submenu-back">
-                                                <svg class="navbar__arrow">
-                                                <use xlink:href="#icon-arrow-left"></use>
-                                                </svg>Back
-                                            </button>
-                                            <ul class="navbar__subnav">
-                                                        <?php foreach ($header_menu[1]['submenus'][$k]['nest'] as $menu) { ?>
-                                                            <li class="navbar__subitem"><a href="<?= url("/$locale/{$menu['link']}") ?>" class="navbar__sublink js-navbar-sub-sublink"><?= $menu['title_' . $locale] ?></a></li>
+                                                <div class="navbar__submenu navbar__submenu--level">
+                                                    <button class="navbar__back js-navbar-submenu-back">
+                                                        <svg class="navbar__arrow">
+                                                        <use xlink:href="#icon-arrow-left"></use>
+                                                        </svg>Back
+                                                    </button>
+                                                    <ul class="navbar__subnav">
+                                                        <?php foreach ($header_menu[1]['submenus'][$k]['nest'] as $nest) { ?>
+                                                            <li class="navbar__subitem"><a href="<?= url("/$locale/projects/{$menu['link']}/{$nest['link']}") ?>" class="navbar__sublink js-navbar-sub-sublink">
+                                                                    <?= $nest['title_' . $locale] ?></a>
+                                                            </li>
                                                         <?php } ?>
-                                            </ul>
-                                        </div>
+                                                    </ul>
+                                                </div>
                                             <?php } ?>
-                                    </li>
+                                        </li>
                                     <?php } ?>
                                 </ul>
                             </div>

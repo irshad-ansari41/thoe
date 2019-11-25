@@ -64,11 +64,11 @@
                         foreach ($projects as $value) {
                             if (url_segment($value['url'], 4) == 'Riviera') {
                                 ?>
-                                <li><a href="<?= $value['url'] ?>">Azizi Riviera</a></li>
+                                <li><a href="<?= $value['url'] ?>">Thoe Riviera</a></li>
                                 <?php
                             } elseif (url_segment($value['url'], 4) == 'Victoria') {
                                 ?>
-                                <li><a href="<?= $value['url'] ?>">Azizi Victoria</a></li>
+                                <li><a href="<?= $value['url'] ?>">Thoe Victoria</a></li>
                                 <?php
                             } else {
                                 ?>

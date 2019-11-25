@@ -64,11 +64,7 @@
 
                         <div class="form-group ar_field">
 
-                            <label class="col-md-1  hidden-xs">Title(Chinese) </label>
-                            <div class="col-md-5">
-                                <input type="text" class="form-control" name="title_ch"
-                                       placeholder="" value="@if($project){{ $project->title_ch }} @endif" />
-                            </div>
+                            
 
                             <label class="col-md-1  hidden-xs">Date</label>
                             <div class="col-md-5">
@@ -193,20 +189,6 @@
 
                         </div>
 
-                        <div class="form-group en_field">
-                            <label class="col-md-1 " name="">Short Description (Chinese)</label>
-
-                            <div class="col-md-5">
-                                <textarea id="ckeditor_standard" name="description_ch">@if($project){{ $project->description_ch }} @endif</textarea>
-                            </div>
-
-                            <label class="col-md-1 " name="">Long Description (Chinese)</label>
-
-                            <div class="col-md-5">
-                                <textarea id="ckeditor_standard" name="description_long_ch">@if($project){{ $project->description_long_ch }} @endif</textarea>
-                            </div>
-
-                        </div>
 
                         <div class="form-group en_field">
 

@@ -86,17 +86,17 @@
 <!-- Header -->
 
 <section>
-    <div class="parallax-container valign-wrapper only-heading" style="background-image:url('<?= SITE_URL ?>/emailer/berton-offers/Azizi-offer-slider-image-7.jpg');">
-        <!--img  src="<?= SITE_URL ?>/emailer/uk-offers/Azizi-offer-slider-image-7-2.jpg" alt="Berton - Azizi Developments" class="imgtag"/-->
-        <img srcset="<?= SITE_URL ?>/emailer/creek-views/Azizi-offer-slider-image-7.jpg 320w,
-             <?= SITE_URL ?>/emailer/creek-views/Azizi-offer-slider-image-7.jpg 480w,
-             <?= SITE_URL ?>/emailer/creek-views/Azizi-offer-slider-image-7.jpg 768w,
-             <?= SITE_URL ?>/emailer/creek-views/Azizi-offer-slider-image-7.jpg 800w"
+    <div class="parallax-container valign-wrapper only-heading" style="background-image:url('<?= SITE_URL ?>/emailer/berton-offers/Thoe-offer-slider-image-7.jpg');">
+        <!--img  src="<?= SITE_URL ?>/emailer/uk-offers/Thoe-offer-slider-image-7-2.jpg" alt="Berton - Thoe Developments" class="imgtag"/-->
+        <img srcset="<?= SITE_URL ?>/emailer/creek-views/Thoe-offer-slider-image-7.jpg 320w,
+             <?= SITE_URL ?>/emailer/creek-views/Thoe-offer-slider-image-7.jpg 480w,
+             <?= SITE_URL ?>/emailer/creek-views/Thoe-offer-slider-image-7.jpg 768w,
+             <?= SITE_URL ?>/emailer/creek-views/Thoe-offer-slider-image-7.jpg 800w"
              sizes="(max-width: 320px) 300px,
              (max-width: 480px) 300px,
              (max-width: 768px) 500px,
              100vh"
-             src="<?= SITE_URL ?>/emailer/creek-views/Azizi-offer-slider-image-7.jpg" alt="Creek Viewss - Azizi Developments" width="100%" height="100%" />
+             src="<?= SITE_URL ?>/emailer/creek-views/Thoe-offer-slider-image-7.jpg" alt="Creek Viewss - Thoe Developments" width="100%" height="100%" />
 
         <div id='stick-form' class="mobileds">
             <h5 class="info-color white-text text-center" style="text-transform: uppercase; font-size: 24px!important; text-align: center; margin: 10px;display: block;">
@@ -104,7 +104,7 @@
                     استفسر الآن
                 </strong>
             </h5>
-            <iframe src="https://azizidevelopments.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="width:320px;height:330px;border:none;" scrolling="No"></iframe>                            
+            <iframe src="https://thoe.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="width:320px;height:330px;border:none;" scrolling="No"></iframe>                            
         </div>
 
         <div class="col s12 center-align card tag-pro">
@@ -136,7 +136,7 @@
                 <h6 style="padding-bottom:20px;color:#fff;font-size: 18px !important;padding: 20px;">
                    تملك في كريك فيوز مشروع للمستقبل في قلب مدينة دبي الطبية الذي يجمع بين الماضي والمستقبل ويمثل الفخامة العصرية
                 </h6>
-                <!--img alt="Berton By Azizi" src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.png" data-src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.png" class="responsive-img pro-image"-->
+                <!--img alt="Berton By Thoe" src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.png" data-src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.png" class="responsive-img pro-image"-->
 
             </div>
 
@@ -146,7 +146,7 @@
                         استفسر الآن
                     </strong>
                 </h5>
-                <iframe src="https://azizidevelopments.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="" scrolling="No"></iframe>                            
+                <iframe src="https://thoe.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="" scrolling="No"></iframe>                            
             </div>
         </div> 
         <!--row One end-->
@@ -163,7 +163,7 @@
                 <h6 style="padding-bottom:20px;">
                     تملك في كريك فيوز مشروع للمستقبل في قلب مدينة دبي الطبية الذي يجمع بين الماضي والمستقبل ويمثل الفخامة العصرية
                 </h6>
-                <!--img alt="Berton By Azizi" src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.jpg" class="responsive-img pro-image"-->
+                <!--img alt="Berton By Thoe" src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.jpg" class="responsive-img pro-image"-->
             </div>
 
             <div class="col s12 m12 pro-holder center-align Completed">
@@ -173,7 +173,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Creek Views By Azizi" src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-1a.jpg" data-src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-1a.jpg" class="responsive-img pro-image"/>
+                    <img alt="Creek Views By Thoe" src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-1a.jpg" data-src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-1a.jpg" class="responsive-img pro-image"/>
                     <div class="col s12 title-holder">
                         <h5>
                             إبتداءً من 538,000 درهم
@@ -185,7 +185,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Creek Views By Azizi" src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-1b.jpg" data-src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-1b.jpg" class="responsive-img pro-image"/>
+                    <img alt="Creek Views By Thoe" src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-1b.jpg" data-src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-1b.jpg" class="responsive-img pro-image"/>
                     <div class="col s12 title-holder">
                         <h5>
                            60/40 خطط دفع
@@ -196,7 +196,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Creek Views By Azizi" src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-2.jpg" data-src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-2.jpg" class="responsive-img pro-image"/>
+                    <img alt="Creek Views By Thoe" src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-2.jpg" data-src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-2.jpg" class="responsive-img pro-image"/>
                     <div class="col s12 title-holder">
                         <h5>
                             إدفع 50% عند إكتمال المشروع
@@ -209,7 +209,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Creek Views By Azizi" src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-3.jpg" data-src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-3.jpg" class="responsive-img pro-image"/>
+                    <img alt="Creek Views By Thoe" src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-3.jpg" data-src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-3.jpg" class="responsive-img pro-image"/>
                     <div class="col s12 title-holder">
                         <h5>
                             وحدات الاستديو
@@ -220,7 +220,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Creek Views By Azizi" src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-4.jpg" data-src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-4.jpg" class="responsive-img pro-image"/>
+                    <img alt="Creek Views By Thoe" src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-4.jpg" data-src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-4.jpg" class="responsive-img pro-image"/>
                     <div class="col s12 title-holder">
                         <h5>
                             غرفة نوم واحدة وغرفتين
@@ -232,7 +232,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Creek Views By Azizi" src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-5.jpg" data-src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-5.jpg" class="responsive-img pro-image"/>
+                    <img alt="Creek Views By Thoe" src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-5.jpg" data-src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-5.jpg" class="responsive-img pro-image"/>
                     <div class="col s12 title-holder">
                         <h5>
                             سرعة في أعمال الانشاءات
@@ -243,7 +243,7 @@
 
             <div class="col s12 m8 pro-holder center-align Completed">
                 <div class="card col s12 p0 cards">
-                    <img alt="Creek Views By Azizi" src="<?= SITE_URL ?>/emailer/creek-views/ar/Creek-Views-Single-3.jpg" data-src="<?= SITE_URL ?>/emailer/creek-views/ar/Creek-Views-Single-3.jpg" class="responsive-img pro-image"/>
+                    <img alt="Creek Views By Thoe" src="<?= SITE_URL ?>/emailer/creek-views/ar/Creek-Views-Single-3.jpg" data-src="<?= SITE_URL ?>/emailer/creek-views/ar/Creek-Views-Single-3.jpg" class="responsive-img pro-image"/>
                     <div class="col s12 title-holder">
                         <h5>
                             الإنتهاء من المشروع
@@ -255,7 +255,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Creek Views By Azizi" src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-6.jpg" data-src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-6.jpg" class="responsive-img pro-image" style="height: 437px;"/>
+                    <img alt="Creek Views By Thoe" src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-6.jpg" data-src="<?= SITE_URL ?>/emailer/creek-views/ar/CreekViews-Carousel-6.jpg" class="responsive-img pro-image" style="height: 437px;"/>
                     <div class="col s12 title-holder">
                         <h5>
                             تملك إطلالتك الآن
@@ -349,7 +349,7 @@
     if (campaign !== '' && campaign !== null) {
         sessionStorage.setItem("utm_campaign", capitalize(campaign.replace("-", " ")));
     } else {
-        sessionStorage.setItem("utm_campaign", 'Creek View by Azizi');
+        sessionStorage.setItem("utm_campaign", 'Creek View by Thoe');
     }
 
     sessionStorage.setItem("ips_offers_url", '<?= SITE_URL ?>/ar/creek-views');

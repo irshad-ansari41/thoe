@@ -174,7 +174,7 @@
                             <span class="ion-ios-telephone" style="font-size: 25px;"></span>
 
                             <span style="font-weight: 500;font-size: 20px;">
-                                <a href="#" class="num-fo telephone" data-telephone="80029494">(29494)800AZIZI</a>
+                                <a href="#" class="num-fo telephone" data-telephone="80029494">(29494)800THOE</a>
                             </span>
                             {{trans('words.Inside the UAE toll free number')}} 
 
@@ -308,13 +308,13 @@
 
             <br/><br/>
             <div class="col s12">
-                <!-- <h5 style="margin-top: 0;margin-bottom: 0;">{{trans("words.Azizi Developments Offices")}}</h5> -->
+                <!-- <h5 style="margin-top: 0;margin-bottom: 0;">{{trans("words.Thoe Developments Offices")}}</h5> -->
                 @if($locale=='en')
-                <h5 style="margin-top: 0;margin-bottom: 0;">Azizi Developments Offices</h5>
+                <h5 style="margin-top: 0;margin-bottom: 0;">Thoe Developments Offices</h5>
                 @elseif($locale=='ar')
                 <h5 style="margin-top: 0;margin-bottom: 0;">مقرات عزيزي للتطوير العقاري</h5>
                 @elseif($locale=='cn')
-                <h5 style="margin-top: 0;margin-bottom: 0;">Azizi 地产公司办公室</h5>
+                <h5 style="margin-top: 0;margin-bottom: 0;">Thoe 地产公司办公室</h5>
                 @endif
                 <div class="divider az-header-divider" style="    margin-bottom: 20px;"></div>
 

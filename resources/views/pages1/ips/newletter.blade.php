@@ -23,7 +23,7 @@
 
                                 <a target="_blank" href="<?=SITE_URL?>/en" style="text-decoration: none; color: #001F5B; 
                                    font-family:Helvetica; font-size:12px;">
-                                    <img src="http://aziziriviera.com/azizi-emailer/images/ips-2019/26-28_Mar_IPS_Emailer_Top_opt-1.jpg"  width="595"/>
+                                    <img src="http://thoeriviera.com/thoe-emailer/images/ips-2019/26-28_Mar_IPS_Emailer_Top_opt-1.jpg"  width="595"/>
                                 </a>
                             </td>
                         </tr>
@@ -64,7 +64,7 @@
                                     <br/>
                                     Should you require further information please 
                                     <?php if(!empty($data['websiteurl'])): ?><a href="<?= $data['websiteurl'] ?>" style=" text-decoration: none; color: #f1f1f1 !important;">Click here</a><?php endif; ?> 
-                                    , alternatively contact us on 800 AZIZI (29494).
+                                    , alternatively contact us on 800 THOE (29494).
                                 </p>
                                 
                             </td>
@@ -92,7 +92,7 @@
 
                         <tr valign="top">
                             <td >
-                                <img src="http://aziziriviera.com/azizi-emailer/images/ips-2019/26-28_Mar_IPS_Emailer_800.jpg" 
+                                <img src="http://thoeriviera.com/thoe-emailer/images/ips-2019/26-28_Mar_IPS_Emailer_800.jpg" 
                                      width="595" height="120" />
                             </td>
                         </tr>

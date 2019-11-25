@@ -46,7 +46,7 @@
                 <div class="col-lg-12">
                     <div style="position: fixed; height: 90px; width: 100%; background: #fff; top: 0; z-index: 9999; max-width: 1000px; margin-left: -15px;border-bottom: 1px solid #ddd;">
                         <a href="<?=SITE_URL?>/quick-survey">
-                            <img alt="logo" src="//azizidevelopments.in/assets/images/logo-retina-light1.png" style="width: 150px;margin-top:10px;margin-left:10px;"></a>
+                            <img alt="logo" src="//thoe.com/assets/images/logo-retina-light1.png" style="width: 150px;margin-top:10px;margin-left:10px;"></a>
                         <div class="progress hidden" style="margin-left:15px;margin-right:15px;margin-top:5px;">
                             <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="30" style="width:0%">
                                 0% Complete (success)
@@ -61,7 +61,7 @@
             <form id="clientForm" action="{{route('survey.store')}}" method="post" class="contact-form" style="margin-top: 40px;">
                 <br/><h2 style=" margin-top: 0; ">Quick Survey</h2>
 
-                <p>Dear Resident,<br/>To accommodate better living solutions Azizi developments invites you to complete the following survey to help improve our product. <br/>Please complete the survey before <strong>23<sup>rd</sup> June 2018</strong>.</p>
+                <p>Dear Resident,<br/>To accommodate better living solutions Thoe developments invites you to complete the following survey to help improve our product. <br/>Please complete the survey before <strong>23<sup>rd</sup> June 2018</strong>.</p>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 @if(!empty($_GET['status']) && $_GET['status']=='success')
@@ -85,14 +85,14 @@
                             <label>Building Name:</label>
                             <select name="building_name" class="form-control">
                                 <option value="0">Select Building Name</option>
-                                <option value="Azizi Daisy">Azizi Daisy</option>
-                                <option value="Azizi Feirouz">Azizi Feirouz</option>
-                                <option value="Azizi Freesia">Azizi Freesia</option>
-                                <option value="Azizi Iris">Azizi Iris</option>
-                                <option value="Azizi Liatris">Azizi Liatris</option>
-                                <option value="Azizi Orchid">Azizi Orchid</option>
-                                <option value="Azizi Tulip">Azizi Tulip</option>
-                                <option value="Azizi Yasamine">Azizi Yasamine</option>
+                                <option value="Thoe Daisy">Thoe Daisy</option>
+                                <option value="Thoe Feirouz">Thoe Feirouz</option>
+                                <option value="Thoe Freesia">Thoe Freesia</option>
+                                <option value="Thoe Iris">Thoe Iris</option>
+                                <option value="Thoe Liatris">Thoe Liatris</option>
+                                <option value="Thoe Orchid">Thoe Orchid</option>
+                                <option value="Thoe Tulip">Thoe Tulip</option>
+                                <option value="Thoe Yasamine">Thoe Yasamine</option>
                                 <option value="Royal Bay">Royal Bay</option>
                             </select>
                         </div>

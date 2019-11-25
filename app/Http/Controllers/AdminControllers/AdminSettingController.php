@@ -76,15 +76,12 @@ class AdminSettingController extends Controller {
 
         $image = $request->file('logo');
         $image_ar = $request->file('logo_ar');
-        $image_ch = $request->file('logo_ch');
 
         $inner_logo = $request->file('inner_logo');
         $inner_logo_ar = $request->file('inner_logo_ar');
-        $inner_logo_ch = $request->file('inner_logo_ch');
 
         $footer_logo = $request->file('footer_logo');
         $footer_logo_ar = $request->file('footer_logo_ar');
-        $footer_logo_ch = $request->file('footer_logo_ch');
 
 
 
@@ -112,17 +109,7 @@ class AdminSettingController extends Controller {
             $limage_ar = '';
         }
 
-        if ($image_ch) {
-            $limage_ch = time() . rand() . '.' . $image_ch->getClientOriginalExtension();
-            $destinationPath = STORE_PATH . ('/assets/images/logo');
-            if ($limage_ch != "") {
-                $url = STORE_PATH . "/assets/images/logo/" . $setting->logo_ch;
-                @unlink($url);
-            }
-            $image_ch->move($destinationPath, $limage_ch);
-        } else {
-            $limage_ch = '';
-        }
+        
 
         if ($inner_logo) {
             $inimage = time() . rand() . '.' . $inner_logo->getClientOriginalExtension();
@@ -148,17 +135,6 @@ class AdminSettingController extends Controller {
             $inimage_ar = '';
         }
 
-        if ($inner_logo_ch) {
-            $inimage_ch = time() . rand() . '.' . $inner_logo_ch->getClientOriginalExtension();
-            $destinationPath = STORE_PATH . ('/assets/images/logo');
-            if ($inimage_ch != "") {
-                $inurl = STORE_PATH . "/assets/images/logo/" . $setting->inner_logo_ch;
-                @unlink($inurl);
-            }
-            $inner_logo_ch->move($destinationPath, $inimage_ch);
-        } else {
-            $inimage_ch = '';
-        }
 
         if ($footer_logo) {
             $fimage = time() . rand() . '.' . $footer_logo->getClientOriginalExtension();
@@ -184,17 +160,6 @@ class AdminSettingController extends Controller {
             $fimage_ar = '';
         }
 
-        if ($footer_logo_ch) {
-            $fimage_ch = time() . rand() . '.' . $footer_logo_ch->getClientOriginalExtension();
-            $destinationPath = STORE_PATH . ('/assets/images/logo');
-            if ($fimage_ch != "") {
-                $furl = STORE_PATH . "/assets/images/logo/" . $setting->footer_logo_ch;
-                @unlink($furl);
-            }
-            $footer_logo_ch->move($destinationPath, $fimage_ch);
-        } else {
-            $fimage_ch = '';
-        }
 
 
         $data = array();
@@ -206,30 +171,20 @@ class AdminSettingController extends Controller {
             $data['logo_ar'] = $limage_ar;
         }
 
-
-        if ($limage_ch) {
-            $data['logo_ch'] = $limage_ch;
-        }
-
         if ($inimage) {
             $data['inner_logo'] = $inimage;
         }
         if ($inimage_ar) {
             $data['inner_logo_ar'] = $inimage_ar;
         }
-        if ($inimage_ch) {
-            $data['inner_logo_ch'] = $inimage_ch;
-        }
-
+       
         if ($fimage) {
             $data['footer_logo'] = $fimage;
         }
         if ($fimage_ar) {
             $data['footer_logo_ar'] = $fimage_ar;
         }
-        if ($fimage_ch) {
-            $data['footer_logo_ch'] = $fimage_ch;
-        }
+        
 
         if ($request->banner_postion) {
             $data['banner_postion'] = $request->banner_postion;
@@ -314,7 +269,6 @@ class AdminSettingController extends Controller {
         $menu = new Menu();
         $menu->title_en = $request->title_en;
         $menu->title_ar = $request->title_ar;
-        $menu->title_ch = $request->title_ch;
         $menu->type = $request->type;
         $menu->created = date("Y-m-d H:i:s");
         $menu->save();
@@ -341,9 +295,9 @@ class AdminSettingController extends Controller {
     public function update_menu(Request $request) {
 
         if ($request->is_parent != "") {
-            Menu::where('id', $request->id)->update(array("title_en" => $request->title_en, "title_ar" => $request->title_ar, "title_ch" => $request->title_ch, "title_hn" => $request->title_hn, "title_ur" => $request->title_ur, "parent_id" => $request->is_parent));
+            Menu::where('id', $request->id)->update(array("title_en" => $request->title_en, "title_ar" => $request->title_ar,  "parent_id" => $request->is_parent));
         } else {
-            Menu::where('id', $request->id)->update(array("title_en" => $request->title_en, "title_ar" => $request->title_ar, "title_ch" => $request->title_ch, "title_hn" => $request->title_hn, "title_ur" => $request->title_ur));
+            Menu::where('id', $request->id)->update(array("title_en" => $request->title_en, "title_ar" => $request->title_ar, ));
         }
 
         $request->session()->flash('alert-success', 'Menu has been updated!');
@@ -396,17 +350,7 @@ class AdminSettingController extends Controller {
             $data['description_ar'] = $request->description_ar;
         }
 
-        if ($request->description_ch) {
-            $data['description_ch'] = $request->description_ch;
-        }
-
-        if ($request->description_hn) {
-            $data['description_hn'] = $request->description_hn;
-        }
-
-        if ($request->description_ur) {
-            $data['description_ur'] = $request->description_ur;
-        }
+       
         if ($request->footer_address_en) {
             $data['footer_address_en'] = $request->footer_address_en;
         }
@@ -495,9 +439,7 @@ class AdminSettingController extends Controller {
 
             $image = $request->file('banner_image');
             $image_ar = $request->file('banner_image_ar');
-            $image_ch = $request->file('banner_image_ch');
-            $image_hn = $request->file('banner_image_hn');
-            $image_ur = $request->file('banner_image_ur');
+           
 
             $input['imagename'] = '';
             if ($image) {
@@ -513,41 +455,19 @@ class AdminSettingController extends Controller {
                 $image_ar->move($destinationPath, $input['imagename_ar']);
             }
 
-            $input['imagename_ch'] = '';
-            if ($image_ch) {
-                $input['imagename_ch'] = time() . '.' . $image_ch->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . '/assets/images/home_banners/';
-                $image_ch->move($destinationPath, $input['imagename_ch']);
-            }
 
-            $input['imagename_hn'] = '';
-            if ($image_hn) {
-                $input['imagename_hn'] = time() . '.' . $image_hn->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . '/assets/images/home_banners/';
-                $image_hn->move($destinationPath, $input['imagename_hn']);
-            }
-
-            $input['imagename_ur'] = '';
-            if ($image_ur) {
-                $input['imagename_ur'] = time() . '.' . $image_ur->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . '/assets/images/home_banners/';
-                $image_ur->move($destinationPath, $input['imagename_ur']);
-            }
 
             $banner = new Banner();
             $banner->alt = $request->alt;
             $banner->banner_title_en = $request->banner_title_en;
             $banner->banner_title_ar = $request->banner_title_ar;
-            $banner->banner_title_ch = $request->banner_title_ch;
-            $banner->banner_title_hn = $request->banner_title_hn;
-            $banner->banner_title_ur = $request->banner_title_ur;
+           
 
             $banner->explore_button_option = $request->explore_button_option;
             $banner->inquire_button_option = $request->inquire_button_option;
 
             $banner->explore_link = $request->explore_link;
             $banner->explore_link_ar = $request->explore_link_ar;
-            $banner->explore_link_ch = $request->explore_link_ch;
 
             $banner->explore_button_color = $request->explore_button_color;
             $banner->explore_button_hover_color = $request->explore_button_hover_color;
@@ -555,31 +475,23 @@ class AdminSettingController extends Controller {
 
             $banner->banner_short_description_en = $request->banner_short_description_en;
             $banner->banner_short_description_ar = $request->banner_short_description_ar;
-            $banner->banner_short_description_ch = $request->banner_short_description_ch;
-            $banner->banner_short_description_hn = $request->banner_short_description_hn;
-            $banner->banner_short_description_ur = $request->banner_short_description_ur;
+           
 
             $banner->banner_long_description_en = $request->banner_long_description_en;
             $banner->banner_long_description_ar = $request->banner_long_description_ar;
-            $banner->banner_long_description_ch = $request->banner_long_description_ch;
-            $banner->banner_long_description_hn = $request->banner_long_description_hn;
-            $banner->banner_long_description_ur = $request->banner_long_description_ur;
+           
 
             $banner->created_on = date("Y-m-d H:i:s");
 
             if ($request->type1 == "1") {
                 $banner->banner_image = $input['imagename'];
                 $banner->banner_image_ar = $input['imagename_ar'];
-                $banner->banner_image_ch = $input['imagename_ch'];
-                $banner->banner_image_hn = $input['imagename_hn'];
-                $banner->banner_image_ur = $input['imagename_ur'];
+               
                 $banner->type = "1";
             } else {
                 $banner->banner_image = $request->youtubeurl;
                 $banner->banner_image_ar = $request->youtubeurl;
-                $banner->banner_image_ch = $request->youtubeurl;
-                $banner->banner_image_hn = $request->youtubeurl;
-                $banner->banner_image_ur = $request->youtubeurl;
+               
                 $banner->type = "2";
             }
 
@@ -594,9 +506,7 @@ class AdminSettingController extends Controller {
 
             $image = $request->file('banner_image');
             $image_ar = $request->file('banner_image_ar');
-            $image_ch = $request->file('banner_image_ch');
-            $image_hn = $request->file('banner_image_hn');
-            $image_ur = $request->file('banner_image_ur');
+           
 
             $input['imagename'] = '';
             if ($image) {
@@ -612,26 +522,6 @@ class AdminSettingController extends Controller {
                 $image_ar->move($destinationPath, $input['imagename_ar']);
             }
 
-            $input['imagename_ch'] = '';
-            if ($image_ch) {
-                $input['imagename_ch'] = time() . '.' . $image_ch->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . '/assets/images/home_banners/';
-                $image_ch->move($destinationPath, $input['imagename_ch']);
-            }
-
-            $input['imagename_hn'] = '';
-            if ($image_hn) {
-                $input['imagename_hn'] = time() . '.' . $image_hn->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . '/assets/images/home_banners/';
-                $image_hn->move($destinationPath, $input['imagename_hn']);
-            }
-
-            $input['imagename_ur'] = '';
-            if ($image_ur) {
-                $input['imagename_ur'] = time() . '.' . $image_ur->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . '/assets/images/home_banners/';
-                $image_ur->move($destinationPath, $input['imagename_ur']);
-            }
 
             $data = array();
 
@@ -642,22 +532,12 @@ class AdminSettingController extends Controller {
                 if ($input['imagename_ar'] != "") {
                     $data['banner_image_ar'] = $input['imagename_ar'];
                 }
-                if ($input['imagename_ch'] != "") {
-                    $data['banner_image_ch'] = $input['imagename_ch'];
-                }
-                if ($input['imagename_hn'] != "") {
-                    $data['banner_image_hn'] = $input['imagename_hn'];
-                }
-                if ($input['imagename_ur'] != "") {
-                    $data['banner_image_ur'] = $input['imagename_ur'];
-                }
+                
                 $data['type'] = "1";
             } else {
                 $data['banner_image'] = $request->youtubeurl;
                 $data['banner_image_ar'] = $request->youtubeurl;
-                $data['banner_image_ch'] = $request->youtubeurl;
-                $data['banner_image_hn'] = $request->youtubeurl;
-                $data['banner_image_ur'] = $request->youtubeurl;
+               
                 $data['type'] = "2";
             }
 
@@ -668,18 +548,10 @@ class AdminSettingController extends Controller {
             if ($request->banner_title_ar) {
                 $data['banner_title_ar'] = $request->banner_title_ar;
             }
-            if ($request->banner_title_ch) {
-                $data['banner_title_ch'] = $request->banner_title_ch;
-            }
-
-            if ($request->banner_title_hn) {
-                $data['banner_title_hn'] = $request->banner_title_hn;
-            }
+            
 
             $data['video_id'] = $request->video_id;
-            if ($request->banner_title_ur) {
-                $data['banner_title_ur'] = $request->banner_title_ur;
-            }
+           
 
             if ($request->explore_link) {
                 $data['explore_link'] = $request->explore_link;
@@ -688,10 +560,6 @@ class AdminSettingController extends Controller {
 
             if ($request->explore_link_ar) {
                 $data['explore_link_ar'] = $request->explore_link_ar;
-            }
-
-            if ($request->explore_link_ch) {
-                $data['explore_link_ch'] = $request->explore_link_ch;
             }
 
             if ($request->explore_button_color) {
@@ -711,15 +579,7 @@ class AdminSettingController extends Controller {
             if ($request->banner_short_description_ar) {
                 $data['banner_short_description_ar'] = $request->banner_short_description_ar;
             }
-            if ($request->banner_short_description_ch) {
-                $data['banner_short_description_ch'] = $request->banner_short_description_ch;
-            }
-            if ($request->banner_short_description_hn) {
-                $data['banner_short_description_hn'] = $request->banner_short_description_hn;
-            }
-            if ($request->banner_short_description_ur) {
-                $data['banner_short_description_ur'] = $request->banner_short_description_ur;
-            }
+            
 
             // if($request->banner_long_description_en){
             $data['banner_long_description_en'] = $request->banner_long_description_en;
@@ -727,15 +587,7 @@ class AdminSettingController extends Controller {
             if ($request->banner_long_description_ar) {
                 $data['banner_long_description_ar'] = $request->banner_long_description_ar;
             }
-            //if ($request->banner_long_description_ch) {
-            $data['banner_long_description_ch'] = $request->banner_long_description_ch;
-            //}
-            if ($request->banner_long_description_hn) {
-                $data['banner_long_description_hn'] = $request->banner_long_description_hn;
-            }
-            if ($request->banner_long_description_ur) {
-                $data['banner_long_description_ur'] = $request->banner_long_description_ur;
-            }
+            
 
             if (!empty($data)) {
                 Banner::where('id', $request->id)->update($data);
@@ -809,24 +661,17 @@ class AdminSettingController extends Controller {
             $banner->alt = $request->alt;
             $banner->banner_title_en = $request->banner_title_en;
             $banner->banner_title_ar = $request->banner_title_ar;
-            $banner->banner_title_ch = $request->banner_title_ch;
-            $banner->banner_title_hn = $request->banner_title_hn;
-            $banner->banner_title_ur = $request->banner_title_ur;
-
+           
             $banner->explore_link = $request->explore_link;
             $banner->video_id = $request->video_id;
 
             $banner->banner_short_description_en = $request->banner_short_description_en;
             $banner->banner_short_description_ar = $request->banner_short_description_ar;
-            $banner->banner_short_description_ch = $request->banner_short_description_ch;
-            $banner->banner_short_description_hn = $request->banner_short_description_hn;
-            $banner->banner_short_description_ur = $request->banner_short_description_ur;
+           
 
             $banner->banner_long_description_en = $request->banner_long_description_en;
             $banner->banner_long_description_ar = $request->banner_long_description_ar;
-            $banner->banner_long_description_ch = $request->banner_long_description_ch;
-            $banner->banner_long_description_hn = $request->banner_long_description_hn;
-            $banner->banner_long_description_ur = $request->banner_long_description_ur;
+            
 
             $banner->created_on = date("Y-m-d H:i:s");
             $banner->banner_starting_at = $request->banner_starting_at;
@@ -861,17 +706,7 @@ class AdminSettingController extends Controller {
             if ($request->banner_title_ar) {
                 $data['banner_title_ar'] = $request->banner_title_ar;
             }
-            if ($request->banner_title_ch) {
-                $data['banner_title_ch'] = $request->banner_title_ch;
-            }
-
-            if ($request->banner_title_hn) {
-                $data['banner_title_hn'] = $request->banner_title_hn;
-            }
-
-            if ($request->banner_title_ur) {
-                $data['banner_title_ur'] = $request->banner_title_ur;
-            }
+            
 
             if ($request->explore_link) {
                 $data['explore_link'] = $request->explore_link;
@@ -887,15 +722,7 @@ class AdminSettingController extends Controller {
             if ($request->banner_short_description_ar) {
                 $data['banner_short_description_ar'] = $request->banner_short_description_ar;
             }
-            if ($request->banner_short_description_ch) {
-                $data['banner_short_description_ch'] = $request->banner_short_description_ch;
-            }
-            if ($request->banner_short_description_hn) {
-                $data['banner_short_description_hn'] = $request->banner_short_description_hn;
-            }
-            if ($request->banner_short_description_ur) {
-                $data['banner_short_description_ur'] = $request->banner_short_description_ur;
-            }
+            
 
             // if($request->banner_long_description_en){
             $data['banner_long_description_en'] = $request->banner_long_description_en;
@@ -903,15 +730,7 @@ class AdminSettingController extends Controller {
             if ($request->banner_long_description_ar) {
                 $data['banner_long_description_ar'] = $request->banner_long_description_ar;
             }
-            if ($request->banner_long_description_ch) {
-                $data['banner_long_description_ch'] = $request->banner_long_description_ch;
-            }
-            if ($request->banner_long_description_hn) {
-                $data['banner_long_description_hn'] = $request->banner_long_description_hn;
-            }
-            if ($request->banner_long_description_ur) {
-                $data['banner_long_description_ur'] = $request->banner_long_description_ur;
-            }
+            
 
             if (!empty($data)) {
                 FeatureBanner::where('id', $request->id)->update($data);

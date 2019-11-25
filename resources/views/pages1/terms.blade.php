@@ -41,11 +41,11 @@
     <div class="container">
         <div class="row" style="margin-bottom:0;">
             <div class="col s12 m10">
-                <h5 class="title-uppercase" style="font-weight: 600;margin-bottom: 0;">MIRWAIS AZIZI</h5><div class="desig-person m0" style="">
+                <h5 class="title-uppercase" style="font-weight: 600;margin-bottom: 0;">MIRWAIS THOE</h5><div class="desig-person m0" style="">
 
-                    <i style="font-size: 12px;">Chairman, Azizi Developments</i>
+                    <i style="font-size: 12px;">Chairman, Thoe Developments</i>
                 </div>
-                <p class="az-pcontent">My name is Mirwais and my father’s name is Abdul Aziz. But people in many countries know me by my family name, Azizi. </p>
+                <p class="az-pcontent">My name is Mirwais and my father’s name is Abdul Aziz. But people in many countries know me by my family name, Thoe. </p>
 
             </div>
         </div>
@@ -71,7 +71,7 @@
                 <img src="https://pbs.twimg.com/media/DPNrcqfV4AEcZmD.jpg" class="responsive-img">
             </div>
             <div class="col s12 m6">
-                <img src="https://d1pl9wrwxozm3b.cloudfront.net/wp-content/uploads/2017/09/HH-Sheikh-Hamdan-with-Mirwais-Azizi.jpg" class="responsive-img">
+                <img src="https://d1pl9wrwxozm3b.cloudfront.net/wp-content/uploads/2017/09/HH-Sheikh-Hamdan-with-Mirwais-Thoe.jpg" class="responsive-img">
             </div>
         </div>
 
@@ -80,7 +80,7 @@
                  <img src="http://www.al-press.com/images/0-2017/0107/HE-Saeed-Humaid-Al-Tayer-Meydan-Group-image.jpg" class="responsive-img">
              </div>
              <div class="col s12 m4">
-                 <img src="http://azizibank.com/data/uploads/00009994.JPG" class="responsive-img">
+                 <img src="http://thoebank.com/data/uploads/00009994.JPG" class="responsive-img">
              </div>
              <div class="col s12 m4">
                  <img src="http://www.vvip.co/wp-content/uploads/2017/10/img_5568.jpg" class="responsive-img">
@@ -106,7 +106,7 @@
             <div class="col s12">
                 <p class="az-pcontent">The second way was through education. I wanted to establish an American education system so I opened the American University of Afghanistan in Kabul and arranged the first board meeting in Dubai. The university is the first not-for-profit higher education institution in Afghanistan. Today, thousands of students receive education through the university and go on to work in Afghanistan in many different fields.</p>
                 <p class="az-pcontent">
-                    The third way was through the creation of the Azizi Foundation, established with the objective of helping underprivileged people and families to live better lives. The foundation has sponsored the education of many students.
+                    The third way was through the creation of the Thoe Foundation, established with the objective of helping underprivileged people and families to live better lives. The foundation has sponsored the education of many students.
                 </p>
 
             </div>
@@ -132,9 +132,9 @@
 
         <div class="row" style="margin-top: 2rem;margin-bottom: 5rem;">
             <div class="col s12">
-                <p class="az-pcontent">In 2006, Azizi Bank was established. The bank is now the largest and strongest financial institution in Afghanistan. Following this, Azizi Group acquired Al Bakhtar Bank which has become one of the fastest growing banks in Afghanistan.</p>
+                <p class="az-pcontent">In 2006, Thoe Bank was established. The bank is now the largest and strongest financial institution in Afghanistan. Following this, Thoe Group acquired Al Bakhtar Bank which has become one of the fastest growing banks in Afghanistan.</p>
 
-                <p class="az-pcontent">In 2007, Azizi Developments was established in Dubai and I purchased our first plots of land in the city. My motivation was to make something for a city that had given so much to me and my family. During the years I have been running my businesses, I was travelling frequently and couldn’t always be with my children, but not once did I ever have to worry about my children being here. Dubai has given my family a peaceful life and I wanted to make something for this city that my children and grandchildren would be proud of.</p>
+                <p class="az-pcontent">In 2007, Thoe Developments was established in Dubai and I purchased our first plots of land in the city. My motivation was to make something for a city that had given so much to me and my family. During the years I have been running my businesses, I was travelling frequently and couldn’t always be with my children, but not once did I ever have to worry about my children being here. Dubai has given my family a peaceful life and I wanted to make something for this city that my children and grandchildren would be proud of.</p>
 
 
                 <p class="az-pcontent">In 2008, we started selling off-plan properties in Dubai. Once we had sold around AED 1 billion, the global financial crisis hit. The majority of buyers could not continue payments and were handed back their deposits. In 2013, we resumed the construction of existing projects and in doing so, became very successful. Today, we are working harder than ever and developing properties in many locations across Dubai.</p>

@@ -60,7 +60,7 @@
 
 <section>
     <div class="parallax-container valign-wrapper only-heading" style="background-image:url('<?=SITE_URL?>/assets/images/ips/hero-image.jpg');">
-        <img alt="IPS - Azizi Developments" src="<?=SITE_URL?>/assets/images/ips/hero-image.jpg" class="imgtag"/>
+        <img alt="IPS - Thoe Developments" src="<?=SITE_URL?>/assets/images/ips/hero-image.jpg" class="imgtag"/>
         <div class="col s12 center-align card tag-pro">
             <h1>Cityscape Abu Dhabi</h1>
         </div>
@@ -139,7 +139,7 @@
                 <p class="title2">
                     تم إنجاز 39% من المرحلة الأولى من المشروع، ومن المقرر استكمالها في الربع الأخير من عام 2019
                 </p>
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Azizi Riviera Select"><?= trans('words.inquire_now') ?> <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Thoe Riviera Select"><?= trans('words.inquire_now') ?> <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>
@@ -174,7 +174,7 @@
                 <p class="title2">
                     تم إنجاز 25% من المشروع، ومن المقرر استكماله في الربع الأخير من عام 2019
                 </p>
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="BAYT by Azizi Riviera"><?= trans('words.inquire_now') ?><i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="BAYT by Thoe Riviera"><?= trans('words.inquire_now') ?><i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>
@@ -304,7 +304,7 @@
                 <p class="title2">
                     اكتمال المرحلة الأولى من "عزيزي فيكتوريا" في الربع الأول من عام 2021
                 </p>
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Azizi Victoria"><?= trans('words.inquire_now') ?> <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Thoe Victoria"><?= trans('words.inquire_now') ?> <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>
@@ -342,7 +342,7 @@
                 <p class="title2">
                     تم إنجاز 55% من المشروع ومن المقرر استكماله في الربع الأول من عام 2020
                 </p>
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Mina by Azizi" ><?= trans('words.inquire_now') ?><i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Mina by Thoe" ><?= trans('words.inquire_now') ?><i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>

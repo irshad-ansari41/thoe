@@ -119,7 +119,7 @@ $imagepath = '';
 
             <div class="col s12 center-align card tag-pro">
                 <h1>{{showTextByLocale($locale,[$property->title_en,$property->title_ar,$property->title_ch])}} </h1>
-                <?php if (trim($property->slug) == "Azizi Victoria" || trim($property->slug) == "عزيزي فيكتوريا") { ?>
+                <?php if (trim($property->slug) == "Thoe Victoria" || trim($property->slug) == "عزيزي فيكتوريا") { ?>
                     <p><i class="ion ion-ios-location-outline" style="font-weight: 900;"></i> {{trans('words.MEYDAN')}}</p>
                 <?php } else { ?>
                     <p><i class="ion ion-ios-location-outline" style="font-weight: 900;"></i> {{showTextByLocale($locale,[$project->title_en,$project->title_ar,$project->title_ch])}}</p>
@@ -298,7 +298,7 @@ $imagepath = '';
                     <ul>
 
                         <li style="border-bottom: 1px solid #d5d5d5;">
-                            <?php if (trim($property->title_en) == "Azizi Victoria" || trim($property->title_en) == "عزيزي فيكتوريا") { ?>
+                            <?php if (trim($property->title_en) == "Thoe Victoria" || trim($property->title_en) == "عزيزي فيكتوريا") { ?>
                                 <p><strong style="margin-right: 15px;">{{trans('words.Area')}} : </strong> {{trans('words.MEYDAN')}}</p>
                             <?php } else { ?>
                                 <p><strong style="margin-right: 15px;">{{ trans('words.Area') }} : </strong>
@@ -600,7 +600,7 @@ $imagepath = '';
 
                     <?php if ($locale == 'en') { ?>
                                                                                                             <p class="az-pcontent"><strong style="margin-right: 15px;">Call Us</strong><br>
-                                                                                                                UAE : 800 AZIZI (29494) <br>
+                                                                                                                UAE : 800 THOE (29494) <br>
                                                                                                                 International: +971 4 359 6673 
                     <?php } else if ($locale == 'ar') { ?>
                                                                                                             <p class="az-pcontent" style=" direction: rtl; "><strong style="margin-right: 15px;">اتصل بنا</strong><br>
@@ -608,7 +608,7 @@ $imagepath = '';
                                                                                                                 الهاتف: 97143596673+
                     <?php } else if ($locale == 'cn') { ?>
                                                                                                             <p class="az-pcontent"><strong style="margin-right: 15px;">致电我们</strong><br>
-                                                                                                                阿联酋：800 AZIZI（29494） <br>
+                                                                                                                阿联酋：800 THOE（29494） <br>
                                                                                                                 国际：+971 4 359 6673
                     <?php } ?>
 

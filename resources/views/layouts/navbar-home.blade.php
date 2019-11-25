@@ -26,9 +26,9 @@
                                         $hasnest = !empty($header_menu[1]['submenus'][$k]['nest']) ? 1 : 0;
                                         ?>
                                         <li class="navbar__subitem navbar__subitem-dropdown js-dropdown">
-                                            <a href="<?= url("/$locale/{$menu['link']}") ?>" class="navbar__sublink js-navbar-sublink"><?= $menu['title_' . $locale] ?>
+                                            <a href="<?= url("/$locale/projects/{$menu['link']}") ?>" class="navbar__sublink js-navbar-sublink"><?= $menu['title_' . $locale] ?>
                                                 <?= $hasnest ? ' <svg class="navbar__arrow">
-                                                <use xlink:href="#icon-arrow-right"></use>
+                                            <use xlink:href="#icon-arrow-right"></use>
                                                 </svg>' : '' ?></a>
                                             <?php if ($hasnest) { ?>
                                                 <div class="navbar__submenu navbar__submenu--level">
@@ -38,8 +38,10 @@
                                                         </svg>Back
                                                     </button>
                                                     <ul class="navbar__subnav">
-                                                        <?php foreach ($header_menu[1]['submenus'][$k]['nest'] as $menu) { ?>
-                                                            <li class="navbar__subitem"><a href="<?= url("/$locale/{$menu['link']}") ?>" class="navbar__sublink js-navbar-sub-sublink"><?= $menu['title_' . $locale] ?></a></li>
+                                                        <?php foreach ($header_menu[1]['submenus'][$k]['nest'] as $nest) { ?>
+                                                            <li class="navbar__subitem"><a href="<?= url("/$locale/projects/{$menu['link']}/{$nest['link']}") ?>" class="navbar__sublink js-navbar-sub-sublink">
+                                                                    <?= $nest['title_' . $locale] ?></a>
+                                                            </li>
                                                         <?php } ?>
                                                     </ul>
                                                 </div>

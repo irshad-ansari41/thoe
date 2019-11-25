@@ -52,7 +52,7 @@ $get = filter_input_array(INPUT_GET);
                 </h4>
                 <div class="pull-right">
                     <a class="btn btn-sm btn-default" href="{{route('admin.get-units')}}">Get Units From CRM</a>
-                    <a class="btn btn-sm btn-default" href="https://azizidevelopments.com/read-json/index.php">Sync Units</a>
+                    <a class="btn btn-sm btn-default" href="https://thoe.com/read-json/index.php">Sync Units</a>
                     <a class="btn btn-sm btn-default" href="{{route('admin.sale-center.wishlist')}}">Wish List</a>
                 </div>
             </div>

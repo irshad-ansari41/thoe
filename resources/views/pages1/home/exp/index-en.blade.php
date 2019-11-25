@@ -544,7 +544,7 @@ End Preloader -->
                         </a>
                     </li>
                     <li role="presentation" class="">
-                        <a aria-controls="home2" href="#" class="btn btn-default btn-small pointer telephone" data-telephone="80029494">800 AZIZI 29494</a>
+                        <a aria-controls="home2" href="#" class="btn btn-default btn-small pointer telephone" data-telephone="80029494">800 THOE 29494</a>
                     </li>
 
                 </ul>
@@ -568,7 +568,7 @@ End Preloader -->
                         <?php $banner_Title = preg_replace('/\s+/', '', $slider->banner_title_en); if(!empty($banner_Title)):?>
                             <?php if(!empty($slider->banner_short_description_en)): ?>
                                 <span class="filter"></span>
-                                <img class="smallSlide" src="https://azizidevelopments.com/assets/images/100-blank-img.jpg"  data-src="<?= asset("assets/images/home_banners/" . $slider->banner_image) ?>" alt="<?=$slider->banner_title_en?>" >
+                                <img class="smallSlide" src="https://thoe.com/assets/images/100-blank-img.jpg"  data-src="<?= asset("assets/images/home_banners/" . $slider->banner_image) ?>" alt="<?=$slider->banner_title_en?>" >
                                 <div class="bigSlide"  data-original="<?= asset("assets/images/home_banners/" . $slider->banner_image) ?>"></div>
                                 <div class="container Smsgbox">
                                     <div class="title col-lg-6  col-md-6 col-sm-8 col-xs-9">
@@ -576,7 +576,7 @@ End Preloader -->
                                         <?= $slider->banner_short_description_en ?>                                                                       
                                         <?php if($slider->explore_button_option == "1"):?>
                                             <span class="ffs-bs">
-                                                <a href="https://azizidevelopments.com/en/adha-offers" class="btn btn-default btn-small">
+                                                <a href="https://thoe.com/en/adha-offers" class="btn btn-default btn-small">
                                                     Explore More
                                                 </a>
                                             </span>

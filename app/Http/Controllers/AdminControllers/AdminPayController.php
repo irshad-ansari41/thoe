@@ -629,7 +629,6 @@ class AdminPayController extends Controller {
         $data['contact_email'] = $record->contact_email;
         $data['description_en'] = $record->description_en;
         $data['description_ar'] = $record->description_ar;
-        $data['description_ch'] = $record->description_ch;
 
         $data['linkedin_link'] = $record->linkedin_link;
         $data['facebook_link'] = $record->facebook_link;
@@ -658,7 +657,6 @@ class AdminPayController extends Controller {
                 $records[$i]['title_ar'] = $menu->title_ar;
                 $records[$i]['link'] = $menu->link;
                 $records[$i]['ordering'] = $menu->ordering;
-                $records[$i]['title_ch'] = $menu->title_ch;
                 $records[$i]['id'] = $menu->id;
                 $records[$i]['slug'] = $menu->slug;
 
@@ -674,7 +672,6 @@ class AdminPayController extends Controller {
                         $records[$i]['submenus'][$j]['id'] = $sub->id;
                         $records[$i]['submenus'][$j]['link'] = $sub->link;
                         $records[$i]['submenus'][$j]['ordering'] = $sub->ordering;
-                        $records[$i]['submenus'][$j]['title_ch'] = $sub->title_ch;
                         $j++;
                     }
                 } else {

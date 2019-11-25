@@ -132,8 +132,8 @@ and open the template in the editor.
                             <br/>
                             <input list="campaign" name="campaign" placeholder="Campaign" class="input">
                             <datalist id="campaign" >
-                                <option value="Azizi Riviera">
-                                <option value="Azizi Mina">
+                                <option value="Thoe Riviera">
+                                <option value="Thoe Mina">
                                 <option value="Al Furjan">
                                 <option value="Call Summary">
                                 <option value="Facebook Chat">
@@ -206,7 +206,7 @@ jQuery('#bayut').blur(function () {
         $('input[name=mobile]').val(mobile);
         $('input[name=phone]').val(phone);
         $('input[name=source]').val('Optimedia Bayut');
-        $('input[name=campaign]').val('Azizi Riviera');
+        $('input[name=campaign]').val('Thoe Riviera');
     }
 });
 

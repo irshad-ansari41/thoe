@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <title>
-            AZIZI ADMIN PANEL
+            THOE ADMIN PANEL
         </title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -26,7 +26,7 @@
 
     <body class="skin-josh">
         <header class="header">
-            <a href="{{ SITE_URL }}" class="logo" target="_azizi">
+            <a href="{{ SITE_URL }}" class="logo" target="_thoe">
                 <img src="{{ asset('assets/images/logo.jpg') }}" alt="logo" height="40" width="100">
             </a>
             <nav class="navbar navbar-static-top" role="navigation">

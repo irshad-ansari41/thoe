@@ -72,7 +72,7 @@
             <div class="row" >
                 <div class="col-lg-12">
                     <div style="position: fixed; height: 90px; width: 100%; background: #fff; top: 0; z-index: 9999; max-width: 1000px; margin-left: -15px;border-bottom: 1px solid #ddd;">
-                        <a href="<?=SITE_URL?>/en/quick-survey-lp"><img alt="logo" src="//azizidevelopments.in/assets/images/logo-retina-light1.png" style="width: 150px;margin-top:10px;margin-left:10px;"></a>
+                        <a href="<?=SITE_URL?>/en/quick-survey-lp"><img alt="logo" src="//thoe.com/assets/images/logo-retina-light1.png" style="width: 150px;margin-top:10px;margin-left:10px;"></a>
                         <a class="lang" href="<?=SITE_URL?>/ar/quick-survey">العربية</a>
                         <div class="progress" style="margin-left:15px;margin-right:15px;margin-top:5px;">
                             <div id="que1" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="1" style="width:0%">

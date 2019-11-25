@@ -55,17 +55,17 @@ $rivieralogo = [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 
                 <td colspan="3" style="padding:10px 20px;"> 
 
                     <p style ="line-height: 25px;">
-                        Dear Azizi Home Owner,
+                        Dear Thoe Home Owner,
                     </p>
 
                     <p style ="line-height: 22px;">
-                        It gives us great pleasure to present the construction progress of your Azizi home. Azizi Developments follows 
+                        It gives us great pleasure to present the construction progress of your Thoe home. Thoe Developments follows 
                         a construction-driven strategy and focuses on providing timely updates on all our projects under construction across 
                         Dubai, so you are well informed about the progress.
                     </p>
 
                     <p style ="line-height: 25px;">
-                        Given below are the latest images of the construction at the site of the Azizi Developments:
+                        Given below are the latest images of the construction at the site of the Thoe Developments:
                     </p>
 
                     <p style ="line-height: 25px; direction:rtl; font-family:tahoma;">
@@ -141,20 +141,20 @@ $rivieralogo = [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 
 
                 <td align="right"> 
                     <span>
-                        <a href="https://www.facebook.com/AziziGroup" target="_blank">
+                        <a href="https://www.facebook.com/ThoeGroup" target="_blank">
                             <img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-facebook-48.png" 
                                  style="display:inline;" height="24" width="24" class="">
                         </a>
                     </span>
 
                     <span>
-                        <a href="https://twitter.com/azizigroup" target="_blank">
+                        <a href="https://twitter.com/thoegroup" target="_blank">
                             <img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-twitter-48.png"
                                  style="display:inline;" height="24" width="24" class=""></a>
                     </span>
 
                     <span>
-                        <a href="https://www.linkedin.com/company/azizi-developments" target="_blank">
+                        <a href="https://www.linkedin.com/company/thoe-developments" target="_blank">
                             <img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-linkedin-48.png" 
                                  style="display:inline;" height="24" width="24" class="">
                         </a>
@@ -187,7 +187,7 @@ $rivieralogo = [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 
             <tr>
 
                 <td colspan='2' style='padding-left:20px; color: #000; font-family:Helvetica; font-size:9px; width:250px;'>
-                    <p>In line with our commitment to continually improve our customer service, Azizi Developments has launched its new Customer Care Program. Contact our dedicated team of Care professionals in case of any issue with your Azizi unit:</p>
+                    <p>In line with our commitment to continually improve our customer service, Thoe Developments has launched its new Customer Care Program. Contact our dedicated team of Care professionals in case of any issue with your Thoe unit:</p>
                 </td>
 
                 <td align='right' style='padding-right:20px;'>

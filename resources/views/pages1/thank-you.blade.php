@@ -25,7 +25,7 @@
                 <div class="col s12">
                     <?php if (!empty($get['nl']) && $get['nl'] = 'C') { ?>
                         <h5 class="m0">YOU ARE NOW SUBSCRIBED TO OUR NEWSLETTER!</h5>
-                        <p style="text-align: center;">Thank you for subscribing to our newsletter! We’ll keep you up-to-date on the latest Azizi news and projects.</p>
+                        <p style="text-align: center;">Thank you for subscribing to our newsletter! We’ll keep you up-to-date on the latest Thoe news and projects.</p>
                         <h6 style="display: inline-block;cursor: pointer;text-decoration: underline;">
                             <span class="ion-arrow-left-a" style="margin-right: 5px;"></span>
                             <a href="{{ url('/') }}">{{trans('words.home')}}</a>

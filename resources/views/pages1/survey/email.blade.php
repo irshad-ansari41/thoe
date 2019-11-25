@@ -17,6 +17,6 @@
     <p>Agent Phone Number: {{$agent_phone}}</p>
     </div>
     <p>Thanks</p>
-    <p>Azizi Developments</p>
+    <p>Thoe Developments</p>
 
 @stop

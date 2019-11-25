@@ -60,7 +60,7 @@
 
 <section>
     <div class="parallax-container valign-wrapper only-heading" style="background-image:url('<?=SITE_URL?>/assets/images/ips/hero-image.jpg');">
-        <img alt="Cityscape - Azizi Developments" src="<?=SITE_URL?>/assets/images/ips/hero-image.jpg" class="imgtag"/>
+        <img alt="Cityscape - Thoe Developments" src="<?=SITE_URL?>/assets/images/ips/hero-image.jpg" class="imgtag"/>
         <div class="col s12 center-align card tag-pro">
             <h1>Cityscape Abu Dhabi</h1>
         </div>
@@ -85,10 +85,10 @@
 
                 <span class="title2">Limited Time Offer</span>
                 <div class="span2">Monthly payment plan</div>
-                <div class="span2">On studios in Azizi Victoria starting from AED 421,000</div>
+                <div class="span2">On studios in Thoe Victoria starting from AED 421,000</div>
                 <p class="title2">Handover in 24 months</p>
                 <!-- Read More Link -->
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Azizi Riviera Select">Enquire Now <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Thoe Riviera Select">Enquire Now <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>
@@ -103,7 +103,7 @@
             <div class="col s12">
                 <p class="text-center cptext">
                     Making property purchases more affordable than ever before<br/>
-                    Azizi Developments has partnered with Dubai Islamic Bank to bring you MyHome<br/>
+                    Thoe Developments has partnered with Dubai Islamic Bank to bring you MyHome<br/>
                     A unique new home financing solution
                 </p>
                 <br/>
@@ -116,7 +116,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h2 class="title1">Azizi Riviera Select</h2>
+                <h2 class="title1">Thoe Riviera Select</h2>
             </div>
             <div class="col s12 m4">
                 <img class="img-responsive" src="<?=SITE_URL?>/assets/images/ips/IPS-All-Offers-Emailer_Riviera.jpg">
@@ -125,7 +125,7 @@
             <div class="col s12 m7">
 
                 <p class="p-text">
-                    Part of the mega retail, equestrian, golfing and waterfront lifestyle, in Meydan, Azizi Riviera is an affordable premium escape in the heart of the city. Azizi Riviera Select is a Cityscape Abu Dhabi Offers collection of new units with payment plan options.
+                    Part of the mega retail, equestrian, golfing and waterfront lifestyle, in Meydan, Thoe Riviera is an affordable premium escape in the heart of the city. Thoe Riviera Select is a Cityscape Abu Dhabi Offers collection of new units with payment plan options.
                 </p>
                 <span class="title2">Limited Time Offer</span>
 
@@ -137,7 +137,7 @@
                 </table>
 
                 <p class="title2">Construction progress of Phase 1 at 39% and completion in Q4 2019</p>
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Azizi Riviera Select">Enquire Now <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Thoe Riviera Select">Enquire Now <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>
@@ -147,7 +147,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h2 class="title1">BAYT by Azizi in Azizi Riviera</h2>
+                <h2 class="title1">BAYT by Thoe in Thoe Riviera</h2>
             </div>
             <div class="col s12 m4">
                 <img class="img-responsive" src="<?=SITE_URL?>/assets/images/ips/IPS-All-Offers-Emailer_BAYT.jpg">
@@ -155,14 +155,14 @@
             <div class="col s12 m1 separete" style="width:40px"></div>
             <div class="col s12 m7">
                 <p class="p-text">
-                    BAYT is a new short-term rental home concept through which investors can yield higher returns by having their owned apartments managed and serviced for them. Following the success of BAYT by Azizi in Dubai Sports City, Dubai will be home to the 2nd BAYT concept now in Azizi Riviera.
+                    BAYT is a new short-term rental home concept through which investors can yield higher returns by having their owned apartments managed and serviced for them. Following the success of BAYT by Thoe in Dubai Sports City, Dubai will be home to the 2nd BAYT concept now in Thoe Riviera.
                 </p>
                 <span class="title2">Limited Time Offer</span>
                 <div class="span2">Payment plan 30% - 70%</div>
                 <div class="span2">Furnished property starting from AED 547,000</div>
 
                 <p class="title2">Construction progress at 25% and completion in Q4 2019</p>
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="BAYT by Azizi Riviera">Enquire Now <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="BAYT by Thoe Riviera">Enquire Now <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>
@@ -177,7 +177,7 @@
 
             <div class="col s12">
                 <p class="text-center cptext">
-                    Grab the opportunity to live rent free in Azizi Riviera next year when you purchase a package of both a studio and a 1 bedroom apartment now. The rental fees received will cover the mortgage cost of both units.
+                    Grab the opportunity to live rent free in Thoe Riviera next year when you purchase a package of both a studio and a 1 bedroom apartment now. The rental fees received will cover the mortgage cost of both units.
                 </p>
                 <span class="title2">Limited time payment plan:</span><br/>
                 <span class="title3">Studio & 1 Bedroom</span>
@@ -231,7 +231,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h2 class="title1">Azizi Victoria</h2>
+                <h2 class="title1">Thoe Victoria</h2>
             </div>
             <div class="col s12 m4">
                 <img class="img-responsive" src="<?=SITE_URL?>/assets/images/ips/IPS-All-Offers-Emailer_Victoria.jpg">
@@ -239,14 +239,14 @@
             <div class="col s12 m1 separete" style="width:40px"></div>
             <div class="col s12 m7">
                 <p class="p-text">
-                    Positioned as a vibrant hub of activity, Azizi Victoria is centered around community living, emulating the perfect balance of entertainment, work and living spaces offering visitors and residents a contemporary urban lifestyle.
+                    Positioned as a vibrant hub of activity, Thoe Victoria is centered around community living, emulating the perfect balance of entertainment, work and living spaces offering visitors and residents a contemporary urban lifestyle.
                 </p>
                 <span class="title2">Limited Time Offer</span>
                 <div class="span2">Exclusive starting price of 1 bedroom AED 667,000</div>
                 <div class="span2">Payment plan 50% - 50%</div>
 
-                <p class="title2">Completion of Azizi Victoria Phase 1 in Q1 2021</p>
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Azizi Victoria">Enquire Now <i class="fa fa-angle-right"></i></a>
+                <p class="title2">Completion of Thoe Victoria Phase 1 in Q1 2021</p>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Thoe Victoria">Enquire Now <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>
@@ -256,7 +256,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h2 class="title1">Mina by Azizi</h2>
+                <h2 class="title1">Mina by Thoe</h2>
             </div>
             <div class="col s12 m4">
                 <img class="img-responsive" src="<?=SITE_URL?>/assets/images/ips/IPS-All-Offers-Emailer_Mina.jpg">
@@ -264,7 +264,7 @@
             <div class="col s12 m1 separete" style="width:40px"></div>
             <div class="col s12 m7">
                 <p class="p-text">
-                    Nestled on the East Crescent of Palm Jumeirah, Mina by Azizi is a prestigious development comprising premium residential and commercial units that feature luxury amenities, private beach access and breathtaking sea views from every apartment.
+                    Nestled on the East Crescent of Palm Jumeirah, Mina by Thoe is a prestigious development comprising premium residential and commercial units that feature luxury amenities, private beach access and breathtaking sea views from every apartment.
                 </p>
                 <span class="title2">Limited Time Payment Plan</span>
                 <table style="width: 162px;">
@@ -276,7 +276,7 @@
                 </table>
 
                 <p class="title2">Construction progress at 55% and completion in Q1 2020</p>
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Mina by Azizi" >Enquire Now <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Mina by Thoe" >Enquire Now <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>
@@ -285,7 +285,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h2 class="title1">Azizi Retail</h2>
+                <h2 class="title1">Thoe Retail</h2>
             </div>
             <div class="col s12 m4">
                 <img class="img-responsive" src="<?=SITE_URL?>//uploads/2019/04/Cityscape-AUH-Mailer-Retail-Image.jpg" alt=""/>
@@ -293,14 +293,14 @@
             <div class="col s12 m1 separete" style="width:40px"></div>
             <div class="col s12 m7">
                 <p class="p-text">
-                    With a vast array of retail space options embedded into thriving and carefully-though-out master-planned communities that comprise bustling social spaces, Azizi Developments offers some of the most lucrative retail units in Dubai, including Palm Jumeirah, Azizi Riviera, Al Furjan, and Dubai Healthcare City. 
+                    With a vast array of retail space options embedded into thriving and carefully-though-out master-planned communities that comprise bustling social spaces, Thoe Developments offers some of the most lucrative retail units in Dubai, including Palm Jumeirah, Thoe Riviera, Al Furjan, and Dubai Healthcare City. 
                 </p>
                 <span class="title2">Limited-Time Payment Plans</span>
                 <div class="span2">Starting from</div>
                 <div class="span2">Payment plan 10% - 90%</div>
 
                 <p class="title2">Retail units starting from AED 535,000</p>
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Mina by Azizi" >Enquire Now <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Mina by Thoe" >Enquire Now <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>

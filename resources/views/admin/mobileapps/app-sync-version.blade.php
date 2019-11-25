@@ -8,14 +8,14 @@ Availability list App
 {{-- Page content --}}
 @section('content')
 <section class="content-header">
-    <h1>Azizi Developments App Sync</h1>
+    <h1>Thoe Developments App Sync</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
                 Dashboard
             </a>
         </li>
-        <li>Azizi-Developments</li>
+        <li>Thoe-Developments</li>
         <li class="active">Option List</li>
     </ol>
 </section>
@@ -38,7 +38,7 @@ Availability list App
                             App Type<br/>
                             <select name="type" class="form-control">
                                 <option value="avl">Availability List</option>
-                                <option value="azd">Azizi Development</option>
+                                <option value="azd">Thoe Development</option>
                             </select>
                         </div>
                         <div class="col-lg-3">
@@ -68,7 +68,7 @@ Availability list App
                         </tr>
                         @foreach($versions as $value)
                         <tr>
-                            <td>{{$value->type=='avl'?'Availability List':'Azizi Developments'}}</td>
+                            <td>{{$value->type=='avl'?'Availability List':'Thoe Developments'}}</td>
                             <td>{{$value->version}}</td>
                             <td>{{$value->files}}</td>
                             <td>{{$value->size}} MB</td>

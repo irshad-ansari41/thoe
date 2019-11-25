@@ -146,17 +146,17 @@
                 <div class="desig-person mt0">
                     <div class="person-name">{{ $executive['chairmen_name_en'] }}</div>
                     <div class="divider az-header-divider"></div>
-                    <!-- <i>Chairman, Azizi Group</i> -->
+                    <!-- <i>Chairman, Thoe Group</i> -->
 
 
                     @if($locale=='en')
-                    <i>Chairman, Azizi Group</i>
+                    <i>Chairman, Thoe Group</i>
                     @endif
                     @if($locale=='ar')
                     <i>رئيس مجلس إدارة مجموعة عزيزي</i>
                     @endif
                     @if($locale=='cn')
-                    <i>Azizi集团主席</i>
+                    <i>Thoe集团主席</i>
                     @endif
 
 
@@ -173,15 +173,15 @@
                 <div class="desig-person mt0">
                     <div class="person-name">{{ $executive['ceo_name_en'] }}</div>
                     <div class="divider az-header-divider"></div>
-                    <i>CEO AZIZI DEVELOPMENTS</i>
+                    <i>CEO THOE DEVELOPMENTS</i>
                     @if($locale=='en')
-                    <i>CEO AZIZI DEVELOPMENTS</i> 
+                    <i>CEO THOE DEVELOPMENTS</i> 
                     @endif
                     @if($locale=='ar')
                     <i>الرئيس التنفيذي لشركة عزيزي للتطوير العقاري</i>
                     @endif
                     @if($locale=='cn')
-                    <i>Azizi 地产公司首席执行官</i>
+                    <i>Thoe 地产公司首席执行官</i>
                     @endif
 
                 </div>
@@ -208,13 +208,13 @@
                     <div class="person-name">{{ $executive['ceo_name_en'] }}</div>
                     <div class="divider az-header-divider"></div>
                     @if($locale=='en')
-                    <i>CEO AZIZI DEVELOPMENTS</i>
+                    <i>CEO THOE DEVELOPMENTS</i>
                     @endif
                     @if($locale=='ar')
                     <i>الرئيس التنفيذي لشركة عزيزي للتطوير العقاري</i>
                     @endif
                     @if($locale=='cn')
-                    <i>Azizi 地产公司首席执行官</i>
+                    <i>Thoe 地产公司首席执行官</i>
                     @endif
                 </div>
                 <p class="az-pcontent">{!! $executive['ceo_description_en'] !!}</p>
@@ -229,15 +229,15 @@
                 <div class="desig-person mt0">
                     <div class="person-name">{{ $executive['deputy_ceo_name_en'] }}</div>
                     <div class="divider az-header-divider"></div>
-                    <!-- <i>Deputy CEO, Azizi Developments</i> -->
+                    <!-- <i>Deputy CEO, Thoe Developments</i> -->
                     @if($locale=='en')
-                    <i>Deputy CEO, Azizi Developments</i>
+                    <i>Deputy CEO, Thoe Developments</i>
                     @endif
                     @if($locale=='ar')
                     <i>نائب الرئيس التنفيذي لشركة عزيزي للتطوير العقاري</i>
                     @endif
                     @if($locale=='cn')
-                    <i>Azizi 地产公司首席执行官</i>
+                    <i>Thoe 地产公司首席执行官</i>
                     @endif
                 </div>
                 <p class="az-pcontent">{!! $executive['deputy_ceo_description_en'] !!}</p>

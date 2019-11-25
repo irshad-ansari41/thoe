@@ -70,7 +70,7 @@
 
 <section>
     <div class="parallax-container valign-wrapper only-heading" style="background-image:url('<?= SITE_URL ?>/emailer/adha-offers/Offer-page-Slidder-2.jpg');">
-        <img alt="Cityscape - Azizi Developments" src="<?= SITE_URL ?>/emailer/adha-offers/Offer-page-Slidder-2.jpg" class="imgtag"/>
+        <img alt="Cityscape - Thoe Developments" src="<?= SITE_URL ?>/emailer/adha-offers/Offer-page-Slidder-2.jpg" class="imgtag"/>
         <div class="col s12 center-align card tag-pro">
             <h1>Offers</h1>
         </div>
@@ -78,7 +78,7 @@
             <h5 class="info-color white-text text-center" style="text-transform: uppercase; font-size: 24px!important; text-align: center; margin: 10px;display: block;">
                 <strong>ENQUIRE NOW</strong>
             </h5>
-            <iframe src="https://azizidevelopments.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="width:320px;height:330px;border:none;" scrolling="No"></iframe>                            
+            <iframe src="https://thoe.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="width:320px;height:330px;border:none;" scrolling="No"></iframe>                            
         </div>
 
     </div>
@@ -89,7 +89,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h2 class="title1">Azizi Gives Back</h2>
+                <h2 class="title1">Thoe Gives Back</h2>
             </div>
             <div class="col s12 m2">
                 <img class="img-responsive" style="width:150px" src="<?= SITE_URL ?>/emailer/ramadan/Ramadan-offers-mailer-dollar.jpg">
@@ -101,12 +101,12 @@
                 </ul>
                 <span>OR</span>
                 <ul style="padding-left: 15px;">
-                   <li style="list-style: circle;"> Up to <b>AED 20,000</b> of Azizi Credit when purchasing a <b>studio</b></li>
-                    <li style="list-style: circle;"> Up to <b>AED 165,000</b> of Azizi Credit when purchasing a <b>1-bedroom unit</b></li>
-                    <li style="list-style: circle;"> Up to <b>AED 245,000</b> of Azizi Credit when purchasing a <b>2-bedroom unit</b></li>
+                   <li style="list-style: circle;"> Up to <b>AED 20,000</b> of Thoe Credit when purchasing a <b>studio</b></li>
+                    <li style="list-style: circle;"> Up to <b>AED 165,000</b> of Thoe Credit when purchasing a <b>1-bedroom unit</b></li>
+                    <li style="list-style: circle;"> Up to <b>AED 245,000</b> of Thoe Credit when purchasing a <b>2-bedroom unit</b></li>
                 </ul>
                 <br>
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Azizi Riviera Select">Enquire Now <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Thoe Riviera Select">Enquire Now <i class="fa fa-angle-right"></i></a>
             </div>
         </div>  
     </div>

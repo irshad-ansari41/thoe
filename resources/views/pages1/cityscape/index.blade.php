@@ -73,8 +73,8 @@
 
     <section>
 
-        <div class="parallax-container valign-wrapper only-heading" style="background-image:url('http://aziziriviera.com/azizi-emailer/images/ips-2019/26-28_Mar_IPS_Emailer_New.jpg');">
-            <img alt="IPS - Azizi Developments" src="http://aziziriviera.com/azizi-emailer/images/ips-2019/26-28_Mar_IPS_Emailer_New.jpg" class="imgtag"/>
+        <div class="parallax-container valign-wrapper only-heading" style="background-image:url('http://thoeriviera.com/thoe-emailer/images/ips-2019/26-28_Mar_IPS_Emailer_New.jpg');">
+            <img alt="IPS - Thoe Developments" src="http://thoeriviera.com/thoe-emailer/images/ips-2019/26-28_Mar_IPS_Emailer_New.jpg" class="imgtag"/>
             <div class="col s12 center-align card tag-pro">
                 <h1>Cityscape Abu Dhabi</h1>
             </div>
@@ -85,7 +85,7 @@
     <div class="container"  style="padding:20px 0 20px 0;">
         <div class="row m0">
             <p class="paraclass">
-                Thank you for visiting Azizi Developments at the Cityscape Abu Dhabi. We are pleased to hear that you want more information on the unmissable offers from our most sought after projects.
+                Thank you for visiting Thoe Developments at the Cityscape Abu Dhabi. We are pleased to hear that you want more information on the unmissable offers from our most sought after projects.
             </p>
             <p class="paraclass">
                 Simply enter your details below and we’ll send the information directly to your email address.

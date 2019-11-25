@@ -25,7 +25,7 @@
 <br/><br/>
 
 <p>Thanks<br/>
-    Azizi Development Team <br/>
+    Thoe Development Team <br/>
 </p>
 
 @stop

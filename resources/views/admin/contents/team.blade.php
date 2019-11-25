@@ -16,7 +16,7 @@ Team Member List
 {{-- Page content --}}
 @section('content')
 <section class="content-header">
-    <h1>AZIZI Teams</h1>
+    <h1>THOE Teams</h1>
 </section>
 
 <!-- Main content -->

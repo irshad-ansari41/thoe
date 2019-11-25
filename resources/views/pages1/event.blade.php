@@ -109,7 +109,7 @@ if (!empty($results)) {
           "endDate": "2018-03-16T10:00",
           "performer": {
                 "@type": "Person",
-                "name": "Azizi Developments",
+                "name": "Thoe Developments",
            "telephone": "+97143596673"
           },
           "location": {
@@ -241,7 +241,7 @@ if (!empty($results)) {
 
                                 </a>
                                 @else
-                                <a href="{{$locale}}/mediacenter-eventgallery-detail/{{ $event['slug'] }}"><img alt="{{ trim($event['alt']) }}"  src="{{ asset('assets/images/events/') }}/aziziaura.jpg" class="responsive-img">	</a>
+                                <a href="{{$locale}}/mediacenter-eventgallery-detail/{{ $event['slug'] }}"><img alt="{{ trim($event['alt']) }}"  src="{{ asset('assets/images/events/') }}/thoeaura.jpg" class="responsive-img">	</a>
                                 @endif
 
                             </div>
@@ -347,7 +347,7 @@ if (!empty($results)) {
 
                                                         <a href="https://www.facebook.com/dialog/feed?app_id=136745863654131&redirect_uri={{ url('/') }}/mediacenter-eventgallery-detail/{{ $event['slug'] }}&link={{ url('/') }}/mediacenter-eventgallery-detail/{{ $event['slug'] }}&picture={{ asset('assets/images/events/') }}/{{ $event['event_photo'] }}&caption={{ $event['event_title'] }}&description={{ $event['event_title'] }}"><i class="ion-social-facebook"></i></a>
 
-                                                        <a href="https://twitter.com/share?url={{ url('/') }}/mediacenter-eventgallery-detail/{{ $event['slug'] }}&via=AZIZI Developments&text={{ $event['event_title'] }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter"><i class="ion-social-twitter"></i></a>
+                                                        <a href="https://twitter.com/share?url={{ url('/') }}/mediacenter-eventgallery-detail/{{ $event['slug'] }}&via=THOE Developments&text={{ $event['event_title'] }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter"><i class="ion-social-twitter"></i></a>
 
                                                         <a href="https://plus.google.com/share?url={{ url('/') }}/mediacenter-eventgallery-detail/{{ $event['slug'] }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="ion-social-googleplus"></i></a>
 
@@ -416,7 +416,7 @@ if (!empty($results)) {
             <a href="https://plus.google.com/share?url=URLENCODED_URL" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=350,width=480');return false;" target="_blank" title="Share on Google+">Gplus</a>-->
 
             <!--
-            <a title="send to Facebook" href="http://www.facebook.com/sharer.php?s=100&p[title]=AZIZI event&p[summary]=YOUR_SUMMARY&p[url]=<?=SITE_URL?>/category/events&p[images][0]=YOUR_IMAGE_TO_SHARE_OBJECT" target="_blank">fb</a>
+            <a title="send to Facebook" href="http://www.facebook.com/sharer.php?s=100&p[title]=THOE event&p[summary]=YOUR_SUMMARY&p[url]=<?=SITE_URL?>/category/events&p[images][0]=YOUR_IMAGE_TO_SHARE_OBJECT" target="_blank">fb</a>
             
             <a href="http://twitter.com/share?text=An%20intersting%20blog&url=<?=SITE_URL?>/category/events" target="_blank" title="Click to post to Twitter">Tweet this</a>
             
@@ -515,7 +515,7 @@ if (!empty($results)) {
                     ref.parentNode.insertBefore(js, ref);
                 }(document, /*debug*/ false));
                 function postToFeed(title, desc, url, image) {
-                    var obj = {method: 'share', href: '<?=SITE_URL?>/mediacenter-eventgallery-detail/85', picture: '<?=SITE_URL?>/public/assets/images/events/1512462314270004696.jpg', title: "himani", description: "azizi test"};
+                    var obj = {method: 'share', href: '<?=SITE_URL?>/mediacenter-eventgallery-detail/85', picture: '<?=SITE_URL?>/public/assets/images/events/1512462314270004696.jpg', title: "himani", description: "thoe test"};
                     function callback(response) {}
                     FB.ui(obj, callback);
                 }

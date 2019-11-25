@@ -1,6 +1,6 @@
 <?php
 if (!in_array(Request::segment(1), ['en', 'ar', 'cn'])) {
-    $newUrl = str_replace('https://azizidevelopments.com/', 'https://azizidevelopments.com/en/', Request::fullurl());
+    $newUrl = str_replace('https://thoe.com/', 'https://thoe.com/en/', Request::fullurl());
     header("Location: " . $newUrl, 301);
     exit();
 }
@@ -9,8 +9,8 @@ $content = [
     'alt' => 'alt',
     'image' => 'image',
     'title_en' => 'title_en',
-    'meta_title' => '404 page | Welcome to Azizi Developments | ' . time(),
-    'og_title' => '404 page | Welcome to Azizi Developments | ' . time(),
+    'meta_title' => '404 page | Welcome to Thoe Developments | ' . time(),
+    'og_title' => '404 page | Welcome to Thoe Developments | ' . time(),
     'locale' => 'en',
     'alt' => 'alt',
 ];
@@ -57,7 +57,7 @@ extract($content);
         <div class="hgroup">
             <h1>Oops! That page can’t be found</h1>
             <p>It looks like you’ve ended up in the wrong place. Don’t worry, though. Just hit that big orange button to go back to our homepage and resume your search for great properties.</p>
-            <a href="//azizidevelopments.com">
+            <a href="//thoe.com">
                 <button type="button" class="btn btn-primary button-alignment" style="background: #ef9027;padding:0 20px;color:#fff;text-transform: capitalize;">Back To Home</button>
             </a>
         </div>

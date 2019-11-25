@@ -52,7 +52,7 @@ $(document).ready(function ($) {
 
 <div class="row preloader none">
     <div class="col s12">
-        <img class="" alt="AZIZI Preloader" src="<?= SITE_URL ?>/assets/images/azizi-loading.gif">
+        <img class="" alt="THOE Preloader" src="<?= SITE_URL ?>/assets/images/thoe-loading.gif">
     </div>
 </div>
 <!-- Header -->

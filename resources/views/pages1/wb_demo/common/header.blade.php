@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Azizi Developments</title>
+        <title>Thoe Developments</title>
         <!-- Stylesheets -->
         <link href="{{asset('assets/new_wb_layout/css/bootstrap.css') }}" rel="stylesheet">
         <link href="{{asset('assets/new_wb_layout/css/jquery.mCustomScrollbar.min.css') }}" rel="stylesheet">

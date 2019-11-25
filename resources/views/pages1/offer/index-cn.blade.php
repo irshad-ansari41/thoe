@@ -104,7 +104,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h2 class="title1">Azizi Riviera, Meydan</h2>
+                <h2 class="title1">Thoe Riviera, Meydan</h2>
             </div>
             <div class="col s12 m4">
                 <img class="img-responsive" src="<?=SITE_URL?>/assets/images/ips/IPS-All-Offers-Emailer_Riviera.jpg">
@@ -113,7 +113,7 @@
             <div class="col s12 m7">
 
                 <p class="p-text">
-                    Azizi Riviera combines the best of French Mediterranean design perspective and modern architecture to create the ideal place for modern community living. Azizi Riviera comprises of 69 mid-rise residential buildings, a mega integrated retail district, breathtaking waterfront views and lush greenery.
+                    Thoe Riviera combines the best of French Mediterranean design perspective and modern architecture to create the ideal place for modern community living. Thoe Riviera comprises of 69 mid-rise residential buildings, a mega integrated retail district, breathtaking waterfront views and lush greenery.
                 </p>
                 <span class="title2">Limited Time Offer</span>
                 <table style="width: 200px;">
@@ -125,7 +125,7 @@
                 </table>
                 <div class="span2"> Studio  - 2 years service charge free, 1 Bed - 2 Years service charge free, 2 Bed - 3 years service charge free</div>
                 <p class="title2">Construction progress of Phase 1 at 39% and completion in Q4 2019</p>
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Azizi Riviera Select">Enquire Now <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Thoe Riviera Select">Enquire Now <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>
@@ -135,7 +135,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h2 class="title1">BAYT by Azizi</h2>
+                <h2 class="title1">BAYT by Thoe</h2>
             </div>
             <div class="col s12 m4">
                 <img class="img-responsive" src="<?=SITE_URL?>/assets/images/ips/IPS-All-Offers-Emailer_BAYT.jpg">
@@ -143,13 +143,13 @@
             <div class="col s12 m1 separete" style="width:40px"></div>
             <div class="col s12 m7">
                 <p class="p-text">
-                    BAYT is a new short-term rental home concept through which investors can yield higher returns by having their owned apartments managed and serviced for them. Following the success of BAYT by Azizi in Dubai Sports City, Dubai will be home to the 2nd BAYT concept now in Azizi Riviera.
+                    BAYT is a new short-term rental home concept through which investors can yield higher returns by having their owned apartments managed and serviced for them. Following the success of BAYT by Thoe in Dubai Sports City, Dubai will be home to the 2nd BAYT concept now in Thoe Riviera.
                 </p>
                 <span class="title2">Limited Time Offer</span>
                 <div class="span2">Payment plan 65% - 35%</div>
                 <!--                <div class="span2">Furnished property starting from AED 545,000</div>
                                 <p class="title2">Construction progress at 35% and completion in Q4 2019</p>-->
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="BAYT by Azizi Riviera">Enquire Now <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="BAYT by Thoe Riviera">Enquire Now <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>
@@ -192,7 +192,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h2 class="title1">Azizi Victoria, Meydan</h2>
+                <h2 class="title1">Thoe Victoria, Meydan</h2>
             </div>
             <div class="col s12 m4">
                 <img class="img-responsive" src="<?=SITE_URL?>/assets/images/ips/IPS-All-Offers-Emailer_Victoria.jpg">
@@ -200,7 +200,7 @@
             <div class="col s12 m1 separete" style="width:40px"></div>
             <div class="col s12 m7">
                 <p class="p-text">
-                    Positioned as a vibrant hub of activity, Azizi Victoria is centered around community living, emulating the perfect balance of entertainment, work and living spaces offering visitors and residents a contemporary urban lifestyle.
+                    Positioned as a vibrant hub of activity, Thoe Victoria is centered around community living, emulating the perfect balance of entertainment, work and living spaces offering visitors and residents a contemporary urban lifestyle.
                 </p>
                 <span class="title2">Limited Time Offer</span>
                 <table style="width: 200px;">
@@ -211,8 +211,8 @@
                     </tr>
                 </table>
                 <div class="span2"> Studio  - 2 years service charge free, 1 Bed - 2 Years service charge free, 2 Bed - 3 years service charge free</div>
-                <p class="title2">Completion of Azizi Victoria Phase 1 in Q1 2021</p>
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Azizi Victoria">Enquire Now <i class="fa fa-angle-right"></i></a>
+                <p class="title2">Completion of Thoe Victoria Phase 1 in Q1 2021</p>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Thoe Victoria">Enquire Now <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>
@@ -222,7 +222,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h2 class="title1">Mina by Azizi</h2>
+                <h2 class="title1">Mina by Thoe</h2>
             </div>
             <div class="col s12 m4">
                 <img class="img-responsive" src="<?=SITE_URL?>/assets/images/ips/IPS-All-Offers-Emailer_Mina.jpg">
@@ -230,7 +230,7 @@
             <div class="col s12 m1 separete" style="width:40px"></div>
             <div class="col s12 m7">
                 <p class="p-text">
-                    Nestled on the East Crescent of Palm Jumeirah, Mina by Azizi is a prestigious development comprising premium residential and commercial units that feature luxury amenities, private beach access and breathtaking sea views from every apartment.
+                    Nestled on the East Crescent of Palm Jumeirah, Mina by Thoe is a prestigious development comprising premium residential and commercial units that feature luxury amenities, private beach access and breathtaking sea views from every apartment.
                 </p>
                 <span class="title2">Limited Time Payment Plan</span>
                 <table style="width: 162px;">
@@ -243,7 +243,7 @@
                 <div class="span2">1 Bedroom available from  AED 1,843,000<sup>*</sup></div>
                 <div class="span2">2 years service charge free</div>
                 <p class="title2">Construction progress at 60% and completion in Q4 2019</p>
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Mina by Azizi" >Enquire Now <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Mina by Thoe" >Enquire Now <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>
@@ -262,7 +262,7 @@
             <div class="col s12 m1 separete" style="width:40px"></div>
             <div class="col s12 m7">
                 <p class="p-text">
-                    Azizi Aliyah is nestled between the hustle and bustle of city life, and the harmonious surroundings of serene landscapes in Dubai Healthcare City. Rising 17 floors above the basement, this plush 346-unit project will offer studios, one, and two-bedroom apartments along with upscale retail space of 16,000 sqft.
+                    Thoe Aliyah is nestled between the hustle and bustle of city life, and the harmonious surroundings of serene landscapes in Dubai Healthcare City. Rising 17 floors above the basement, this plush 346-unit project will offer studios, one, and two-bedroom apartments along with upscale retail space of 16,000 sqft.
                 </p>
                 <span class="title2">Limited Time Payment Plan</span>
                 <table style="width: 300px">
@@ -275,7 +275,7 @@
                 <!--<div class="span2">1 Bedroom available from  AED 1,843,000<sup>*</sup></div>-->
                 <div class="span2">1 Bed - 2 Years service charge free, 2 Bed - 3 years service charge free</div>
                 <p class="title2">Construction progress at 60% and completion in Q4 2019</p>
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Mina by Azizi" >Enquire Now <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Mina by Thoe" >Enquire Now <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>
@@ -294,7 +294,7 @@
             <div class="col s12 m1 separete" style="width:40px"></div>
             <div class="col s12 m7">
                 <p class="p-text">
-                    Rising up 17 impressive storeys, Farhad Azizi is the new benchmark for convenience, practicality and modernism. There's a choice of 634 comfortable residential units including 396 studios, 218 one-bedroom apartments and 20 two-bedroom apartments, all elegantly conceived with ultra-modern finishing and spectacular contemporary design.
+                    Rising up 17 impressive storeys, Farhad Thoe is the new benchmark for convenience, practicality and modernism. There's a choice of 634 comfortable residential units including 396 studios, 218 one-bedroom apartments and 20 two-bedroom apartments, all elegantly conceived with ultra-modern finishing and spectacular contemporary design.
                 </p>
                 <span class="title2">Limited Time Payment Plan</span>
                 <table style="width: 162px;">
@@ -307,7 +307,7 @@
                 <!--<div class="span2">Studio  - 2 years service charge free, 1 Bed   - 2 Years service charge free, 2 Bed -  3 years service charge free</div>-->
 <!--                <div class="span2">2 years service charge free</div>
                 <p class="title2">Construction progress at 60% and completion in Q4 2019</p>-->
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Mina by Azizi" >Enquire Now <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Mina by Thoe" >Enquire Now <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>
@@ -318,7 +318,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h2 class="title1">Azizi Aura, Jebel Ali</h2>
+                <h2 class="title1">Thoe Aura, Jebel Ali</h2>
             </div>
             <div class="col s12 m4">
                 <img class="img-responsive" src="<?=SITE_URL?>/assets/images/ips/IPS-All-Offers-Emailer_Mina.jpg">
@@ -339,7 +339,7 @@
                 <!--<div class="span2">1 Bedroom available from  AED 1,843,000<sup>*</sup></div>-->
                 <div class="span2"> Studio  - 2 years service charge free, 1 Bed - 2 Years service charge free, 2 Bed - 3 years service charge free</div>
                 <!--<p class="title2">Construction progress at 60% and completion in Q4 2019</p>-->
-                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Azizi Aura" >Enquire Now <i class="fa fa-angle-right"></i></a>
+                <a href="#enquire-now" class="btn active modal-trigger enquire" data-campaign="Thoe Aura" >Enquire Now <i class="fa fa-angle-right"></i></a>
             </div>
         </div>   
     </div>

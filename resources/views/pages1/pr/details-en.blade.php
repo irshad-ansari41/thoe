@@ -100,7 +100,7 @@
                         <div class="row">
                             <div class="col s12 m4">
                                 <?php
-                                $thumbnail = asset('assets/images/pressrelease/') . '/' . (!empty($press->image) ? $press->image : 'azizi.jpg');
+                                $thumbnail = asset('assets/images/pressrelease/') . '/' . (!empty($press->image) ? $press->image : 'thoe.jpg');
                                 ?>
                                 <img alt="{{ trim($press->alt) }}" src="{{ asset('assets/images/100-blank-img.jpg') }}" data-src="{{$thumbnail}}"
                                      class="responsive-img">

@@ -147,7 +147,7 @@ End Preloader -->
                         </a>
                     </li>
                     <li role="presentation" class="">
-                        <a aria-controls="home2" href="#" class="btn btn-default btn-small pointer telephone" data-telephone="80029494">800 AZIZI 29494</a>
+                        <a aria-controls="home2" href="#" class="btn btn-default btn-small pointer telephone" data-telephone="80029494">800 THOE 29494</a>
                     </li>
 
                 </ul>

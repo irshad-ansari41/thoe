@@ -132,7 +132,7 @@ if ($property->plan_start_date != "" && $property->plan_end_date != "") {
 
             <div class="col s12 center-align card tag-pro{{$locale == 'ar'?'-ar':''}}">
                 <h1>{{showTextByLocale($locale,[$property->title_en,$property->title_ar,$property->title_ch])}}</h1>
-                <?php if (trim($property->slug) == "Azizi Victoria" || trim($property->slug) == "عزيزي فيكتوريا") { ?>
+                <?php if (trim($property->slug) == "Thoe Victoria" || trim($property->slug) == "عزيزي فيكتوريا") { ?>
                     <p><i class="ion ion-ios-location-outline"></i> {{trans('words.MEYDAN')}}</p>
                 <?php } else { ?>
                     <p><i class="ion ion-ios-location-outline"></i>   {{ $project->title_en }}</p>

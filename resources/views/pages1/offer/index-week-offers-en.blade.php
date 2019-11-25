@@ -86,7 +86,7 @@
 
 <section>
     <div class="parallax-container valign-wrapper only-heading" style="background-image:url('<?= SITE_URL ?>/emailer/uk-offers/offer-slider-image-7-2.jpg');">
-        <!--img  src="<?= SITE_URL ?>/emailer/uk-offers/offer-slider-image-7-2.jpg" alt="Berton - Azizi Developments" class="imgtag"/-->
+        <!--img  src="<?= SITE_URL ?>/emailer/uk-offers/offer-slider-image-7-2.jpg" alt="Berton - Thoe Developments" class="imgtag"/-->
         <img srcset="<?= SITE_URL ?>/emailer/uk-offers/offer-slider-image-7-2.jpg 320w,
              <?= SITE_URL ?>/emailer/uk-offers/offer-slider-image-7-2.jpg 480w,
              <?= SITE_URL ?>/emailer/uk-offers/offer-slider-image-7-2.jpg 768w,
@@ -95,13 +95,13 @@
              (max-width: 480px) 300px,
              (max-width: 768px) 500px,
              100vh"
-             src="<?= SITE_URL ?>/emailer/uk-offers/offer-slider-image-7-2.jpg" alt="Uk Offers - Azizi Developments" width="100%" height="100%" />
+             src="<?= SITE_URL ?>/emailer/uk-offers/offer-slider-image-7-2.jpg" alt="Uk Offers - Thoe Developments" width="100%" height="100%" />
 
         <div id='stick-form' class="mobileds">
             <h5 class="info-color white-text text-center" style="text-transform: uppercase; font-size: 24px!important; text-align: center; margin: 10px;display: block;">
                 <strong>ENQUIRE NOW</strong>
             </h5>
-            <iframe src="https://azizidevelopments.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="width:320px;height:330px;border:none;" scrolling="No"></iframe>                            
+            <iframe src="https://thoe.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="width:320px;height:330px;border:none;" scrolling="No"></iframe>                            
         </div>
 
         <div class="col s12 center-align card tag-pro">
@@ -128,14 +128,14 @@
                     <b>Starting from AED</b> <b>2.2 Mil</b> <b>-</b> <b>Mina</b><br />
                     <b>Starting from AED</b> <b>843K</b> <b>-</b> <b>Farishta</b>
                 </h6-->
-                <img alt="Azizi Riviera" src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.png" data-src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.png" class="responsive-img pro-image">
+                <img alt="Thoe Riviera" src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.png" data-src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.png" class="responsive-img pro-image">
             </div>
 
             <div id='stick-form' class="mobileds-1">
                 <h5 class="info-color white-text text-center" style="text-transform: uppercase; font-size: 24px!important; text-align: center; margin: 10px;display: block;">
                     <strong>ENQUIRE NOW</strong>
                 </h5>
-                <iframe src="https://azizidevelopments.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="" scrolling="No"></iframe>                            
+                <iframe src="https://thoe.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="" scrolling="No"></iframe>                            
             </div>
         </div> 
         <!--row One end-->
@@ -150,13 +150,13 @@
             <div class="col s12 m12 pro-holder center-align Completed mobileds">
                 <!--h1 class="span2"><b></b></h1-->
                 <!--h6 style="padding-bottom:20px;">Discover high-yield investment opportunities across a wide range of premium properties in Dubai.</h6-->
-                <img alt="Azizi Riviera" src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.jpg" class="responsive-img pro-image">
+                <img alt="Thoe Riviera" src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.jpg" class="responsive-img pro-image">
             </div>
 
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Azizi Riviera" src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-1.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-1.jpg" class="responsive-img pro-image">
+                    <img alt="Thoe Riviera" src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-1.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-1.jpg" class="responsive-img pro-image">
                     <div class="col s12 title-holder">
                         <h5>Starting from AED 767K</h5>                       
                     </div>
@@ -166,7 +166,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Azizi Mina" src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-2.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-2.jpg" class="responsive-img pro-image">
+                    <img alt="Thoe Mina" src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-2.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-2.jpg" class="responsive-img pro-image">
                     <div class="col s12 title-holder">
                         <h5>Starting from AED 2.2 Mil</h5>                       
                     </div>
@@ -175,7 +175,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Azizi Riviera" src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-3.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-3.jpg" class="responsive-img pro-image">
+                    <img alt="Thoe Riviera" src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-3.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-3.jpg" class="responsive-img pro-image">
                     <div class="col s12 title-holder">
                         <h5>7% Guaranteed ROI</h5>                       
                     </div>
@@ -185,7 +185,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Azizi Mina" src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-4.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-4.jpg" class="responsive-img pro-image">
+                    <img alt="Thoe Mina" src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-4.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-4.jpg" class="responsive-img pro-image">
                     <div class="col s12 title-holder">
                         <h5>Starting from AED 852K </h5>                       
                     </div>
@@ -194,7 +194,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Azizi Riviera" src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-5.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-5.jpg" class="responsive-img pro-image">
+                    <img alt="Thoe Riviera" src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-5.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-5.jpg" class="responsive-img pro-image">
                     <div class="col s12 title-holder">
                         <h5>4 year post-handover payment plan</h5>                       
                     </div>
@@ -204,7 +204,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Azizi Mina" src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-6.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-6.jpg" class="responsive-img pro-image">
+                    <img alt="Thoe Mina" src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-6.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/Aug-24th-Carousel-6.jpg" class="responsive-img pro-image">
                     <div class="col s12 title-holder">
                         <h5>Register your interest </h5>                       
                     </div>

@@ -82,9 +82,7 @@ class AgentController extends Controller {
                     $adatas[$i]['title'] = $project->title_en;
                 } else if (session()->get('lang') == 'ar') {
                     $adatas[$i]['title'] = $project->title_ar;
-                } else if (session()->get('lang') == 'cn') {
-                    $adatas[$i]['title'] = $project->title_ch;
-                }
+                } 
 
                 $adatas[$i]['id'] = $project->id;
                 $adatas[$i]['path'] = $project->gallery_location;

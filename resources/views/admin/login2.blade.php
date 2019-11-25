@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>AZIZI | Admin Login</title> 
+    <title>THOE | Admin Login</title> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- global level css -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -19,7 +19,7 @@
         <div class=" col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3  col-md-5 col-md-offset-4 col-lg-4 col-lg-offset-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-					<img src="{{asset('/assets/images/azizi-logo.png')}}" style="padding: 25px 50px;" />
+					<img src="{{asset('/assets/images/thoe-logo.png')}}" style="padding: 25px 50px;" />
                 </div>
                 <div class="panel-body">
 						<div class="help-block">

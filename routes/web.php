@@ -17,7 +17,7 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
     Route::get('/thank-you', ['as' => 'thank', 'uses' => 'PageController@thankYou']);
     Route::get('/privacy', ['as' => 'privacy', 'uses' => 'PageController@privacy']);
     Route::get('/terms', ['as' => 'terms', 'uses' => 'PageController@terms']);
-    Route::get('/careers-at-azizi', ['as' => 'careers-at-azizi', 'uses' => 'PageController@careersAtAzizi']);
+    Route::get('/careers-at-thoe', ['as' => 'careers-at-thoe', 'uses' => 'PageController@careersAtThoe']);
     Route::any('/media-center', ['as' => 'mediacenter', 'uses' => 'PageController@mediacenter']);
 
     Route::any('/search', ['as' => 'search', 'uses' => 'SearchController@index']);
@@ -87,19 +87,11 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
     Route::get('/construction-updates/{projects}/{property}', ['as' => 'community-area.updates', 'uses' => 'ConstructionController@property']);
     Route::post('/constructiondownload', ['as' => 'constructiondownload', 'uses' => 'ConstructionController@constructiondownload']);
 
-    Route::get('/dubai', ['as' => 'azizi.properties', 'uses' => 'PropertyController@index']);
-    Route::get('/dubai/meydan', ['as' => 'community.properties', 'uses' => 'PropertyController@community']);
-    Route::get('/dubai/meydan/{projects}', ['as' => 'community-area.properties', 'uses' => 'PropertyController@projects']);
-    Route::get('/dubai/meydan/{projects}/{property}', ['as' => 'community-area.properties', 'uses' => 'PropertyController@property']);
-    Route::get('/dubai/{area}', ['as' => 'area.properties', 'uses' => 'PropertyController@projects']);
+    Route::get('/projects', ['as' => 'thoe.properties', 'uses' => 'PropertyController@index']);
+    //Route::get('/community', ['as' => 'community.properties', 'uses' => 'PropertyController@community']);
+    Route::get('/projects/{peoject}', ['as' => 'community-area.properties', 'uses' => 'PropertyController@properties']);
+    Route::get('/projects/{peoject}/{property}', ['as' => 'community-area.properties', 'uses' => 'PropertyController@property']);
 
-    /* End Landing Pages */
-    Route::get('/lp/dubai/meydan/{projects}/{property}', ['as' => 'community-area.properties', 'uses' => 'PropertyController@lp_property']);
-    Route::get('/lp/dubai/{area}/{property}', ['as' => 'meydan.properties', 'uses' => 'PropertyController@lp_property']);
-    /* End Landing Pages */
-
-
-    Route::get('/dubai/{area}/{property}', ['as' => 'meydan.properties', 'uses' => 'PropertyController@property']);
     Route::get('/property-booking', ['as' => 'property-bookings', 'uses' => 'PropertyController@propertyBooking']);
     Route::get('/completed-projects', ['as' => 'completed-projects', 'uses' => 'PropertyController@completed']);
     Route::any('/download/{id}', ['as' => 'download', 'uses' => 'PropertyController@download']);
@@ -139,26 +131,11 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
     Route::post('/cityscape-send', ['as' => 'cityscape.send', 'uses' => 'CityScapeController@send']);
     Route::get('/cityscape-thank-you', ['as' => 'cityscape.thank-you', 'uses' => 'CityScapeController@thankyou']);
 
-//Offers
-    //Route::get('/offers', ['as' => 'cityscape.offers', 'uses' => 'OfferController@index']);
-    //Route::get('/offers/cityscape-abudhabi', ['as' => 'cityscape.citiscape', 'uses' => 'OfferController@cityscape_abudhabi']);
-    //Route::get('/offers/ips', ['as' => 'cityscape.ips', 'uses' => 'OfferController@ips']);
-    //Route::get('/uk-offers', ['as' => 'cityscape.ukoffers', 'uses' => 'OfferController@uk_event']);
-    //Route::get('/diamond-week-offers', ['as' => 'cityscape.diamond-week-offers', 'uses' => 'OfferController@Diamond_Week']);
-    //Route::get('/adha-offers', ['as' => 'cityscape.adha-offers', 'uses' => 'OfferController@Adha_Offers']);
     Route::get('/offers-weeks', ['as' => 'cityscape.offers-week', 'uses' => 'OfferController@offers_Week']);
-    Route::get('/launching-berton-by-azizi', ['as' => 'cityscape.berton-offers', 'uses' => 'OfferController@Berton_offers']);
+    Route::get('/launching-berton-by-thoe', ['as' => 'cityscape.berton-offers', 'uses' => 'OfferController@Berton_offers']);
     Route::get('/creek-views', ['as' => 'cityscape.creek-views', 'uses' => 'OfferController@Creek_Views']);
 
 
-    //Route::get('/devs', ['as' => 'devs', 'uses' => 'TestController@index']);
-    Route::get('/devs', ['as' => 'devs', 'uses' => 'TestController@mtest']);
-    //Route::get('/home-one', ['as' => 'HomeOne', 'uses' => 'TestController@home_one']);
-    //Route::get('/home-two', ['as' => 'HomeTwo', 'uses' => 'TestController@home_two']);
-    //Route::get('/home-three', ['as' => 'HomeThree', 'uses' => 'TestController@home_three']);
-    //Route::get('/home-four', ['as' => 'HomeFour', 'uses' => 'TestController@home_four']);
-    //Route::get('/mobile-one', ['as' => 'MobileOne', 'uses' => 'TestController@mobile_one']);
-    Route::get('/mobile-two', ['as' => 'MobileTwo', 'uses' => 'TestController@mobile_two']);
 
 
     #FrontEndController
@@ -192,7 +169,7 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
 # End of frontend views 
     //Redirect Pages Section
     Route::get('en/offers', function() {
-        return redirect('https://azizidevelopments.com/offers');
+        return redirect('https://thoe.com/offers');
     });
     //End Page Redirect Section
 });

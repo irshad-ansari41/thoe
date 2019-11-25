@@ -64,15 +64,15 @@ class SearchController extends Controller {
         $searchtext = trim($request->searchtext);
 
         $event_results = Event::where("event_title", 'LIKE', '%' . $searchtext . '%')
-                ->orWhere("event_date", 'LIKE', '%' . $searchtext . '%')
-                ->orWhere("long_desc", 'LIKE', '%' . $searchtext . '%')
-                ->orWhere("extra_desc", 'LIKE', '%' . $searchtext . '%')
-                ->orWhere("visit_us_at", 'LIKE', '%' . $searchtext . '%')
-                ->orWhere("starting_from", 'LIKE', '%' . $searchtext . '%')
-                ->orWhere("booking_fees", 'LIKE', '%' . $searchtext . '%')
-                ->orWhere("payment_plan", 'LIKE', '%' . $searchtext . '%')
-                ->orWhere("mortgage_starting", 'LIKE', '%' . $searchtext . '%')
-                ->orderBy('event_date', 'desc')->paginate(5);
+                        ->orWhere("event_date", 'LIKE', '%' . $searchtext . '%')
+                        ->orWhere("long_desc", 'LIKE', '%' . $searchtext . '%')
+                        ->orWhere("extra_desc", 'LIKE', '%' . $searchtext . '%')
+                        ->orWhere("visit_us_at", 'LIKE', '%' . $searchtext . '%')
+                        ->orWhere("starting_from", 'LIKE', '%' . $searchtext . '%')
+                        ->orWhere("booking_fees", 'LIKE', '%' . $searchtext . '%')
+                        ->orWhere("payment_plan", 'LIKE', '%' . $searchtext . '%')
+                        ->orWhere("mortgage_starting", 'LIKE', '%' . $searchtext . '%')
+                        ->orderBy('event_date', 'desc')->paginate(5);
 
         $news_results = Press::where("title", 'LIKE', '%' . $searchtext . '%')->orWhere("description", 'LIKE', '%' . $searchtext . '%')->orWhere("date", 'LIKE', '%' . $searchtext . '%')->orderBy('date', 'desc')->paginate(5);
 
@@ -80,12 +80,12 @@ class SearchController extends Controller {
         $project_results = Properties::where("title_en", 'LIKE', '%' . $searchtext . '%')->orWhere("location", 'LIKE', '%' . $searchtext . '%')->orWhere("short_description_en", 'LIKE', '%' . $searchtext . '%')->orWhere("long_description_en", 'LIKE', '%' . $searchtext . '%')->orderBy('id', 'desc')->paginate(5);
 
 
-        $event_results2 = Event::select('tbl_events.id as id', 'tbl_events.slug as slug', 'tbl_events.event_title as title', 'tbl_events.event_title_ar as title_ar', 'tbl_events.event_title_ch as title_ch', 'tbl_events.long_desc_ar as descr_ar', 'tbl_events.long_desc_ch as descr_ch', 'tbl_events.long_desc as descr', DB::raw("'event' as tag"))->where("event_title", 'LIKE', '%' . $searchtext . '%')->orWhere("event_date", 'LIKE', '%' . $searchtext . '%')->orWhere("long_desc", 'LIKE', '%' . $searchtext . '%')->orWhere("extra_desc", 'LIKE', '%' . $searchtext . '%')->orWhere("visit_us_at", 'LIKE', '%' . $searchtext . '%')->orWhere("starting_from", 'LIKE', '%' . $searchtext . '%')->orWhere("booking_fees", 'LIKE', '%' . $searchtext . '%')->orWhere("payment_plan", 'LIKE', '%' . $searchtext . '%')->orWhere("mortgage_starting", 'LIKE', '%' . $searchtext . '%')->paginate(2);
+        $event_results2 = Event::select('tbl_events.id as id', 'tbl_events.slug as slug', 'tbl_events.event_title as title', 'tbl_events.event_title_ar as title_ar', 'tbl_events.long_desc as descr', DB::raw("'event' as tag"))->where("event_title", 'LIKE', '%' . $searchtext . '%')->orWhere("event_date", 'LIKE', '%' . $searchtext . '%')->orWhere("long_desc", 'LIKE', '%' . $searchtext . '%')->orWhere("extra_desc", 'LIKE', '%' . $searchtext . '%')->orWhere("visit_us_at", 'LIKE', '%' . $searchtext . '%')->orWhere("starting_from", 'LIKE', '%' . $searchtext . '%')->orWhere("booking_fees", 'LIKE', '%' . $searchtext . '%')->orWhere("payment_plan", 'LIKE', '%' . $searchtext . '%')->orWhere("mortgage_starting", 'LIKE', '%' . $searchtext . '%')->paginate(2);
 
-        $news_results2 = Press::select('tbl_pressrelease.id as id', 'tbl_pressrelease.slug as slug', 'tbl_pressrelease.title as title', 'tbl_pressrelease.title_ar as title_ar', 'tbl_pressrelease.title_ch as title_ch', 'tbl_pressrelease.description_ar as descr_ar', 'tbl_pressrelease.description_ch as descr_ch', 'tbl_pressrelease.description as descr', DB::raw("'news' as tag"))->where("title", 'LIKE', '%' . $searchtext . '%')->orWhere("description", 'LIKE', '%' . $searchtext . '%')->orWhere("date", 'LIKE', '%' . $searchtext . '%')->paginate(2);
+        $news_results2 = Press::select('tbl_pressrelease.id as id', 'tbl_pressrelease.slug as slug', 'tbl_pressrelease.title as title', 'tbl_pressrelease.title_ar as title_ar', 'tbl_pressrelease.description_ar as descr_ar', 'tbl_pressrelease.description as descr', DB::raw("'news' as tag"))->where("title", 'LIKE', '%' . $searchtext . '%')->orWhere("description", 'LIKE', '%' . $searchtext . '%')->orWhere("date", 'LIKE', '%' . $searchtext . '%')->paginate(2);
 
 
-        $project_results2 = Properties::select('tbl_properties.id as id', 'tbl_properties.slug as slug', 'tbl_properties.title_en as title', 'tbl_properties.title_ar as title_ar', 'tbl_properties.title_ch as title_ch', 'tbl_properties.short_description_en as descr', 'tbl_properties.short_description_ar as descr_ar', 'tbl_properties.short_description_ch as descr_ch', DB::raw("'project' as tag"))->where("title_en", 'LIKE', '%' . $searchtext . '%')->orWhere("location", 'LIKE', '%' . $searchtext . '%')->orWhere("short_description_en", 'LIKE', '%' . $searchtext . '%')->orWhere("long_description_en", 'LIKE', '%' . $searchtext . '%')->paginate(2);
+        $project_results2 = Properties::select('tbl_properties.id as id', 'tbl_properties.slug as slug', 'tbl_properties.title_en as title', 'tbl_properties.title_ar as title_ar', 'tbl_properties.short_description_en as descr', 'tbl_properties.short_description_ar as descr_ar', DB::raw("'project' as tag"))->where("title_en", 'LIKE', '%' . $searchtext . '%')->orWhere("location", 'LIKE', '%' . $searchtext . '%')->orWhere("short_description_en", 'LIKE', '%' . $searchtext . '%')->orWhere("long_description_en", 'LIKE', '%' . $searchtext . '%')->paginate(2);
 
         $All_final_r = $event_results2->merge($news_results2);
 
@@ -100,8 +100,6 @@ class SearchController extends Controller {
                     $all['all'][$i]['title_en'] = $result->title;
                 } else if (session()->get('lang') == 'ar') {
                     $all['all'][$i]['title_en'] = $result->title_ar;
-                } else if (session()->get('lang') == 'cn') {
-                    $all['all'][$i]['title_en'] = $result->title_ch;
                 }
                 $all['all'][$i]['slug'] = $result->slug;
 
@@ -112,16 +110,12 @@ class SearchController extends Controller {
                         $all['all'][$i]['short_description_en'] = $result->descr;
                     } else if (session()->get('lang') == 'ar') {
                         $all['all'][$i]['short_description_en'] = $result->descr_ar;
-                    } else if (session()->get('lang') == 'cn') {
-                        $all['all'][$i]['short_description_en'] = $result->descr_ch;
                     }
                 } else {
                     if (session()->get('lang') == 'en') {
                         $all['all'][$i]['short_description_en'] = substr($result->descr, 0, 400) . "...";
                     } else if (session()->get('lang') == 'ar') {
                         $all['all'][$i]['short_description_en'] = substr($result->descr_ar, 0, 400) . "...";
-                    } else if (session()->get('lang') == 'cn') {
-                        $all['all'][$i]['short_description_en'] = substr($result->descr_ch, 0, 400) . "...";
                     }
                 }
 
@@ -139,7 +133,6 @@ class SearchController extends Controller {
                 $events['events'][$i]['id'] = $result->id;
                 $events['events'][$i]['event_photo'] = $result->event_photo;
                 $events['events'][$i]['event_photo_ar'] = $result->event_photo_ar;
-                $events['events'][$i]['event_photo_ch'] = $result->event_photo_ch;
 
                 $events['events'][$i]['event_main_photo'] = $result->event_main_photo;
 
@@ -147,8 +140,6 @@ class SearchController extends Controller {
                     $events['events'][$i]['event_title'] = $result->event_title;
                 } else if (session()->get('lang') == 'ar') {
                     $events['events'][$i]['event_title'] = $result->event_title_ar;
-                } else if (session()->get('lang') == 'cn') {
-                    $events['events'][$i]['event_title'] = $result->event_title_ch;
                 }
 
                 $events['events'][$i]['slug'] = $result->slug;
@@ -158,8 +149,6 @@ class SearchController extends Controller {
                         $events['events'][$i]['long_desc'] = $result->long_desc;
                     } else if (session()->get('lang') == 'ar') {
                         $events['events'][$i]['long_desc'] = $result->long_desc_ar;
-                    } else if (session()->get('lang') == 'cn') {
-                        $events['events'][$i]['long_desc'] = $result->long_desc_ch;
                     }
                 } else {
 
@@ -167,8 +156,6 @@ class SearchController extends Controller {
                         $events['events'][$i]['long_desc'] = substr($result->long_desc, 0, 200) . "...";
                     } else if (session()->get('lang') == 'ar') {
                         $events['events'][$i]['long_desc'] = substr($result->long_desc_ar, 0, 200) . "...";
-                    } else if (session()->get('lang') == 'cn') {
-                        $events['events'][$i]['long_desc'] = substr($result->long_desc_ch, 0, 200) . "...";
                     }
                 }
 
@@ -176,8 +163,6 @@ class SearchController extends Controller {
                     $events['events'][$i]['extra_desc'] = $result->extra_desc;
                 } else if (session()->get('lang') == 'ar') {
                     $events['events'][$i]['extra_desc'] = $result->extra_desc_ar;
-                } else if (session()->get('lang') == 'cn') {
-                    $events['events'][$i]['extra_desc'] = $result->extra_desc_ch;
                 }
                 $events['events'][$i]['starting_from'] = $result->starting_from;
                 $events['events'][$i]['event_date'] = date("d F Y", strtotime($result->event_date));
@@ -199,9 +184,6 @@ class SearchController extends Controller {
                 } else if (session()->get('lang') == 'ar') {
                     $news['news'][$i]['description'] = $result->description_ar;
                     $news['news'][$i]['title'] = $result->title_ar;
-                } else if (session()->get('lang') == 'cn') {
-                    $news['news'][$i]['description'] = $result->description_ch;
-                    $news['news'][$i]['title'] = $result->title_ch;
                 }
 
                 $news['news'][$i]['date'] = $result->date;
@@ -224,9 +206,6 @@ class SearchController extends Controller {
                 } else if (session()->get('lang') == 'ar') {
                     $projects['projects'][$i]['title_en'] = $result->title_ar;
                     $projects['projects'][$i]['short_description_en'] = $result->short_description_ar;
-                } else if (session()->get('lang') == 'cn') {
-                    $projects['projects'][$i]['title_en'] = $result->title_ch;
-                    $projects['projects'][$i]['short_description_en'] = $result->short_description_ch;
                 }
                 $i++;
             }

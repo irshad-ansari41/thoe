@@ -24,7 +24,7 @@
 
                                 <a target="_blank" href="<?=SITE_URL?>/en" style="text-decoration: none; color: #001F5B; 
                                    font-family:Helvetica; font-size:12px;">
-                                    <img src="http://aziziriviera.com/azizi-emailer/images/ips-2019/26-28_Mar_IPS_Emailer_Top_opt-1.jpg"  width="595"/>
+                                    <img src="http://thoeriviera.com/thoe-emailer/images/ips-2019/26-28_Mar_IPS_Emailer_Top_opt-1.jpg"  width="595"/>
                                 </a>
                             </td>
                         </tr>
@@ -52,7 +52,7 @@
                                     
                                     <tr valign="top">
                                         <td colspan="2" style="padding: 20px 20px 10px 20px;" >
-                                            <p><strong>Azizi Riviera Select</strong></p>
+                                            <p><strong>Thoe Riviera Select</strong></p>
                                         </td>
                                     </tr>
 
@@ -64,7 +64,7 @@
                                         <td style="padding-right:20px;vertical-align: top;padding-top: 0px;">
                                             
                                             <p>
-                                                Part of the mega retail, equestrian, golfing and waterfront lifestyle, in Meydan, Azizi Riviera is an affordable premium escape in the heart of the city. Azizi Riviera Select is an IPS Exclusive collection of new units with payment plan options.
+                                                Part of the mega retail, equestrian, golfing and waterfront lifestyle, in Meydan, Thoe Riviera is an affordable premium escape in the heart of the city. Thoe Riviera Select is an IPS Exclusive collection of new units with payment plan options.
                                             </p>
 
                                             <p style="font-size: 10px; font-weight: bold; ">Limited Time Offer</p>
@@ -118,7 +118,7 @@
 
                                     <tr valign="top">
                                         <td colspan="2" style="padding: 20px 20px 10px 20px;" >
-                                            <p><strong>BAYT by Azizi in Azizi Riviera</strong></p>
+                                            <p><strong>BAYT by Thoe in Thoe Riviera</strong></p>
                                         </td>
                                     </tr>
 
@@ -130,7 +130,7 @@
                                         <td style="padding-right:20px;vertical-align: top;padding-top: 0px;">
                                             
                                             <p>
-                                                BAYT is a new short-term rental home concept through which investors can yield higher returns by having their owned apartments managed and serviced for them. Following the success of BAYT by Azizi in Dubai Sports City, Dubai will be home to the 2nd BAYT concept now in Azizi Riviera.
+                                                BAYT is a new short-term rental home concept through which investors can yield higher returns by having their owned apartments managed and serviced for them. Following the success of BAYT by Thoe in Dubai Sports City, Dubai will be home to the 2nd BAYT concept now in Thoe Riviera.
                                             </p>
 
                                             <p style="font-size: 10px; font-weight: bold; ">
@@ -147,7 +147,7 @@
                                         </td>
 
                                     </tr>
-                                    <!--Bayt By Azizi Emailer & Hr Line End -->
+                                    <!--Bayt By Thoe Emailer & Hr Line End -->
 
                                     <tr valign="top">
                                         <td style="" colspan="2">
@@ -159,7 +159,7 @@
                                                         <p><strong>Live for free in 2020</strong></p>
                                                         
                                                         <p>
-                                                            Grab the opportunity to live rent free in Azizi Riviera next year when you purchase a package of both a studio and a 1 bedroom apartment now. The rental fees received will cover the mortgage cost of both units.
+                                                            Grab the opportunity to live rent free in Thoe Riviera next year when you purchase a package of both a studio and a 1 bedroom apartment now. The rental fees received will cover the mortgage cost of both units.
                                                         </p>
 
                                                         <p><strong>Limited time payment plan:</strong></p>
@@ -238,7 +238,7 @@
 
                                     <tr valign="top">
                                         <td colspan="2" style="padding: 20px 20px 10px 20px;" >
-                                            <p><strong>Azizi Victoria</strong></p>
+                                            <p><strong>Thoe Victoria</strong></p>
                                         </td>
                                     </tr>
 
@@ -251,7 +251,7 @@
                                         <td style="padding-right:20px;vertical-align: top;padding-top: 0px;">
                                             
                                             <p>
-                                                Positioned as a vibrant hub of activity, Azizi Victoria is centered around community living, emulating the perfect balance of entertainment, work and living spaces offering visitors and residents a contemporary urban lifestyle. 
+                                                Positioned as a vibrant hub of activity, Thoe Victoria is centered around community living, emulating the perfect balance of entertainment, work and living spaces offering visitors and residents a contemporary urban lifestyle. 
                                             </p>
 
                                             <p style="font-size: 10px; font-weight: bold; ">
@@ -261,7 +261,7 @@
                                             </p>
 
                                             <br>
-                                            <p style="font-size: 9px; font-weight: bold;">Completion of Azizi Victoria Phase 1 in Q1 2021</p>
+                                            <p style="font-size: 9px; font-weight: bold;">Completion of Thoe Victoria Phase 1 in Q1 2021</p>
 
                                             <!--img src="<?=SITE_URL?>/assets/images/emailer/ips-2019/IPS-All-Offers-Emailer_Victoria-offer.jpg" 
                                                 width="315" /-->
@@ -275,11 +275,11 @@
                                             <hr width="555" />
                                         </td>
                                     </tr>                                    
-                                    <!--Azizi Victoria Emailer & Hr Line End -->
+                                    <!--Thoe Victoria Emailer & Hr Line End -->
 
                                     <tr valign="top">
                                         <td colspan="2" style="padding: 20px 20px 10px 20px;" >
-                                            <p><strong>Mina by Azizi</strong></p>
+                                            <p><strong>Mina by Thoe</strong></p>
                                         </td>
                                     </tr>
 
@@ -291,7 +291,7 @@
                                         <td style="padding-right:20px;vertical-align: top;padding-top: 0px;">
                                             
                                             <p>
-                                                Nestled on the East Crescent of Palm Jumeirah, Mina by Azizi is a prestigious development comprising premium residential and commercial units that feature luxury amenities, private beach access and breathtaking sea views from every apartment.
+                                                Nestled on the East Crescent of Palm Jumeirah, Mina by Thoe is a prestigious development comprising premium residential and commercial units that feature luxury amenities, private beach access and breathtaking sea views from every apartment.
                                             </p>
 
                                             <p style="font-size: 10px; font-weight: bold; ">Limited Time Payment Plan</p>
@@ -316,7 +316,7 @@
                                             <hr width="555" />
                                         </td>
                                     </tr>
-                                    <!--Mina By Azizi Emailer & Hr Line End -->
+                                    <!--Mina By Thoe Emailer & Hr Line End -->
 
 
                                     <tr valign="top">
@@ -328,7 +328,7 @@
                                     <tr valign="top">
                                         <td colspan="2" style="padding: 0px 72px 20px 72px; color:#eee;text-align: center;font-size: 14px; ">
                                             <p style="font-size: 10px;">
-                                                Azizi Developments dedicates the year of 2019 to its focus on the swift construction and timely delivery of its launched projects. With delivering on our promises to our customers being our absolute priority, 2019 will be a year full of rapid progress and on-schedule handovers.
+                                                Thoe Developments dedicates the year of 2019 to its focus on the swift construction and timely delivery of its launched projects. With delivering on our promises to our customers being our absolute priority, 2019 will be a year full of rapid progress and on-schedule handovers.
                                             </p>
                                         </td>
                                     </tr>  
@@ -336,10 +336,10 @@
 
                                     <tr valign="top">
                                         <td colspan="2" style="padding: 0px; color:#eee;text-align: center;font-size: 14px; ">
-                                            <img src="<?=SITE_URL?>/assets/images/emailer/ips-2019/IPS-All-Offers-Emailer_Azizi_800.jpg" width="595">
+                                            <img src="<?=SITE_URL?>/assets/images/emailer/ips-2019/IPS-All-Offers-Emailer_Thoe_800.jpg" width="595">
                                         </td>
                                     </tr>  
-                                    <!--Azizi Logo & Hr Line & 800AZIZI End -->
+                                    <!--Thoe Logo & Hr Line & 800THOE End -->
 
                                 </table>
                             </td>

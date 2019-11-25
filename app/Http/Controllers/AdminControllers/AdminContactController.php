@@ -96,13 +96,11 @@ class AdminContactController extends Controller {
             $contact->address_type = $request->address_type;
             $contact->address_title = $request->address_title;
             $contact->address_title_ar = $request->address_title_ar;
-            $contact->address_title_ch = $request->address_title_ch;
 
             $contact->phone_no = $request->phone_no;
 
             $contact->address = $request->address;
             $contact->address_ar = $request->address_ar;
-            $contact->address_ch = $request->address_ch;
 
             $contact->lat = $lat;
             $contact->lng = $lng;
@@ -111,7 +109,6 @@ class AdminContactController extends Controller {
 
             $contact->working_hours = $request->working_hours;
             $contact->working_hours_ar = $request->working_hours_ar;
-            $contact->working_hours_ch = $request->working_hours_ch;
 
             $contact->created = date("Y-m-d H:i:s");
             $contact->status = '1';
@@ -147,9 +144,7 @@ class AdminContactController extends Controller {
             if ($request->address_title_ar) {
                 $data['address_title_ar'] = $request->address_title_ar;
             }
-            if ($request->address_title_ch) {
-                $data['address_title_ch'] = $request->address_title_ch;
-            }
+            
             if ($request->phone_no) {
                 $data['phone_no'] = $request->phone_no;
             }
@@ -160,9 +155,7 @@ class AdminContactController extends Controller {
             if ($request->address_ar) {
                 $data['address_ar'] = $request->address_ar;
             }
-            if ($request->address_ch) {
-                $data['address_ch'] = $request->address_ch;
-            }
+            
 
             if ($lat) {
                 $data['lat'] = $lat;
@@ -183,9 +176,7 @@ class AdminContactController extends Controller {
             if ($request->working_hours_ar) {
                 $data['working_hours_ar'] = $request->working_hours_ar;
             }
-            if ($request->working_hours_ch) {
-                $data['working_hours_ch'] = $request->working_hours_ch;
-            }
+           
 
 
             if (!empty($data)) {

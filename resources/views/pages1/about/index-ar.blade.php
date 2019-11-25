@@ -64,8 +64,8 @@
                     <?= $about->chairment_description_ar ?>
                 </p>
                 <div class="desig-person" style="margin-top: 3em;">
-                    <div class="person-name" style="font-size: 15px;margin: 0;">{{ trans('words.mirwais_azizi')}}</div>
-                    <i style="font-size: 12px;">{{ trans('words.chirman_azizi_group') }}</i>
+                    <div class="person-name" style="font-size: 15px;margin: 0;">{{ trans('words.mirwais_thoe')}}</div>
+                    <i style="font-size: 12px;">{{ trans('words.chirman_thoe_group') }}</i>
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
             <div class="row m0">
                 <div class="cols 12 center-align">
                     <h5 class="white">
-                        {{ trans('words.azizi_development_at_glance') }}
+                        {{ trans('words.thoe_development_at_glance') }}
                     </h5>
                 </div>
             </div>

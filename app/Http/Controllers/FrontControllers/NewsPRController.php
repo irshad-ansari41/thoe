@@ -50,8 +50,8 @@ class NewsPrController extends Controller {
         $query->where("title_{$this->locale}", '!=', "");
         $results = $query->where("status", "1")->orderBy('date', $sort)->orderBy('press_order', 'asc')->paginate(10);
 
-        $meta_title = metaTitleByLocale($this->locale, ['en' => $content->title_en, 'ar' => $content->title_ar, 'cn' => $content->title_ch,]);
-        $meta_desc = metaDescByLocale($this->locale, ['en' => $content->description_long, 'ar' => $content->description_long_ar, 'cn' => $content->description_long_ch,]);
+        $meta_title = metaTitleByLocale($this->locale, ['en' => $content->title_en, 'ar' => $content->title_ar, ]);
+        $meta_desc = metaDescByLocale($this->locale, ['en' => $content->description_long, 'ar' => $content->description_long_ar, ]);
 
 
         $data = [
@@ -97,8 +97,8 @@ class NewsPrController extends Controller {
         $content = Content::find(25);
         $coverage = DB::table('tbl_newscoverage')->where('news_pr_id', $pr->id)->get();
 
-        $meta_title = metaTitleByLocale($this->locale, ['en' => $pr->title_en, 'ar' => $pr->title_ar, 'cn' => $pr->title_ch,]);
-        $meta_desc = metaDescByLocale($this->locale, ['en' => $pr->description_long_en, 'ar' => $pr->description_long_ar, 'cn' => $pr->description_long_ch,]);
+        $meta_title = metaTitleByLocale($this->locale, ['en' => $pr->title_en, 'ar' => $pr->title_ar, ]);
+        $meta_desc = metaDescByLocale($this->locale, ['en' => $pr->description_long_en, 'ar' => $pr->description_long_ar, ]);
 
         $data = [
             'press' => (array) $pr,

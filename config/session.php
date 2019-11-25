@@ -104,7 +104,7 @@ return [
       | new session cookie is created by the framework for every driver.
       |
      */
-    'cookie' => 'azizi_session',
+    'cookie' => 'thoe_session',
     /*
       |--------------------------------------------------------------------------
       | Session Cookie Path

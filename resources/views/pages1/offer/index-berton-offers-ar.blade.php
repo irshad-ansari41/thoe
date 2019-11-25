@@ -86,17 +86,17 @@
 <!-- Header -->
 
 <section>
-    <div class="parallax-container valign-wrapper only-heading" style="background-image:url('<?= SITE_URL ?>/emailer/berton-offers/Azizi-offer-slider-image-7.jpg');">
-        <!--img  src="<?= SITE_URL ?>/emailer/uk-offers/Azizi-offer-slider-image-7-2.jpg" alt="Berton - Azizi Developments" class="imgtag"/-->
-        <img srcset="<?= SITE_URL ?>/emailer/berton-offers/Azizi-offer-slider-image-7.jpg 320w,
-             <?= SITE_URL ?>/emailer/berton-offers/Azizi-offer-slider-image-7.jpg 480w,
-             <?= SITE_URL ?>/emailer/berton-offers/Azizi-offer-slider-image-7.jpg 768w,
-             <?= SITE_URL ?>/emailer/berton-offers/Azizi-offer-slider-image-7.jpg 800w"
+    <div class="parallax-container valign-wrapper only-heading" style="background-image:url('<?= SITE_URL ?>/emailer/berton-offers/Thoe-offer-slider-image-7.jpg');">
+        <!--img  src="<?= SITE_URL ?>/emailer/uk-offers/Thoe-offer-slider-image-7-2.jpg" alt="Berton - Thoe Developments" class="imgtag"/-->
+        <img srcset="<?= SITE_URL ?>/emailer/berton-offers/Thoe-offer-slider-image-7.jpg 320w,
+             <?= SITE_URL ?>/emailer/berton-offers/Thoe-offer-slider-image-7.jpg 480w,
+             <?= SITE_URL ?>/emailer/berton-offers/Thoe-offer-slider-image-7.jpg 768w,
+             <?= SITE_URL ?>/emailer/berton-offers/Thoe-offer-slider-image-7.jpg 800w"
              sizes="(max-width: 320px) 300px,
              (max-width: 480px) 300px,
              (max-width: 768px) 500px,
              100vh"
-             src="<?= SITE_URL ?>/emailer/berton-offers/Azizi-offer-slider-image-7.jpg" alt="Uk Offers - Azizi Developments" width="100%" height="100%" />
+             src="<?= SITE_URL ?>/emailer/berton-offers/Thoe-offer-slider-image-7.jpg" alt="Uk Offers - Thoe Developments" width="100%" height="100%" />
 
         <div id='stick-form' class="mobileds">
             <h5 class="info-color white-text text-center" style="text-transform: uppercase; font-size: 24px!important; text-align: center; margin: 10px;display: block;">
@@ -104,7 +104,7 @@
                     استفسر الآن
                 </strong>
             </h5>
-            <iframe src="https://azizidevelopments.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="width:320px;height:330px;border:none;" scrolling="No"></iframe>                            
+            <iframe src="https://thoe.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="width:320px;height:330px;border:none;" scrolling="No"></iframe>                            
         </div>
 
         <div class="col s12 center-align card tag-pro">
@@ -134,7 +134,7 @@
                 <h6 style="padding-bottom:20px;color:#fff;font-size: 18px !important;padding: 20px;">
                     بيرتون من عزيزي! الجيل الجديد من المشاريع الحضارية
                 </h6>
-                <!--img alt="Berton By Azizi" src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.png" data-src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.png" class="responsive-img pro-image"-->
+                <!--img alt="Berton By Thoe" src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.png" data-src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.png" class="responsive-img pro-image"-->
                 
             </div>
 
@@ -144,7 +144,7 @@
                         استفسر الآن
                     </strong>
                 </h5>
-                <iframe src="https://azizidevelopments.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="" scrolling="No"></iframe>                            
+                <iframe src="https://thoe.com/<?= $locale ?>/lead-form" class="iframe-lead-form" border="0" style="" scrolling="No"></iframe>                            
             </div>
         </div> 
         <!--row One end-->
@@ -161,13 +161,13 @@
                 <h6 style="padding-bottom:20px;">
                     بيرتون من عزيزي! الجيل الجديد من المشاريع الحضارية
                 </h6>
-                <!--img alt="Berton By Azizi" src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.jpg" class="responsive-img pro-image"-->
+                <!--img alt="Berton By Thoe" src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.jpg" data-src="<?= SITE_URL ?>/emailer/offers-week/img/limited-time-offers.jpg" class="responsive-img pro-image"-->
             </div>
 
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Berton By Azizi" src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-1.jpg" data-src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-1.jpg" class="responsive-img pro-image">
+                    <img alt="Berton By Thoe" src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-1.jpg" data-src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-1.jpg" class="responsive-img pro-image">
                     <div class="col s12 title-holder">
                         <h5>ابتداءً من 457 ألف درهم </h5>                       
                     </div>
@@ -177,7 +177,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Azizi Mina" src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-2.jpg" data-src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-2.jpg" class="responsive-img pro-image">
+                    <img alt="Thoe Mina" src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-2.jpg" data-src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-2.jpg" class="responsive-img pro-image">
                     <div class="col s12 title-holder">
                         <h5>استوديو/ شقق بغرفة أو غرفتي نوم</h5>                       
                     </div>
@@ -186,7 +186,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Berton By Azizi" src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-5.jpg" data-src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-5.jpg" class="responsive-img pro-image">
+                    <img alt="Berton By Thoe" src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-5.jpg" data-src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-5.jpg" class="responsive-img pro-image">
                     <div class="col s12 title-holder">
                         <h5>من جميرا بيتش ريزيدنس /دبي مارينا</h5>                       
                     </div>
@@ -196,7 +196,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Azizi Mina" src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-4.jpg" data-src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-4.jpg" class="responsive-img pro-image">
+                    <img alt="Thoe Mina" src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-4.jpg" data-src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-4.jpg" class="responsive-img pro-image">
                     <div class="col s12 title-holder">
                         <h5>مميز وإبداع  </h5>                       
                     </div>
@@ -205,7 +205,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Berton By Azizi" src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-3.jpg" data-src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-3.jpg" class="responsive-img pro-image">
+                    <img alt="Berton By Thoe" src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-3.jpg" data-src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-3.jpg" class="responsive-img pro-image">
                     <div class="col s12 title-holder">
                         <h5>في التصميم</h5>                       
                     </div>
@@ -215,7 +215,7 @@
             <div class="col s12 m4 pro-holder center-align Completed">
 
                 <div class="card col s12 p0 cards">
-                    <img alt="Berton By Azizi" src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-6.jpg" data-src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-6.jpg" class="responsive-img pro-image">
+                    <img alt="Berton By Thoe" src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-6.jpg" data-src="<?= SITE_URL ?>/emailer/berton-offers/ar/Berton-Carousel-camp-ARB-6.jpg" class="responsive-img pro-image">
                     <div class="col s12 title-holder">
                         <h5>اشترِ منزلك الآن</h5>                       
                     </div>
@@ -307,7 +307,7 @@
     if (campaign !== '' && campaign !== null) {
         sessionStorage.setItem("utm_campaign", capitalize(campaign.replace("-", " ")));
     } else {
-        sessionStorage.setItem("utm_campaign", 'Now launching Berton by Azizi');
+        sessionStorage.setItem("utm_campaign", 'Now launching Berton by Thoe');
     }
 
     sessionStorage.setItem("ips_offers_url", '<?= SITE_URL ?>/en/berton-offers');

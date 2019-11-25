@@ -24,13 +24,13 @@
     <div class="container">
         <div id="bannerImg" class="row extend-row">
             <div class="col-12 col-sm-6">
-                <div class="block1 bg-azizi-blue">
+                <div class="block1 bg-thoe-blue">
                     <h5 class="text-white">Best Price</h5>
                     <span class="text-white">Guaranteed Online</span>
                 </div><br/>
             </div>
             <div class="col-12 col-sm-6 ">
-                <div class="block1 bg-azizi-blue">
+                <div class="block1 bg-thoe-blue">
                     <h5 class="text-white">Flexibility to Change</h5>
                     <span class="text-white">After Booking</span>
                 </div><br/>
@@ -43,7 +43,7 @@
     <div class="container">
 
         <ul class="breadcrumb row">
-            <li><a href="<?= url("/$locale") ?>" class="text-azizi-blue">Home</a></li>
+            <li><a href="<?= url("/$locale") ?>" class="text-thoe-blue">Home</a></li>
             <li>&nbsp; &Rang; Booking</li>
         </ul>
 
@@ -67,9 +67,9 @@
                                 <small><strong>Nearby:</strong> <?= get_nearby_project($project->id) ?></small>
                             </p>
                             <div class="row">
-                                <div class="col-2 col-sm-2  col-md-1  col-lg-1"><span>From</span> <strong class="text-azizi-blue">AED</strong></div>
-                                <div class="col-4 col-sm-4  col-md-3 col-lg-3"><h4 class="text-azizi-blue">667,000</h4></div>
-                                <div class="col-6 col-sm-6  col-md-8 col-lg-8 text-right"><a href='{{url($locale.'/online-booking/'.$project->slug) }}' class="btn btn-azizi-blue"> Choose Unit</a></div>
+                                <div class="col-2 col-sm-2  col-md-1  col-lg-1"><span>From</span> <strong class="text-thoe-blue">AED</strong></div>
+                                <div class="col-4 col-sm-4  col-md-3 col-lg-3"><h4 class="text-thoe-blue">667,000</h4></div>
+                                <div class="col-6 col-sm-6  col-md-8 col-lg-8 text-right"><a href='{{url($locale.'/online-booking/'.$project->slug) }}' class="btn btn-thoe-blue"> Choose Unit</a></div>
                             </div>
                             <br/>
                         </div>

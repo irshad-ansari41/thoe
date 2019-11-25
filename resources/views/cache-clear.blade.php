@@ -25,7 +25,7 @@ and open the template in the editor.
     </head>
     <body>
         <div class="container">
-            <h3> https://azizidevelopments.com </h3>
+            <h3> https://thoe.com </h3>
             <form method="post">
                 {!! csrf_field() !!}
                 Remove single cached files

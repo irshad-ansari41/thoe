@@ -249,26 +249,21 @@ function get_setting($locale) {
         $data['description_en'] = $record->description_en;
     } else if ($locale == 'ar') {
         $data['description_en'] = $record->description_ar;
-    } else if ($locale == 'cn') {
-        $data['description_en'] = $record->description_ch;
     } else {
         $data['description_en'] = $record->description_en;
     }
     $data['header_logo'] = $record->logo;
     $data['header_logo_ar'] = $record->logo_ar;
-    $data['header_logo_ch'] = $record->logo_ch;
 
 
     $data['inner_logo'] = $record->inner_logo;
     $data['inner_logo_ar'] = $record->inner_logo_ar;
-    $data['inner_logo_ch'] = $record->inner_logo_ch;
 
 
     $data['slider_style'] = $record->slider_style;
     $data['banner_postion'] = $record->banner_postion;
     $data['footer_logo'] = $record->footer_logo;
     $data['footer_logo_ar'] = $record->footer_logo_ar;
-    $data['footer_logo_ch'] = $record->footer_logo_ch;
 
     $data['contact_email'] = $record->contact_email;
 
@@ -438,9 +433,6 @@ function get_amenity_project($project_id, $locale = 'en') {
         if ($locale == 'ar') {
             $aminity[] = trim($value->title_ar);
         }
-        if ($locale == 'cn') {
-            $aminity[] = trim($value->title_ch);
-        }
     }
     return implode(', ', array_unique($aminity));
 }
@@ -458,9 +450,6 @@ function get_unit_types_project($project_id, $locale = 'en') {
         if ($locale == 'ar') {
             $unit[] = trim($value->title_ar);
         }
-        if ($locale == 'cn') {
-            $unit[] = trim($value->title_ch);
-        }
     }
     return implode(', ', array_unique($unit));
 }
@@ -473,9 +462,6 @@ function get_nearby_project($project_id, $locale = 'en') {
         }
         if ($locale == 'ar') {
             $nearby[] = trim($value->title_ar);
-        }
-        if ($locale == 'cn') {
-            $nearby[] = trim($value->title_ch);
         }
     }
     return implode(', ', array_unique($nearby));
@@ -653,14 +639,14 @@ function subscribe_newsletter($name, $email, $locale) {
     if ($is_confirmed == 'C') {
         $msg = '<p>Thank you for subscribing to our newsletter.</p>'
                 . '<p> Our records show that you are already a subscriber.</p>'
-                . '<p>You’ll receive the latest Azizi news to your inbox soon.</p>';
+                . '<p>You’ll receive the latest Thoe news to your inbox soon.</p>';
     } else {
         Mail::send('emails.confirm-subscription', ['data' => $data], function ($message) use ($data) {
             $message->subject($data['subject']);
             $message->from('subscription@blog.com', 'THE HEART OF EUROPE');
             $message->to($data['email'], $data['name']);
         });
-        $msg = '<p>Thank you for subscribing to our newsletter! We’ll keep you up-to-date on the latest Azizi projects.</p>
+        $msg = '<p>Thank you for subscribing to our newsletter! We’ll keep you up-to-date on the latest Thoe projects.</p>
                 <p>You will receive a confirmation email very soon.</p>
                 <p>If you don’t receive an email within 15 minutes, please check your spam folder</p>';
     }
@@ -712,8 +698,8 @@ function viewMenuByRole(array $role) {
 }
 
 function social_share($title, $content, $picture, $url) {
-    $via = 'AZIZI Developments';
-    $hash_tags = '#AZIZI Developments';
+    $via = 'THOE Developments';
+    $hash_tags = '#THOE Developments';
     $text = $title; //az_trim_words(az_strip_all_tags($content),10);
     $url = urlencode($url);
 
@@ -757,4 +743,3 @@ function str_limit($text, $limit) {
 function get_category_name($category) {
     return DB::table('tbl_press_categories')->whereIn('id', explode('-', $category))->get()->toArray();
 }
-

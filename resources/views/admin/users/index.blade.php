@@ -126,7 +126,7 @@ Users List
                             <td>{!! $user->email !!}<br/>{!! $user->p_email !!}</td>
                             <td>
                                 {!! $user->country_code !!}-{!! $user->phone !!}<br/>Pwd - {!! $user->pwd !!}<br/>
-                                <a href="https://api.whatsapp.com/send?phone={{ $user->country_code}}{{ $user->phone}}&text=Hi {{$user->first_name}}, Your Azizi Availability List account is active now. Please try to login." target="_blank">Send WhatsApp</a>
+                                <a href="https://api.whatsapp.com/send?phone={{ $user->country_code}}{{ $user->phone}}&text=Hi {{$user->first_name}}, Your Thoe Availability List account is active now. Please try to login." target="_blank">Send WhatsApp</a>
                             </td>
                             <td>{!!$user->role!!}</td>
                             <td>{!! $user->status=='1'?"<span class='activeItem'>Active</span>":"<span class='inactiveItem'>Inactive</span>" !!}</td>

@@ -43,7 +43,7 @@ Route::get('/dubai/{area}/construction-updates/', ['as' => 'area.updates', 'uses
 Route::get('/dubai/{area}/{property}/construction-updates', ['as' => 'meydan.updates', 'uses' => 'ApiConstructionController@property']);
 //Construction Route End
 
-Route::get('/dubai', ['as' => 'azizi.properties', 'uses' => 'ApiPropertyController@area']);
+Route::get('/dubai', ['as' => 'thoe.properties', 'uses' => 'ApiPropertyController@area']);
 Route::get('/dubai/meydan', ['as' => 'community.properties', 'uses' => 'ApiPropertyController@community']);
 Route::get('/dubai/meydan/{projects}', ['as' => 'community-area.properties', 'uses' => 'ApiPropertyController@projects']);
 Route::get('/dubai/meydan/{projects}/{property}', ['as' => 'community-area.properties', 'uses' => 'ApiPropertyController@property']);

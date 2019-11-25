@@ -63,10 +63,10 @@
 
         <div class="parallax-container valign-wrapper only-heading">
             <div class="parallax">
-                <img alt="Referrals - Azizi Developments" src="<?=SITE_URL?>/lp/meydan/les-jardins/images/slider/slide-lg-2.jpg">
+                <img alt="Referrals - Thoe Developments" src="<?=SITE_URL?>/lp/meydan/les-jardins/images/slider/slide-lg-2.jpg">
             </div>
             <div class="col s12 center-align card tag-pro">
-                <h1>Azizi Referral Form</h1>
+                <h1>Thoe Referral Form</h1>
             </div>
         </div>
 

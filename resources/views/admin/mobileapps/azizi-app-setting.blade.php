@@ -1,21 +1,21 @@
 @extends('admin/layouts/default')
 
 @section('title')
-Azizi App
+Thoe App
 @parent
 @stop
 
 {{-- Page content --}}
 @section('content')
 <section class="content-header">
-    <h1>Azizi App Setting</h1>
+    <h1>Thoe App Setting</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
                 Dashboard
             </a>
         </li>
-        <li>azizi-app</li>
+        <li>thoe-app</li>
         <li class="active">Option List</li>
     </ol>
 </section>
@@ -29,34 +29,34 @@ Azizi App
                     Option List
                 </h4>
                 <div class="pull-right">
-                    <a href="{{ URL::to('/admin/azizi-app-setting') }}" class="btn btn-sm btn-default hidden">Reset</a>
-                    <a href="{{ URL::to('/azizidevelopments') }}" class="btn btn-sm btn-default"  target="_blank"><span class="glyphicon glyphicon-view"></span>View App Online</a>
+                    <a href="{{ URL::to('/admin/thoe-app-setting') }}" class="btn btn-sm btn-default hidden">Reset</a>
+                    <a href="{{ URL::to('/thoedevelopments') }}" class="btn btn-sm btn-default"  target="_blank"><span class="glyphicon glyphicon-view"></span>View App Online</a>
                 </div>
             </div>
             <br />
             <div class="panel-body table-responsive">
-                {!! Form::open(['route' => 'azizi-app-setting.store', 'id'=>'setting-form']) !!}
+                {!! Form::open(['route' => 'thoe-app-setting.store', 'id'=>'setting-form']) !!}
                 <!-- Facts & Floor Plans Field -->
                 <!-- Area Id Field -->
                 <div class="row">
                     <!-- Property Type Id Field -->
                     <div class="form-group col-sm-12">
                         {!! Form::label('AZD_APP_BASE_URL', 'BASE URL:') !!}
-                        <?php $AZD_APP_BASE_URL = !empty($setting->AZD_APP_BASE_URL) ? $setting->AZD_APP_BASE_URL : 'http://azizidevelopments.in'; ?>
+                        <?php $AZD_APP_BASE_URL = !empty($setting->AZD_APP_BASE_URL) ? $setting->AZD_APP_BASE_URL : 'http://thoe.com'; ?>
                         {!! Form::text('AZD_APP_BASE_URL', $AZD_APP_BASE_URL, ['class' => 'form-control']) !!}
                     </div>
 
                     <!-- Property Type Id Field -->
                     <div class="form-group col-sm-12">
                         {!! Form::label('AZD_APP_API_URL', 'API URL:') !!}
-                        <?php $AZD_APP_API_URL = !empty($setting->AZD_APP_API_URL) ? $setting->AZD_APP_API_URL : 'http://azizidevelopments.in/api/v1'; ?>
+                        <?php $AZD_APP_API_URL = !empty($setting->AZD_APP_API_URL) ? $setting->AZD_APP_API_URL : 'http://thoe.com/api/v1'; ?>
                         {!! Form::text('AZD_APP_API_URL', $AZD_APP_API_URL, ['class' => 'form-control']) !!}
                     </div>
 
                     <!-- Property Type Id Field -->
                     <div class="form-group col-sm-12">
                         {!! Form::label('property_type_id', 'App Web URL:') !!}
-                        <?php $AZD_APP_WEB_URL = !empty($setting->AZD_APP_WEB_URL) ? $setting->AZD_APP_WEB_URL : 'http://azizidevelopments.in/azizidevelopments/'; ?>
+                        <?php $AZD_APP_WEB_URL = !empty($setting->AZD_APP_WEB_URL) ? $setting->AZD_APP_WEB_URL : 'http://thoe.com/thoedevelopments/'; ?>
                         {!! Form::text('AZD_APP_WEB_URL', $AZD_APP_WEB_URL, ['class' => 'form-control']) !!}
                     </div>
 
@@ -64,21 +64,21 @@ Azizi App
                     <!-- Property Type Id Field -->
                     <div class="form-group col-sm-12">
                         {!! Form::label('AZD_APP_ONLINE_PAYMENT', 'Online Payment URL') !!}
-                        <?php $AZD_APP_ONLINE_PAYMENT_URL = !empty($setting->AZD_APP_ONLINE_PAYMENT_URL) ? $setting->AZD_APP_ONLINE_PAYMENT_URL : 'https://azizidevelopments.com/online-payments'; ?>
+                        <?php $AZD_APP_ONLINE_PAYMENT_URL = !empty($setting->AZD_APP_ONLINE_PAYMENT_URL) ? $setting->AZD_APP_ONLINE_PAYMENT_URL : 'https://thoe.com/online-payments'; ?>
                         {!! Form::text('AZD_APP_ONLINE_PAYMENT_URL', $AZD_APP_ONLINE_PAYMENT_URL, ['class' => 'form-control']) !!}
                     </div>
 
                     <!-- Property Type Id Field -->
                     <div class="form-group col-sm-12">
                         {!! Form::label('AZD_APP_PLAY_STORE_APP_URL', 'Play Store(Android) App URL:') !!}
-                        <?php $AZD_APP_PLAY_STORE_APP_URL = !empty($setting->AZD_APP_PLAY_STORE_APP_URL) ? $setting->AZD_APP_PLAY_STORE_APP_URL : 'https://play.google.com/store/apps/details?id=com.azizi.developments'; ?>
+                        <?php $AZD_APP_PLAY_STORE_APP_URL = !empty($setting->AZD_APP_PLAY_STORE_APP_URL) ? $setting->AZD_APP_PLAY_STORE_APP_URL : 'https://play.google.com/store/apps/details?id=com.thoe.developments'; ?>
                         {!! Form::text('AZD_APP_PLAY_STORE_APP_URL', $AZD_APP_PLAY_STORE_APP_URL, ['class' => 'form-control']) !!}
                     </div>
 
                     <!-- Property Type Id Field -->
                     <div class="form-group col-sm-12">
                         {!! Form::label('AZD_APP_APP_STORE_APP_URL', 'App Store(iOS) App URL:') !!}
-                        <?php $AZD_APP_APP_STORE_APP_URL = !empty($setting->AZD_APP_APP_STORE_APP_URL) ? $setting->AZD_APP_APP_STORE_APP_URL : 'https://itunes.apple.com/us/app/azizi-developments/id1287021117?ls=1&mt=8'; ?>
+                        <?php $AZD_APP_APP_STORE_APP_URL = !empty($setting->AZD_APP_APP_STORE_APP_URL) ? $setting->AZD_APP_APP_STORE_APP_URL : 'https://itunes.apple.com/us/app/thoe-developments/id1287021117?ls=1&mt=8'; ?>
                         {!! Form::text('AZD_APP_APP_STORE_APP_URL', $AZD_APP_APP_STORE_APP_URL, ['class' => 'form-control']) !!}
                     </div>
 
@@ -147,7 +147,7 @@ Azizi App
                     </div>
                     <div class="form-group col-sm-8">
                         {!! Form::label('property_type_id', 'Email Address:') !!}
-                        <?php $AZD_APP_EMAIL_ADDRESS = !empty($setting->AZD_APP_EMAIL_ADDRESS) ? $setting->AZD_APP_EMAIL_ADDRESS : 'irshad.ansari@azizideveloments.com'; ?>
+                        <?php $AZD_APP_EMAIL_ADDRESS = !empty($setting->AZD_APP_EMAIL_ADDRESS) ? $setting->AZD_APP_EMAIL_ADDRESS : 'irshad.ansari@thoedeveloments.com'; ?>
                         {!! Form::text('AZD_APP_EMAIL_ADDRESS', $AZD_APP_EMAIL_ADDRESS, ['class' => 'form-control']) !!}
                     </div>
 
@@ -155,7 +155,7 @@ Azizi App
                 <!-- Submit Field -->
                 <div class="form-group col-sm-12"><br/><br/>
                     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                    <a href="{!! route('admin.azizi-app-setting.index') !!}" class="btn btn-default">Cancel</a>
+                    <a href="{!! route('admin.thoe-app-setting.index') !!}" class="btn btn-default">Cancel</a>
                 </div>
                 {!! Form::close() !!}
             </div>

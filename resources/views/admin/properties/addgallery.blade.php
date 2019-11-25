@@ -114,7 +114,8 @@
                                         <?php if (!empty($UnitTypes)): foreach ($UnitTypes as $unittype): ?>
                                                 <?php $select = ($unittype->id == $res->unit_type_id) ? 'selected' : '' ?>
                                                 <option value="<?= $unittype->id ?>" <?= $select ?>><?= $unittype->title_en ?></option>
-                                            <?php endforeach;
+                                                <?php
+                                            endforeach;
                                         endif;
                                         ?>
                                     </select>    
@@ -190,7 +191,7 @@
             <option value="0">ALL</option>
             <?php if (!empty($UnitTypes)): foreach ($UnitTypes as $unittype): ?>
                     <option value="<?= $unittype->id ?>"><?= $unittype->title_en ?></option>
-                <?php
+                    <?php
                 endforeach;
             endif;
             ?>
@@ -208,7 +209,7 @@
 <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
 type="text/javascript"></script>
 {{--<script src="{{ asset('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') }}"></script>--}}
-<script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
+<!--<script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>-->
 <script src="{{asset('assets/vendors/tinymce/tinymce.min.js')}}" type="text/javascript"></script>
 <script  src="{{ asset('assets/vendors/ckeditor/js/ckeditor.js') }}"  type="text/javascript"></script>
 <script  src="{{ asset('assets/vendors/ckeditor/js/jquery.js') }}"  type="text/javascript" ></script>

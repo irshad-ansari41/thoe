@@ -100,7 +100,7 @@
             <li <?= (Request::is('admin/content/about') ? 'class="active"' : '') ?>>
                 <a href="{{ URL::to('admin/content/about') }}">
                     <i class="fa fa-angle-double-right"></i>
-                    About Azizi Development
+                    About Thoe Development
                 </a>
             </li>
 
@@ -131,7 +131,7 @@
             <li <?= (Request::is('admin/content/team') ? 'class="active"' : '') ?>>
                 <a href="{{ URL::to('admin/content/team') }}">
                     <i class="fa fa-angle-double-right"></i>
-                    AZIZI Teams
+                    THOE Teams
                 </a>
             </li>
 
@@ -139,14 +139,14 @@
             <li <?= (Request::is('admin/setting/teamrordering') ? 'class="active"' : '') ?>>
                 <a href="{{ URL::to('admin/setting/teamrordering') }}">
                     <i class="fa fa-angle-double-right"></i>
-                    AZIZI Teams - Ordering
+                    THOE Teams - Ordering
                 </a>
             </li>
 
             <li <?= (Request::is('admin/content/team_member') ? 'class="active"' : '') ?>>
                 <a href="{{ URL::to('admin/content/team_member') }}">
                     <i class="fa fa-angle-double-right"></i>
-                    AZIZI Team Members
+                    THOE Team Members
                 </a>
             </li>
 
@@ -568,9 +568,9 @@
                 </a>
             </li>
             <li>
-                <a href="{{ URL::to('/admin/azizi-app-setting') }}" >
+                <a href="{{ URL::to('/admin/thoe-app-setting') }}" >
                     <i class="fa fa-angle-double-right"></i>
-                    Azizi App Setting
+                    Thoe App Setting
                 </a>
             </li>
             <li>

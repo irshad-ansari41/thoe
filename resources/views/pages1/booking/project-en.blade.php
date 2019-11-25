@@ -78,7 +78,7 @@
                     <small><strong>Best price guaranteed online!</strong></small>
                 </p>
                 <a href="" class="text-secondary">View Map</a><br/><br/>
-                <div style="width: 100%"><iframe width="100%" height="150" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Dubai+(Azizi%20Developements)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="https://www.maps.ie/map-my-route/">Draw map route</a></iframe></div><br />
+                <div style="width: 100%"><iframe width="100%" height="150" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Dubai+(Thoe%20Developements)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="https://www.maps.ie/map-my-route/">Draw map route</a></iframe></div><br />
                 <br/>
                 <a class="btn btn-primary btn-block" data-target="#project-units-list" href="{{url($locale.'/booking/'.$project->slug.'/book') }}"> <strong class="float-left">&GT; |</strong> Book a unit for AED 20,000</a>
             </div>

@@ -46,7 +46,7 @@
                             <a style="font-weight: 600;">مؤسسنا</a>
                             @elseif($locale=='cn')
                             <a href="{{ url('/') }}" style="color: #5a5a5a;">主页 / </a>
-                            <a style="font-weight: 600;">AZIZI地产公司创始人</a>
+                            <a style="font-weight: 600;">THOE地产公司创始人</a>
                             @endif
 
                             @if($locale=='ar')

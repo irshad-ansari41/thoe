@@ -96,8 +96,8 @@
                 <div class="row">
                     <div class="col s12" style="margin-bottom: 2rem;">
                         <p class="az-pcontent" style="">
-                            In line with our commitment to continually improve our customer service, Azizi Developments has launched its new 
-                            Customer Care Program. Contact our dedicated team of Care professionals in case of any issue with your Azizi unit:
+                            In line with our commitment to continually improve our customer service, Thoe Developments has launched its new 
+                            Customer Care Program. Contact our dedicated team of Care professionals in case of any issue with your Thoe unit:
                         </p>
                         <div class="col s12 m6 p0">
                             <h4 style="font-size: 15px;font-weight: 100">         
@@ -285,7 +285,7 @@
 
             <br/><br/>
             <div class="col s12" style="margin-top: 3rem;">
-                <h5 style="margin-top: 0;margin-bottom: 0;">Azizi Developments Offices</h5>               
+                <h5 style="margin-top: 0;margin-bottom: 0;">Thoe Developments Offices</h5>               
                 <div class="divider az-header-divider" style="    margin-bottom: 20px;"></div>
                 <!-- Contact Addresses -->
                 <div class="col s12 p0">

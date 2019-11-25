@@ -33,13 +33,13 @@
     <div class="container">
         <div id="bannerImg" class="row extend-row">
             <div class="col-12 col-sm-6 block0">
-                <div class="block1 bg-azizi-blue">
+                <div class="block1 bg-thoe-blue">
                     <h5 class="text-white">Best Price</h5>
                     <span class="text-white">Guaranteed Online</span>
                 </div><br/>
             </div>
             <div class="col-12 col-sm-6 block0">
-                <div class="block1 bg-azizi-blue">
+                <div class="block1 bg-thoe-blue">
                     <h5 class="text-white">Flexibility to Change</h5>
                     <span class="text-white">After Booking</span>
                 </div><br/>
@@ -47,9 +47,9 @@
         </div>
 
         <ul class="breadcrumb row">
-            <li><a href="<?= url("/$locale") ?>" class="text-azizi-blue">Home</a></li>
-            <li><a href="<?= url("/$locale/online-booking") ?>"  class="text-azizi-blue">&nbsp; &Rang; Booking</a></li>
-            <li><a href="<?= url("/$locale/online-booking/{$project->slug}") ?>"  class="text-azizi-blue">&nbsp; &Rang; Projects</a></li>
+            <li><a href="<?= url("/$locale") ?>" class="text-thoe-blue">Home</a></li>
+            <li><a href="<?= url("/$locale/online-booking") ?>"  class="text-thoe-blue">&nbsp; &Rang; Booking</a></li>
+            <li><a href="<?= url("/$locale/online-booking/{$project->slug}") ?>"  class="text-thoe-blue">&nbsp; &Rang; Projects</a></li>
             <li>&nbsp; &Rang; Book</li>
         </ul>
     </div>
@@ -58,7 +58,7 @@
         <?php
         if ($project->id != 10) {
             ?>
-            <h2 class="text-azizi-blue">{{ $locale=='ar'?$project->title_ar:($locale=='cn'?$project->title_ch:$project->title_en) }}</h2>
+            <h2 class="text-thoe-blue">{{ $locale=='ar'?$project->title_ar:($locale=='cn'?$project->title_ch:$project->title_en) }}</h2>
             <h6>Starting from AED 667,000</h6>
             <div class="row">
                 <div class="col-12 col-sm-3"><br/>
@@ -94,7 +94,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-3">
-                                    <a href="#payment-section" class="btn btn-azizi-blue float-right">Choose Later</a><br/><br/>
+                                    <a href="#payment-section" class="btn btn-thoe-blue float-right">Choose Later</a><br/><br/>
                                 </div>
                             </div>
 
@@ -125,13 +125,13 @@
                         <br/>
                         <h4>You are booking a unit in:</h4>
                         <p>Booking Fee</p>
-                        <div class="gray-section bg-azizi-blue">
+                        <div class="gray-section bg-thoe-blue">
                             <h2 class="text-white">AED 20,000</h2>
                             <small class="text-white">Guarantees your hold and starts the process.</small>
                         </div><br/>
                         <p>Location: Dubai, UAE</p>
                         <hr/>
-                        <h5 class="text-info text-azizi-blue">You are free to select your unit later.</h5>
+                        <h5 class="text-info text-thoe-blue">You are free to select your unit later.</h5>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-6  border-left">
@@ -438,7 +438,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <div class="field-wrapper field-submit"><input value="Pay Now" class="btn btn-azizi-blue btn-block" type="submit"></div>
+                                    <div class="field-wrapper field-submit"><input value="Pay Now" class="btn btn-thoe-blue btn-block" type="submit"></div>
                                 </div>
                             </div>
                         </form>

@@ -122,8 +122,8 @@
                     @if($locale=='en')
                     <div class="col s12" style="margin-bottom: 2rem;">
                         <p class="az-pcontent" style="">
-                            In line with our commitment to continually improve our customer service, Azizi Developments has launched its new 
-                            Customer Care Program. Contact our dedicated team of Care professionals in case of any issue with your Azizi unit:
+                            In line with our commitment to continually improve our customer service, Thoe Developments has launched its new 
+                            Customer Care Program. Contact our dedicated team of Care professionals in case of any issue with your Thoe unit:
                         </p>
                         <div class="col s12 m6 p0">
                             <h4 style="font-size: 15px;font-weight: 100">         
@@ -168,7 +168,7 @@
                     @elseif($locale=='cn')
                     <div class="col s12" style="margin-bottom: 2rem;">
                         <p class="az-pcontent" style="">
-                            为了配合我们不断改善客户服务的承诺，AZIZI地产公司推出了新的客户服务方式。如果您的AZIZI公寓有任何问题，我们的专业客服团队将随时为您服务：
+                            为了配合我们不断改善客户服务的承诺，THOE地产公司推出了新的客户服务方式。如果您的THOE公寓有任何问题，我们的专业客服团队将随时为您服务：
                         </p>
                         <div class="col s12 m6 p0">
                             <h4 style="font-size: 15px;font-weight: 100">         
@@ -245,7 +245,7 @@
     {{trans('words.Inside the UAE toll free number')}} 
     <span style="font-weight: 500;"><a href="tel:80029494">{{trans('words.tollfree_no')}}</a></span> -->
 
-                            <!-- 800-AZIZI-(29494) -->
+                            <!-- 800-THOE-(29494) -->
 
                             @if($locale=='en')
 
@@ -258,7 +258,7 @@
                             <span class="ion-ios-telephone" style="font-size: 25px;"></span>
 
                             <span style="font-weight: 500;font-size: 20px;">
-                                <a href="tel:80029494" class="num-fo">(29494)800AZIZI</a>
+                                <a href="tel:80029494" class="num-fo">(29494)800THOE</a>
                             </span>
                             {{trans('words.Inside the UAE toll free number')}} 
                             @elseif($locale=='cn')
@@ -704,13 +704,13 @@
 
 
                             <div class="col s12">
-                                <!-- <h5 style="margin-top: 0;margin-bottom: 0;">{{trans("words.Azizi Developments Offices")}}</h5> -->
+                                <!-- <h5 style="margin-top: 0;margin-bottom: 0;">{{trans("words.Thoe Developments Offices")}}</h5> -->
                                 @if($locale=='en')
-                                <h5 style="margin-top: 0;margin-bottom: 0;">Azizi Developments Offices</h5>
+                                <h5 style="margin-top: 0;margin-bottom: 0;">Thoe Developments Offices</h5>
                                 @elseif($locale=='ar')
                                 <h5 style="margin-top: 0;margin-bottom: 0;">مقرات عزيزي للتطوير العقاري</h5>
                                 @elseif($locale=='cn')
-                                <h5 style="margin-top: 0;margin-bottom: 0;">Azizi 地产公司办公室</h5>
+                                <h5 style="margin-top: 0;margin-bottom: 0;">Thoe 地产公司办公室</h5>
                                 @endif
                                 <div class="divider az-header-divider" style="    margin-bottom: 20px;"></div>
 

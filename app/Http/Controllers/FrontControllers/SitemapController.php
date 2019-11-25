@@ -53,7 +53,7 @@ class SitemapController extends Controller {
 
 
         $data = [
-            "AllRatings" => DB::table('tbl_ratings')->where('menu_title','Sitemap')->where('menu_id',46)->first(),
+            "AllRatings" => DB::table('tbl_ratings')->where('menu_title', 'Sitemap')->where('menu_id', 46)->first(),
             'pages' => $pages,
             'projects' => $projects,
             'properties' => $properties,
@@ -184,11 +184,11 @@ class SitemapController extends Controller {
         $xmlurls[] = ['title' => 'Dubai', 'url' => url("$locale/dubai")];
         $projects = DB::table('tbl_projects')->where('status', '1')->whereNotIn('id', [15, 16, 17])->get();
         foreach ($projects as $project) {
-            $xmlurls[] = ['title' => ($locale == 'ar' ? $project->title_ar : ($locale == 'cn' ? $project->title_ch : $project->title_en)), 'url' => url("$locale/dubai/$project->slug")];
+            $xmlurls[] = ['title' => ($locale == 'ar' ? $project->title_ar : $project->title_en), 'url' => url("$locale/dubai/$project->slug")];
             $communities = DB::table('tbl_projects')->where('status', '1')->whereIn('id', [15, 16, 17])->get();
             foreach ($communities as $community) {
                 if ($project->id == 10) {
-                    $xmlurls[] = ['title' => ($locale == 'ar' ? $project->title_ar : ($locale == 'cn' ? $project->title_ch : $project->title_en)), 'url' => url("$locale/dubai/$project->slug/$community->slug")];
+                    $xmlurls[] = ['title' => ($locale == 'ar' ? $project->title_ar : $project->title_en), 'url' => url("$locale/dubai/$project->slug/$community->slug")];
                 }
             }
         }
@@ -206,9 +206,9 @@ class SitemapController extends Controller {
             $properties = DB::table('tbl_properties')->where('status', '1')->where('project_id', $project->id)->get();
             foreach ($properties as $property) {
                 if (in_array($project->id, [15, 16, 17])) {
-                    $xmlurls[] = ['title' => ($locale == 'ar' ? $property->title_ar : ($locale == 'cn' ? $property->title_ch : $property->title_en)), 'url' => url("$locale/dubai/meydan/$project->slug/$property->slug")];
+                    $xmlurls[] = ['title' => ($locale == 'ar' ? $property->title_ar : $property->title_en), 'url' => url("$locale/dubai/meydan/$project->slug/$property->slug")];
                 } else {
-                    $xmlurls[] = ['title' => ($locale == 'ar' ? $property->title_ar : ($locale == 'cn' ? $property->title_ch : $property->title_en)), 'url' => url("$locale/dubai/$project->slug/$property->slug")];
+                    $xmlurls[] = ['title' => ($locale == 'ar' ? $property->title_ar : $property->title_en), 'url' => url("$locale/dubai/$project->slug/$property->slug")];
                 }
             }
         }
@@ -227,9 +227,9 @@ class SitemapController extends Controller {
             $properties = DB::table('tbl_properties')->where('status', '1')->where('completed', 0)->where("constrution_show", "Yes")->where('project_id', $project->id)->get();
             foreach ($properties as $property) {
                 if (in_array($project->id, [15, 16, 17])) {
-                    $xmlurls[] = ['title' => ($locale == 'ar' ? $property->title_ar : ($locale == 'cn' ? $property->title_ch : $property->title_en)), 'url' => url("$locale/dubai/meydan/$project->slug/$property->slug/construction-updates")];
+                    $xmlurls[] = ['title' => ($locale == 'ar' ? $property->title_ar : $property->title_en), 'url' => url("$locale/dubai/meydan/$project->slug/$property->slug/construction-updates")];
                 } else {
-                    $xmlurls[] = ['title' => ($locale == 'ar' ? $property->title_ar : ($locale == 'cn' ? $property->title_ch : $property->title_en)), 'url' => url("$locale/dubai/$project->slug/$property->slug/construction-updates")];
+                    $xmlurls[] = ['title' => ($locale == 'ar' ? $property->title_ar : $property->title_en), 'url' => url("$locale/dubai/$project->slug/$property->slug/construction-updates")];
                 }
             }
         }
@@ -247,7 +247,7 @@ class SitemapController extends Controller {
         foreach ($images as $image) {
             $gallery_type = $image->gallery_type == 1 ? 'corporate' : ($image->gallery_type == 2 ? 'identity' : 'events');
             $slug = str_replace(['&', '/', '<br/>', '<br>'], ['&amp;', '-', '', ''], strip_tags($image->slug));
-            $xmlurls[] = ['title' => ($locale == 'ar' ? $image->gallery_title_ar : ($locale == 'cn' ? $image->gallery_title_ch : $image->gallery_title)), 'url' => url("$locale/image-gallery/$gallery_type/$slug")];
+            $xmlurls[] = ['title' => ($locale == 'ar' ? $image->gallery_title_ar : $image->gallery_title), 'url' => url("$locale/image-gallery/$gallery_type/$slug")];
         }
         return !empty($index) ? array_column($xmlurls, 'url') : $xmlurls;
     }
@@ -290,7 +290,7 @@ class SitemapController extends Controller {
         foreach ($videos as $video) {
             $gallery_type = $video->gallery_type == 1 ? 'corporate' : ($video->gallery_type == 2 ? 'commercial' : 'events');
             $slug = str_replace(['&', '/', '<br/>', '<br>'], ['&amp;', '-', '', ''], strip_tags($video->slug));
-            $xmlurls[] = ['title' => ($locale == 'ar' ? $video->gallery_title_ar : ($locale == 'cn' ? $video->gallery_title_ch : $video->gallery_title)), 'url' => url("$locale/video-gallery/$gallery_type/$slug")];
+            $xmlurls[] = ['title' => ($locale == 'ar' ? $video->gallery_title_ar : $video->gallery_title), 'url' => url("$locale/video-gallery/$gallery_type/$slug")];
         }
         return !empty($index) ? array_column($xmlurls, 'url') : $xmlurls;
     }

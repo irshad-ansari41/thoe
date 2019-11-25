@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-12 col-sm-5"><img src="<?=SITE_URL?>/assets/images/projects/15119942461219838370.jpg" class="img-fluid img-full-width"></div>
             <div class="col-12 col-sm-7">
-                <h5>Azizi Riviera</h5>
+                <h5>Thoe Riviera</h5>
                 <h6>Maydan One, Dubai</h6>
                 <hr/>
                 <p><small><strong>Project type:</strong> RESIDENTIAL APARTMENTS</small><br/>
@@ -58,7 +58,7 @@
                     </div>
                     <div class="col-12 col-sm-7">
                         <br/>
-                        <h5>Azizi Riviera</h5>
+                        <h5>Thoe Riviera</h5>
                         <h6>Maydan One, Dubai</h6>
                         <hr/>
                         <p><small><strong>Project type:</strong> RESIDENTIAL APARTMENTS</small><br/>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="col-12 col-sm-7">
                         <br/>
-                        <h5>Azizi Riviera</h5>
+                        <h5>Thoe Riviera</h5>
                         <h6>Maydan One, Dubai</h6>
                         <hr/>
                         <p><small><strong>Project type:</strong> RESIDENTIAL APARTMENTS</small><br/>

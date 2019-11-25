@@ -46,7 +46,7 @@
                             <a style="font-weight: 600;">??????</a>
                             @elseif($locale=='cn')
                             <a href="{{ url('/') }}" style="color: #5a5a5a;">?? / </a>
-                            <a style="font-weight: 600;">AZIZI???????</a>
+                            <a style="font-weight: 600;">THOE???????</a>
                             @endif
 
                             @if($locale=='ar')

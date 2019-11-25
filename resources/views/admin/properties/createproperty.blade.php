@@ -398,17 +398,17 @@
                                 $class = ""
                                 ?>
                                 <div class="col-md-3">
-                                    <label class="checkbox-inline mar-left5" for="example-inline-checkbox1">
-                                        @if($selectedaminities)
-                                        @foreach($selectedaminities as $selectedaminity)
-                                        @if($aminity->id==$selectedaminity->aminity_id)
-                                        <?php
-                                        $class = "checked"
-                                        ?>
-                                        @endif
-                                        @endforeach
-                                        @endif
-                                        <input type="checkbox" id="example-inline-checkbox1" name="aminity_id[]" <?php echo $class ?> value="{!! $aminity->id !!}">
+                                    @if($selectedaminities)
+                                    @foreach($selectedaminities as $selectedaminity)
+                                    @if($aminity->id==$selectedaminity->aminity_id)
+                                    <?php
+                                    $class = "checked"
+                                    ?>
+                                    @endif
+                                    @endforeach
+                                    @endif
+                                    <label class="checkbox-inline mar-left5">
+                                        <input type="checkbox" name="aminity_id[]" <?php echo $class ?> value="{!! $aminity->id !!}">
                                         {!! $aminity->title_en !!}</label>
                                 </div>
                                 @endforeach

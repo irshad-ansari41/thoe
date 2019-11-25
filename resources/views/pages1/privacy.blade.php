@@ -75,7 +75,7 @@
                           <h5 class="title-uppercase" style="font-weight: 600;margin-bottom: 0;">Privacy Policy</h5>
 
                         <div class="desig-person m0" style="">
-                            <i style="font-weight: 600;">Azizi Developments  Website Cookie and Privacy Policy</i>
+                            <i style="font-weight: 600;">Thoe Developments  Website Cookie and Privacy Policy</i>
                         </div>
                         <p class="az-pcontent">This cookie policy applies to the www.<?=DOMAIN_NAME?> website. By continuing to browse the www.<?=DOMAIN_NAME?> website, you are consenting to our use of cookies in accordance with this cookie policy. If you do not agree to our use of cookies in this way, you should set your browser settings accordingly or not use the www.<?=DOMAIN_NAME?> website. If you disable the cookies that we use, this may impact your user experience while on the www.<?=DOMAIN_NAME?> website.</p>
 
@@ -143,7 +143,7 @@
                             <i style="font-weight: 600;">Information collection and use</i>
                         </div>
 
-                        <p class="az-pcontent">We will not sell, trade or disclose to any third party other than an entity in Azizi Developments  (in this privacy policy, ‘we’, ‘us’ and ‘our’ means Azizi Developments  LLC) any information derived from the use of any online service without the consent of the user (except as required by law or in the case of imminent physical harm to the user or others). When we use third parties to perform services on our behalf, we will ensure that such third parties protect the user’s personal information in a manner which is consistent with this statement.</p>
+                        <p class="az-pcontent">We will not sell, trade or disclose to any third party other than an entity in Thoe Developments  (in this privacy policy, ‘we’, ‘us’ and ‘our’ means Thoe Developments  LLC) any information derived from the use of any online service without the consent of the user (except as required by law or in the case of imminent physical harm to the user or others). When we use third parties to perform services on our behalf, we will ensure that such third parties protect the user’s personal information in a manner which is consistent with this statement.</p>
 
                         <div class="desig-person m0" style="">
                                                     <i style="font-weight: 600;">Security</i>
@@ -155,7 +155,7 @@
                                                     <i style="font-weight: 600;">Links</i>
                                                 </div>
 
-                        <p class="az-pcontent">Our website may contain links to other websites as well as information provided by third parties. Please be aware that we are not responsible for the privacy practices of, or the information contained on or sourced from, websites not operated by any company within Azizi Developments . We encourage our users to read the privacy statements of each website that collects personally identifiable information. This privacy statement applies solely to information collected by our website.</p>
+                        <p class="az-pcontent">Our website may contain links to other websites as well as information provided by third parties. Please be aware that we are not responsible for the privacy practices of, or the information contained on or sourced from, websites not operated by any company within Thoe Developments . We encourage our users to read the privacy statements of each website that collects personally identifiable information. This privacy statement applies solely to information collected by our website.</p>
 
                         <div class="desig-person m0" style="">
                                                     <i style="font-weight: 600;">Correction/updating of personal information</i>
@@ -311,7 +311,7 @@
                           <h5 class="title-uppercase" style="font-weight: 600;margin-bottom: 0;">Privacy Policy</h5>
 
                         <div class="desig-person m0" style="">
-                            <i style="font-weight: 600;">Azizi Developments  Website Cookie and Privacy Policy</i>
+                            <i style="font-weight: 600;">Thoe Developments  Website Cookie and Privacy Policy</i>
                         </div>
                         <p class="az-pcontent">This cookie policy applies to the www.<?=DOMAIN_NAME?> website. By continuing to browse the www.<?=DOMAIN_NAME?> website, you are consenting to our use of cookies in accordance with this cookie policy. If you do not agree to our use of cookies in this way, you should set your browser settings accordingly or not use the www.<?=DOMAIN_NAME?> website. If you disable the cookies that we use, this may impact your user experience while on the www.<?=DOMAIN_NAME?> website.</p>
 
@@ -379,7 +379,7 @@
                             <i style="font-weight: 600;">Information collection and use</i>
                         </div>
 
-                        <p class="az-pcontent">We will not sell, trade or disclose to any third party other than an entity in Azizi Developments  (in this privacy policy, ‘we’, ‘us’ and ‘our’ means Azizi Developments  LLC) any information derived from the use of any online service without the consent of the user (except as required by law or in the case of imminent physical harm to the user or others). When we use third parties to perform services on our behalf, we will ensure that such third parties protect the user’s personal information in a manner which is consistent with this statement.</p>
+                        <p class="az-pcontent">We will not sell, trade or disclose to any third party other than an entity in Thoe Developments  (in this privacy policy, ‘we’, ‘us’ and ‘our’ means Thoe Developments  LLC) any information derived from the use of any online service without the consent of the user (except as required by law or in the case of imminent physical harm to the user or others). When we use third parties to perform services on our behalf, we will ensure that such third parties protect the user’s personal information in a manner which is consistent with this statement.</p>
 
                         <div class="desig-person m0" style="">
                                                     <i style="font-weight: 600;">Security</i>
@@ -391,7 +391,7 @@
                                                     <i style="font-weight: 600;">Links</i>
                                                 </div>
 
-                        <p class="az-pcontent">Our website may contain links to other websites as well as information provided by third parties. Please be aware that we are not responsible for the privacy practices of, or the information contained on or sourced from, websites not operated by any company within Azizi Developments . We encourage our users to read the privacy statements of each website that collects personally identifiable information. This privacy statement applies solely to information collected by our website.</p>
+                        <p class="az-pcontent">Our website may contain links to other websites as well as information provided by third parties. Please be aware that we are not responsible for the privacy practices of, or the information contained on or sourced from, websites not operated by any company within Thoe Developments . We encourage our users to read the privacy statements of each website that collects personally identifiable information. This privacy statement applies solely to information collected by our website.</p>
 
                         <div class="desig-person m0" style="">
                                                     <i style="font-weight: 600;">Correction/updating of personal information</i>

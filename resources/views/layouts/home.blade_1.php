@@ -78,7 +78,7 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
         <meta name="twitter:creator" content="@author_handle">
         <meta name="twitter:image" content="<?= !empty($og_pic) ? $og_pic : '' ?>">
 
-        <link rel="canonical" href="https://azizidevelopments.com/">
+        <link rel="canonical" href="https://thoe.com/">
         <link rel="stylesheet" href="<?= asset('frontend-assets/css/ionicons.css') ?>" type="text/css">
         <link rel="stylesheet" href="<?= asset('frontend-assets/css/awesome-bootstrap-owl-style-custom-cmp.css') ?>?version=<?= date('y-m-d') ?>" type="text/css">
 
@@ -209,7 +209,7 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
             {
             "@context": "<?= PROPTOCOL ?>//schema.org/",
             "@type": "Product",
-            "name": "Azizi Developments",
+            "name": "Thoe Developments",
             "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "<?=!empty($AllRatings->ratingvalue) ? $AllRatings->ratingvalue : $RatingValue?>",
@@ -233,7 +233,7 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
             <div class="container">
                 <a class="logo <?= $locale == 'ar' ? 'floatRight' : 'floatLeft' ?>" href="<?= url("/") ?>" title="" rel="home">
                     <?php $logo = $locale == 'ar' ? $setting['mobile_wh_ar'] : ($locale == 'cn' ? $setting['mobile_wh_en'] : $setting['mobile_wh_en']); ?>
-                    <img alt="Azizi Developments" src="<?= asset('frontend-assets/images/logo/') ?>/<?= $logo ?>" class="containerlog">
+                    <img alt="Thoe Developments" src="<?= asset('frontend-assets/images/logo/') ?>/<?= $logo ?>" class="containerlog">
                 </a>
 
                 <a href="#" id="open-menu" class="<?= $locale == 'ar' ? 'floatLeft' : 'floatRight' ?> drop-left">
@@ -244,7 +244,7 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
 
                 <ul class="nav navbar-nav topmg <?= $locale == 'ar' ? 'floatLeft' : 'floatRight' ?>">
                     <li><a id="offer-icon" href="<?= SITE_URL ?>/{{$locale}}/<?=OFFERS_URL?>"><span><?=OFFERS_Name?></span></a></li>
-                    <li><a id="call-icon" class="telephone" data-telephone="80029494"><i class="ion-android-call"></i><span>Call Us 800 (AZIZI) 29494</span></a></li>
+                    <li><a id="call-icon" class="telephone" data-telephone="80029494"><i class="ion-android-call"></i><span>Call Us 800 (THOE) 29494</span></a></li>
                     <li><a id="mail-icon" data-toggle="modal" data-target="#lead-form-model" href="#lead-form-model"><i class="ion-android-mail"></i><span>{{trans('words.register-your-interest')}}</span></a></li>
                     <li>
                         <?php if ($locale == 'en') { ?>
@@ -318,9 +318,9 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
                     <div class="site-header">
                         <?php $MenuLocation = $locale == 'ar' ? 'left' : 'right'; ?>
                         <div class="mob-menu drop-close hidden">
-                            <?php //$logo = $locale == 'en' ? 'azizi-logo.png' : 'logo/1520924041615925084.png' ?>
+                            <?php //$logo = $locale == 'en' ? 'thoe-logo.png' : 'logo/1520924041615925084.png' ?>
                             <?php $logo = $locale == 'ar' ? $setting['mobile_bl_ar'] : ($locale == 'cn' ? $setting['mobile_bl_en'] : $setting['mobile_bl_en']); ?>
-                            <a href="<?= $site_url ?>"><img alt="Azizi Developments" src="<?= SITE_URL ?>/assets/images/logo/<?= $logo ?>" class="responsive-img img1 pull-<?= $pull = $locale == 'ar' ? 'right' : 'left'; ?>"></a>
+                            <a href="<?= $site_url ?>"><img alt="Thoe Developments" src="<?= SITE_URL ?>/assets/images/logo/<?= $logo ?>" class="responsive-img img1 pull-<?= $pull = $locale == 'ar' ? 'right' : 'left'; ?>"></a>
                             <a href="#" id="close-menu" class="pull-<?= $MenuLocation ?> drop-close black-cross hidden"><span class="ion-ios-close-empty"></span></a>
                             <div class="bb2">                 
                                 <a class="active txt-black" href="<?= $en_url ?>">English</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;<a class="active txt-black" href="<?= $ar_url ?>">العربية</a>
@@ -382,7 +382,7 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
                 <div class="row">
                     <div class="col s12">
                         <div class="row">
-                            <h5><?= trans('words.search_in_azizi_developments') ?></h5>
+                            <h5><?= trans('words.search_in_thoe_developments') ?></h5>
                             <div class="input-field col s12">
                                 <form action="<?= url("$locale/search") ?>" name="searchform" id="searchform" method="post" enctype="multipart/form-data">
                                     <div class="col s10">
@@ -415,7 +415,7 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
                         <div class="row">
                             <div class="col-sm-12 col-md-4">
                                 <article>
-                                    <h3><?= trans('words.Azizi Developments') ?></h3>
+                                    <h3><?= trans('words.Thoe Developments') ?></h3>
                                     <?php $Style_AR = $locale == "ar" ? "style='text-align:right;'" : '' ?>
                                     <p class="FooterAbout<?= $locale == "ar" ? 'Ar' : '' ?>" <?= $Style_AR ?>><?= $setting['description_en'] ?></p>
                                 </article>
@@ -433,7 +433,7 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
                                         </address>
                                     <?php } ?>
                                     <?= trans('words.Toll Free') ?>: 
-                                    <?= $locale == 'ar' ? '<a href="#" class="telephone" data-telephone="80029494">(29494)800AZIZI</a><br>' : '<a href="#" class="telephone" data-telephone="80029494">800 AZIZI (29494)</a><br>'; ?>                                    
+                                    <?= $locale == 'ar' ? '<a href="#" class="telephone" data-telephone="80029494">(29494)800THOE</a><br>' : '<a href="#" class="telephone" data-telephone="80029494">800 THOE (29494)</a><br>'; ?>                                    
 
                                     <?= $locale == 'cn' ? '<address>阿联酋，迪拜，谢赫扎伊德路，API World Tower，902/904号办公室</address>' : '' ?>
                                     <?= trans('words.Tel') ?>:                                     
@@ -454,11 +454,11 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
                                     <!-- <span>Working hours: <span class='txt-white'>9am - 6pm, Sun-Thu</span></span> -->
 
                                     <div>
-                                        <a target="_blank" href="<?= PROPTOCOL ?>//www.facebook.com/AziziGroup/" class="socialIcon"><i class="fa fa-facebook"></i></a>
-                                        <a target="_blank" href="<?= PROPTOCOL ?>//www.instagram.com/azizigroup/?hl=en" class="socialIcon"><i  class="fa fa-instagram"></i></a>
-                                        <a target="_blank" href="<?= PROPTOCOL ?>//www.linkedin.com/company/azizi-developments" class="socialIcon"><i  class="fa fa-linkedin-square"></i></a>
+                                        <a target="_blank" href="<?= PROPTOCOL ?>//www.facebook.com/ThoeGroup/" class="socialIcon"><i class="fa fa-facebook"></i></a>
+                                        <a target="_blank" href="<?= PROPTOCOL ?>//www.instagram.com/thoegroup/?hl=en" class="socialIcon"><i  class="fa fa-instagram"></i></a>
+                                        <a target="_blank" href="<?= PROPTOCOL ?>//www.linkedin.com/company/thoe-developments" class="socialIcon"><i  class="fa fa-linkedin-square"></i></a>
                                         <!--<a target="_blank" href="<?= PROPTOCOL ?>//plus.google.com/u/0/107107586826814442634" class="socialIcon"><i  class="ion-social-googleplus"></i></a>-->
-                                        <a target="_blank" href="<?= PROPTOCOL ?>//twitter.com/azizigroup?lang=en" class="socialIcon"><i  class="fa fa-twitter"></i></a>
+                                        <a target="_blank" href="<?= PROPTOCOL ?>//twitter.com/thoegroup?lang=en" class="socialIcon"><i  class="fa fa-twitter"></i></a>
                                         <a target="_blank" href="<?= PROPTOCOL ?>//www.youtube.com/channel/UCmUtuRMwJxaovjGBNSXx-Jw" class="socialIcon"><i  class="fa fa-youtube-play"></i></a>
                                     </div>
 
@@ -580,8 +580,8 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
         <script src="<?= asset('frontend-assets/js/') ?>/othersjs/twitter/oct.js" type="text/javascript"></script>
         <script type="text/javascript">twttr.conversion.trackPid('nx7zm', {tw_sale_amount: 0, tw_order_quantity: 0});</script>
         <noscript>
-        <img height="1" width="1" class="none" alt="Twitter - AZIZI Developments" src="" data-src="<?= PROPTOCOL ?>//analytics.twitter.com/i/adsct?txn_id=nx7zm&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
-        <img height="1" width="1" class="none" alt="Twitter - AZIZI Developments" src="" data-src="<?= PROPTOCOL ?>//t.co/i/adsct?txn_id=nx7zm&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
+        <img height="1" width="1" class="none" alt="Twitter - THOE Developments" src="" data-src="<?= PROPTOCOL ?>//analytics.twitter.com/i/adsct?txn_id=nx7zm&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
+        <img height="1" width="1" class="none" alt="Twitter - THOE Developments" src="" data-src="<?= PROPTOCOL ?>//t.co/i/adsct?txn_id=nx7zm&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
         </noscript>
         <!-- End Twitter single-event website tag code -->
 

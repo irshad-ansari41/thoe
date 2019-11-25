@@ -41,7 +41,7 @@ font-size: 13px;
                 </h4>
                 <div class="pull-right">
                     <a class="btn btn-sm btn-warning" href="{{route('admin.sale-center.units')}}">Units List</a>
-                    <a class="btn btn-sm btn-warning" href="http://azizidevelopments.in/copy-images.php" target="_copy">Copy Images</a>
+                    <a class="btn btn-sm btn-warning" href="http://thoe.com/copy-images.php" target="_copy">Copy Images</a>
                     <a class="btn btn-sm btn-default" href="<?= APP_URL . '/uploads/property-feed-bayut.xml' ?>" target="_feed">Bayut</a>
                     <a class="btn btn-sm btn-default" href="<?= APP_URL . '/uploads/property-feed-property-finder.xml' ?>" target="_feed">Property Finder</a>
                     <a class="btn btn-sm btn-default" href="<?= APP_URL . '/uploads/property-feed-dubizzle-1.xml' ?>" target="_feed">Dubizzle 1</a>

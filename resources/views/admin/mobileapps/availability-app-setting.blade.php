@@ -42,21 +42,21 @@ Availability list App
                     <!-- Property Type Id Field -->
                     <div class="form-group col-sm-12">
                         {!! Form::label('AVL_APP_BASE_URL', 'BASE URL:') !!}
-                        <?php $AVL_APP_BASE_URL = !empty($setting->AVL_APP_BASE_URL) ? $setting->AVL_APP_BASE_URL : 'http://azizidevelopments.in'; ?>
+                        <?php $AVL_APP_BASE_URL = !empty($setting->AVL_APP_BASE_URL) ? $setting->AVL_APP_BASE_URL : 'http://thoe.com'; ?>
                         {!! Form::text('AVL_APP_BASE_URL', $AVL_APP_BASE_URL, ['class' => 'form-control']) !!}
                     </div>
 
                     <!-- Property Type Id Field -->
                     <div class="form-group col-sm-12">
                         {!! Form::label('AVL_APP_API_URL', 'API URL:') !!}
-                        <?php $AVL_APP_API_URL = !empty($setting->AVL_APP_API_URL) ? $setting->AVL_APP_API_URL : 'http://azizidevelopments.in/api/v1'; ?>
+                        <?php $AVL_APP_API_URL = !empty($setting->AVL_APP_API_URL) ? $setting->AVL_APP_API_URL : 'http://thoe.com/api/v1'; ?>
                         {!! Form::text('AVL_APP_API_URL', $AVL_APP_API_URL, ['class' => 'form-control']) !!}
                     </div>
 
                     <!-- Property Type Id Field -->
                     <div class="form-group col-sm-12">
                         {!! Form::label('property_type_id', 'App Web URL:') !!}
-                        <?php $AVL_APP_WEB_URL = !empty($setting->AVL_APP_WEB_URL) ? $setting->AVL_APP_WEB_URL : 'http://azizidevelopments.in/availability-list/'; ?>
+                        <?php $AVL_APP_WEB_URL = !empty($setting->AVL_APP_WEB_URL) ? $setting->AVL_APP_WEB_URL : 'http://thoe.com/availability-list/'; ?>
                         {!! Form::text('AVL_APP_WEB_URL', $AVL_APP_WEB_URL, ['class' => 'form-control']) !!}
                     </div>
 
@@ -64,14 +64,14 @@ Availability list App
                     <!-- Property Type Id Field -->
                     <div class="form-group col-sm-12">
                         {!! Form::label('AVL_APP_ONLINE_PAYMENT', 'Online Payment URL') !!}
-                        <?php $AVL_APP_ONLINE_PAYMENT_URL = !empty($setting->AVL_APP_ONLINE_PAYMENT_URL) ? $setting->AVL_APP_ONLINE_PAYMENT_URL : 'https://azizidevelopments.com/online-payments'; ?>
+                        <?php $AVL_APP_ONLINE_PAYMENT_URL = !empty($setting->AVL_APP_ONLINE_PAYMENT_URL) ? $setting->AVL_APP_ONLINE_PAYMENT_URL : 'https://thoe.com/online-payments'; ?>
                         {!! Form::text('AVL_APP_ONLINE_PAYMENT_URL', $AVL_APP_ONLINE_PAYMENT_URL, ['class' => 'form-control']) !!}
                     </div>
 
                     <!-- Property Type Id Field -->
                     <div class="form-group col-sm-12">
                         {!! Form::label('AVL_APP_PLAY_STORE_APP_URL', 'Play Store(Android) App URL:') !!}
-                        <?php $AVL_APP_PLAY_STORE_APP_URL = !empty($setting->AVL_APP_PLAY_STORE_APP_URL) ? $setting->AVL_APP_PLAY_STORE_APP_URL : 'https://play.google.com/store/apps/details?id=com.phonegap.azizi.availabilitylist'; ?>
+                        <?php $AVL_APP_PLAY_STORE_APP_URL = !empty($setting->AVL_APP_PLAY_STORE_APP_URL) ? $setting->AVL_APP_PLAY_STORE_APP_URL : 'https://play.google.com/store/apps/details?id=com.phonegap.thoe.availabilitylist'; ?>
                         {!! Form::text('AVL_APP_PLAY_STORE_APP_URL', $AVL_APP_PLAY_STORE_APP_URL, ['class' => 'form-control']) !!}
                     </div>
 
@@ -146,7 +146,7 @@ Availability list App
                     </div>
                     <div class="form-group col-sm-8">
                         {!! Form::label('property_type_id', 'Email Address:') !!}
-                        <?php $AVL_APP_EMAIL_ADDRESS = !empty($setting->AVL_APP_EMAIL_ADDRESS) ? $setting->AVL_APP_EMAIL_ADDRESS : 'irshad.ansari@azizideveloments.com'; ?>
+                        <?php $AVL_APP_EMAIL_ADDRESS = !empty($setting->AVL_APP_EMAIL_ADDRESS) ? $setting->AVL_APP_EMAIL_ADDRESS : 'irshad.ansari@thoedeveloments.com'; ?>
                         {!! Form::text('AVL_APP_EMAIL_ADDRESS', $AVL_APP_EMAIL_ADDRESS, ['class' => 'form-control']) !!}
                     </div>
 

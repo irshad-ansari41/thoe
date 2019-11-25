@@ -84,8 +84,8 @@
 
     <section>
 
-        <div class="parallax-container valign-wrapper only-heading" style="background-image:url('http://aziziriviera.com/azizi-emailer/images/ips-2019/26-28_Mar_IPS_Emailer_New.jpg');">
-            <img alt="IPS - Azizi Developments" src="http://aziziriviera.com/azizi-emailer/images/ips-2019/26-28_Mar_IPS_Emailer_New.jpg" class="imgtag"/>
+        <div class="parallax-container valign-wrapper only-heading" style="background-image:url('http://thoeriviera.com/thoe-emailer/images/ips-2019/26-28_Mar_IPS_Emailer_New.jpg');">
+            <img alt="IPS - Thoe Developments" src="http://thoeriviera.com/thoe-emailer/images/ips-2019/26-28_Mar_IPS_Emailer_New.jpg" class="imgtag"/>
             <div class="col s12 center-align card tag-pro">
                 <h1>IPS Form</h1>
             </div>
@@ -100,7 +100,7 @@
             <!--h5 style="margin:0;"></h5-->
 
             <p class="paraclass">
-                Thank you for visiting Azizi Developments at the International Property Show. We are pleased to hear that you want more information on the unmissable offers from our most sought after projects.
+                Thank you for visiting Thoe Developments at the International Property Show. We are pleased to hear that you want more information on the unmissable offers from our most sought after projects.
 
             </p>
             <p class="paraclass">

@@ -219,8 +219,8 @@
                                     <select>
                                         <option value="" disabled selected>{{trans('words.Select Project')}}</option>
                                         <option value="Aster Serviced">{{trans('words.Aster Serviced')}}</option>
-                                        <option value="Azizi Aliyah Serviced">{{trans('words.Azizi Aliyah Serviced')}}</option>
-                                        <option value="Azizi Freesia Residence">{{trans('words.Azizi Freesia Residence')}}</option>
+                                        <option value="Thoe Aliyah Serviced">{{trans('words.Thoe Aliyah Serviced')}}</option>
+                                        <option value="Thoe Freesia Residence">{{trans('words.Thoe Freesia Residence')}}</option>
                                     </select>
                                 </div>
                             </div>

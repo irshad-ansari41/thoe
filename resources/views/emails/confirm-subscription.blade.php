@@ -9,6 +9,6 @@
 <p style="font-size: 16px;padding: 0 10px;">If you cannot click the link above, please copy and paste the following link to your browser.<br/><br/>
     <a href="<?= $data['nl_url'] ?>"><?= $data['nl_url'] ?></a><br/><br/>
 <p style="font-size: 16px;padding: 0 10px;">If you did not make this subscription request, just ignore this message.</p><br/><br/>
-<p style="font-size: 16px;padding: 0 10px;">Thank you!<br/><br/><strong>The Azizi Developments Team</strong><br/><?= $data['site_url'] ?></p><br/><br/>
+<p style="font-size: 16px;padding: 0 10px;">Thank you!<br/><br/><strong>The Thoe Developments Team</strong><br/><?= $data['site_url'] ?></p><br/><br/>
 
 @stop 

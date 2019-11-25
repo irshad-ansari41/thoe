@@ -64,14 +64,7 @@
                                        placeholder="" value="<?= !empty($project->interview_title_ar) ? $project->interview_title_ar : '' ?>" />
                             </div>
                         </div>
-                        <div class="form-group ch_field">
-                            <label class="col-md-3 control-label hidden-xs">Title(Chinese) </label>
-
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" name="event_title_ch"
-                                       placeholder="" value="<?= !empty($project->interview_title_cn) ? $project->interview_title_cn : '' ?>" />
-                            </div>
-                        </div>
+                        
 
                         <div class="form-group ">
                             <label class="col-md-3 control-label hidden-xs en_field">Slug(English)</label>
@@ -87,13 +80,7 @@
                                 <textarea class="form-control" name="slug_ar"><?= !empty($project->slug_ar) ? $project->slug_ar : '' ?></textarea>
                             </div>
                         </div>
-                        <div class="form-group ">
-                            <label class="col-md-3 control-label hidden-xs ch_field">Slug(Chinese)</label>
-
-                            <div class="col-md-8">
-                                <textarea class="form-control" name="slug_ch"><?= !empty($project->slug_cn) ? $project->slug_cn : '' ?></textarea>
-                            </div>
-                        </div>
+                       
 
                         <div class="form-group">
                             <label class="col-md-3 control-label" name="description">Thumbnail photo <br><br> </label>
@@ -135,13 +122,7 @@
                                 <textarea id="" class="form-control arabicFont"  name="extra_desc_ar" rows="5"><?= !empty($project->long_desc_ar) ? $project->long_desc_ar : '' ?></textarea>
                             </div>
                         </div>
-                        <div class="form-group ch_field">
-                            <label class="col-md-3 control-label" name="">Short Description(Chinese) </label>
-
-                            <div class="col-md-8">
-                                <textarea id="" class="form-control"  name="extra_desc_ch" rows="5"><?= !empty($project->long_desc_cn) ? $project->long_desc_cn : '' ?></textarea>
-                            </div>
-                        </div>
+                        
 
                         <div class="form-group en_field">
                             <label class="col-md-3 control-label hidden-xs">Event Date</label>

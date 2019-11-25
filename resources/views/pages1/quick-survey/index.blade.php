@@ -29,7 +29,7 @@
             <div class="row" >
                 <div class="col-lg-12">
                     <div style="text-align: center;;height: 90px; width: 100%; background: #fff; top: 0; z-index: 9999; max-width: 1000px; margin-top:50px;">
-                        <a href="<?=SITE_URL?>/en/quick-survey"><img alt="logo" src="//azizidevelopments.in/assets/images/logo-retina-light1.png" style="width: 150px;margin-top:10px;margin-left:10px;"></a>
+                        <a href="<?=SITE_URL?>/en/quick-survey"><img alt="logo" src="//thoe.com/assets/images/logo-retina-light1.png" style="width: 150px;margin-top:10px;margin-left:10px;"></a>
                     </div>
                 </div>
             </div>
