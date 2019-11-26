@@ -42,7 +42,7 @@
                     <form id="tryitForm" class="form-horizontal" method="post" enctype="multipart/form-data">
 
 
-                        <div class="form-group en_field">
+                        <div class="form-group en_field hide">
                             <label class="col-md-3 control-label hidden-xs">Year</label>
                             <div class="col-md-8">
                                 <select name="year" class="form-control">
@@ -55,7 +55,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group en_field">
+                        <div class="form-group en_field hide">
                             <label class="col-md-3 control-label hidden-xs">Type</label>
                             <div class="col-md-8">
                                 <select name="gallery_type" class="form-control">
@@ -137,6 +137,32 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        <div class="form-group ">
+                            <label class="col-md-3 control-label hidden-xs">Meta Title</label>
+
+                            <div class="col-md-8">
+                                <textarea class="form-control" name="meta_title">{{!empty($results)?$results->meta_title:''}}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label class="col-md-3 control-label hidden-xs">Meta keyword</label>
+
+                            <div class="col-md-8">
+                                <textarea class="form-control" name="meta_keyword">{{!empty($results)?$results->meta_keyword:''}}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label class="col-md-3 control-label hidden-xs">Meta Description</label>
+
+                            <div class="col-md-8">
+                                <textarea class="form-control" name="meta_desc">{{!empty($results)?$results->meta_desc:''}}</textarea>
+                            </div>
+                        </div>
+
 
                         <div class="form-group">
                             <div class="col-md-offset-3 col-md-8">

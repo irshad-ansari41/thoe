@@ -53,11 +53,11 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
     //Constrction Emailer 
     Route::any('/news-pr', ['as' => 'news-pr.index', 'uses' => 'NewsPRController@index']);
     Route::get('/news-pr/{slug}', ['as' => 'news-pr.details', 'uses' => 'NewsPRController@details']);
-    Route::get('/media-gallery', ['as' => 'media-gallery.index', 'uses' => 'MediaGalleryController@index']);
-    Route::get('/image-gallery', ['as' => 'image-gallery.index', 'uses' => 'MediaGalleryController@image_gallery']);
-    Route::get('/image-gallery/{gallery}', ['as' => 'image-gallery.index', 'uses' => 'MediaGalleryController@view_image']);
-    Route::get('/video-gallery', ['as' => 'video-gallery.index', 'uses' => 'MediaGalleryController@video_gallery']);
-    Route::get('/video-gallery/{gallery}', ['as' => 'video-gallery.index', 'uses' => 'MediaGalleryController@view_video']);
+    Route::get('/media-gallery', ['as' => 'media-galleries.index', 'uses' => 'MediaGalleryController@index']);
+    Route::get('/image-gallery', ['as' => 'image-gallery.index', 'uses' => 'MediaGalleryController@image_galleries']);
+    Route::get('/image-gallery/{gallery}', ['as' => 'image-gallery.index', 'uses' => 'MediaGalleryController@image_gallery']);
+    Route::get('/video-gallery', ['as' => 'video-galleries.index', 'uses' => 'MediaGalleryController@video_galleries']);
+    Route::get('/video-gallery/{gallery}', ['as' => 'video-gallery.index', 'uses' => 'MediaGalleryController@video_gallery']);
     Route::any('/interviews', ['as' => 'interviews.index', 'uses' => 'InterviewsController@index']);
 
     Route::get('/survey', ['as' => 'survey.index', 'uses' => 'SurveyController@index']);

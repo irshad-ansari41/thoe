@@ -22,78 +22,75 @@ Events
     <div class="container">
         <div class="row">
             <div class="site">
-                <header class="site__header">
-                    <h1 class="site__title">Image Gallery</h1>
-                </header>
-                <div class="site__main">
-                    <div class="widget js-widget widget--main widget--no-margin">
-                        <div class="widget__content">
-                            <!-- BEGIN PROPERTIES INDEX-->
-                            <div class="tab tab--properties">
-                                <!-- Nav tabs-->
-                                <br/>
-                                <p><?= $content['description_' . $locale] ?></p>
-                                <br/>
-                                <!-- Tab panes-->
-                                <div class="tab-content">
-                                    <div id="tab-features" class="tab-pane in active">
+                <div class="property">
+                    <h1 class="property__title">PORTOFINO HOTEL<span class="property__city">Family hotel experience</span></h1>
+                    <div class="property__header">
+                        <div class="site__main">
+                            <div class="widget js-widget widget--main widget--no-margin">
+                                <div class="widget__content">
 
-                                        <div class="listing listing--grid">
-                                            <?php
-                                            $image_galleries_arr = $image_galleries->toArray();
-                                            foreach ($image_galleries_arr['data'] as $gallery) {
-                                                $gallery = (array) $gallery;
-                                                ?>
-                                                <div class="listing__item">
-                                                    <div class="properties properties--grid">
-                                                        <div class="properties__thumb"><a href="<?= url("/$locale/image-gallery/{$gallery['slug']}") ?>" class="item-photo"><img src="<?= asset("assets/images/media/{$gallery['path']}/{$gallery['holder_image']}") ?>" alt=""/>
-                                                                <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro"><?= str_limit($gallery['short_description_' . $locale], 35) ?></span>
-                                                                </figure></a>
-                                                        </div>
-                                                        <!-- end of block .properties__thumb-->
-                                                        <div class="properties__details">
-                                                            <div class="properties__info"><a href="<?= url("/$locale/image-gallery/{$gallery['slug']}") ?>" class="properties__address"><span class="properties__address-street"><?= $gallery['gallery_title_' . $locale] ?></span></a>
-                                                                <div class="properties__offer">
-                                                                    <div class="properties__offer-column">
-                                                                        <div class="properties__offer-label"><?= date_format(date_create($gallery['created']), 'd F Y') ?></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- end of block .properties__info-->
-                                                    </div>
-                                                    <!-- end of block .properties__item-->
+
+                                    <div class="site--main">
+                                        <div class="property__slider">
+                                            <div class="property__ribon">Sale Open</div>
+                                            <div class="property__ribon property__ribon--status property__ribon--done">Limited Availability</div>
+                                            <div id="properties-thumbs" class="slider slider--small js-slider-thumbs">
+                                                <div class="slider__block js-slick-slider">
+                                                    <?php
+                                                    foreach ($gallery as $i => $slide) {
+                                                        $src = asset('assets/images/media/') . '/' . $gallery->slug . '/' . $gallery->holder_image
+                                                        ?>
+                                                        <div class="slider__item slider__item--<?= $i ?>"><a href="<?= $src ?>" data-size="1740x960" data-gallery-index='<?= $i ?>' class="slider__img js-gallery-item"><img data-lazy="<?= $src ?>" src="<?= asset('frontend-assets/img/lazy-image.jpg') ?>" alt=""></a></div>
+                                                    <?php } ?>
+
                                                 </div>
-                                            <?php } ?>
+                                            </div>
+                                            <div class="slider slider--thumbs">
+                                                <div class="slider__wrap">
+                                                    <div class="slider__block js-slick-slider">
+                                                        <?php
+                                                        foreach ($gallery as $i => $slide) {
+                                                            $src = asset('assets/images/media/') . '/' . $gallery->slug . '/' . $gallery->holder_image
+                                                            ?>
+                                                            <div data-slide-rel='<?= $i ?>' class="slider__item slider__item--<?= $i ?>">
+                                                                <div class="slider__img"><img data-lazy="<?= $src ?>" src="<?= asset('frontend-assets/img/lazy-image.jpg') ?>" alt=""></div>
+                                                            </div>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <button type="button" class="slider__control slider__control--prev js-slick-prev">
+                                                        <svg class="slider__control-icon">
+                                                        <use xlink:href="#icon-arrow-left"></use>
+                                                        </svg>
+                                                    </button>
+                                                    <button type="button" class="slider__control slider__control--next js-slick-next">
+                                                        <svg class="slider__control-icon">
+                                                        <use xlink:href="#icon-arrow-right"></use>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
-
                                     </div>
+
 
                                 </div>
                             </div>
+
                         </div>
                     </div>
-                    <div class="site__footer">
-                        <!-- BEGIN PAGINATION-->
-                        <nav class="listing__pagination">
-                            <?= $image_galleries->links() ?>
-                        </nav>
-                        <!-- END PAGINATION-->
-                    </div>
                 </div>
+                <!-- END Site-->
+                <div class="clearfix"></div>
             </div>
-            <!-- END Site-->
-            <div class="clearfix"></div>
         </div>
     </div>
-</div>
-<!-- END CENTER SECTION-->
-@stop
+    <!-- END CENTER SECTION-->
+    @stop
 
 
-@section('footer_scripts')
+    @section('footer_scripts')
 
-@stop
+    @stop
 
 
 

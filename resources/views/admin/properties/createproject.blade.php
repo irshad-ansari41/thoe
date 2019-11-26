@@ -218,7 +218,7 @@
                                 <input type="number" class="form-control" name="total_completion" value="{{ !empty($project->total_completion)?$project->total_completion:'' }}">
                             </div>
                         </div>
-                        
+
                         <div class="form-group ">
                             <label class="col-md-3 control-label hidden-xs">Completion Date</label>
 
@@ -228,13 +228,6 @@
                         </div>
 
 
-                        <div class="form-group ">
-                            <label class="col-md-3 control-label hidden-xs">Meta Title</label>
-
-                            <div class="col-md-8">
-                                <textarea class="form-control" name="meta_title">@if($project){{ $project->meta_title }}@endif</textarea>
-                            </div>
-                        </div>
 
                         <div class="form-group ">
                             <label class="col-md-3 control-label hidden-xs">Meta Title</label>

@@ -716,6 +716,7 @@ class AdminPropertiesController extends Controller {
             $unity = new Unities();
             $unity->title_en = $request->title_en;
             $unity->title_ar = $request->title_ar;
+            $unity->svg_icon = $request->svg_icon;
             $unity->created = date("Y-m-d H:i:s");
             $unity->icon = $input['imagename'];
             $unity->status = '1';
@@ -752,13 +753,9 @@ class AdminPropertiesController extends Controller {
             if ($input['imagename'] != "") {
                 $data['icon'] = $input['imagename'];
             }
-            if ($request->title_en) {
-                $data['title_en'] = $request->title_en;
-            }
-            if ($request->title_ar) {
-                $data['title_ar'] = $request->title_ar;
-            }
-
+            $data['title_en'] = $request->title_en;
+            $data['title_ar'] = $request->title_ar;
+            $data['svg_icon'] = $request->svg_icon;
 
             if (!empty($data)) {
                 Unities::where('id', $request->id)->update($data);
@@ -1026,7 +1023,6 @@ class AdminPropertiesController extends Controller {
             $properties->total_apartment = input_trims($request->total_apartment);
             $properties->video_url = input_trims($request->video_url);
             $properties->building_height = input_trims($request->building_height);
-            $properties->building_height_ar = input_trims($request->building_height_ar);
 
 
             $properties->status = 1;
@@ -1041,6 +1037,7 @@ class AdminPropertiesController extends Controller {
             $properties->enquire_address = input_trims($request->enquire_address);
             $properties->enquire_email = input_trims($request->enquire_email);
             $properties->updated_at = date('Y-m-d');
+            $properties->extra_details = serialize(array_filter($request->extra_details));
             $properties->save();
 
 
@@ -1215,7 +1212,6 @@ class AdminPropertiesController extends Controller {
             $data['header_alt'] = input_trims($request->header_alt);
             $data['construction_alt'] = input_trims($request->construction_alt);
             $data['footer_alt'] = input_trims($request->footer_alt);
-            $data['building_height_ar'] = input_trims($request->building_height_ar);
 
 
             $data['featured'] = input_trims($request->featured);
@@ -1251,6 +1247,7 @@ class AdminPropertiesController extends Controller {
             if ($request->enquire_email) {
                 $data['enquire_email'] = input_trims($request->enquire_email);
             }
+            $data['extra_details'] = serialize(array_filter($request->extra_details));
             //echo '<pre>'; print_r($data); echo '</pre>'; die();
             Merge_unit::where('property_id', $request->id)->delete();
 
@@ -2410,8 +2407,8 @@ class AdminPropertiesController extends Controller {
             $unity = new Unitfloors();
             $unity->title_en = $request->title_en;
             $unity->title_ar = $request->title_ar;
-
             $unity->created = date("Y-m-d H:i:s");
+            $unity->svg_icon = $request->svg_icon;
             $unity->icon = $input['imagename'];
             $unity->status = '1';
             $unity->save();
@@ -2439,12 +2436,10 @@ class AdminPropertiesController extends Controller {
             if ($input['imagename'] != "") {
                 $data['icon'] = $input['imagename'];
             }
-            if ($request->title_en) {
-                $data['title_en'] = $request->title_en;
-            }
-            if ($request->title_ar) {
-                $data['title_ar'] = $request->title_ar;
-            }
+            $data['title_en'] = $request->title_en;
+            $data['title_ar'] = $request->title_ar;
+            $data['svg_icon'] = $request->svg_icon;
+
 
 
             if (!empty($data)) {
@@ -2518,6 +2513,7 @@ class AdminPropertiesController extends Controller {
             $unity->title_ar = $request->title_ar;
 
             $unity->created = date("Y-m-d H:i:s");
+            $unity->svg_icon = $request->svg_icon;
             $unity->icon = $input['imagename'];
             $unity->status = '1';
             $unity->save();
@@ -2546,12 +2542,10 @@ class AdminPropertiesController extends Controller {
             if ($input['imagename'] != "") {
                 $data['icon'] = $input['imagename'];
             }
-            if ($request->title_en) {
-                $data['title_en'] = $request->title_en;
-            }
-            if ($request->title_ar) {
-                $data['title_ar'] = $request->title_ar;
-            }
+            $data['title_en'] = $request->title_en;
+            $data['title_ar'] = $request->title_ar;
+            $data['svg_icon'] = $request->svg_icon;
+
 
 
             if (!empty($data)) {

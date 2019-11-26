@@ -40,7 +40,7 @@
                     </div>
                     <div>
                         <div class="btn-group btn-group-xs">
-                           
+
                         </div>
                     </div>
                 </div>
@@ -66,11 +66,20 @@
                         </div>
 
 
+
+                        <div class="form-group ar_field">
+                            <label class="col-md-3 control-label hidden-xs">SVG Icon</label>
+                            <div class="col-md-8">
+                                <input type="text"  class="form-control"  name="svg_icon" placeholder="SVG Icon"  value="@if($unit){{ $unit->svg_icon }} @endif" />
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label class="col-md-3 control-label" name="description">Icon <br><br></label>
                             <div class="col-md-8">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">@if($unit) @if($unit->icon) <img src="{{asset('assets/images/icon')}}/{!! $unit->icon !!}" height="190" width="190" /> @endif @endif</div>
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                        @if($unit->icon) <img src="{{asset('assets/images/icon')}}/{!! $unit->icon !!}" height="190" width="190" /> @endif</div>
 
                                     <div>
                                         <span class="btn btn-default btn-file">

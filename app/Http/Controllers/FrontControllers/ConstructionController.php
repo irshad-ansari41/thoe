@@ -107,7 +107,7 @@ class ConstructionController extends Controller {
         if (!empty($cached)) {
             return $cached;
         }
-        $property = Properties::where('slug', $property_slug)->where('constrution_show', 'Yes')->where('status', '1')->first();
+        $property = Properties::where('slug', $property_slug)->where('status', '1')->first();
         if (empty($property)) {
             return redirect("$this->locale/construction-updates/$project_slug", 301);
         }

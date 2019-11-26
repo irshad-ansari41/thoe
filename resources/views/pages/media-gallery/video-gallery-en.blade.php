@@ -31,9 +31,7 @@ Events
                             <!-- BEGIN PROPERTIES INDEX-->
                             <div class="tab tab--properties">
                                 <!-- Nav tabs-->
-                                <br/>
-                                <p><?= $content['description_' . $locale] ?></p>
-                                <br/>
+                                <br/><br/>
                                 <!-- Tab panes-->
                                 <div class="tab-content">
                                     <div id="tab-features" class="tab-pane in active">
@@ -45,13 +43,13 @@ Events
                                                 ?>
                                                 <div class="listing__item">
                                                     <div class="properties properties--grid">
-                                                        <div class="properties__thumb"><a href="<?= url("/$locale/video-gallery/{$gallery['slug']}") ?>" class="item-photo"><img src="<?= asset("assets/images/video/{$gallery['holder_image']}") ?>" alt=""/>
+                                                        <div class="properties__thumb"><a href="#" class="item-photo"><img src="<?= asset("assets/images/video/{$gallery['holder_image']}") ?>" alt=""/>
                                                                 <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro"><?= str_limit($gallery['short_description_' . $locale], 35) ?></span>
                                                                 </figure></a>
                                                         </div>
                                                         <!-- end of block .properties__thumb-->
                                                         <div class="properties__details">
-                                                            <div class="properties__info"><a href="<?= url("/$locale/video-gallery/{$gallery['slug']}") ?>" class="properties__address"><span class="properties__address-street"><?= $gallery['gallery_title_' . $locale] ?></span></a>
+                                                            <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street"><?= $gallery['gallery_title_' . $locale] ?></span></a>
                                                                 <div class="properties__offer">
                                                                     <div class="properties__offer-column">
                                                                         <div class="properties__offer-label"><?= date_format(date_create($gallery['created']), 'd F Y') ?></div>

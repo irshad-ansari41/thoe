@@ -12,7 +12,7 @@ Events
 @section('breadcrumbs')
 <nav class="breadcrumbs">
     <div class="container">
-        <?= generate_breadcrumb([url("/$locale") => 'home', url("/$locale/media-gallery") => 'Media Gallery', url("/$locale/media-gallery/video-gallery") => 'Video Gallery']) ?>
+        <?= generate_breadcrumb([url("/$locale") => 'home', url("/$locale/media-gallery") => 'Media Gallery', url("/$locale/media-gallery/image-gallery") => 'Image Gallery']) ?>
     </div>
 </nav>
 @stop
@@ -23,7 +23,7 @@ Events
         <div class="row">
             <div class="site">
                 <header class="site__header">
-                    <h1 class="site__title">Video Gallery</h1>
+                    <h1 class="site__title">Image Gallery</h1>
                 </header>
                 <div class="site__main">
                     <div class="widget js-widget widget--main widget--no-margin">
@@ -31,25 +31,28 @@ Events
                             <!-- BEGIN PROPERTIES INDEX-->
                             <div class="tab tab--properties">
                                 <!-- Nav tabs-->
-                                <br/><br/>
+                                <br/>
+                                <p><?= $content['description_' . $locale] ?></p>
+                                <br/>
                                 <!-- Tab panes-->
                                 <div class="tab-content">
                                     <div id="tab-features" class="tab-pane in active">
+
                                         <div class="listing listing--grid">
                                             <?php
-                                            $video_galleries_arr = $video_galleries->toArray();
-                                            foreach ($video_galleries_arr['data'] as $gallery) {
+                                            $image_galleries_arr = $image_galleries->toArray();
+                                            foreach ($image_galleries_arr['data'] as $gallery) {
                                                 $gallery = (array) $gallery;
                                                 ?>
                                                 <div class="listing__item">
                                                     <div class="properties properties--grid">
-                                                        <div class="properties__thumb"><a href="#" class="item-photo"><img src="<?= asset("assets/images/video/{$gallery['holder_image']}") ?>" alt=""/>
+                                                        <div class="properties__thumb"><a href="<?= url("/$locale/image-gallery/{$gallery['slug']}") ?>" class="item-photo"><img src="<?= asset("assets/images/media/{$gallery['path']}/{$gallery['holder_image']}") ?>" alt=""/>
                                                                 <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro"><?= str_limit($gallery['short_description_' . $locale], 35) ?></span>
                                                                 </figure></a>
                                                         </div>
                                                         <!-- end of block .properties__thumb-->
                                                         <div class="properties__details">
-                                                            <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street"><?= $gallery['gallery_title_' . $locale] ?></span></a>
+                                                            <div class="properties__info"><a href="<?= url("/$locale/image-gallery/{$gallery['slug']}") ?>" class="properties__address"><span class="properties__address-street"><?= $gallery['gallery_title_' . $locale] ?></span></a>
                                                                 <div class="properties__offer">
                                                                     <div class="properties__offer-column">
                                                                         <div class="properties__offer-label"><?= date_format(date_create($gallery['created']), 'd F Y') ?></div>
@@ -73,7 +76,7 @@ Events
                     <div class="site__footer">
                         <!-- BEGIN PAGINATION-->
                         <nav class="listing__pagination">
-                            <?= $video_galleries->links() ?>
+                            <?= $image_galleries->links() ?>
                         </nav>
                         <!-- END PAGINATION-->
                     </div>

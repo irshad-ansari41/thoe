@@ -42,8 +42,7 @@ Content List
                     <thead>
                         <tr class="filters">
                             <th>Title</th>
-                            <th>Year</th>
-                            <th>Type</th>
+                            
                             <th>Status</th>
                             <th>Gallery</th>
                             <th>Action</th>
@@ -53,8 +52,7 @@ Content List
                         @foreach ($response as $res)
                         <tr>
                             <td>{!! $res['title'] !!}</td>
-                            <td>{!! $res['year'] !!}</td>
-                            <td>{!! $res['gallery_type'] !!}</td>
+                            
                             <td>
                                 @if($res['status']==1)
                                 Active
