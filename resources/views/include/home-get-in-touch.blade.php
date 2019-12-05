@@ -5,34 +5,35 @@
  * and open the template in the editor.
  */
 ?>
-<form id="get-in-touch" action="<?= url("$locale/get-in-touch") ?>"  class="form form--flex form--search js-search-form form--sidebar">
+<form id="get-in-touch" action="<?= url("$locale/get-in-touch") ?>" class="form form--flex form--search js-search-form form--banner-sidebar">
     @csrf
+    <h3 class="banner__subtitle">Get in touch to know more!</br></h3>
     <div class="row">
         <div class="form-group">
-            <label for="in-keyword" class="control-label">Full Name</label>
-            <input type="text" id="in-keyword" placeholder="John Carter" class="form-control" required="required">
+            <!--<label for="in-keyword" class="control-label">Full Name</label>-->
+            <input type="text" id="in-keyword" placeholder="Full Name" class="form-control" required="required">
         </div>
         <div class="form-group">
-            <label for="in-keyword" class="control-label">Mobile</label>
-            <input type="text" id="in-keyword" placeholder="+97150" class="form-control" required="required">
+            <!--<label for="in-keyword" class="control-label">Mobile</label>-->
+            <input type="text" id="in-keyword" placeholder="Mobile" class="form-control" required="required">
         </div>
         <div class="form-group">
-            <label for="in-keyword" class="control-label">Email</label>
-            <input type="email" id="in-keyword" placeholder="name@name.com" class="form-control" required="required">
+            <!--<label for="in-keyword" class="control-label">Email</label>-->
+            <input type="email" id="in-keyword" placeholder="Email" class="form-control" required="required" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$">
         </div>
         <div class="form-group">
-            <label for="in-keyword" class="control-label">Intention</label>
+            <!--<label for="in-contract-type" class="control-label">Intention</label>-->
             <select id="in-contract-type" data-placeholder="Register interest for" class="form-control" required="required">
-                <option label=""></option>
+                <option label=" "></option>
                 <option>Investments</option>
                 <option>Real Estate Brokers</option>
                 <option>Suppliers</option>
                 <option>Careers</option>
             </select>
         </div>
-        <div id="response-msg" class="hiddedn"></div>
+        <div id="response-msg" class="hidden"></div>
         <div class="form__buttons">
-            <button type="submit" class="button__action ui__button ui__button--3">Register Interest</button>
+            <button type="submit" class="form__submit">Register Interest</button>
         </div>
     </div>
 </form>

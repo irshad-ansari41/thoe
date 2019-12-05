@@ -85,6 +85,7 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
                 position: absolute;
                 z-index: 1;
             }
+            .js-ui-panel{display: none;}
         </style>
         @yield('header_styles')
     </head>
@@ -167,6 +168,9 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
     <!-- endinject -->
     <!-- END SCRIPTS and INCLUDES-->
     @yield('footer_scripts')
+
+    @stack('custom_script')
+
 </body>
 </html>
 

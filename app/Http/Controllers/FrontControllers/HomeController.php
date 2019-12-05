@@ -8,7 +8,9 @@ use App\Models\Banner;
 use App\Models\Content;
 use App\Models\Event;
 use App\Models\Press;
+use App\Models\Project;
 use DB;
+use Response;
 
 class HomeController extends Controller {
 
@@ -32,12 +34,17 @@ class HomeController extends Controller {
         }
 
         $content = Content::find(27);
+        $properties = [];
+        $projects = Project::all()->toArray();
+        foreach ($projects as $key => $project) {
+            $properties[$key]['project'] = (array)$project;
+            $properties[$key]['properties'] = DB::table('tbl_properties')->where("project_id", $project['id'])->where("status", "1")->orderBy('sort_order', 'ASC')->limit(3)->get()->toArray();
+        }
 
         $data = [
-            'Testimonials' => DB::table('tbl_testimonials')->where(['status' => 'Yes'])->get(),
-            "AllRatings" => DB::table('tbl_ratings')->where('menu_id', 0)->first(),
             'sliders' => Banner::where('status', '1')->orderBy('banner_order', 'ASC')->get()->toArray(),
             'content' => $content,
+            'properties' => $properties,
             'events' => Event::where('event_date', '>=', date('Y-m-d'))->where('status', '1', date('Y-m-d'))->where("event_title_{$this->locale}", '!=', '')->orderBy('event_order', 'asc')->limit(6)->get()->toArray(),
             'press' => Press::where('status', '1', date('Y-m-d'))->where("title_{$this->locale}", '!=', '')->orderBy('press_order', 'asc')->limit(6)->get()->toArray(),
             'bannersliders' => DB::table('tbl_feature_banner_slider')->orderby('tbl_feature_banner_slider.banner_order', 'ASC')->get()->toArray(),
@@ -55,6 +62,29 @@ class HomeController extends Controller {
         /* end Cache */
 
         return view("pages.home.index-{$this->locale}", $data);
+    }
+
+    public function get_in_touch(Request $request) {
+
+        $error = $msg = '';
+        if (!$request->ajax()) {
+            $error = "invalid Request";
+            $status = 'error';
+        }
+
+        $origin = request()->headers->get('origin');
+        if ($origin != 'https://thoedevelopments.com') {
+            //return "invalid Host";
+        }
+
+        $request->input();
+
+        $msg = 'Thank you for your interest.';
+        $status = 'success';
+
+        $result = ['msg' => $msg, 'status' => $status, 'error' => $error];
+
+        return Response::json($result);
     }
 
 }

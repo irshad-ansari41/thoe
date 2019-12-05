@@ -42,6 +42,8 @@ Events
                                                 <h3 class="article__item-title"><a href="#"><?= $event['event_title_' . $locale] ?></a></h3>
                                             </div>
                                         </div>
+                                        <div class="clearfix"></div><br/>
+                                        <?= $event['long_desc_'.$locale] ?>
                                         <div class="clearfix"></div>
                                         <div class="article__preview">
                                             <div class="slider slider--small slider--small js-slick-blog">
@@ -74,10 +76,6 @@ Events
                                                 <dl class="contacts__address-column">
                                                     <dt class="contacts__address-column__title">Venue:</dt>
                                                     <dd><?= $event['visit_us_at_' . $locale] ?></dd>
-                                                </dl>
-                                                <dl class="contacts__address-column">
-                                                    <dt class="contacts__address-column__title"></dt>
-                                                    <dd><a href="<?= url("/$locale/events/{$event['slug_' . $locale]}") ?>" class="article__more">Read more</a><br></dd>
                                                 </dl>
                                             </address>
                                         </div>

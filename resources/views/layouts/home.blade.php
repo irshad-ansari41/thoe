@@ -77,8 +77,18 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
         <link rel="stylesheet" href="assets/css/ie-fix.css"><![endif]-->
         <link rel="icon" href="<?= asset('frontend-assets/img/favicon.ico') ?>" type="image/x-icon">
         @yield('header_styles')
-    </head>
-    <body class="index_slider_search menu-default hover-default scroll-animation slider--fadeInLeft ">
+        <style>
+            .js-ui-panel{display: none;}
+            .text-green{color: green;}
+            .text-red{color: red;}
+            #response-msg{
+                background: rgba(255,255,255,.7);
+                margin: 0 10px;
+                padding: 10px;
+                width: 100%;}
+            </style>
+        </head>
+        <body class="index_slider_search menu-default hover-default scroll-animation slider--fadeInLeft ">
         <!--
         SVG icons from sprite-inline.svg
         They are inlined in order to make them work,
@@ -177,6 +187,9 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
     <!-- endinject -->
     <!-- END SCRIPTS and INCLUDES-->
     @yield('footer_scripts')
+
+    @stack('custom_script')
+
 </body>
 </html>
 

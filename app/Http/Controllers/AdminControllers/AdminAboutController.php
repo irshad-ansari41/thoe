@@ -2,201 +2,252 @@
 
 namespace App\Http\Controllers\AdminControllers;
 
-use App\Http\Controllers\Controller as Controller;
-use Illuminate\Http\Request;
+use App\Http\Controllers\JoshController as Controller;
+use App\About;
 use App\Http\Requests;
-use App\Models\Content;
-use App\Models\About;
-use File;
-use Hash;
-use Lang;
-use Mail;
-use Redirect;
+use App\Http\Requests\AboutRequest;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Response;
 use Sentinel;
-use URL;
-use View;
-use Validator;
-
-class AdminAboutController extends Controller {
+use Intervention\Image\Facades\Image;
+use DOMDocument;
 
 
-    public function index() {
-        $contents = Content::All();
-        return view('about', compact('contents'));
+class AdminAboutController extends Controller
+{
+
+
+    private $tags;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->tags = About::allTags();
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        // Grab all the abouts
+        $abouts = About::all();
+        // Show the page
+        return view('admin.about.index', compact('abouts'));
     }
 
-    protected function validator_image(array $data) {
-        return Validator::make($data, [
-                    'image' => 'mimes:jpg,jpeg,gif,png|min:300|max:2048'
-        ]);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('admin.about.create');
     }
 
-    public function create() {
-        return view('admin.contents.create');
-    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store(AboutRequest $request)
+    {
+        $about = new About($request->except('files','image','tags'));
 
-    public function store(Request $request) {
+        $message=$request->get('content');
+        $dom = new DomDocument();
+        $dom->loadHtml($message, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $images = $dom->getElementsByTagName('img');
+        // foreach <img> in the submited message
+        foreach($images as $img){
+            $src = $img->getAttribute('src');
+            // if the img source is 'data-url'
+            if(preg_match('/data:image/', $src)){
+                // get the mimetype
+                preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                $mimetype = $groups['mime'];
+                // Generating a random filename
+                $filename = uniqid();
+                $filepath = "uploads/about/$filename.$mimetype";
+                // @see http://image.intervention.io/api/
+                $image = Image::make($src)
+                    // resize if required
+                    /* ->resize(300, 200) */
+                    ->encode($mimetype, 100)  // encode file to the specified mimetype
+                    ->save(STORE_PATH.($filepath));
+                $new_src = asset($filepath);
+                $img->removeAttribute('src');
+                $img->setAttribute('src', $new_src);
+            } // <!--endif
+        } // <!-
+        $about->content = $dom->saveHTML();
 
-        $validator = $this->validator_image($request->all());
+        $picture = "";
 
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                    $request, $validator
-            );
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension() ?: 'png';
+            $folderName = '/uploads/about/';
+            $picture = str_random(10) . '.' . $extension;
+            $about->image = $picture;
+        }
+        $about->user_id = 1;//Sentinel::getUser()->id;
+        $about->save();
+
+        if ($request->hasFile('image')) {
+            $destinationPath = STORE_PATH . $folderName;
+            $request->file('image')->move($destinationPath, $picture);
         }
 
-        $image = $request->file('image');
+        $about->tag($request->tags);
 
-        if ($image) {
-            $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = STORE_PATH.('/assets/images/banner');
-            $image->move($destinationPath, $input['imagename']);
+        if ($about->id) {
+            return redirect('admin/about')->with('success', trans('about/message.success.create'));
         } else {
-            $input['imagename'] = '';
+            return Redirect::route('admin/about')->withInput()->with('error', trans('about/message.error.create'));
         }
 
-        $content = new Content();
-        $content->title_en = $request->title_en;
-        $content->description_en = $request->description_en;
-        $content->title_ar = $request->title_ar;
-        $content->description_ar = $request->description_ar;
-       
-        $content->created = date("Y-m-d H:i:s");
-        $content->image = $input['imagename'];
-        $content->save();
-
-        return redirect('admin/content/');
     }
 
-    public function update(Request $request) {
 
-        $validator = $this->validator_image($request->all());
+    /**
+     * Display the specified resource.
+     *
+     * @param  About $about
+     * @return view
+     */
+    public function show(About $about)
+    {
+        $comments = About::find($about->id)->comments;
 
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                    $request, $validator
-            );
+        return view('admin.about.show', compact('about', 'comments', 'tags'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  About $about
+     * @return view
+     */
+    public function edit(About $about)
+    {
+        return view('admin.about.edit', compact('about'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  About $about
+     * @return Response
+     */
+    public function update(AboutRequest $request, About $about)
+    {
+        $message=$request->get('content');
+        $dom = new DomDocument();
+        $dom->loadHtml($message, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $images = $dom->getElementsByTagName('img');
+        // foreach <img> in the submited message
+        foreach($images as $img){
+            $src = $img->getAttribute('src');
+            // if the img source is 'data-url'
+            if(preg_match('/data:image/', $src)){
+                // get the mimetype
+                preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                $mimetype = $groups['mime'];
+                // Generating a random filename
+                $filename = uniqid();
+                $filepath = "uploads/about/$filename.$mimetype";
+                // @see http://image.intervention.io/api/
+                $image = Image::make($src)
+                    // resize if required
+                    /* ->resize(300, 200) */
+                    ->encode($mimetype, 100)  // encode file to the specified mimetype
+                    ->save(STORE_PATH.($filepath));
+                $new_src = asset($filepath);
+            } // <!--endif
+            else{
+                $new_src=$src;
+            }
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $new_src);
+        } // <!-
+        $about->content = $dom->saveHTML();
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension() ?: 'png';
+            $folderName = '/uploads/about/';
+            $picture = str_random(10) . '.' . $extension;
+            $about->image = $picture;
         }
 
-        $image = $request->file('image');
-        if ($image) {
-            $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = STORE_PATH.('/assets/images/banner');
-            $image->move($destinationPath, $input['imagename']);
+        if ($request->hasFile('image')) {
+            $destinationPath = STORE_PATH . $folderName;
+            $request->file('image')->move($destinationPath, $picture);
+        }
+        $about->retag($request['tags']);
+
+        if ($about->update($request->except('content','image','files','_method', 'tags'))) {
+            return redirect('admin/about')->with('success', trans('about/message.success.update'));
         } else {
-            $input['imagename'] = '';
+            return Redirect::route('admin/about')->withInput()->with('error', trans('about/message.error.update'));
         }
+    }
 
-        if ($input['imagename'] != "") {
-            Content::where('id', $request->id)->update(array("title_en" => $request->title_en, "description_en" => $request->description_en, "title_ar" => $request->title_ar, "description_ar" => $request->description_ar,  "image" => $input['imagename'],));
+    /**
+     * Remove about.
+     *
+     * @param About $about
+     * @return Response
+     */
+    public function getModalDelete(About $about)
+    {
+        $model = 'about';
+        $confirm_route = $error = null;
+        try {
+            $confirm_route = route('admin.about.delete', ['id' => $about->id]);
+            return view('admin.layouts.modal_confirmation', compact('error', 'model', 'confirm_route'));
+        } catch (GroupNotFoundException $e) {
+
+            $error = trans('about/message.error.delete', compact('id'));
+            return view('admin.layouts.modal_confirmation', compact('error', 'model', 'confirm_route'));
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  About $about
+     * @return Response
+     */
+    public function destroy(About $about)
+    {
+
+        if ($about->delete()) {
+            return redirect('admin/about')->with('success', trans('about/message.success.delete'));
         } else {
-            Content::where('id', $request->id)->update(array("title_en" => $request->title_en, "description_en" => $request->description_en, "title_ar" => $request->title_ar, "description_ar" => $request->description_ar, ));
+            return Redirect::route('admin/about')->withInput()->with('error', trans('about/message.error.delete'));
         }
-
-
-        $request->session()->flash('alert-success', 'Content has been updated!');
-        return redirect('admin/content/');
     }
 
-    public function edit(Request $request, $id) {
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param AboutCommentRequest $request
+	 * @param About $about
+	 *
+	 * @return Response
+	 */
+    public function storeComment(AboutCommentRequest $request, About $about)
+    {
+        $aboutcooment = new AboutComment($request->all());
+        $aboutcooment->about_id = $about->id;
+        $aboutcooment->save();
 
-        $contents = Content::find($id);
-        $type = 'edit';
-        return view('admin.contents.edit', compact('contents', 'type'));
+        return redirect('admin/about/' . $about->id . '/show');
     }
-
-    public function delete(Request $request, $id) {
-
-
-        $contents = Content::find($id);
-
-        if ($contents->image != "") {
-            $url = STORE_PATH . "/assets/images/banner/" . $contents->image;
-            @unlink($url);
-        }
-
-        Content::destroy($id);
-        $request->session()->flash('alert-success', 'Content has been deleted!');
-        return redirect('admin/content/');
-    }
-
-    public function about_us() {
-        $contents = About::find(1);
-        $type = 'edit';
-        return view('admin.contents.aboutus', compact('contents', 'type'));
-    }
-
-    public function update_about(Request $request) {
-
-        $contents = About::find(1);
-
-        $image = $request->file('banner_image');
-        if ($image) {
-            $bimage = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = STORE_PATH.('/assets/images/about');
-            $image->move($destinationPath, $bimage);
-            /* unlink old image */
-            $url = STORE_PATH . "/assets/images/about/" . $contents->banner_image;
-            @unlink($url);
-        } else {
-            $bimage = '';
-        }
-
-        $cimage = $request->file('chairmen_image');
-        if ($cimage) {
-            $c_image = time() . rand() . '.' . $cimage->getClientOriginalExtension();
-            $destinationPath = STORE_PATH.('/assets/images/about');
-            $cimage->move($destinationPath, $c_image);
-
-            /* unlink old image */
-            $url = STORE_PATH . "/assets/images/about/" . $contents->chairmen_image;
-            @unlink($url);
-        } else {
-            $c_image = '';
-        }
-
-        $data = array();
-
-        if ($bimage != "") {
-            $data['banner_image'] = $bimage;
-        }
-        if ($c_image != "") {
-            $data['chairmen_image'] = $c_image;
-        }
-
-        if ($request->title_en != "") {
-            $data['title_en'] = $request->title_en;
-        }
-        if ($request->title_ar != "") {
-            $data['title_ar'] = $request->title_ar;
-        }
-        
-
-        if ($request->description_en != "") {
-            $data['description_en'] = $request->description_en;
-        }
-        if ($request->description_ar != "") {
-            $data['description_ar'] = $request->description_ar;
-        }
-        
-
-        if ($request->chairment_description_en != "") {
-            $data['chairment_description_en'] = $request->chairment_description_en;
-        }
-        if ($request->chairment_description_ar != "") {
-            $data['chairment_description_ar'] = $request->chairment_description_ar;
-        }
-        
-
-        if (!empty($data)) {
-            About::where('id', 1)->update($data);
-        }
-
-
-        $request->session()->flash('alert-success', 'Content has been updated!');
-        return redirect('admin/content/about');
-    }
-
-    
-
 }

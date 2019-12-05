@@ -32,10 +32,13 @@ Content List
     </div>
     <div class="row">
         <div class="panel panel-primary ">
-            <div class="panel-heading">
-                <h4 class="panel-title"> <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+            <div class="panel-heading clearfix">
+                <h4 class="panel-title pull-left"> <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                     Content List
                 </h4>
+                <div class="pull-right">
+                    <a href="{{ URL::to('admin/content/create') }}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span> @lang('button.create')</a>
+                </div>
             </div>
             <br />
             <div class="panel-body">

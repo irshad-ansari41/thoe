@@ -23,6 +23,14 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
     Route::any('/search', ['as' => 'search', 'uses' => 'SearchController@index']);
 
     Route::get('/about', ['as' => 'about', 'uses' => 'AboutController@about_thoe']);
+    Route::get('/about-thoe', ['as' => 'about-thoe', 'uses' => 'AboutController@about_thoe']);
+    Route::get('/about-the-world', ['as' => 'about-the-world', 'uses' => 'AboutController@about_the_world']);
+    Route::get('/about-developer', ['as' => 'about-developer', 'uses' => 'AboutController@about_developer']);
+    Route::get('/chairmans-message', ['as' => 'chairmans-message', 'uses' => 'AboutController@chairmans_message']);
+    Route::get('/management-team', ['as' => 'management-team', 'uses' => 'AboutController@management_team']);
+    Route::get('/awards', ['as' => 'awards', 'uses' => 'AboutController@awards']);
+
+
     Route::get('/our-founder', ['as' => 'our-founder', 'uses' => 'AboutController@our_founder']);
     Route::get('/management', ['as' => 'management', 'uses' => 'AboutController@management1']);
     Route::get('/board-of-directors', ['as' => 'management', 'uses' => 'AboutController@board_of_directors']);
@@ -44,13 +52,7 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
     Route::get('/events', ['as' => 'events.index', 'uses' => 'EventController@index']);
     Route::get('/events/{slug}', ['as' => 'events.details', 'uses' => 'EventController@details']);
 
-    Route::get('/csu', ['as' => 'csu.index', 'uses' => 'ConstructionEmailerController@index']);
-    Route::post('/csu', ['as' => 'csu.csusend', 'uses' => 'ConstructionEmailerController@csusend']);
 
-    Route::get('/csu-emailer', ['as' => 'csu.csu-emailer', 'uses' => 'ConstructionEmailerController@frm_csu_emailer']);
-    Route::post('/csu-emailer', ['as' => 'csu.send-emailer', 'uses' => 'ConstructionEmailerController@send_csu_emailer']);
-    Route::get('/csu-emailer-clients/{id}', ['as' => 'csu.csu-emailer-clients', 'uses' => 'ConstructionEmailerController@send_csu_emailer_bulk']);
-    //Constrction Emailer 
     Route::any('/news-pr', ['as' => 'news-pr.index', 'uses' => 'NewsPRController@index']);
     Route::get('/news-pr/{slug}', ['as' => 'news-pr.details', 'uses' => 'NewsPRController@details']);
     Route::get('/media-gallery', ['as' => 'media-galleries.index', 'uses' => 'MediaGalleryController@index']);
@@ -59,27 +61,6 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
     Route::get('/video-gallery', ['as' => 'video-galleries.index', 'uses' => 'MediaGalleryController@video_galleries']);
     Route::get('/video-gallery/{gallery}', ['as' => 'video-gallery.index', 'uses' => 'MediaGalleryController@video_gallery']);
     Route::any('/interviews', ['as' => 'interviews.index', 'uses' => 'InterviewsController@index']);
-
-    Route::get('/survey', ['as' => 'survey.index', 'uses' => 'SurveyController@index']);
-    Route::post('/survey', ['as' => 'survey.store', 'uses' => 'SurveyController@store']);
-    Route::any('/survey-report', ['as' => 'survey.report', 'uses' => 'SurveyController@report']);
-
-    Route::get('/quick-survey-lp', ['as' => 'quick-survey.lp', 'uses' => 'QuickSurveyController@indexlp']);
-    Route::get('/quick-survey', ['as' => 'quick-survey.index', 'uses' => 'QuickSurveyController@index']);
-    Route::get('/quick-survey', ['as' => 'quick-survey.index', 'uses' => 'QuickSurveyController@index']);
-    Route::post('/quick-survey', ['as' => 'quick-survey.store', 'uses' => 'QuickSurveyController@store']);
-    Route::any('/quick-survey-report', ['as' => 'quick-survey.report', 'uses' => 'QuickSurveyController@report']);
-
-    Route::get('/online-payments', ['as' => 'payment.index', 'uses' => 'PaymentController@index']);
-    Route::post('/online-payments', ['as' => 'payment.confirmation', 'uses' => 'PaymentController@confirmation']);
-    Route::any('/online-payments/response', ['as' => 'payment.response', 'uses' => 'PaymentController@response']);
-    Route::any('/online-payments/cancel', ['as' => 'payment.cancel', 'uses' => 'PaymentController@cancel']);
-
-    Route::get('/online-payment-payfort', ['as' => 'payment-payfort.index', 'uses' => 'PaymentControllerPayFort@index']);
-    Route::post('/online-payment-payfort', ['as' => 'payment-payfort.confirmation', 'uses' => 'PaymentControllerPayFort@confirmation']);
-    Route::post('/online-payment-payfort/send', ['as' => 'payment-payfort.send', 'uses' => 'PaymentControllerPayFort@send_PayFort_Gateway']);
-    Route::any('/online-payment-payfort/response', ['as' => 'payment-payfort.response', 'uses' => 'PaymentControllerPayFort@response']);
-    Route::any('/online-payment-payfort/cancel', ['as' => 'payment-payfort.cancel', 'uses' => 'PaymentControllerPayFort@cancel']);
 
     Route::get('/construction-updates', ['as' => 'construction.updates', 'uses' => 'ConstructionController@index']);
     //Route::get('/construction-updates', ['as' => 'community.updates', 'uses' => 'ConstructionController@community']);
@@ -118,25 +99,8 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
 
 
 // New Routes
-    Route::get('/demomenu', ['as' => 'demomenu', 'uses' => 'DemoController@index']);
-    Route::get('/form-referral', ['as' => 'form-referral.index', 'uses' => 'FormReferralController@index']);
-    Route::post('/form-referral', ['as' => 'form-referral.send', 'uses' => 'FormReferralController@send']);
-    Route::get('/ips-form', ['as' => 'ips.index', 'uses' => 'IPSController@index']);
-    Route::post('/ips-send', ['as' => 'ips.send', 'uses' => 'IPSController@send']);
-    Route::get('/ips-thank-you', ['as' => 'ips.thankyou', 'uses' => 'IPSController@ips_thankyou']);
-    Route::get('/ips-lists', ['as' => 'ips.lists', 'uses' => 'IPSController@ipslists']);
+    Route::post('/get-in-touch', 'HomeController@get_in_touch');
     Route::get('/send-emailer', ['as' => 'ips.sendEmailer', 'uses' => 'IPSController@sendEmailer']);
-
-    Route::get('/cityscape-abudhabi', ['as' => 'cityscape.index', 'uses' => 'CityScapeController@index']);
-    Route::post('/cityscape-send', ['as' => 'cityscape.send', 'uses' => 'CityScapeController@send']);
-    Route::get('/cityscape-thank-you', ['as' => 'cityscape.thank-you', 'uses' => 'CityScapeController@thankyou']);
-
-    Route::get('/offers-weeks', ['as' => 'cityscape.offers-week', 'uses' => 'OfferController@offers_Week']);
-    Route::get('/launching-berton-by-thoe', ['as' => 'cityscape.berton-offers', 'uses' => 'OfferController@Berton_offers']);
-    Route::get('/creek-views', ['as' => 'cityscape.creek-views', 'uses' => 'OfferController@Creek_Views']);
-
-
-
 
     #FrontEndController
     Route::get('login', array('as' => 'fe-login', 'uses' => 'FrontEndController@getLogin'));
@@ -178,8 +142,6 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
 Route::get('/', array('as' => 'home.index', 'uses' => 'HomeController@index'));
 Route::get('en', array('as' => 'home.en', 'uses' => 'HomeController@index'));
 Route::get('ar', array('as' => 'home.ar', 'uses' => 'HomeController@index'));
-Route::get('cn', array('as' => 'home.cn', 'uses' => 'HomeController@index'));
-
 
 /* Custom */
 Route::post('/cache-page', 'CacheController@store');
@@ -187,29 +149,14 @@ Route::any('/cache-clear', 'CacheController@index');
 //Route::get('/delete-session', 'CacheController@delete_session_views');
 Route::post('/save-meta', 'MetaController@save');
 
-/* End Landing Pages */
-Route::get('lp/diamond-week-offers', ['as' => 'cityscape.lp-diamond-week-offers', 'uses' => 'OfferController@Lp_Diamond_Week']);
-Route::get('lp/adha-offers', ['as' => 'cityscape.lp-adha-offers', 'uses' => 'OfferController@Lp_Adha']);
-/* End Landing Pages */
 
-/* Lead */
-
-Route::any('/save-lead-wdoors', ['as' => 'save-lead-wdoors', 'uses' => 'OtherLeadController@save_lead_wdoors']);
-Route::any('/save-lead', ['as' => 'save-lead', 'uses' => 'LeadController@save_lead']);
-Route::any('/save-lead-salesforace', ['as' => 'save-lead-salesforace', 'uses' => 'LeadController@save_lead_salesforace']);
-Route::any('/push-lead', ['as' => 'push-lead', 'uses' => 'LeadController@push_lead']);
-Route::any('/push-lead/import', ['as' => 'push-lead-import', 'uses' => 'LeadController@import_leads']);
+/* Newsletter */
 Route::post('/subscribe', ['as' => 'newsletter-subscribe', 'uses' => 'LeadController@subscribe']);
 Route::get('/confirm/{sid}/{token}', ['as' => 'newsletter-confirm', 'uses' => 'LeadController@confirm']);
-//Route::get('/sent-emails', ['as' => 'sent-emails', 'uses' => 'LeadController@sendmail']);
-//Route::get('/sent-emails/{propertyslug}', ['as' => 'view-emails', 'uses' => 'LeadController@Thankyou_preview']);
-Route::get('/sent-emails/{propertyslug}/{fullname}/{email}', ['as' => 'view-emails', 'uses' => 'LeadController@Thankyou_preview']);
-Route::get('/sent-emails/{fullname}/{email}', ['as' => 'view-emails', 'uses' => 'LeadController@Thankyou_preview']);
-//Route::get('import-SF-leads',['as' => 'import-SF-leads', 'uses' => 'LeadController@import_SF_leads']);
 
 Route::get('/Artisan', function() {
-    $exitCode = Artisan::call('config:clear');
-    $exitCode = Artisan::call('cache:clear');
-    $exitCode = Artisan::call('config:cache');
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
     return 'DONE'; //Return anything
 });

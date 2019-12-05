@@ -48,36 +48,7 @@ Home Page
                             <div class="banner__sidebar">
                                 <h4 class="banner__sidebar-title">The Best Hospitality Investment Opportunity in Dubai</h4>
                                 <!-- BEGIN SEARCH-->
-                                <form action="properties_listing_list.html" class="form form--flex form--search js-search-form form--banner-sidebar">
-                                    <h3 class="banner__subtitle">Get in touch to know more!</br></h3>
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <!--                            <label for="in-keyword" class="control-label">Full Name</label>-->
-                                            <input type="text" id="in-keyword" placeholder="Full Name" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <!--                            <label for="in-keyword" class="control-label">Mobile</label>-->
-                                            <input type="text" id="in-keyword" placeholder="Mobile" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <!--                            <label for="in-keyword" class="control-label">Email</label>-->
-                                            <input type="email" id="in-keyword" placeholder="Email" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <!--                            <label for="in-contract-type" class="control-label">Intention</label>-->
-                                            <select id="in-contract-type" data-placeholder="Register interest for" class="form-control">
-                                                <option label=" "></option>
-                                                <option>Investments</option>
-                                                <option>Real Estate Brokers</option>
-                                                <option>Suppliers</option>
-                                                <option>Careers</option>
-                                            </select>
-                                        </div>
-                                        <div class="form__buttons">
-                                            <button type="submit" class="form__submit">Register Interest</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                @include('include.home-get-in-touch')
                                 <!-- end of block-->
                                 <!-- END SEARCH-->
                             </div>
@@ -129,88 +100,43 @@ Home Page
                     </div>
                     <div id="tab-projects" class="tab-pane">
                         <div class="listing listing--grid">
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="<?= asset("assets/media-demo/properties/554x360/01.jpg") ?>" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                            </figure></a><span class="properties__ribon">Sale On</span>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">Main Europe</span></a>
-                                            <div class="properties__offer">
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Invest From AED</div>
-                                                    <div class="properties__offer-value"><strong> 1,500,000</strong>
-                                                    </div>
-                                                </div>
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Guaranteed ROI</div>
-                                                    <div class="properties__offer-value"><strong> 100%</strong>
+                            <?php
+                            foreach ($properties as $value) {
+                                $project = (array) $value['project'];
+                                foreach ($value['properties'] as $property) {
+                                    $property = (array) $property;
+                                    ?>
+                                    <div class="listing__item">
+                                        <div class="properties properties--grid">
+                                            <div class="properties__thumb"><a href="<?= url("/$locale/projects/{$project['slug']}/{$property['slug']}") ?>" class="item-photo"><img src="{{asset('assets/images/properties')}}/{{ $project['gallery_location'] }}/{{ $property['gallery_location'] }}/{{ $property['holder_image'] }}" alt=""/>
+                                                    <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro"><?= str_limit($property['long_description_' . $locale], 35) ?></span>
+                                                    </figure></a><span class="properties__ribon">Sale On</span>
+                                            </div>
+                                            <!-- end of block .properties__thumb-->
+                                            <div class="properties__details">
+                                                <div class="properties__info"><a href="<?= url("/$locale/projects/{$project['slug']}/{$property['slug']}") ?>" class="properties__address"><span class="properties__address-street"><?= $property['title_' . $locale] ?></span></a>
+                                                    <div class="properties__offer">
+                                                        <div class="properties__offer-column">
+                                                            <div class="properties__offer-label">Invest From AED</div>
+                                                            <div class="properties__offer-value"><strong> 1,500,000</strong>
+                                                            </div>
+                                                        </div>
+                                                        <div class="properties__offer-column">
+                                                            <div class="properties__offer-label">Guaranteed ROI</div>
+                                                            <div class="properties__offer-value"><strong> 100%</strong>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!-- end of block .properties__info-->
                                         </div>
+                                        <!-- end of block .properties__item-->
                                     </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="<?= asset("assets/media-demo/properties/554x360/02.jpg") ?>" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                            </figure></a><span class="properties__ribon">Sale On</span>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="property_details.html" class="properties__address"><span class="properties__address-street">Portofino</span></a>
-                                            <div class="properties__offer">
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Invest From AED</div>
-                                                    <div class="properties__offer-value"><strong> 1,500,000</strong>
-                                                    </div>
-                                                </div>
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Guaranteed ROI</div>
-                                                    <div class="properties__offer-value"><strong> 100%</strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="<?= asset("assets/media-demo/properties/554x360/03.jpg") ?>" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                            </figure></a><span class="properties__ribon">Sale On</span>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">Cote D'Azur</span></a>
-                                            <div class="properties__offer">
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Invest From AED</div>
-                                                    <div class="properties__offer-value"><strong> 1,500,000</strong>
-                                                    </div>
-                                                </div>
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Guaranteed ROI</div>
-                                                    <div class="properties__offer-value"><strong> 100%</strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-
+                                    <?php
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

@@ -91,18 +91,32 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
         Route::get('{group}/confirm-delete', array('as' => 'groups.confirm-delete', 'uses' => 'AdminGroupsController@getModalDelete'));
         Route::get('{group}/restore', array('as' => 'groups.restore', 'uses' => 'AdminGroupsController@getRestore'));
     });
+    
+    /* routes for about */
+    Route::group(array('prefix' => 'about'), function () {
+        Route::get('/', array('as' => 'abouts', 'uses' => 'AdminAboutController@index'));
+        Route::get('create', array('as' => 'about.create', 'uses' => 'AdminAboutController@create'));
+        Route::post('create', 'AdminAboutController@store');
+        Route::get('{about}/edit', array('as' => 'about.edit', 'uses' => 'AdminAboutController@edit'));
+        Route::post('{about}/edit', 'AdminAboutController@update');
+        Route::get('{about}/delete', array('as' => 'about.delete', 'uses' => 'AdminAboutController@destroy'));
+        Route::get('{about}/confirm-delete/', array('as' => 'about.confirm-delete', 'uses' => 'AdminAboutController@getModalDelete'));
+        Route::get('{about}/restore', array('as' => 'about.restore', 'uses' => 'AdminAboutController@restore'));
+        Route::get('{about}/show', array('as' => 'about.show', 'uses' => 'AdminAboutController@show'));
+        Route::post('{about}/storecomment', 'AdminAboutController@storeComment');
+    });
     /* routes for blog */
     Route::group(array('prefix' => 'blog'), function () {
         Route::get('/', array('as' => 'blogs', 'uses' => 'AdminBlogController@index'));
         Route::get('create', array('as' => 'blog.create', 'uses' => 'AdminBlogController@create'));
-        Route::post('create', 'BlogController@store');
+        Route::post('create', 'AdminBlogController@store');
         Route::get('{blog}/edit', array('as' => 'blog.edit', 'uses' => 'AdminBlogController@edit'));
-        Route::post('{blog}/edit', 'BlogController@update');
+        Route::post('{blog}/edit', 'AdminBlogController@update');
         Route::get('{blog}/delete', array('as' => 'blog.delete', 'uses' => 'AdminBlogController@destroy'));
-        Route::get('{blog}/confirm-delete', array('as' => 'blog.confirm-delete', 'uses' => 'AdminBlogController@getModalDelete'));
+        Route::get('confirm-delete/blog', array('as' => 'blog.confirm-delete', 'uses' => 'AdminBlogController@getModalDelete'));
         Route::get('{blog}/restore', array('as' => 'blog.restore', 'uses' => 'AdminBlogController@restore'));
         Route::get('{blog}/show', array('as' => 'blog.show', 'uses' => 'AdminBlogController@show'));
-        Route::post('{blog}/storecomment', 'BlogController@storeComment');
+        Route::post('{blog}/storecomment', 'AdminBlogController@storeComment');
     });
 
     /* routes for blog category */

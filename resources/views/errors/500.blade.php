@@ -1,58 +1,78 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>500 Internal Error | Welcome to Josh Frontend</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <!-- global level js -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
-    <!-- end of global js-->
-    <!-- page level styles-->
-    <link href="{{ asset('assets/css/frontend/500.css') }}" rel="stylesheet" type="text/css" />
-    <!-- end of page level styles-->
-</head>
-<body>
-    <div class="container-fluid">
-        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-offset-1 col-xs-10 middle">
-            <div class="error-container">
-                <div class="error-main">
-                    <h1> <i class="livicon" data-name="warning" data-s="100" data-c="#ffbc60" data-hc="#ffbc60" data-eventtype="click" data-iteration="15" data-duration="2000"></i>
-                        500
-                    </h1>
-                    <h3>
-                        Thats an error.
-                        <br>There was an error. Please Try again later. Thats all we know
-                    </h3>
-                        <a href="{{ route('home') }}" class="btn btn-primary">Home</a>
-                    <br>
-                </div>
+<?php
+if (!in_array(Request::segment(1), ['en', 'ar', 'cn'])) {
+    $newUrl = str_replace('https://thoe.com/', 'https://thoe.com/en/', Request::fullurl());
+    header("Location: " . $newUrl, 301);
+    exit();
+}
+
+$content = [
+    'alt' => 'alt',
+    'image' => 'image',
+    'title_en' => 'title_en',
+    'meta_title' => '500 page | Welcome to Thoe Developments | ' . time(),
+    'og_title' => '500 page | Welcome to Thoe Developments | ' . time(),
+    'locale' => 'en',
+    'alt' => 'alt',
+];
+
+extract($content);
+?>
+
+@extends('layouts/default')
+
+@section('title')
+About us
+@parent
+@stop
+
+@section('header_styles')
+
+@stop
+
+@section('breadcrumbs')
+<nav class="breadcrumbs">
+    <div class="container">
+        <?= generate_breadcrumb([url("/$locale") => 'home', '' => '404']) ?>
+    </div>
+</nav>
+@stop
+
+@section('content')
+
+<!-- BEGIN CENTER SECTION-->
+<div class="center">
+    <div class="container">
+        <div class="widget js-widget widget--landing">
+            <div class="widget__content">
+                <!-- BEGIN SEARCH-->
+                <form class="form form--search form--error-status">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label"></label>
+                            <input type="text" placeholder="Please enter a search query" class="form-control">
+                            <button class="form__lens"><span class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                    </div>
+                </form>
+                <!-- END SEARCH-->
+            </div>
+        </div>
+        <div class="widget js-widget widget--landing widget--sep">
+            <div class="widget__header">
+                <h2 class="widget__title">500 Error. Internal error.</h2>
+                <h5 class="widget__headline">The Server Encountered an internal error or misconfiguration and was unable to complete your request. Please contact the server administrator, and inform them of the time the error occurred, and anything you might have done that may have caused the error.</h5>
+            </div>
+            <div class="widget__content">
             </div>
         </div>
     </div>
-    <!-- global js -->
-    <script src="{{ asset('assets/js/jquery-1.11.1.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}" type="text/javascript"></script>
-    <!--livicons-->
-    <script src="{{ asset('assets/vendors/livicons/minified/raphael-min.js') }}"></script>
-    <script src="{{ asset('assets/vendors/livicons/minified/livicons-1.4.min.js') }}"></script>
-    <!-- end of global js -->
-    <!-- begining of page level js-->
-    <script>
-    $("document").ready(function() {
-        setTimeout(function() {
-            $(".livicon").trigger('click');
-        }, 10);
-    });
-    // code for aligning center
-    $(document).ready(function() {
-        var x = $(window).height();
-        var y = $(".middle").height();
-        //alert(x);
-        x = x - y;
-        x = x / 2;
-        $(".middle").css("padding-top", x);
-    });
-    </script>
-    <!-- end of page level js-->
-</body>
-</html>
+</div>
+<!-- END CENTER SECTION-->
+
+@stop
+
+
+@section('footer_scripts')
+
+@stop
+

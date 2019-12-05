@@ -103,7 +103,7 @@ Add New Content
                             <label class="col-md-3 control-label" name="description">Description (arabic)</label>
 
                             <div class="col-md-8">
-                                <textarea id="ckeditor_standard" name="description_ar">{{ $contents->description_ar }}</textarea>
+                                <textarea id="ckeditor_standard1" name="description_ar">{{ $contents->description_ar }}</textarea>
                             </div>
                         </div>
 
@@ -140,7 +140,7 @@ Add New Content
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
 
-                                        @if($contents->image!="")
+                                        @if($contents->image)
                                         <img src="<?= url('/') ?>/assets/images/banner/{{ $contents->image }}" width="200" height="150">
                                         @endif
 
@@ -164,16 +164,6 @@ Add New Content
                                 </div>
                             </div>
 
-                            <!--<div class="form-group">
-    <label class="col-md-3 control-label" name="image">File Upload</label>
-
-    <div class="col-md-8">
-                                            <input type="file" name="image">
-                                            @if($contents->image!="")
-                                                    <img src="{{ url('/') }}/banner/{{ $contents->image }}" width="100" height="100">
-                                            @endif
-                                    </div>
-</div>-->
 
                             <div class="form-group">
                                 <div class="col-md-offset-3 col-md-8">
@@ -182,13 +172,14 @@ Add New Content
                             </div>
                             <input type="hidden" name="id" value="{{ $contents->id }}" />
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+
+                        </div>
                     </form>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
-    <!--row ends-->
+        <!--row ends-->
 </section>
 <!-- content -->
 
@@ -197,11 +188,8 @@ Add New Content
 {{-- page level scripts --}}
 @section('footer_scripts')
 
-<script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
-type="text/javascript"></script>
-{{--<script src="{{ asset('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') }}"></script>--}}
+<script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
-
 <script src="{{asset('assets/vendors/tinymce/tinymce.min.js')}}" type="text/javascript"></script>
 <script  src="{{ asset('assets/vendors/ckeditor/js/ckeditor.js') }}"  type="text/javascript"></script>
 <script  src="{{ asset('assets/vendors/ckeditor/js/jquery.js') }}"  type="text/javascript" ></script>
@@ -209,6 +197,9 @@ type="text/javascript"></script>
 <script  src="{{ asset('assets/js/pages/editor.js') }}"  type="text/javascript"></script>
 <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" ></script>
 <script>
+
+                                CKEDITOR.replace('ckeditor_standard');
+                                CKEDITOR.replace('ckeditor_standard1');
                                 function displayLanguage(lang)
                                 {
                                     if (lang == 1)

@@ -88,6 +88,29 @@
             </li>
         </ul>
     </li>
+    
+    <li {!! (( Request::is('admin/about') ||  Request::is('admin/about/create')) || Request::is('admin/about/*')  ? 'class="active"' : '') !!}>
+        <a href=javascript:void(0);>
+            <i class="livicon" data-name="comment" data-c="#F89A14" data-hc="#F89A14" data-size="18"
+               data-loop="true"></i>
+            <span class="title">About</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li {!! (Request::is('admin/about') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/about') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    About List
+                </a>
+            </li>
+            <li {!! (Request::is('admin/about/create') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/about/create') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Add New About
+                </a>
+            </li>
+        </ul>
+    </li>
 
     <li <?= (Request::is('admin/content/about') || Request::is('admin/content/timeline') ? 'class="active"' : '') ?>>
         <a href=javascript:void(0);>

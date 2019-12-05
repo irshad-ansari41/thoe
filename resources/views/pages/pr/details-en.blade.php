@@ -48,6 +48,8 @@ Events
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>
+                                        <br/><?= $press['description_' . $locale] ?>
+                                        <div class="clearfix"></div>
                                         <div class="article__preview">
                                             <div class="slider slider--small slider--small js-slick-blog">
                                                 <div class="slider__block js-slick-slider">
@@ -69,7 +71,7 @@ Events
                                             </div>
                                         </div>
                                         <div class="article__intro">
-                                            <p><?= $press['description_long_' . $locale] ?></p>
+                                            <br/><?= $press['description_long_' . $locale] ?>
                                         </div>
                                     </article>
                                 </div>

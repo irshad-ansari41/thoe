@@ -1,7 +1,7 @@
-@extends('layouts/default')
+@extends('layouts/home')
 
 @section('title')
-About us
+Home Page
 @parent
 @stop
 
@@ -13,7 +13,6 @@ About us
 
 @stop
 
-
 @section('content')
 <div class="site-wrap js-site-wrap">
     <div class="widget js-widget">
@@ -22,112 +21,23 @@ About us
                 <!-- BEGIN SLIDER-->
                 <div class="slider slider--dots">
                     <div class="slider__block js-slick-slider">
-                        <div class="slider__item">
-                            <div class="slider__preview">
-                                <div class="slider__img"><img data-lazy="assets/media-demo/banner/banner-4.jpg" src="assets/img/lazy-image.jpg" alt=""></div>
-                                <div class="slider__container">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="slider__caption">
-                                                <h1 class="banner__title">Witness the magic of snowfall</br>in Dubai</h1>
-                                                <h3 class="banner__subtitle">The Heart of Europe brings authentic European hospitality to the Middle East’s Arabian Sea. An island destination comprising opulent palaces and island villas amid 13 luxury hotel resorts.</h3>
+                        <?php foreach ($sliders as $slide) { ?>
+                            <div class="slider__item">
+                                <div class="slider__preview">
+                                    <div class="slider__img"><img data-lazy="<?= asset("assets/images/home_banners/" . $slide['banner_image']) ?>" src="<?= asset('frontend-assets/media-demo/banner/banner-5.jpg') ?>" alt=""></div>
+                                    <div class="slider__container">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="slider__caption">
+                                                    <h1 class="banner__title"><?= $slide['banner_title_' . $locale] ?></h1>
+                                                    <h3 class="banner__subtitle"><?= $slide['banner_short_description_' . $locale] ?></h3>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="slider__item">
-                            <div class="slider__preview">
-                                <div class="slider__img"><img data-lazy="assets/media-demo/banner/banner-5.jpg" src="assets/img/lazy-image.jpg" alt=""></div>
-                                <div class="slider__container">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="slider__caption">
-                                                <h1 class="banner__title">The world's first climate-controlled resort</h1>
-                                                <h3 class="banner__subtitle">The Heart of Europe brings authentic European hospitality to the Middle East’s Arabian Sea. An island destination comprising opulent palaces and island villas amid 13 luxury hotel resorts.</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slider__item">
-                            <div class="slider__preview">
-                                <div class="slider__img"><img data-lazy="assets/media-demo/banner/banner-3.jpg" src="assets/img/lazy-image.jpg" alt=""></div>
-                                <div class="slider__container">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="slider__caption">
-                                                <h1 class="banner__title">We do more than luxury.</br>We do the impossible.</h1>
-                                                <h3 class="banner__subtitle">The Heart of Europe brings authentic European hospitality to the Middle East’s Arabian Sea. An island destination comprising opulent palaces and island villas amid 13 luxury hotel resorts.</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slider__item">
-                            <div class="slider__preview">
-                                <div class="slider__img"><img data-lazy="assets/media-demo/banner/banner-1.jpg" src="assets/img/lazy-image.jpg" alt=""></div>
-                                <div class="slider__container">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="slider__caption">
-                                                <h1 class="banner__title">We do more than luxury.</br>We do the impossible.</h1>
-                                                <h3 class="banner__subtitle">The Heart of Europe brings authentic European hospitality to the Middle East’s Arabian Sea. An island destination comprising opulent palaces and island villas amid 13 luxury hotel resorts.</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--<div class="slider__item">
-                          <div class="slider__preview">
-                            <div class="slider__img"><img data-lazy="assets/media-demo/banner/banner-2.jpg" src="assets/img/lazy-image.jpg" alt=""></div>
-                            <div class="slider__container">
-                              <div class="container">
-                                <div class="row">
-                                  <div class="slider__caption">
-                                    <h1 class="banner__title banner__title--2">Over than <span>500 000</span> Happy Customers</h1>
-                                    <h4 class="banner__subtitle banner__subtitle--2">After settling on a search location, you can narrow down your results by specifying preferences such as number of bedrooms and bathrooms, square footage, monthly rent, and whatever else you want to specify in the filter.</h4>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>-->
-                        <!--<div class="slider__item">
-                          <div class="slider__preview">
-                            <div class="slider__img"><img data-lazy="assets/media-demo/banner/banner-3.jpg" src="assets/img/lazy-image.jpg" alt=""></div>
-                            <div class="slider__container">
-                              <div class="container">
-                                <div class="row">
-                                  <div class="slider__caption">
-                                    <h1 class="banner__title banner__title--3">Find the <strong>latest homes for sale, </strong> property news & real estate market data</h1>
-                                    <h4 class="banner__subtitle banner__subtitle--2">RealtySpace.com is USA’s Number 1 property site for real estate.</h4>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>-->
-                        <!--<div class="slider__item">
-                          <div class="slider__preview">
-                            <div class="slider__img"><img data-lazy="assets/media-demo/banner/banner-4.jpg" src="assets/img/lazy-image.jpg" alt=""></div>
-                            <div class="slider__container">
-                              <div class="container">
-                                <div class="row">
-                                  <div class="slider__caption">
-                                    <h1 class="banner__title banner__title--4"><span class="banner__title-span-1">Find your</span><span class="banner__title-border-bottom"></span><span class="banner__title-span-2">perfect home</span><span class="banner__title-border-top"></span><span class="banner__title-span-3">We have 570,302 for you to choose from</span></h1>
-                                    <div class="clearfix"></div>
-                                    <h4 class="banner__subtitle banner__subtitle--4">The Right Place To Buy, Sell, Rent or Let Property In All Of The World. Selling Property In USA Just Got Easier And Cheaper Thanks To RealtySpace.com. List a Property, Land Or Real Estate In Any Country.</h4>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>-->
+                        <?php } ?>
                     </div>
                     <!-- end of block .slider__block-->
                 </div>
@@ -138,36 +48,7 @@ About us
                             <div class="banner__sidebar">
                                 <h4 class="banner__sidebar-title">The Best Hospitality Investment Opportunity in Dubai</h4>
                                 <!-- BEGIN SEARCH-->
-                                <form action="properties_listing_list.html" class="form form--flex form--search js-search-form form--banner-sidebar">
-                                    <h3 class="banner__subtitle">Get in touch to know more!</br></h3>
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <!--                            <label for="in-keyword" class="control-label">Full Name</label>-->
-                                            <input type="text" id="in-keyword" placeholder="Full Name" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <!--                            <label for="in-keyword" class="control-label">Mobile</label>-->
-                                            <input type="text" id="in-keyword" placeholder="Mobile" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <!--                            <label for="in-keyword" class="control-label">Email</label>-->
-                                            <input type="email" id="in-keyword" placeholder="Email" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <!--                            <label for="in-contract-type" class="control-label">Intention</label>-->
-                                            <select id="in-contract-type" data-placeholder="Register interest for" class="form-control">
-                                                <option label=" "></option>
-                                                <option>Investments</option>
-                                                <option>Real Estate Brokers</option>
-                                                <option>Suppliers</option>
-                                                <option>Careers</option>
-                                            </select>
-                                        </div>
-                                        <div class="form__buttons">
-                                            <button type="submit" class="form__submit">Register Interest</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                @include('include.home-get-in-touch')
                                 <!-- end of block-->
                                 <!-- END SEARCH-->
                             </div>
@@ -195,148 +76,33 @@ About us
                 <div class="tab-content">
                     <div id="tab-features" class="tab-pane in active">
                         <div class="listing listing--grid">
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/features/554x360/01.jpg" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Read more!</span>
-                                            </figure></a>
+                            <?php
+                            foreach ($bannersliders as $slide) {
+                                $slide = (array) $slide;
+                                ?>
+                                <div class="listing__item">
+                                    <div class="properties properties--grid">
+                                        <div class="properties__thumb"><a href="<?= $slide['explore_link'] ?>" class="item-photo"><img src="<?= asset("assets/images/home_banners/{$slide['banner_image']}") ?>" alt=""/>
+                                                <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Read more!</span>
+                                                </figure></a>
+                                        </div>
+                                        <!-- end of block .properties__thumb-->
+                                        <div class="properties__details">
+                                            <div class="properties__info"><a href="<?= $slide['explore_link'] ?>" class="properties__address"><span class="properties__address-street"><?= $slide['banner_title_' . $locale] ?></span><span class="properties__intro"><?= $slide['banner_long_description_' . $locale] ?></span>
+                                            </div></a>
+                                        </div>
+                                        <!-- end of block .properties__info-->
                                     </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">Snow Plaza</span><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                        </div></a>
-                                    </div>
-                                    <!-- end of block .properties__info-->
+                                    <!-- end of block .properties__item-->
                                 </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/features/554x360/02.jpg" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Read more!</span>
-                                            </figure></a>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">Rainy Street</span><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                        </div></a>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/features/554x360/03.jpg" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Read more!</span>
-                                            </figure></a>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">Coral Nursery</span><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                        </div></a>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/features/554x360/04.jpg" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Read more!</span>
-                                            </figure></a>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">European Landscape</span><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                        </div></a>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/features/554x360/05.jpg" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Read more!</span>
-                                            </figure></a>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">Collection of Fine Things</span><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                        </div></a>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/features/554x360/06.jpg" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Read more!</span>
-                                            </figure></a>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">European Hospitality</span><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                        </div></a>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/features/554x360/03.jpg" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Read more!</span>
-                                            </figure></a>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">Coral Nursery</span><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                        </div></a>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/properties/554x360/01.jpg" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Read more!</span>
-                                            </figure></a>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">Main Europe</span><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                        </div></a>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/features/554x360/02.jpg" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Read more!</span>
-                                            </figure></a>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">Rainy Street</span><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                        </div></a>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                     <div id="tab-projects" class="tab-pane">
                         <div class="listing listing--grid">
                             <div class="listing__item">
                                 <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/properties/554x360/01.jpg" alt=""/>
+                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="<?= asset("assets/media-demo/properties/554x360/01.jpg") ?>" alt=""/>
                                             <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
                                             </figure></a><span class="properties__ribon">Sale On</span>
                                     </div>
@@ -363,7 +129,7 @@ About us
                             </div>
                             <div class="listing__item">
                                 <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/properties/554x360/02.jpg" alt=""/>
+                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="<?= asset("assets/media-demo/properties/554x360/02.jpg") ?>" alt=""/>
                                             <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
                                             </figure></a><span class="properties__ribon">Sale On</span>
                                     </div>
@@ -390,7 +156,7 @@ About us
                             </div>
                             <div class="listing__item">
                                 <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/properties/554x360/03.jpg" alt=""/>
+                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="<?= asset("assets/media-demo/properties/554x360/03.jpg") ?>" alt=""/>
                                             <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
                                             </figure></a><span class="properties__ribon">Sale On</span>
                                     </div>
@@ -415,168 +181,7 @@ About us
                                 </div>
                                 <!-- end of block .properties__item-->
                             </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/properties/554x360/04.jpg" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                            </figure></a><span class="properties__ribon">Sale On</span>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">Sweden</span></a>
-                                            <div class="properties__offer">
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Invest From AED</div>
-                                                    <div class="properties__offer-value"><strong> 1,500,000</strong>
-                                                    </div>
-                                                </div>
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Guaranteed ROI</div>
-                                                    <div class="properties__offer-value"><strong> 100%</strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/properties/554x360/05.jpg" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                            </figure></a><span class="properties__ribon">Sale On</span>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">Floating Seahorse Villa</span></a>
-                                            <div class="properties__offer">
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Invest From AED</div>
-                                                    <div class="properties__offer-value"><strong> 1,500,000</strong>
-                                                    </div>
-                                                </div>
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Guaranteed ROI</div>
-                                                    <div class="properties__offer-value"><strong> 100%</strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/properties/554x360/06.jpg" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                            </figure></a><span class="properties__ribon">Sale On</span>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">Germany</span></a>
-                                            <div class="properties__offer">
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Invest From AED</div>
-                                                    <div class="properties__offer-value"><strong> 1,500,000</strong>
-                                                    </div>
-                                                </div>
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Guaranteed ROI</div>
-                                                    <div class="properties__offer-value"><strong> 100%</strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/properties/554x360/07.jpg" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                            </figure></a><span class="properties__ribon">Sale On</span>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">Switzerland</span></a>
-                                            <div class="properties__offer">
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Invest From AED</div>
-                                                    <div class="properties__offer-value"><strong> 1,500,000</strong>
-                                                    </div>
-                                                </div>
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Guaranteed ROI</div>
-                                                    <div class="properties__offer-value"><strong> 100%</strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/properties/554x360/08.jpg" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                            </figure></a><span class="properties__ribon">Sale On</span>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">ST. Petersberg</span></a>
-                                            <div class="properties__offer">
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Invest From AED</div>
-                                                    <div class="properties__offer-value"><strong> 1,500,000</strong>
-                                                    </div>
-                                                </div>
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Guaranteed ROI</div>
-                                                    <div class="properties__offer-value"><strong> 100%</strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="assets/media-demo/properties/554x360/09.jpg" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                            </figure></a><span class="properties__ribon">Sale On</span>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">Floating Lido</span></a>
-                                            <div class="properties__offer">
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Invest From AED</div>
-                                                    <div class="properties__offer-value"><strong> 1,500,000</strong>
-                                                    </div>
-                                                </div>
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Guaranteed ROI</div>
-                                                    <div class="properties__offer-value"><strong> 100%</strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -656,106 +261,74 @@ About us
         </div>
     </div>
 
-    <div class="widget js-widget widget--landing">
-        <div class="widget__header">
-            <h2 class="widget__title">News & PR</h2>
-            <div class="widget__footer"><a href="blog.html" class="widget__more"> More News</a></div>
-        </div>
-        <div class="widget__content">
-            <!--include ../widgets/article-->
-            <div class="listing listing--grid">
-                <div class="listing__item">
-                    <!-- BEGIN SECTION ARTICLE-->
-                    <div class="article article--grid"><a href="blog_details.html" class="article__photo"><img src="assets/media-demo/news/news-1.jpg" alt="News title" class="article__photo-img">
-                            <time datetime="2009-08-29" class="article__time">OCT<strong>27</strong></time></a>
-                        <div class="article__details"><a href="blog_details.html" class="article__item-title">Sustainable architecture &amp; design.</a>
-                            <div class="article__intro">
-                                <p>With the current state of the global climate and the depletion of natural  resources ...</p>
-                            </div><a href="blog_details.html" class="article__more">Read more</a>
+    <?php if (!empty($press)) { ?>
+        <div class="widget js-widget widget--landing">
+            <div class="widget__header">
+                <h2 class="widget__title">News & PR</h2>
+                <div class="widget__footer"><a href="<?= url("/$locale/news-pr") ?>" class="widget__more"> More News</a></div>
+            </div>
+            <div class="widget__content">
+                <!--include ../widgets/article-->
+                <div class="listing listing--grid">
+                    <?php
+                    foreach ($press as $news) {
+                        $month = date_format(date_create($news['date']), 'M');
+                        $day = date_format(date_create($news['date']), 'd');
+                        ?>
+                        <div class="listing__item">
+                            <!-- BEGIN SECTION ARTICLE-->
+                            <div class="article article--grid"><a href="<?= url("/$locale/news-pr/{$news['slug']}") ?>" class="article__photo">
+                                    <img src="<?= asset("/assets/images/pressrelease/{$news['image']}") ?>" alt="News title" class="article__photo-img">
+                                    <time datetime="<?= $news['date'] ?>" class="article__time text-uppercase"><?= $month ?><strong><?= $day ?></strong></time></a>
+                                <div class="article__details"><a href="blog_details.html" class="article__item-title"><?= $news['title_' . $locale] ?></a>
+                                    <div class="article__intro">
+                                        <p><?= str_limit($news['description_long_' . $locale], 20) ?></p>
+                                    </div><a href="<?= url("/$locale/news-pr/{$news['slug']}") ?>" class="article__more">Read more</a>
+                                </div>
+                                <!-- end of block .articl-->
+                            </div>
+                            <!-- END SECTION ARTICLE-->
                         </div>
-                        <!-- end of block .articl-->
-                    </div>
-                    <!-- END SECTION ARTICLE-->
-                </div>
-                <div class="listing__item">
-                    <!-- BEGIN SECTION ARTICLE-->
-                    <div class="article article--grid"><a href="blog_details.html" class="article__photo"><img src="assets/media-demo/news/news-2.jpg" alt="News title" class="article__photo-img">
-                            <time datetime="2009-08-29" class="article__time">SEP<strong>02</strong></time></a>
-                        <div class="article__details"><a href="blog_details.html" class="article__item-title">Hospitality Investment.</a>
-                            <div class="article__intro">
-                                <p>If you bought a home in these four areas during the downturn, you’ll make a tidy ...</p>
-                            </div><a href="blog_details.html" class="article__more">Read more</a>
-                        </div>
-                        <!-- end of block .articl-->
-                    </div>
-                    <!-- END SECTION ARTICLE-->
-                </div>
-                <div class="listing__item">
-                    <!-- BEGIN SECTION ARTICLE-->
-                    <div class="article article--grid"><a href="blog_details.html" class="article__photo"><img src="assets/media-demo/news/news-3.jpg" alt="News title" class="article__photo-img">
-                            <time datetime="2009-08-29" class="article__time">AUG<strong>11</strong></time></a>
-                        <div class="article__details"><a href="blog_details.html" class="article__item-title">Experience Europe in Dubai.</a>
-                            <div class="article__intro">
-                                <p>The low-slung ranch house has been reborn. These minimalist designs have high ...</p>
-                            </div><a href="blog_details.html" class="article__more">Read more</a>
-                        </div>
-                        <!-- end of block .articl-->
-                    </div>
-                    <!-- END SECTION ARTICLE-->
+                    <?php } ?>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="widget js-widget widget--landing">
-        <div class="widget__header">
-            <h2 class="widget__title">Events</h2>
-            <div class="widget__footer"><a href="blog.html" class="widget__more"> More Events</a></div>
-        </div>
-        <div class="widget__content">
-            <!--include ../widgets/article-->
-            <div class="listing listing--grid">
-                <div class="listing__item">
-                    <!-- BEGIN SECTION ARTICLE-->
-                    <div class="article article--grid"><a href="blog_details.html" class="article__photo"><img src="assets/media-demo/news/news-1.jpg" alt="News title" class="article__photo-img">
-                            <time datetime="2009-08-29" class="article__time">OCT<strong>27</strong></time></a>
-                        <div class="article__details"><a href="blog_details.html" class="article__item-title">Event One</a>
-                            <div class="article__intro">
-                                <p>With the current state of the global climate and the depletion of natural  resources ...</p>
-                            </div><a href="blog_details.html" class="article__more">Read more</a>
+    <?php } ?>
+
+    <?php if (!empty($press)) { ?>
+        <div class="widget js-widget widget--landing">
+            <div class="widget__header">
+                <h2 class="widget__title">Events</h2>
+                <div class="widget__footer"><a href="<?= url("/$locale/events") ?>" class="widget__more"> More Events</a></div>
+            </div>
+
+            <div class="widget__content">
+                <!--include ../widgets/article-->
+                <div class="listing listing--grid">
+                    <?php
+                    foreach ($events as $event) {
+                        $month = date_format(date_create($event['event_date']), 'M');
+                        $day = date_format(date_create($event['event_date']), 'd');
+                        ?>
+                        <div class="listing__item">
+                            <!-- BEGIN SECTION ARTICLE-->
+                            <div class="article article--grid"><a href="<?= url("/$locale/events/{$event['slug_' . $locale]}") ?>" class="article__photo">
+                                    <img src="<?= asset("/assets/images/events/{$event['event_photo_' . $locale]}") ?>" alt="News title" class="article__photo-img">
+                                    <time datetime="<?= $event['event_date'] ?>" class="article__time text-uppercase"><?= $month ?><strong><?= $day ?></strong></time></a>
+                                <div class="article__details"><a href="blog_details.html" class="article__item-title"><?= $event['event_title_' . $locale] ?></a>
+                                    <div class="article__intro">
+                                        <p><?= str_limit($event['long_desc_' . $locale], 20) ?></p>
+                                    </div><a href="<?= url("/$locale/events/{$event['slug_' . $locale]}") ?>" class="article__more">Read more</a>
+                                </div>
+                                <!-- end of block .articl-->
+                            </div>
+                            <!-- END SECTION ARTICLE-->
                         </div>
-                        <!-- end of block .articl-->
-                    </div>
-                    <!-- END SECTION ARTICLE-->
-                </div>
-                <div class="listing__item">
-                    <!-- BEGIN SECTION ARTICLE-->
-                    <div class="article article--grid"><a href="blog_details.html" class="article__photo"><img src="assets/media-demo/news/news-2.jpg" alt="News title" class="article__photo-img">
-                            <time datetime="2009-08-29" class="article__time">SEP<strong>02</strong></time></a>
-                        <div class="article__details"><a href="blog_details.html" class="article__item-title">Event Two</a>
-                            <div class="article__intro">
-                                <p>If you bought a home in these four areas during the downturn, you’ll make a tidy ...</p>
-                            </div><a href="blog_details.html" class="article__more">Read more</a>
-                        </div>
-                        <!-- end of block .articl-->
-                    </div>
-                    <!-- END SECTION ARTICLE-->
-                </div>
-                <div class="listing__item">
-                    <!-- BEGIN SECTION ARTICLE-->
-                    <div class="article article--grid"><a href="blog_details.html" class="article__photo"><img src="assets/media-demo/news/news-3.jpg" alt="News title" class="article__photo-img">
-                            <time datetime="2009-08-29" class="article__time">AUG<strong>11</strong></time></a>
-                        <div class="article__details"><a href="blog_details.html" class="article__item-title">Event Three</a>
-                            <div class="article__intro">
-                                <p>The low-slung ranch house has been reborn. These minimalist designs have high ...</p>
-                            </div><a href="blog_details.html" class="article__more">Read more</a>
-                        </div>
-                        <!-- end of block .articl-->
-                    </div>
-                    <!-- END SECTION ARTICLE-->
+                    <?php } ?>
                 </div>
             </div>
         </div>
-    </div>
+    <?php } ?>
     <!-- END CENTER SECTION-->
 </div>
 @stop

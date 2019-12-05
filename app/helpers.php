@@ -9,7 +9,7 @@
 include 'php-html-css-js-minifier.php';
 
 if (!defined('STORE_PATH')) {
-    define('STORE_PATH', '/home/thoe/public_html/public');
+    define('STORE_PATH', '/home/thoe/public_html/public/');
 }
 if (!defined('SalesForceKey')) {
     define('SalesForceKey', 'https://login.salesforce.com/services/oauth2/token?grant_type=password&client_id=3MVG9fTLmJ60pJ5KrRUqX1XPM76O2pql3eIKgbbff2muacjWV5XUSVDe1h3j4qmKWG8sOUrS1rcEAuoLUWi_r&client_secret=13BBC7762904A64067E05F2F3149D719326A374E56D1EC8208091CCBB6E7FAE2&username=api.integrator@blog.com&password=Integration1234$');
