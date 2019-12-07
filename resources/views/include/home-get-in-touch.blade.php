@@ -11,19 +11,19 @@
     <div class="row">
         <div class="form-group">
             <!--<label for="in-keyword" class="control-label">Full Name</label>-->
-            <input type="text" id="in-keyword" placeholder="Full Name" class="form-control" required="required">
+            <input type="text" id="in-form-name" name="name" placeholder="John Carter" class="form-control" required="required">
         </div>
         <div class="form-group">
             <!--<label for="in-keyword" class="control-label">Mobile</label>-->
-            <input type="text" id="in-keyword" placeholder="Mobile" class="form-control" required="required">
+            <input type="text" id="in-form-phone" name="phone"  placeholder="+97150" class="form-control" required="required">
         </div>
         <div class="form-group">
             <!--<label for="in-keyword" class="control-label">Email</label>-->
-            <input type="email" id="in-keyword" placeholder="Email" class="form-control" required="required" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$">
+            <input type="email" id="in-form-email" name="email" placeholder="name@name.com" class="form-control" required="required" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$">
         </div>
         <div class="form-group">
             <!--<label for="in-contract-type" class="control-label">Intention</label>-->
-            <select id="in-contract-type" data-placeholder="Register interest for" class="form-control" required="required">
+            <select id="in-contract-type" name="intention" data-placeholder="Register interest for" class="form-control" required="required">
                 <option label=" "></option>
                 <option>Investments</option>
                 <option>Real Estate Brokers</option>
@@ -53,7 +53,7 @@
                     setTimeout(function () {
                         $('.submit-btn').text('Register Interest');
                         $('#response-msg').addClass('hidden');
-                        $('#get-in-touch').reset();
+                        $("#in-form-name,#in-form-email,#in-form-phone,#in-contract-type").val("");
                     }, 3000);
                 } else if (data.status === 'failed') {
                     $('#response-msg').text(data.error).removeClass('hidden').addClass('text-red');

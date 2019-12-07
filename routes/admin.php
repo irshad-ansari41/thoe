@@ -79,6 +79,21 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
     Route::resource('users', 'AdminUsersController');
     Route::get('deleted_users', array('as' => 'deleted_users', 'before' => 'Sentinel', 'uses' => 'AdminUsersController@getDeletedUsers'));
 
+    
+    /* routes for why-invest */
+    Route::group(array('prefix' => 'why-invest'), function () {
+        Route::get('/', array('as' => 'why-invest', 'uses' => 'AdminInvestController@index'));
+        Route::get('create', array('as' => 'why-invest.create', 'uses' => 'AdminInvestController@create'));
+        Route::post('create', 'AdminInvestController@store');
+        Route::get('{why-invest}/edit', array('as' => 'why-invest.edit', 'uses' => 'AdminInvestController@edit'));
+        Route::post('{why-invest}/edit', 'AdminInvestController@update');
+        Route::get('{why-invest}/delete', array('as' => 'why-invest.delete', 'uses' => 'AdminInvestController@destroy'));
+        Route::get('{why-invest}/confirm-delete/', array('as' => 'why-invest.confirm-delete', 'uses' => 'AdminInvestController@getModalDelete'));
+        Route::get('{why-invest}/restore', array('as' => 'why-invest.restore', 'uses' => 'AdminInvestController@restore'));
+        Route::get('{why-invest}/show', array('as' => 'why-invest.show', 'uses' => 'AdminInvestController@show'));
+        Route::post('{why-invest}/storecomment', 'AdminInvestController@storeComment');
+    });
+
 
     # Group Management
     Route::group(array('prefix' => 'groups'), function () {
@@ -91,7 +106,7 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
         Route::get('{group}/confirm-delete', array('as' => 'groups.confirm-delete', 'uses' => 'AdminGroupsController@getModalDelete'));
         Route::get('{group}/restore', array('as' => 'groups.restore', 'uses' => 'AdminGroupsController@getRestore'));
     });
-    
+
     /* routes for about */
     Route::group(array('prefix' => 'about'), function () {
         Route::get('/', array('as' => 'abouts', 'uses' => 'AdminAboutController@index'));
@@ -105,6 +120,21 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
         Route::get('{about}/show', array('as' => 'about.show', 'uses' => 'AdminAboutController@show'));
         Route::post('{about}/storecomment', 'AdminAboutController@storeComment');
     });
+
+    /* routes for offer */
+    Route::group(array('prefix' => 'offer'), function () {
+        Route::get('/', array('as' => 'offers', 'uses' => 'AdminOfferController@index'));
+        Route::get('create', array('as' => 'offer.create', 'uses' => 'AdminOfferController@create'));
+        Route::post('create', 'AdminOfferController@store');
+        Route::get('{offer}/edit', array('as' => 'offer.edit', 'uses' => 'AdminOfferController@edit'));
+        Route::post('{offer}/edit', 'AdminOfferController@update');
+        Route::get('{offer}/delete', array('as' => 'offer.delete', 'uses' => 'AdminOfferController@destroy'));
+        Route::get('{offer}/confirm-delete/', array('as' => 'offer.confirm-delete', 'uses' => 'AdminOfferController@getModalDelete'));
+        Route::get('{offer}/restore', array('as' => 'offer.restore', 'uses' => 'AdminOfferController@restore'));
+        Route::get('{offer}/show', array('as' => 'offer.show', 'uses' => 'AdminOfferController@show'));
+        Route::post('{offer}/storecomment', 'AdminOfferController@storeComment');
+    });
+
     /* routes for blog */
     Route::group(array('prefix' => 'blog'), function () {
         Route::get('/', array('as' => 'blogs', 'uses' => 'AdminBlogController@index'));
@@ -506,12 +536,13 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
     /* Contact Us */
     Route::get('/contact', array('uses' => 'AdminContactController@index'));
     Route::get('/contact/{id}/status/{flag}', array('uses' => 'AdminContactController@status'));
-
     Route::get('/contact/add_contact', array('uses' => 'AdminContactController@create'));
     Route::get('/contact/{id}/edit', array('uses' => 'AdminContactController@create'));
     Route::post('/contact/{id}/edit', array('uses' => 'AdminContactController@store_contact'));
     Route::post('/contact/add_contact', array('uses' => 'AdminContactController@store_contact'));
     Route::get('/contact/{id}/delete', array('uses' => 'AdminContactController@delete'));
+
+
 
 //    /* Admin Users */
 //    Route::get('/adminusers', array('uses' => 'AdminUsersController@index'));

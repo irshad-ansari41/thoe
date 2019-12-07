@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\AdminControllers;
 
 use App\Http\Controllers\Controller as Controller;
-
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\Contact;
@@ -27,7 +26,7 @@ use DB;
 class AdminContactController extends Controller {
 
     public function __construct() {
-        $session_user_id = 1;//Sentinel::getUser()->id;
+        $session_user_id = 1; //Sentinel::getUser()->id;
 
         $results_users = DB::selectOne(DB::raw("select users.*,tbl_module_access.* from users INNER JOIN tbl_module_access ON users.id=tbl_module_access.userid where users.id=" . $session_user_id));
 
@@ -81,35 +80,22 @@ class AdminContactController extends Controller {
 
             $contact = new Contact();
 
-            $Address = urlencode($request->address);
-            $request_url = "http://maps.googleapis.com/maps/api/geocode/xml?address=" . $Address . "&sensor=true";
-            $xml = simplexml_load_file($request_url) or die("url not loading");
-            $status = $xml->status;
-            if ($status == "OK") {
-                $lat = $xml->result->geometry->location->lat;
-                $lng = $xml->result->geometry->location->lng;
-            } else {
-                $lat = '';
-                $lng = '';
-            }
-
+            
             $contact->address_type = $request->address_type;
-            $contact->address_title = $request->address_title;
+            $contact->address_title_en = $request->address_title_en;
             $contact->address_title_ar = $request->address_title_ar;
-
+            $contact->title_en = $request->title_en;
+            $contact->title_ar = $request->title_ar;
+            $contact->description_en = $request->description_en;
+            $contact->description_ar = $request->description_ar;
             $contact->phone_no = $request->phone_no;
-
             $contact->address = $request->address;
             $contact->address_ar = $request->address_ar;
-
-            $contact->lat = $lat;
-            $contact->lng = $lng;
             $contact->fax_no = $request->fax_no;
             $contact->email_id = $request->email_id;
-
-            $contact->working_hours = $request->working_hours;
+            $contact->working_hours_en = $request->working_hours_en;
             $contact->working_hours_ar = $request->working_hours_ar;
-
+            $contact->google_map = $request->google_map;
             $contact->created = date("Y-m-d H:i:s");
             $contact->status = '1';
 
@@ -121,63 +107,22 @@ class AdminContactController extends Controller {
 
             $data = array();
 
-            $Address = urlencode($request->address);
-            $request_url = "http://maps.googleapis.com/maps/api/geocode/xml?address=" . $Address . "&sensor=true";
-            $xml = simplexml_load_file($request_url) or die("url not loading");
-            $status = $xml->status;
-            if ($status == "OK") {
-                $lat = $xml->result->geometry->location->lat;
-                $lng = $xml->result->geometry->location->lng;
-            } else {
-                $lat = '';
-                $lng = '';
-            }
-
-            if ($request->address_type) {
-                $data['address_type'] = $request->address_type;
-            }
-
-
-            if ($request->address_title) {
-                $data['address_title'] = $request->address_title;
-            }
-            if ($request->address_title_ar) {
-                $data['address_title_ar'] = $request->address_title_ar;
-            }
             
-            if ($request->phone_no) {
-                $data['phone_no'] = $request->phone_no;
-            }
-
-            if ($request->address) {
-                $data['address'] = $request->address;
-            }
-            if ($request->address_ar) {
-                $data['address_ar'] = $request->address_ar;
-            }
-            
-
-            if ($lat) {
-                $data['lat'] = $lat;
-            }
-
-            if ($lng) {
-                $data['lng'] = $lng;
-            }
-            if ($request->fax_no) {
-                $data['fax_no'] = $request->fax_no;
-            }
-            if ($request->email_id) {
-                $data['email_id'] = $request->email_id;
-            }
-            if ($request->working_hours) {
-                $data['working_hours'] = $request->working_hours;
-            }
-            if ($request->working_hours_ar) {
-                $data['working_hours_ar'] = $request->working_hours_ar;
-            }
-           
-
+            $data['address_type'] = $request->address_type;
+            $data['address_title_en'] = $request->address_title_en;
+            $data['address_title_ar'] = $request->address_title_ar;
+            $data['title_en'] = $request->title_en;
+            $data['title_ar'] = $request->title_ar;
+            $data['description_en'] = $request->description_en;
+            $data['description_ar'] = $request->description_ar;
+            $data['phone_no'] = $request->phone_no;
+            $data['address_en'] = $request->address_en;
+            $data['address_ar'] = $request->address_ar;
+            $data['fax_no'] = $request->fax_no;
+            $data['email_id'] = $request->email_id;
+            $data['working_hours_en'] = $request->working_hours_en;
+            $data['working_hours_ar'] = $request->working_hours_ar;
+            $data['google_map'] = $request->google_map;
 
             if (!empty($data)) {
                 Contact::where('id', $request->id)->update($data);
@@ -186,7 +131,7 @@ class AdminContactController extends Controller {
             $request->session()->flash('alert-success', 'Contact has been updated!');
         }
 
-        return redirect('admin/contact');
+        return redirect('admin/contact/1/edit');
     }
 
 }

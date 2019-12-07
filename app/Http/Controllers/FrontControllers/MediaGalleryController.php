@@ -129,14 +129,12 @@ class MediaGalleryController extends Controller {
             return $cached;
         }
 
-        $query = DB::table('tbl_image_gallery_master as t1');
-        $query->leftjoin('tbl_image_gallery as t2', 't2.gallery_id', '=', 't1.id');
-        $query->select('t1.*', DB::raw('group_concat(t2.image) as images'));
-        $query->where("t1.slug", $gallery_slug);
-        $gallery = $query->where("t1.status", "1")->groupBy("t2.gallery_id")->orderBy("t1.ordering", "asc")->first();
+        $gallery = DB::table('tbl_image_gallery_master')->where("slug", $gallery_slug)->first();
+        $images = DB::table('tbl_image_gallery')->where("gallery_id", $gallery->id)->get()->toArray();
 
         $data = [
-            'gallery' => $gallery,
+            'gallery' => (array) $gallery,
+            'images' => $images,
             'meta_title' => $gallery->meta_title,
             'meta_keyword' => $gallery->meta_keyword,
             'meta_description' => $gallery->meta_desc,
@@ -153,73 +151,37 @@ class MediaGalleryController extends Controller {
         return view("pages.media-gallery.image-gallery-{$this->locale}", $data);
     }
 
-    public function video_gallery(Request $request, $type = 'corporate', $id = null) {
+    public function video_gallery(Request $request, $gallery_slug) {
 
 
         //if chached then return
         $cached = get_cache_page($request->fullUrl());
         if (!empty($cached)) {
-            //return $cached;
+            return $cached;
         }
 
-        $gallery_type = $type == 'corporate' ? 1 : ($type == 'commercial' ? 2 : 3);
-        $content = Content::find(19);
-
-        $query = DB::table('tbl_video_gallery_master');
-        if (!empty($request->year)) {
-            $query->where("year", $request->year);
-        }
-        $galleries = $query->where("gallery_type", $gallery_type)->where("status", "1")->orderBy("created", "desc")->get();
-        $years = DB::table('tbl_video_gallery_master')->select('year')->groupBy("year")->get();
-        $tabs = DB::table('tbl_mediacenter_imagegallery_tabs')->orderBy("ordering", "asc")->get();
-
-        if (!empty($id)) {
-            foreach ($galleries as $key => $value) {
-                if ($value->id == $id || $value->slug == $id) {
-                    $gallery = $galleries[$key];
-                    $meta_title = metaTitleByLocale($this->locale, ['en' => $gallery->gallery_title, 'ar' => $gallery->gallery_title_ar,]) . ' | ' . $content->meta_title;
-                    $meta_desc = metaDescByLocale($this->locale, ['en' => $gallery->gallery_long_title, 'ar' => $gallery->gallery_long_title_ar,]) . ' | ' . $content->meta_title;
-                    break;
-                }
-            }
-        } else {
-            $gallery = $galleries[0];
-            $meta_title = metaTitleByLocale($this->locale, ['en' => $content->short_description_en, 'ar' => $content->short_description_ar,]) . ' | ' . $content->meta_title . ' | ' . $type;
-            $meta_desc = metaDescByLocale($this->locale, ['en' => $content->description_en, 'ar' => $content->description_ar,]) . ' | ' . $content->meta_title . ' | ' . $type;
-        }
-
-        if (empty($gallery)) {
-            return redirect("$this->locale/video-gallery", 301);
-        }
+        $query = DB::table('tbl_video_gallery_master as t1');
+        $query->leftjoin('tbl_video_gallery as t2', 't2.gallery_id', '=', 't1.id');
+        $query->select('t1.*', DB::raw('group_concat(t2.image) as videos'));
+        $query->where("t1.slug", $gallery_slug);
+        $gallery = $query->where("t1.status", "1")->groupBy("t2.gallery_id")->orderBy("t1.ordering", "asc")->first();
 
         $data = [
-            "AllRatings" => DB::table('tbl_ratings')->where('menu_title', 'Video Gallery')->where('menu_id', 31)->first(),
-            'content' => $content,
-            'galleries' => $galleries,
-            'gallery' => $gallery,
-            'years' => $years,
-            'tabs' => $tabs,
-            'type' => $type,
-            'keyword' => !empty($request->keyword) ? $request->keyword : '',
-            'sort' => !empty($request->sort) ? $request->sort : '',
-            'from_date' => !empty($request->from_date) ? $request->from_date : '',
-            'to_date' => !empty($request->to_date) ? $request->to_date : '',
-            'lastyear' => date('Y'),
-            'year' => !empty($request->year) ? $request->year : date('Y'),
-            'gallery_id' => $id,
-            'meta_title' => $meta_title,
-            'meta_keyword' => $content->meta_keyword,
-            'meta_description' => $meta_desc,
-            'og_title' => $meta_title,
-            'og_desc' => $meta_desc,
-            'og_pic' => $content->image != "" ? url("/") . "/assets/images/banner/" . $content->image : '',
+            'gallery' => (array) $gallery,
+            'meta_title' => $gallery->meta_title,
+            'meta_keyword' => $gallery->meta_keyword,
+            'meta_description' => $gallery->meta_desc,
+            'og_title' => $gallery->meta_title,
+            'og_desc' => $gallery->meta_desc,
+            'og_pic' => $gallery->holder_image != "" ? url("/") . "/assets/images/media/{$gallery->slug}/" . $gallery->holder_image : '',
             'locale' => $this->locale,
         ];
 
-        //check page
-        set_cache_page($request->fullUrl(), view("pages.video-gallery", $data)->render());
 
-        return view('pages.video-gallery', $data);
+        //check page
+        set_cache_page($request->fullUrl(), view("pages.media-gallery.video-gallery-{$this->locale}", $data)->render());
+
+        return view("pages.media-gallery.video-gallery-{$this->locale}", $data);
     }
 
 }

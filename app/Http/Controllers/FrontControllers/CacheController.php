@@ -26,7 +26,7 @@ class CacheController extends Controller {
             return view('cache-clear', ['url' => '', 'msg' => 'Cache has been cleared']);
         } else if ($request->action == 'all' && $request->token == 'THOE@2018') {
             DB::table('cache')->truncate();
-            $this->delete_files('/var/www/html/caches/*');
+            $this->delete_files(APP_PATH.'/caches/*');
             DB::table('cache')->update(['status' => 0]);
             Cache::flush();
             return view('cache-clear', ['url' => '', 'msg' => 'Cache has been cleared']);

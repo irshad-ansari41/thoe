@@ -32,24 +32,29 @@ About us
                     <div class="row">
                         <div class="contacts__column">
                             <div class="contacts__address">
-                                <address class="contacts__address-item"><span class="contacts__address-title">The Hear of Europe - Head Office</span>
+                                <address class="contacts__address-item"><span class="contacts__address-title"><?= $contact['address_title_' . $locale] ?></span>
                                     <dl class="contacts__address-column">
                                         <dt class="contacts__address-column__title">Address:</dt>
-                                        <dd>Arenco Tower, 20th Floor<br>Dubai Media City, Dubai<br>United Arab Emirates</dd>
+                                        <dd><?= $contact['address_' . $locale] ?></dd>
                                     </dl>
                                     <dl class="contacts__address-column">
                                         <dt class="contacts__address-column__title">Phone:</dt>
-                                        <dd>+971 4 818 1481</dd>
+                                        <dd><a href="tel:<?= $contact['address_' . $locale] ?>"><?= $contact['address_' . $locale] ?></a></dd>
                                     </dl>
                                     <dl class="contacts__address-column">
                                         <dt class="contacts__address-column__title">Email:</dt>
-                                        <dd><a href="mailto:">info@thoe.com</a><br><a href="mailto:">sales@thoe.com</a><br></dd>
+                                        <dd>
+                                            <?php foreach (explode(',', $contact['email_id']) as $email) { ?>
+                                                <a href="mailto:<?= $email ?>"><?= $email ?></a><br>
+                                            <?php } ?>
+                                        </dd>
                                     </dl>
                                 </address>
                             </div>
                             <div class="contacts__form">
                                 <div class="alert alert-info">Or fill in the form below to reach us!</div>
-                                <form action="#" method="POST" class="form form--flex js-contact-form form--contacts">
+                                <form id="get-in-touch" action="<?= url("$locale/contact-send") ?>" method="post" class="form form--flex js-contact-form form--contacts">   
+                                    @csrf
                                     <div class="row">
                                         <div class="form-group required">
                                             <label for="in-form-name" class="control-label">Your Name</label>
@@ -57,7 +62,7 @@ About us
                                         </div>
                                         <div class="form-group form-group--col-6">
                                             <label for="in-form-phone" class="control-label">Mobile</label>
-                                            <input id="in-form-phone" type="text" name="phone" class="form-control">
+                                            <input id="in-form-phone" type="text" name="phone" class="form-control" required>
                                         </div>
                                         <div class="form-group form-group--col-6 required">
                                             <label for="in-form-email" class="control-label">E-mail</label>
@@ -69,6 +74,9 @@ About us
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <div id="response-msg"></div>
+                                    </div>
+                                    <div class="row">
                                         <button type="submit" class="form__submit">Submit</button>
                                     </div>
                                 </form>
@@ -77,12 +85,11 @@ About us
                         </div>
                         <div class="contacts__column">
                             <div class="contacts__body">
-                                <h4>The Heart of Europe</h4>
-                                <p>All The Heart of Europe’s hotels, palaces, villas, vessels and underwater living experiences are inspired by iconic European experiences and culture. 4,000+ units tailored for the most refined vacationers and staycationers.</p>
-                                <p>With breath-taking entertainment, beaches, pools, snow streets, yacht culture and culinary delights. Along with the perfect climate, breathtaking natural beauty and a wealth of cultural prestige.</p>
+                                <h4><?= $contact['title_' . $locale] ?></h4>
+                                <?= $contact['description_' . $locale] ?>
                             </div>
                             <div class="contacts__social">
-                                <div class="social social--worker social--contacts"><span class="contacts__social-title">Our social profiles:</span><a href="#" class="social__item"><i class="fa fa-facebook"></i></a><a href="#" class="social__item"><i class="fa fa-twitter"></i></a></div>
+                                <div class="social social--worker social--contacts"><span class="contacts__social-title">Our social profiles:</span><a href="<?= $setting['facebook_link'] ?>" class="social__item"><i class="fa fa-facebook"></i></a><a href="<?= $setting['twitter_link'] ?>" class="social__item"><i class="fa fa-twitter"></i></a></div>
                             </div>
                         </div>
                     </div>
@@ -98,7 +105,8 @@ About us
         <button type="button" class="map__change-map js-map-btn">Address Map</button>
     </div>
     <div class="map__wrap">
-        <div data-infobox-theme="white" class="map__view js-map-canvas-contact"></div>
+        <?= $contact['google_map'] ?>
+
     </div>
 </div>
 <!-- BEGIN AFTER CENTER SECTION-->
@@ -109,3 +117,34 @@ About us
 
 @stop
 
+
+@push('custom_script')
+<script>
+    $('#get-in-touch').on('submit', function () {
+        $.ajax({
+            type: 'POST',
+            data: $(this).serialize(),
+            url: $(this).attr('action'),
+            datatype: 'json',
+            success: function (data) {
+                if (data.status === 'success') {
+                    $('.form__submit').text('Sent');
+                    $('#response-msg').text(data.msg).removeClass('hidden').addClass('text-green');
+                    setTimeout(function () {
+                        $('.submit-btn').text('Register Interest');
+                        $('#response-msg').addClass('hidden');
+                        $("#in-form-name,#in-form-email,#in-form-phone,#in-form-message").val("");
+                    }, 5000);
+                } else if (data.status === 'failed') {
+                    $('#response-msg').text(data.error).removeClass('hidden').addClass('text-red');
+                    $('.form__submit').text('Register Interest').removeProp("disabled");
+                } else {
+                    $('.submit-btn').text('Register Interest');
+                    return false;
+                }
+            }
+        });
+        return false;
+    });
+</script>
+@endpush

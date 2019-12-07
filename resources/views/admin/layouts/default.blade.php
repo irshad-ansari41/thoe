@@ -27,7 +27,7 @@
     <body class="skin-josh">
         <header class="header">
             <a href="{{ SITE_URL }}" class="logo" target="_thoe">
-                <img src="{{ asset('assets/images/logo.jpg') }}" alt="logo" height="40" width="100">
+                <img src="{{ asset('frontend-assets/img/thoe-logo-web.png') }}" alt="logo" height="40" width="100">
             </a>
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->

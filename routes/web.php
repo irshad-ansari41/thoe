@@ -47,11 +47,13 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
     Route::get('/logout', array('as' => 'logout', 'uses' => 'AgentController@getLogout'));
 
     Route::get('/contact', ['as' => 'contact.index', 'uses' => 'ContactController@index']);
-    Route::post('/contact-send', ['as' => 'contact.send', 'uses' => 'ContactController@sendContact']);
+    Route::post('/contact-send', ['as' => 'contact.send', 'uses' => 'ContactController@send_contact']);
 
     Route::get('/events', ['as' => 'events.index', 'uses' => 'EventController@index']);
     Route::get('/events/{slug}', ['as' => 'events.details', 'uses' => 'EventController@details']);
 
+    Route::get('/offers', ['as' => 'offers.index', 'uses' => 'OffersController@index']);
+    Route::get('/offers/{slug}', ['as' => 'offers.details', 'uses' => 'OffersController@details']);
 
     Route::any('/news-pr', ['as' => 'news-pr.index', 'uses' => 'NewsPRController@index']);
     Route::get('/news-pr/{slug}', ['as' => 'news-pr.details', 'uses' => 'NewsPRController@details']);

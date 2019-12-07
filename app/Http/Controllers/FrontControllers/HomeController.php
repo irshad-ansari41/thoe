@@ -37,7 +37,7 @@ class HomeController extends Controller {
         $properties = [];
         $projects = Project::all()->toArray();
         foreach ($projects as $key => $project) {
-            $properties[$key]['project'] = (array)$project;
+            $properties[$key]['project'] = (array) $project;
             $properties[$key]['properties'] = DB::table('tbl_properties')->where("project_id", $project['id'])->where("status", "1")->orderBy('sort_order', 'ASC')->limit(3)->get()->toArray();
         }
 
@@ -77,10 +77,17 @@ class HomeController extends Controller {
             //return "invalid Host";
         }
 
-        $request->input();
+        $id = DB::table('contacts')->where('email', $request->input('email'))->value('id');
+        if (empty($id)) {
+            DB::table('contacts')->insert(['name' => $request->input('name'), 'email' => $request->input('email'), 'phone' => $request->input('phone'), 'intention' => $request->input('intention'), 'created_at' => date('Y-m-d h:i:s')]);
+            $msg = 'Thank you for your interest.';
+            $status = 'success';
+        } else {
+            DB::table('contacts')->where('id', $id)->update(['updated_at' => date('Y-m-d h:i:s')]);
+            $msg = 'Thank you for your interest.';
+            $status = 'success';
+        }
 
-        $msg = 'Thank you for your interest.';
-        $status = 'success';
 
         $result = ['msg' => $msg, 'status' => $status, 'error' => $error];
 

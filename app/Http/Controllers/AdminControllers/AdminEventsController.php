@@ -281,6 +281,9 @@ class AdminEventsController extends Controller {
             $gal->status = '1';
             $gal->created = date("Y-m-d H:i:s");
             $gal->year = $request->year;
+            $gal->meta_title = $request->meta_title;
+            $gal->meta_keyword = $request->meta_keyword;
+            $gal->meta_desc = $request->meta_desc;
             $gal->save();
             $request->session()->flash('alert-success', 'Gallery has been added!');
         }
@@ -319,6 +322,9 @@ class AdminEventsController extends Controller {
 
             $data['gallery_type'] = $request->gallery_type;
             $data['year'] = $request->year;
+            $data['meta_title'] = $request->meta_title;
+            $data['meta_keyword'] = $request->meta_keyword;
+            $data['meta_desc'] = $request->meta_desc;
 
             VGallery_master::where('id', $request->id)->update($data);
 
