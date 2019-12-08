@@ -87,8 +87,8 @@
                 </a>
             </li>
 
-            <li <?= (Request::is('admin/why-invest/*') ? 'class="active"' : '') ?>>
-                <a href="{{ URL::to('admin/why-invest/1/edit') }}">
+            <li <?= (Request::is('admin/invest/*') ? 'class="active"' : '') ?>>
+                <a href="{{ URL::to('admin/invest/1/edit') }}">
                     <i class="fa fa-angle-double-right"></i>
                     Why Invest
                 </a>

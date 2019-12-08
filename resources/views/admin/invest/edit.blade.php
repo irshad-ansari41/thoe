@@ -9,11 +9,14 @@
 {{-- page level styles --}}
 @section('header_styles')
 
-<link href="{{ asset('assets/vendors/summernote/summernote.css') }}" rel="stylesheet" />
-<link href="{{ asset('assets/vendors/summernote/summernote-bs3.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/vendors/select2/select2.min.css') }}" type="text/css" />
-<link href="{{ asset('assets/vendors/tags/dist/bootstrap-tagsinput.css') }}" rel="stylesheet" />
-<link href="{{ asset('assets/css/pages/invest.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/css/pages/form2.css') }}" rel="stylesheet"/>
+<link href="{{ asset('assets/css/pages/form3.css') }}" rel="stylesheet"/>
+<link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet"/>
+<link href="{{ asset('assets/vendors/intl-tel-input/build/css/intlTelInput.css') }}" rel="stylesheet"/>
+<link href="{{ asset('assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css') }}" rel="stylesheet"/>
+<link href="{{ asset('assets/vendors/bootstrap3-wysihtml5-bower/css/bootstrap3-wysihtml5.min.css') }}"  rel="stylesheet" media="screen"/>
+<link href="{{ asset('assets/css/pages/editor.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('assets/css/pages/buttons.css') }}" rel="stylesheet"/>
 
 <!--end of page level css-->
 @stop
@@ -59,13 +62,13 @@
                 <div class="form-group en_field">
                     <label class="col-md-3 control-label ">Description(English) </label>
                     <div class="col-md-8">
-                        <textarea class="form-control textarea" name="description_en" rows="4"><?= !empty($invest) ? $invest->description_en : old('description_en') ?></textarea>
+                        <textarea id='ckeditor_standard' class="form-control" name="description_en" rows="4"><?= !empty($invest) ? $invest->description_en : old('description_en') ?></textarea>
                     </div>
                 </div>
                 <div class="form-group ar_field">
                     <label class="col-md-3 control-label ">Description(Arabic) </label>
                     <div class="col-md-8">
-                        <textarea class="form-control textarea" name="description_ar" rows="4"><?= !empty($invest) ? $invest->description_ar : old('description_ar') ?></textarea>
+                        <textarea id="ckeditor_standard1" class="form-control" name="description_ar" rows="4"><?= !empty($invest) ? $invest->description_ar : old('description_ar') ?></textarea>
                     </div>
                 </div>
 
@@ -85,8 +88,36 @@
 @stop
 {{-- page level scripts --}}
 @section('footer_scripts')
-<script type="text/javascript" src="{{ asset('assets/vendors/summernote/summernote.min.js') }}" ></script>
-<script src="{{ asset('assets/vendors/select2/select2.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/vendors/tags/dist/bootstrap-tagsinput.js') }}" ></script>
-<script type="text/javascript" src="{{ asset('assets/js/pages/add_newinvest.js') }}" ></script>
+<script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}" type="text/javascript"></script>
+<!--<script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>-->
+<script src="{{asset('assets/vendors/tinymce/tinymce.min.js')}}" type="text/javascript"></script>
+<script  src="{{ asset('assets/vendors/ckeditor/js/ckeditor.js') }}"  type="text/javascript"></script>
+<script  src="{{ asset('assets/vendors/ckeditor/js/jquery.js') }}"  type="text/javascript" ></script>
+<script  src="{{ asset('assets/vendors/ckeditor/js/config.js') }}"  type="text/javascript"></script>
+<script  src="{{ asset('assets/js/pages/editor.js') }}"  type="text/javascript"></script>
+<script src="http://demo.itsolutionstuff.com/plugin/croppie.js"></script>
+<link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
+<link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/croppie.css">
+<script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" ></script>
+<script>
+CKEDITOR.replace('ckeditor_standard');
+CKEDITOR.replace('ckeditor_standard1');
+$(document).ready(function () {
+    $("#project").change(function () {
+//alert($(this).val());
+        $.ajax({
+            url: "ajax_get_properties",
+            data: $('#tryitForm').serialize(),
+            type: "POST",
+            success: function (data) {
+                $("#pajax").html(data);
+            }
+        });
+    });
+
+    $(document).on("click", ".remove", function () {
+        $(this).parent().parent().parent().parent().remove();
+    });
+});
+</script>
 @stop

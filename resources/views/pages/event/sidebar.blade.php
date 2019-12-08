@@ -15,7 +15,7 @@
         </div>
         <div class="widget__content">
             <!-- BEGIN SEARCH-->
-            @include('include.get-in-touch')
+            @include("include.lead-form-$locale")
             <!-- end of block-->
             <!-- END SEARCH-->
         </div>

@@ -149,7 +149,7 @@ class AdminInvestController extends Controller {
      * @param  Invest $invest
      * @return Response
      */
-    public function update(InvestRequest $request, Invest $invest) {
+    public function update(InvestRequest $request, Invest $invest) { echo 123121; die;
 
         if ($request->get('description_en')) {
             $message = $request->get('description_en');

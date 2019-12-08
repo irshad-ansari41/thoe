@@ -79,19 +79,19 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
     Route::resource('users', 'AdminUsersController');
     Route::get('deleted_users', array('as' => 'deleted_users', 'before' => 'Sentinel', 'uses' => 'AdminUsersController@getDeletedUsers'));
 
-    
-    /* routes for why-invest */
-    Route::group(array('prefix' => 'why-invest'), function () {
-        Route::get('/', array('as' => 'why-invest', 'uses' => 'AdminInvestController@index'));
-        Route::get('create', array('as' => 'why-invest.create', 'uses' => 'AdminInvestController@create'));
+
+    /* routes for invest */
+    Route::group(array('prefix' => 'invest'), function () {
+        Route::get('/', array('as' => 'invest', 'uses' => 'AdminInvestController@index'));
+        Route::get('create', array('as' => 'invest.create', 'uses' => 'AdminInvestController@create'));
         Route::post('create', 'AdminInvestController@store');
-        Route::get('{why-invest}/edit', array('as' => 'why-invest.edit', 'uses' => 'AdminInvestController@edit'));
-        Route::post('{why-invest}/edit', 'AdminInvestController@update');
-        Route::get('{why-invest}/delete', array('as' => 'why-invest.delete', 'uses' => 'AdminInvestController@destroy'));
-        Route::get('{why-invest}/confirm-delete/', array('as' => 'why-invest.confirm-delete', 'uses' => 'AdminInvestController@getModalDelete'));
-        Route::get('{why-invest}/restore', array('as' => 'why-invest.restore', 'uses' => 'AdminInvestController@restore'));
-        Route::get('{why-invest}/show', array('as' => 'why-invest.show', 'uses' => 'AdminInvestController@show'));
-        Route::post('{why-invest}/storecomment', 'AdminInvestController@storeComment');
+        Route::get('{invest}/edit', array('as' => 'invest.edit', 'uses' => 'AdminInvestController@edit'));
+        Route::post('{invest}/edit', 'AdminInvestController@update');
+        Route::get('{invest}/delete', array('as' => 'invest.delete', 'uses' => 'AdminInvestController@destroy'));
+        Route::get('{invest}/confirm-delete/', array('as' => 'invest.confirm-delete', 'uses' => 'AdminInvestController@getModalDelete'));
+        Route::get('{invest}/restore', array('as' => 'invest.restore', 'uses' => 'AdminInvestController@restore'));
+        Route::get('{invest}/show', array('as' => 'invest.show', 'uses' => 'AdminInvestController@show'));
+        Route::post('{invest}/storecomment', 'AdminInvestController@storeComment');
     });
 
 
@@ -119,20 +119,6 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
         Route::get('{about}/restore', array('as' => 'about.restore', 'uses' => 'AdminAboutController@restore'));
         Route::get('{about}/show', array('as' => 'about.show', 'uses' => 'AdminAboutController@show'));
         Route::post('{about}/storecomment', 'AdminAboutController@storeComment');
-    });
-
-    /* routes for offer */
-    Route::group(array('prefix' => 'offer'), function () {
-        Route::get('/', array('as' => 'offers', 'uses' => 'AdminOfferController@index'));
-        Route::get('create', array('as' => 'offer.create', 'uses' => 'AdminOfferController@create'));
-        Route::post('create', 'AdminOfferController@store');
-        Route::get('{offer}/edit', array('as' => 'offer.edit', 'uses' => 'AdminOfferController@edit'));
-        Route::post('{offer}/edit', 'AdminOfferController@update');
-        Route::get('{offer}/delete', array('as' => 'offer.delete', 'uses' => 'AdminOfferController@destroy'));
-        Route::get('{offer}/confirm-delete/', array('as' => 'offer.confirm-delete', 'uses' => 'AdminOfferController@getModalDelete'));
-        Route::get('{offer}/restore', array('as' => 'offer.restore', 'uses' => 'AdminOfferController@restore'));
-        Route::get('{offer}/show', array('as' => 'offer.show', 'uses' => 'AdminOfferController@show'));
-        Route::post('{offer}/storecomment', 'AdminOfferController@storeComment');
     });
 
     /* routes for blog */
@@ -503,6 +489,18 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
     Route::post('/news/{id}/edit', array('uses' => 'AdminNewsController@store_news'));
     Route::post('/news/add_news', array('uses' => 'AdminNewsController@store_news'));
     Route::post('/news/coverage/delete_coverage', array('as' => 'news.deletecoverage', 'uses' => 'AdminNewsController@delete_coverage'));
+
+    /* Offer Management */
+    Route::get('/offer', array('uses' => 'AdminOfferController@index'));
+    Route::get('/offer/{id}/status/{flag}', array('uses' => 'AdminOfferController@status'));
+    Route::get('/offer/add_offer', array('uses' => 'AdminOfferController@create'));
+    Route::get('/offer/{id}/edit', array('uses' => 'AdminOfferController@create'));
+    Route::get('/offer/{id}/delete', array('uses' => 'AdminOfferController@delete_offer'));
+    Route::post('/offer/{id}/edit', array('uses' => 'AdminOfferController@store_offer'));
+    Route::post('/offer/add_offer', array('uses' => 'AdminOfferController@store_offer'));
+    Route::post('/offer/coverage/delete_coverage', array('as' => 'offer.deletecoverage', 'uses' => 'AdminOfferController@delete_coverage'));
+
+
     /* Booking and payment Management */
     Route::post('/payment/search', array('uses' => 'AdminPaymentController@getSearch'));
     Route::post('/payment/search_booking', array('uses' => 'AdminPaymentController@getSearchBooking'));

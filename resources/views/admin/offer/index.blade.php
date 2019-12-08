@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-@lang('offer/title.offerlist')
+Offer List
 @parent
 @stop
 
@@ -16,72 +16,61 @@
 {{-- Page content --}}
 @section('content')
 <section class="content-header">
-    <h1>@lang('offer/title.offers')</h1>
-    <ol class="breadcrumb">
-        <li>
-            <a href="{{ route('admin.dashboard') }}"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
-                @lang('general.dashboard')
-            </a>
-        </li>
-        <li>@lang('offer/title.offer')</li>
-        <li class="active">@lang('offer/title.offers')</li>
-    </ol>
+    <h1>Offer</h1>
 </section>
 
 <!-- Main content -->
 <section class="content paddingleft_right15">
     <div class="row">
         <div class="panel panel-primary ">
-            <div class="panel-heading clearfix">
-                <h4 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                    @lang('offer/title.offerlist')
+            <div class="panel-heading">
+                <h4 class="panel-title"> <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                    Offer List
                 </h4>
-                <div class="pull-right">
-                    <a href="{{ URL::to('admin/offer/create') }}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span> @lang('button.create')</a>
-                </div>
+
             </div>
             <br />
+            <br />
+            <a href="offer/add_offer"><button type="button" class="btn btn-danger" style="margin-left: 30px;">Add New Offer</button></a>
             <div class="panel-body">
-                <table class="table table-bordered" id="table">
+                <table class="table table-bordered " id="table">
                     <thead>
                         <tr class="filters">
-                            <th>@lang('offer/table.id')</th>
-                            <th>@lang('offer/table.title')</th>
-                            <th>@lang('offer/table.created_at')</th>
-                            <th>@lang('offer/table.actions')</th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Offer Release Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if(!empty($offers))
-                        @foreach ($offers as $offer)
+                        @foreach($offer as $new)
                         <tr>
-                            <td>{{ $offer->id }}</td>
-                            <td>{{ $offer->title_en }}</td>
-                            <td><?php  //$offer->created_at->diffForHumans() ?></td>
+                            <td><img src="{{ asset('assets/images/offer') }}/{!! $new->image !!}" width="100"/></td>
+                            <td> <a href="offer/{!! $new->id !!}/edit">{!! $new->title_en !!}</a></td>
+                            <td>{!! $new->date !!}</td>
                             <td>
-                                <a href="{{ URL::to('admin/offer/' . $offer->id . '/show' ) }}"><i class="livicon"
-                                                                                                   data-name="info"
-                                                                                                   data-size="18"
-                                                                                                   data-loop="true"
-                                                                                                   data-c="#428BCA"
-                                                                                                   data-hc="#428BCA"
-                                                                                                   title="@lang('offer/table.view-offer-comment')"></i></a>
-                                <a href="{{ URL::to('admin/offer/' . $offer->id . '/edit' ) }}"><i class="livicon"
-                                                                                                   data-name="edit"
-                                                                                                   data-size="18"
-                                                                                                   data-loop="true"
-                                                                                                   data-c="#428BCA"
-                                                                                                   data-hc="#428BCA"
-                                                                                                   title="@lang('offer/table.update-offer')"></i></a>
-                                <!--                                    <a href="{{ URL::to('admin/offer/' . $offer->id . '/confirm-delete') }}" data-toggle="modal"
-                                                                       data-target="#delete_confirm"><i class="livicon" data-name="remove-alt"
-                                                                                                        data-size="18" data-loop="true" data-c="#f56954"
-                                                                                                        data-hc="#f56954"
-                                                                                                        title="@lang('offer/table.delete-offer')"></i></a>-->
+                                <?= $new->status == 1 ? 'Active' : 'Inactive'; ?>
+                            </td>
+                            <td>
+                                <a href="offer/{!! $new->id !!}/edit"><i class="fa fa-edit"></i></a>
+
+                                <a href="offer/{!! $new->id !!}/delete" onclick="return confirm('Are you sure you want to delete this record?');" >
+                                    <i class="fa fa-trash"></i></a>
+
+                                @if($new->status=='0')
+                                <a href="{!!url('/')!!}/admin/offer/{!! $new->id !!}/status/1">		
+                                    <i class="fa fa-lock"></i>
+                                </a>
+                                @else
+                                <a href="{!!url('/')!!}/admin/offer/{!! $new->id !!}/status/0">		
+                                    <i class="fa fa-unlock"></i>
+                                </a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
-                        @endif
+
                     </tbody>
                 </table>
             </div>
@@ -92,13 +81,13 @@
 
 {{-- page level scripts --}}
 @section('footer_scripts')
-<script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap.js') }}" ></script>
 
 <script>
-$(document).ready(function () {
-    $('#table').DataTable();
-});
+                                    $(document).ready(function () {
+                                        $('#table').DataTable();
+                                    });
 </script>
 
 <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="user_delete_confirm_title" aria-hidden="true">

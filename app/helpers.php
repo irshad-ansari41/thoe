@@ -8,8 +8,13 @@
 
 include 'php-html-css-js-minifier.php';
 
+if (!defined('APP_PATH')) {
+    //define('APP_PATH', '/home/thoe/public_html');
+    define('APP_PATH', '/Applications/MAMP/htdocs/blog');
+}
+
 if (!defined('STORE_PATH')) {
-    define('STORE_PATH', '/home/thoe/public_html/public/');
+    define('STORE_PATH', APP_PATH . '/public/');
 }
 if (!defined('SalesForceKey')) {
     define('SalesForceKey', 'https://login.salesforce.com/services/oauth2/token?grant_type=password&client_id=3MVG9fTLmJ60pJ5KrRUqX1XPM76O2pql3eIKgbbff2muacjWV5XUSVDe1h3j4qmKWG8sOUrS1rcEAuoLUWi_r&client_secret=13BBC7762904A64067E05F2F3149D719326A374E56D1EC8208091CCBB6E7FAE2&username=api.integrator@blog.com&password=Integration1234$');
@@ -18,12 +23,8 @@ if (!defined('PROPTOCOL')) {
     define('PROPTOCOL', 'https:');
 }
 
-if (!defined('APP_PATH')) {
-    define('APP_PATH', '/home/thoe/public_html');
-}
-
 if (!defined('PUBLIC_PATH')) {
-    define('PUBLIC_PATH', '/home/thoe/public_html/public');
+    define('PUBLIC_PATH', APP_PATH . '/public');
 }
 
 if (!defined('APP_URL')) {
@@ -47,7 +48,7 @@ if (!defined('DOMAIN_NAME')) {
 }
 
 if (!defined('UPLOAD_PATH')) {
-    define('UPLOAD_PATH', '/home/thoe/public_html/public/uploads/' . date('Y') . '/' . date('m'));
+    define('UPLOAD_PATH', APP_PATH . '/public/uploads/' . date('Y') . '/' . date('m'));
 }
 if (!defined('FB_APP_ID')) {
     define('FB_APP_ID', '136745863654131');
@@ -742,4 +743,30 @@ function str_limit($text, $limit) {
 
 function get_category_name($category) {
     return DB::table('tbl_press_categories')->whereIn('id', explode('-', $category))->get()->toArray();
+}
+
+function slugify($text) {
+    // replace non letter or digits by -
+    $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+
+    // transliterate
+    $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+    // remove unwanted characters
+    $text = preg_replace('~[^-\w]+~', '', $text);
+
+    // trim
+    $text = trim($text, '-');
+
+    // remove duplicate -
+    $text = preg_replace('~-+~', '-', $text);
+
+    // lowercase
+    $text = strtolower($text);
+
+    if (empty($text)) {
+        return 'n-a';
+    }
+
+    return $text;
 }

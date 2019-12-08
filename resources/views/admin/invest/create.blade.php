@@ -7,11 +7,14 @@
 
 {{-- page level styles --}}
 @section('header_styles')
-
-<link href="{{ asset('assets/vendors/summernote/summernote.css') }}" rel="stylesheet" />
-<link href="{{ asset('assets/vendors/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/vendors/bootstrap-tagsinput/css/bootstrap-tagsinput.css') }}" rel="stylesheet" />
-<link href="{{ asset('assets/css/pages/invest.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/css/pages/form2.css') }}" rel="stylesheet"/>
+<link href="{{ asset('assets/css/pages/form3.css') }}" rel="stylesheet"/>
+<link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet"/>
+<link href="{{ asset('assets/vendors/intl-tel-input/build/css/intlTelInput.css') }}" rel="stylesheet"/>
+<link href="{{ asset('assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css') }}" rel="stylesheet"/>
+<link href="{{ asset('assets/vendors/bootstrap3-wysihtml5-bower/css/bootstrap3-wysihtml5.min.css') }}"  rel="stylesheet" media="screen"/>
+<link href="{{ asset('assets/css/pages/editor.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('assets/css/pages/buttons.css') }}" rel="stylesheet"/>
 
 <!--end of page level css-->
 @stop
@@ -92,10 +95,51 @@
 
 {{-- page level scripts --}}
 @section('footer_scripts')
-<!-- begining of page level js -->
-<!--edit invest-->
-<script src="{{ asset('assets/vendors/summernote/summernote.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/vendors/select2/js/select2.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/vendors/bootstrap-tagsinput/js/bootstrap-tagsinput.js') }}" type="text/javascript" ></script>
-<script src="{{ asset('assets/js/pages/add_newinvest.js') }}" type="text/javascript"></script>
+
+<script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
+type="text/javascript"></script>
+{{--<script src="{{ asset('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') }}"></script>--}}
+<!--<script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>-->
+<script src="{{asset('assets/vendors/tinymce/tinymce.min.js')}}" type="text/javascript"></script>
+<script  src="{{ asset('assets/vendors/ckeditor/js/ckeditor.js') }}"  type="text/javascript"></script>
+<script  src="{{ asset('assets/vendors/ckeditor/js/jquery.js') }}"  type="text/javascript" ></script>
+<script  src="{{ asset('assets/vendors/ckeditor/js/config.js') }}"  type="text/javascript"></script>
+<script  src="{{ asset('assets/js/pages/editor.js') }}"  type="text/javascript"></script>
+<script src="http://demo.itsolutionstuff.com/plugin/croppie.js"></script>
+<link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
+<link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/croppie.css">
+<script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" ></script>
+<script>
+CKEDITOR.replace('ckeditor_standard');
+CKEDITOR.replace('ckeditor_standard1');
+$(document).ready(function () {
+    $("#project").change(function () {
+//alert($(this).val());
+        $.ajax({
+            url: "ajax_get_properties",
+            data: $('#tryitForm').serialize(),
+            type: "POST",
+            success: function (data) {
+                $("#pajax").html(data);
+            }
+        });
+    });
+
+<?php if ($type == "add") { ?>
+        $("#add").click(function () {
+            $("#pimages").append($("#one").clone().attr({"style": "display:block", "id": ""}));
+        })
+<?php } else { ?>
+
+        $("#add").click(function () {
+            $("#pimages").append($("#one").clone().attr({"style": "display:block", "id": ""}));
+        })
+
+<?php } ?>
+
+    $(document).on("click", ".remove", function () {
+        $(this).parent().parent().parent().parent().remove();
+    });
+});
+</script>
 @stop

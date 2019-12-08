@@ -52,8 +52,8 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
     Route::get('/events', ['as' => 'events.index', 'uses' => 'EventController@index']);
     Route::get('/events/{slug}', ['as' => 'events.details', 'uses' => 'EventController@details']);
 
-    Route::get('/offers', ['as' => 'offers.index', 'uses' => 'OffersController@index']);
-    Route::get('/offers/{slug}', ['as' => 'offers.details', 'uses' => 'OffersController@details']);
+    Route::get('/offers', ['as' => 'offers.index', 'uses' => 'OfferController@index']);
+    Route::get('/offers/{slug}', ['as' => 'offers.details', 'uses' => 'OfferController@details']);
 
     Route::any('/news-pr', ['as' => 'news-pr.index', 'uses' => 'NewsPRController@index']);
     Route::get('/news-pr/{slug}', ['as' => 'news-pr.details', 'uses' => 'NewsPRController@details']);

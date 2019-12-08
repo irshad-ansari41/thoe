@@ -48,7 +48,7 @@ Home Page
                             <div class="banner__sidebar">
                                 <h4 class="banner__sidebar-title">The Best Hospitality Investment Opportunity in Dubai</h4>
                                 <!-- BEGIN SEARCH-->
-                                @include('include.home-get-in-touch')
+                                @include("include.home-get-in-touch")
                                 <!-- end of block-->
                                 <!-- END SEARCH-->
                             </div>
