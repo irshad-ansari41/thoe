@@ -292,14 +292,11 @@
 {{-- page level scripts --}}
 @section('footer_scripts')
 
-<script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
-type="text/javascript"></script>
-{{--<script src="{{ asset('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') }}"></script>--}}
-<script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}" type="text/javascript"></script>
+<!--<script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>-->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 <script>
                                                 $(function () {
                                                     $("#date").datepicker({
@@ -356,9 +353,9 @@ type="text/javascript"></script>
 <script  src="{{ asset('assets/vendors/ckeditor/js/jquery.js') }}"  type="text/javascript" ></script>
 <script  src="{{ asset('assets/vendors/ckeditor/js/config.js') }}"  type="text/javascript"></script>
 <script  src="{{ asset('assets/js/pages/editor.js') }}"  type="text/javascript"></script>
-<script src="https://demo.itsolutionstuff.com/plugin/croppie.js"></script>
-<link rel="stylesheet" href="https://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
-<link rel="stylesheet" href="https://demo.itsolutionstuff.com/plugin/croppie.css">
+<script src="http://demo.itsolutionstuff.com/plugin/croppie.js"></script>
+<link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
+<link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/croppie.css">
 <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" ></script>
 
 

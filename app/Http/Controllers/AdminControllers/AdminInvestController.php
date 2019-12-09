@@ -2,273 +2,193 @@
 
 namespace App\Http\Controllers\AdminControllers;
 
-use App\Http\Controllers\JoshController as Controller;
+use App\Http\Controllers\Controller as Controller;
+use Illuminate\Http\Request;
 use App\Models\Invest;
-use App\Http\Requests;
-use App\Http\Requests\InvestRequest;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Response;
-use Sentinel;
-use Intervention\Image\Facades\Image;
-use DOMDocument;
+use File;
+use Redirect;
+use View;
+use Validator;
+use DB;
 
 class AdminInvestController extends Controller {
 
-    private $tags;
-
+    /**
+     * Show a list of all the properties.
+     *
+     * @return View
+     */
     public function __construct() {
-        parent::__construct();
+        $session_user_id = 1; //Sentinel::getUser()->id;
+
+        $results_users = DB::selectOne(DB::raw("select users.*,tbl_module_access.* from users INNER JOIN tbl_module_access ON users.id=tbl_module_access.userid where users.id=" . $session_user_id));
+
+        if ($results_users != NULL) {
+
+            if ($results_users->invest == "0") {
+                redirect()->to('/admin/permissionDenied')->send();
+            }
+        }
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
     public function index() {
-        // Grab all the invests
-        $invests = Invest::all();
+
+        return redirect('admin/invest/1/edit');
+
+        // Grab all the properties
+        $invest = Invest::orderBy('id', 'desc')->paginate(5);
+
         // Show the page
-        return view('admin.invest.index', compact('invests'));
+        return view('admin.invest.index', compact('invest'));
+    }
+
+    public function status(Request $request, $id, $flag) {
+
+        Invest::where('id', $id)->update(array("status" => $flag));
+        $request->session()->flash('alert-success', 'Press release status has been updated!');
+
+        return redirect('admin/invest');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Create new properties
      *
-     * @return Response
+     * @return View
      */
-    public function create() {
-        return view('admin.invest.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store(InvestRequest $request) {
-        $invest = new Invest();
-
-        if ($request->get('description_en')) {
-            $message = $request->get('description_en');
-            $dom = new DomDocument();
-            $dom->loadHtml($message, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-            $images = $dom->getElementsByTagName('img');
-            // foreach <img> in the submited message
-            foreach ($images as $img) {
-                $src = $img->getAttribute('src');
-                // if the img source is 'data-url'
-                if (preg_match('/data:image/', $src)) {
-                    // get the mimetype
-                    preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-                    $mimetype = $groups['mime'];
-                    // Generating a random filename
-                    $filename = uniqid();
-                    $filepath = "uploads/invest/$filename.$mimetype";
-                    // @see http://image.intervention.io/api/
-                    $image = Image::make($src)
-                            // resize if required
-                            /* ->resize(300, 200) */
-                            ->encode($mimetype, 100)  // encode file to the specified mimetype
-                            ->save(STORE_PATH . ($filepath));
-                    $new_src = asset($filepath);
-                    $img->removeAttribute('src');
-                    $img->setAttribute('src', $new_src);
-                } // <!--endif
-            } // <!-
-            $invest->description_en = $dom->saveHTML();
-        }
-
-        if ($request->get('description_ar')) {
-            $message = $request->get('description_ar');
-            $dom = new DomDocument();
-            $dom->loadHtml($message, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-            $images = $dom->getElementsByTagName('img');
-            // foreach <img> in the submited message
-            foreach ($images as $img) {
-                $src = $img->getAttribute('src');
-                // if the img source is 'data-url'
-                if (preg_match('/data:image/', $src)) {
-                    // get the mimetype
-                    preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-                    $mimetype = $groups['mime'];
-                    // Generating a random filename
-                    $filename = uniqid();
-                    $filepath = "uploads/invest/$filename.$mimetype";
-                    // @see http://image.intervention.io/api/
-                    $image = Image::make($src)
-                            // resize if required
-                            /* ->resize(300, 200) */
-                            ->encode($mimetype, 100)  // encode file to the specified mimetype
-                            ->save(STORE_PATH . ($filepath));
-                    $new_src = asset($filepath);
-                    $img->removeAttribute('src');
-                    $img->setAttribute('src', $new_src);
-                } // <!--endif
-            } // <!-
-            $invest->description_ar = $dom->saveHTML();
-        }
-
-        $invest->title_en = $request->get('title_en');
-        $invest->title_ar = $request->get('title_ar');
-        $invest->status = 1; //Sentinel::getUser()->id;
-        $invest->save();
-
-        if ($invest->id) {
-            return redirect('admin/invest')->with('success', trans('invest/message.success.create'));
+    public function create(Request $request, $id = '') {
+        if ($id == '') {
+            $invest = array();
+            $type = 'add';
+            return view('admin.invest.createinvest', compact('invest', 'type'));
         } else {
-            return Redirect::route('admin/invest')->withInput()->with('error', trans('invest/message.error.create'));
+            $invest = Invest::find($id);
+            $type = 'edit';
+            return view('admin.invest.createinvest', compact('invest', 'type'));
         }
     }
 
     /**
-     * Display the specified resource.
+     * properties create form processing.
      *
-     * @param  Invest $invest
-     * @return view
+     * @return Redirect
      */
-    public function show(Invest $invest) {
-        $comments = Invest::find($invest->id)->comments;
+    public function store(Request $request) {
+        $content = new Content();
+        $content->title_en = input_trims($request->title_en);
+        $content->description_en = input_trims($request->description_en);
+        $content->created = date("Y-m-d H:i:s");
+        $content->save();
 
-        return view('admin.invest.show', compact('invest', 'comments', 'tags'));
+        return redirect('admin/properties/');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  Invest $invest
-     * @return view
-     */
-    public function edit(Invest $invest) {
-        return view('admin.invest.edit', compact('invest'));
+    protected function validator_image(array $data) {
+        return Validator::make($data, [
+                    'image' => 'mimes:jpg,jpeg,gif,png|min:100|max:1024'
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Invest $invest
-     * @return Response
-     */
-    public function update(InvestRequest $request, Invest $invest) { echo 123121; die;
+    protected function validator_image_aminity(array $data) {
+        return Validator::make($data, [
+                    'image' => 'mimes:jpg,jpeg,gif,png|max:10'
+        ]);
+    }
 
-        if ($request->get('description_en')) {
-            $message = $request->get('description_en');
-            $dom = new DomDocument();
-            $dom->loadHtml($message, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-            $images = $dom->getElementsByTagName('img');
-            // foreach <img> in the submited message
-            foreach ($images as $img) {
-                $src = $img->getAttribute('src');
-                // if the img source is 'data-url'
-                if (preg_match('/data:image/', $src)) {
-                    // get the mimetype
-                    preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-                    $mimetype = $groups['mime'];
-                    // Generating a random filename
-                    $filename = uniqid();
-                    $filepath = "uploads/invest/$filename.$mimetype";
-                    // @see http://image.intervention.io/api/
-                    $image = Image::make($src)
-                            // resize if required
-                            /* ->resize(300, 200) */
-                            ->encode($mimetype, 100)  // encode file to the specified mimetype
-                            ->save(STORE_PATH . ($filepath));
-                    $new_src = asset($filepath);
-                    $img->removeAttribute('src');
-                    $img->setAttribute('src', $new_src);
-                } // <!--endif
-            } // <!-
-            $invest->description_en = $dom->saveHTML();
+    public function store_invest(Request $request, $id = '') {
+
+        if ($request->type == "add") {
+
+            $image = $request->file('image');
+            $input['imagename'] = '';
+            if ($image) {
+                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $destinationPath = STORE_PATH . ('assets/images/invest');
+                $image->move($destinationPath, $input['imagename']);
+            }
+
+            $new = new Invest();
+            $new->title_en = input_trims($request->title_en);
+            $new->title_ar = input_trims($request->title_ar);
+            $new->alt = input_trims($request->alt);
+            $new->description_en = input_trims($request->description_en);
+            $new->description_ar = input_trims($request->description_ar);
+            $new->section_en = serialize($request->section_en);
+            $new->section_ar = serialize($request->section_ar);
+            $new->image = $input['imagename'];
+            $new->created = date("Y-m-d H:i:s");
+            $new->status = '1';
+
+            $new->save();
+
+            $request->session()->flash('alert-success', 'Invest has been added!');
+        }
+        if ($request->type == "edit") {
+
+
+            $image = $request->file('image');
+
+
+            $input['imagename'] = '';
+
+            if ($image) {
+                $invest = Invest::find($request->id);
+                if ($invest->image != "") {
+                    $url = STORE_PATH . "/assets/images/invest/" . $invest->image;
+                    @unlink($url);
+                }
+
+                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $destinationPath = STORE_PATH . '/assets/images/invest';
+                $image->move($destinationPath, $input['imagename']);
+            }
+
+            $data = array();
+            if ($input['imagename'] != "") {
+                $data['image'] = $input['imagename'];
+            }
+
+            $data['alt'] = input_trims($request->alt);
+            $data['title_en'] = input_trims($request->title_en);
+            $data['title_ar'] = input_trims($request->title_ar);
+            $data['description_en'] = input_trims($request->description_en);
+            $data['description_ar'] = input_trims($request->description_ar);
+            $data['section_en'] = serialize($request->section_en);
+            $data['section_ar'] = serialize($request->section_ar);
+
+
+            if (!empty($data)) {
+                Invest::where('id', $request->id)->update($data);
+            }
+
+            $request->session()->flash('alert-success', 'Invest has been updated!');
         }
 
-        if ($request->get('description_ar')) {
-            $message = $request->get('description_ar');
-            $dom = new DomDocument();
-            $dom->loadHtml($message, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-            $images = $dom->getElementsByTagName('img');
-            // foreach <img> in the submited message
-            foreach ($images as $img) {
-                $src = $img->getAttribute('src');
-                // if the img source is 'data-url'
-                if (preg_match('/data:image/', $src)) {
-                    // get the mimetype
-                    preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-                    $mimetype = $groups['mime'];
-                    // Generating a random filename
-                    $filename = uniqid();
-                    $filepath = "uploads/invest/$filename.$mimetype";
-                    // @see http://image.intervention.io/api/
-                    $image = Image::make($src)
-                            // resize if required
-                            /* ->resize(300, 200) */
-                            ->encode($mimetype, 100)  // encode file to the specified mimetype
-                            ->save(STORE_PATH . ($filepath));
-                    $new_src = asset($filepath);
-                    $img->removeAttribute('src');
-                    $img->setAttribute('src', $new_src);
-                } // <!--endif
-            } // <!-
-            $invest->description_ar = $dom->saveHTML();
-        }
-
-        $invest->title_en = $request->get('title_en');
-        $invest->title_ar = $request->get('title_ar');
-
-        if ($invest->update()) {
-            return redirect('admin/invest')->with('success', trans('invest/message.success.update'));
-        } else {
-            return Redirect::route('admin/invest')->withInput()->with('error', trans('invest/message.error.update'));
-        }
+        return redirect('admin/invest');
     }
 
-    /**
-     * Remove invest.
-     *
-     * @param Invest $invest
-     * @return Response
-     */
-    public function getModalDelete(Invest $invest) {
-        $model = 'invest';
-        $confirm_route = $error = null;
-        try {
-            $confirm_route = route('admin.invest.delete', ['id' => $invest->id]);
-            return view('admin.layouts.modal_confirmation', compact('error', 'model', 'confirm_route'));
-        } catch (GroupNotFoundException $e) {
+    public function delete_invest(Request $request, $id) {
 
-            $error = trans('invest/message.error.delete', compact('id'));
-            return view('admin.layouts.modal_confirmation', compact('error', 'model', 'confirm_route'));
+        $invest = Invest::find($id);
+
+        if ($invest->image != "") {
+            $url = STORE_PATH . "/assets/images/invest/" . @$invest->image;
+            @unlink($url);
+
+            $url = STORE_PATH . "/assets/images/invest/download/" . $id;
+            File::deleteDirectory($url);
         }
+
+        Invest::destroy($id);
+
+        $request->session()->flash('alert-success', 'Invest has been deleted!');
+        return redirect('admin/invest');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  Invest $invest
-     * @return Response
-     */
-    public function destroy(Invest $invest) {
-
-        if ($invest->delete()) {
-            return redirect('admin/invest')->with('success', trans('invest/message.success.delete'));
-        } else {
-            return Redirect::route('admin/invest')->withInput()->with('error', trans('invest/message.error.delete'));
-        }
+    public function delete_coverage(Request $request) {
+        //echo $request['id']; 
+        DB::table('tbl_investcoverage')->where('id', '=', $request['id'])->delete();
+        echo '<span style=color:red; font-weight:bold; >Record Successfully Deleted !</span><br/>';
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param InvestCommentRequest $request
-     * @param Invest $invest
-     *
-     * @return Response
-     */
-    public function storeComment(InvestCommentRequest $request, Invest $invest) {
-        $investcooment = new InvestComment($request->all());
-        $investcooment->invest_id = $invest->id;
-        $investcooment->save();
-
-        return redirect('admin/invest/' . $invest->id . '/show');
-    }
-
+    //end delete_coverage
 }

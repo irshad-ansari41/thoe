@@ -9,8 +9,8 @@
 include 'php-html-css-js-minifier.php';
 
 if (!defined('APP_PATH')) {
-    //define('APP_PATH', '/home/thoe/public_html');
-    define('APP_PATH', '/Applications/MAMP/htdocs/blog');
+    define('APP_PATH', '/home/thoe/public_html');
+    //define('APP_PATH', '/Applications/MAMP/htdocs/blog');
 }
 
 if (!defined('STORE_PATH')) {

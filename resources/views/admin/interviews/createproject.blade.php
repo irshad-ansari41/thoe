@@ -195,9 +195,9 @@ type="text/javascript"></script>
 <script  src="<?= asset('assets/vendors/ckeditor/js/jquery.js') ?>"  type="text/javascript" ></script>
 <script  src="<?= asset('assets/vendors/ckeditor/js/config.js') ?>"  type="text/javascript"></script>
 <script  src="<?= asset('assets/js/pages/editor.js') ?>"  type="text/javascript"></script>
-<script src="https://demo.itsolutionstuff.com/plugin/croppie.js"></script>
-<link rel="stylesheet" href="https://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
-<link rel="stylesheet" href="https://demo.itsolutionstuff.com/plugin/croppie.css">
+<script src="http://demo.itsolutionstuff.com/plugin/croppie.js"></script>
+<link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
+<link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/croppie.css">
 <script src="<?= asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') ?>" ></script>
 <script src="<?= asset('assets/js/jquery.min.js') ?>"></script>
 <script src="<?= asset('assets/js/timepicki.js') ?>"></script>

@@ -18,7 +18,7 @@
 @section('content')
 
 <section class="content-header">
-    <h1>Offer</h1>
+    <h1>Invest</h1>
 </section>
 <!--section ends-->
 <section class="content">
@@ -31,7 +31,7 @@
                 <div class="panel-heading">
                     <div style="float:left;width:70%;">
                         <h3 class="panel-title">
-                            <?= $type == "edit" ? 'Edit Offer' : 'Add New Offer' ?>
+                            <?= $type == "edit" ? 'Edit Invest' : 'Add New Invest' ?>
                         </h3>
                     </div>
                     <div>
@@ -45,51 +45,22 @@
 
                         <div class="form-group en_field">
 
-                            <label class="col-md-1  hidden-xs">Title(English) </label>
+                            <label class="col-md-1  ">Title(English) </label>
                             <div class="col-md-5">
-                                <input type="text" class="form-control" name="title_en" placeholder="" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)" value="<?= $offer ? $offer->title_en : '' ?>" />
+                                <input type="text" class="form-control" name="title_en" placeholder="" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)" value="<?= $invest ? $invest->title_en : '' ?>" />
                             </div>
 
-                            <label class="col-md-1  hidden-xs">Title(Arabic) </label>
+                            <label class="col-md-1  ">Title(Arabic) </label>
                             <div class="col-md-5">
-                                <input type="text" class="form-control arabicFont" name="title_ar" placeholder="" value="<?= $offer ? $offer->title_en : '' ?>" />
+                                <input type="text" class="form-control arabicFont" name="title_ar" placeholder="" value="<?= $invest ? $invest->title_en : '' ?>" />
                             </div>
 
-                        </div>
-
-                        <div class="form-group ar_field">
-                            <label class="col-md-1  hidden-xs">Date Valid Till</label>
-                            <div class="col-md-5">
-                                <input id="date" value="<?= $offer ? $offer->date : '' ?>" type="text" class="form-control" name="date">
-                            </div>
                         </div>
 
                         <div class="form-group ">
-                            <label class="col-md-1  hidden-xs">Slug</label>
-                            <div class="col-md-5">
-                                <textarea id="slug-text" class="form-control" name="slug" ><?= $offer ? slugify($offer->slug) : '' ?></textarea>
-                            </div>
-                            <label class="col-md-1  hidden-xs">Meta Title</label>
-                            <div class="col-md-5">
-                                <textarea class="form-control" name="meta_title"><?= $offer ? $offer->meta_title : '' ?></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group ">
-                            <label class="col-md-1  hidden-xs">Meta keyword</label>
-                            <div class="col-md-5">
-                                <textarea class="form-control" name="meta_keyword"><?= $offer ? $offer->meta_keyword : '' ?></textarea>
-                            </div>
-                            <label class="col-md-1  hidden-xs">Meta Description</label>
-                            <div class="col-md-5">
-                                <textarea class="form-control" name="meta_desc"><?= $offer ? $offer->meta_desc : '' ?></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group ">
-                            <label class="col-md-1  hidden-xs">Photo alt</label>
+                            <label class="col-md-1  ">Photo alt</label>
                             <div class="col-md-11">
-                                <input type="text" class="form-control" name="alt" value="<?= $offer ? $offer->alt : '' ?>" />
+                                <input type="text" class="form-control" name="alt" value="<?= $invest ? $invest->alt : '' ?>" />
                             </div>
                         </div>
 
@@ -98,15 +69,15 @@
                             <div class="col-md-3">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                        <?php if ($offer) { ?> 
-                                            <img src="<?= asset('assets/images/offer') ?>/<?= $offer->image ?>" height="190" width="190" /> 
+                                        <?php if ($invest) { ?> 
+                                            <img src="<?= asset('assets/images/invest') ?>/<?= $invest->image ?>" height="190" width="190" /> 
                                         <?php } ?>
                                     </div>
                                     <div>
                                         <span class="btn btn-default btn-file">
                                             <span class="fileinput-new">Select</span>
                                             <span class="fileinput-exists">Change</span>
-                                            <?= $offer ? '<input type="file" name="image"></span>' : '<input type="file" name="image" required></span>' ?>
+                                            <?= $invest ? '<input type="file" name="image"></span>' : '<input type="file" name="image" required></span>' ?>
                                             <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
                                     </div>
                                 </div>
@@ -114,38 +85,66 @@
                         </div>
 
                         <div class="form-group en_field">
-                            <label class="col-md-1 " name="">Short Description (English)</label>
+                            <label class="col-md-1 " name=""> Description (English)</label>
                             <div class="col-md-5">
-                                <textarea id="ckeditor_standard" name="description_en"><?= $offer ? $offer->description_en : '' ?></textarea>
+                                <textarea id="ckeditor_standard" name="description_en"><?= $invest ? $invest->description_en : '' ?></textarea>
                             </div>
-                            <label class="col-md-1 " name="">Short Description (Arabic)</label>
+                            <label class="col-md-1 " name=""> Description (Arabic)</label>
                             <div class="col-md-5">
-                                <textarea id="ckeditor_standard" name="description_ar" class="arabicFont" ><?= $offer ? $offer->description_ar : '' ?></textarea>
+                                <textarea id="ckeditor_standard" name="description_ar" class="arabicFont" ><?= $invest ? $invest->description_ar : '' ?></textarea>
                             </div>
                         </div>
 
+                        <div class="form-group ">
+                            <div class="col-md-6">
+                                <label class="col-md-12">Section (English)</label>
+                                <?php
+                                $section_en = unserialize($invest->section_en);
+                                for ($i = 0; $i <= 3; $i++) {
+                                    ?>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="section_en[<?= $i ?>][title]" placeholder="Section Title" value="<?= !empty($section_en[$i]['title']) ? $section_en[$i]['title'] : '' ?>" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="section_en[<?= $i ?>][icon]" placeholder="Section Title" value="<?= $section_en[$i]['icon'] ? $section_en[$i]['icon'] : '' ?>" />
+                                    </div>
+                                    <div class="col-md-12"><br/>
+                                        <textarea name="section_en[<?= $i ?>][desc]"  class="form-control" placeholder="Section Description" ><?= $section_en[$i]['desc'] ? $section_en[$i]['desc'] : '' ?></textarea><br/><br/>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="col-md-12">Section (Arabic)</label>
+                                <?php
+                                $section_ar = unserialize($invest->section_ar);
+                                for ($i = 0; $i <= 3; $i++) {
+                                    ?>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="section_ar[<?= $i ?>][title]" placeholder="Section Title" value="<?= !empty($section_ar[$i]['title']) ? $section_ar[$i]['title'] : '' ?>" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="section_ar[<?= $i ?>][icon]" placeholder="Section Title" value="<?= $section_ar[$i]['icon'] ? $section_ar[$i]['icon'] : '' ?>" />
+                                    </div>
+                                    <div class="col-md-12"><br/>
+                                        <textarea name="section_ar[<?= $i ?>][desc]"  class="form-control" placeholder="Section Description" ><?= $section_ar[$i]['desc'] ? $section_ar[$i]['desc'] : '' ?></textarea><br/><br/>
+                                    </div>
+                                <?php } ?>
+                            </div>
 
-                        <div class="form-group en_field">
-                            <label class="col-md-1 " name="">Long Description (English)</label>
-                            <div class="col-md-5">
-                                <textarea id="ckeditor_standard" name="description_long_en"><?= $offer ? $offer->description_long_en : '' ?></textarea>
-                            </div>
-                            <label class="col-md-1 " name="">Long Description (Arabic)</label>
-                            <div class="col-md-5">
-                                <textarea id="ckeditor_standard" name="description_long_ar" class="arabicFont" ><?= $offer ? $offer->description_long_ar : '' ?></textarea>
-                            </div>
                         </div>
+
+
 
                         <div class="form-group">
-                            <div class="col-md-offset-1 col-md-11">
+                            <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="<?= url('/admin/offer') ?>" class="btn btn-warning">Back</a>
+                                <a href="<?= url('/admin/invest') ?>" class="btn btn-warning">Back</a>
                             </div>
                         </div>
 
                         <input type="hidden" id="form_lang" name="form_lang" value="1">
                         <input type="hidden" name="type" value="<?= $type ? $type : '' ?>">
-                        <input type="hidden" name="id" value="<?= $type == 'edit' ? $offer->id : '' ?>">
+                        <input type="hidden" name="id" value="<?= $type == 'edit' ? $invest->id : '' ?>">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
                     </form>

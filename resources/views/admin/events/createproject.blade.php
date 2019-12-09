@@ -12,10 +12,10 @@
 <link href="<?= asset('assets/css/pages/editor.css') ?>" rel="stylesheet" type="text/css"/>
 <link href="<?= asset('assets/css/pages/buttons.css') ?>" rel="stylesheet"/>
 <link href="<?= asset('assets/css/timepicki.css') ?>" rel="stylesheet">
-<link rel="stylesheet" href="https://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
-<link rel="stylesheet" href="https://demo.itsolutionstuff.com/plugin/croppie.css">
+<link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
+<link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/croppie.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+
 <style>
     input.timepicki-input
     {
@@ -382,7 +382,7 @@
 <script  src="<?= asset('assets/vendors/ckeditor/js/jquery.js') ?>"  type="text/javascript" ></script>
 <script  src="<?= asset('assets/vendors/ckeditor/js/config.js') ?>"  type="text/javascript"></script>
 <script  src="<?= asset('assets/js/pages/editor.js') ?>"  type="text/javascript"></script>
-<script src="https://demo.itsolutionstuff.com/plugin/croppie.js"></script>
+<script src="http://demo.itsolutionstuff.com/plugin/croppie.js"></script>
 <script src="<?= asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') ?>" ></script>
 <script src="<?= asset('assets/js/jquery.min.js') ?>"></script>
 <script src="<?= asset('assets/js/timepicki.js') ?>"></script>

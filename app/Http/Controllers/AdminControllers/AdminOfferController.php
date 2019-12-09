@@ -130,9 +130,7 @@ class AdminOfferController extends Controller {
 
             $image = $request->file('image');
 
-            $doc = $request->file('doc');
-            $image1 = $request->file('image1');
-
+         
             $input['imagename'] = '';
 
             if ($image) {

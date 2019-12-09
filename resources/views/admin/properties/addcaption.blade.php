@@ -52,23 +52,23 @@
                         <?php $i = 0; ?>
                         @foreach($results as $res)
                         <div class="form-group">
-                            
-                            
-                            
+
+
+
                             <div class="row">
-                                
+
                                 <div class="col-md-2">
                                     <label class="col-md-1 control-label" ><img name="" src="{{asset('assets/images/properties')}}/{!! $project_location !!}/{!! $prop_location !!}/Construction_update/{!! $res->image !!}" height="60" width="60"/></label>
                                 </div>
-                                
+
                                 <div class="col-md-5">
                                     <input type="text" class="form-control" name="imagecaption[]" value="{{ $res->caption }}" />
                                 </div>
-                                
+
                                 <div class="col-md-5">
                                     <input id="date-{{ $i }}" value="@if($res){{ $res->caption_date }} @endif" type="text" class="form-control date" name="caption_date[]">
                                 </div>
-                                
+
                             </div>
                         </div>
                         <input type="hidden" name="images_ids[]" value="{{ $res->id }}">
@@ -113,8 +113,7 @@
 
 <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
 type="text/javascript"></script>
-{{--<script src="{{ asset('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') }}"></script>--}}
-<script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
+<!--<script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>-->
 <script src="{{asset('assets/vendors/tinymce/tinymce.min.js')}}" type="text/javascript"></script>
 <script  src="{{ asset('assets/vendors/ckeditor/js/ckeditor.js') }}"  type="text/javascript"></script>
 <script  src="{{ asset('assets/vendors/ckeditor/js/jquery.js') }}"  type="text/javascript" ></script>
@@ -156,10 +155,7 @@ $(document).ready(function () {
     });
 });
 </script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 @if(!empty($results))
 <?php
 $i = 0;
@@ -176,12 +172,12 @@ $i++;
 ?>
 @endforeach
 @endif
-    <script>
+<script>
 $(function () {
     $('<?php echo $datestring; ?>').datepicker({
         dateFormat: "yy-mm-dd"
     });
 });
-    </script>
+</script>
 
-    @stop
+@stop

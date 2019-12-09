@@ -79,22 +79,6 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
     Route::resource('users', 'AdminUsersController');
     Route::get('deleted_users', array('as' => 'deleted_users', 'before' => 'Sentinel', 'uses' => 'AdminUsersController@getDeletedUsers'));
 
-
-    /* routes for invest */
-    Route::group(array('prefix' => 'invest'), function () {
-        Route::get('/', array('as' => 'invest', 'uses' => 'AdminInvestController@index'));
-        Route::get('create', array('as' => 'invest.create', 'uses' => 'AdminInvestController@create'));
-        Route::post('create', 'AdminInvestController@store');
-        Route::get('{invest}/edit', array('as' => 'invest.edit', 'uses' => 'AdminInvestController@edit'));
-        Route::post('{invest}/edit', 'AdminInvestController@update');
-        Route::get('{invest}/delete', array('as' => 'invest.delete', 'uses' => 'AdminInvestController@destroy'));
-        Route::get('{invest}/confirm-delete/', array('as' => 'invest.confirm-delete', 'uses' => 'AdminInvestController@getModalDelete'));
-        Route::get('{invest}/restore', array('as' => 'invest.restore', 'uses' => 'AdminInvestController@restore'));
-        Route::get('{invest}/show', array('as' => 'invest.show', 'uses' => 'AdminInvestController@show'));
-        Route::post('{invest}/storecomment', 'AdminInvestController@storeComment');
-    });
-
-
     # Group Management
     Route::group(array('prefix' => 'groups'), function () {
         Route::get('/', array('as' => 'groups', 'uses' => 'AdminGroupsController@index'));
@@ -499,6 +483,16 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
     Route::post('/offer/{id}/edit', array('uses' => 'AdminOfferController@store_offer'));
     Route::post('/offer/add_offer', array('uses' => 'AdminOfferController@store_offer'));
     Route::post('/offer/coverage/delete_coverage', array('as' => 'offer.deletecoverage', 'uses' => 'AdminOfferController@delete_coverage'));
+    
+    /* Invest Management */
+    Route::get('/invest', array('uses' => 'AdminInvestController@index'));
+    Route::get('/invest/{id}/status/{flag}', array('uses' => 'AdminInvestController@status'));
+    Route::get('/invest/add_invest', array('uses' => 'AdminInvestController@create'));
+    Route::get('/invest/{id}/edit', array('uses' => 'AdminInvestController@create'));
+    Route::get('/invest/{id}/delete', array('uses' => 'AdminInvestController@delete_invest'));
+    Route::post('/invest/{id}/edit', array('uses' => 'AdminInvestController@store_invest'));
+    Route::post('/invest/add_invest', array('uses' => 'AdminInvestController@store_invest'));
+    Route::post('/invest/coverage/delete_coverage', array('as' => 'invest.deletecoverage', 'uses' => 'AdminInvestController@delete_coverage'));
 
 
     /* Booking and payment Management */

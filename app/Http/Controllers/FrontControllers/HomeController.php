@@ -48,6 +48,7 @@ class HomeController extends Controller {
             'events' => Event::where('event_date', '>=', date('Y-m-d'))->where('status', '1', date('Y-m-d'))->where("event_title_{$this->locale}", '!=', '')->orderBy('event_order', 'asc')->limit(6)->get()->toArray(),
             'press' => Press::where('status', '1', date('Y-m-d'))->where("title_{$this->locale}", '!=', '')->orderBy('press_order', 'asc')->limit(6)->get()->toArray(),
             'bannersliders' => DB::table('tbl_feature_banner_slider')->orderby('tbl_feature_banner_slider.banner_order', 'ASC')->get()->toArray(),
+            'invest' => (array) DB::table('tbl_invest')->first(),
             'meta_title' => $content->meta_title,
             'meta_keyword' => $content->meta_keyword,
             'meta_description' => $content->meta_desc,

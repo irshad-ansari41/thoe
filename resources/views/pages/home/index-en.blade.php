@@ -103,87 +103,48 @@ Home Page
                     </div>
                     <div id="tab-projects" class="tab-pane">
                         <div class="listing listing--grid">
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="<?= asset("assets/media-demo/properties/554x360/01.jpg") ?>" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                            </figure></a><span class="properties__ribon">Sale On</span>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">Main Europe</span></a>
-                                            <div class="properties__offer">
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Invest From AED</div>
-                                                    <div class="properties__offer-value"><strong> 1,500,000</strong>
+
+
+                            <div class="listing listing--grid">
+                                <?php
+                                foreach ($properties as $value) {
+                                    $project = (array) $value['project'];
+                                    foreach ($value['properties'] as $property) {
+                                        $property = (array) $property;
+                                        ?>
+                                        <div class="listing__item">
+                                            <div class="properties properties--grid">
+                                                <div class="properties__thumb"><a href="<?= url("/$locale/projects/{$project['slug']}/{$property['slug']}") ?>" class="item-photo"><img src="{{asset('assets/images/properties')}}/{{ $project['gallery_location'] }}/{{ $property['gallery_location'] }}/{{ $property['holder_image'] }}" alt=""/>
+                                                        <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro"><?= str_limit($property['long_description_' . $locale], 35) ?></span>
+                                                        </figure></a><span class="properties__ribon">Sale On</span>
+                                                </div>
+                                                <!-- end of block .properties__thumb-->
+                                                <div class="properties__details">
+                                                    <div class="properties__info"><a href="<?= url("/$locale/projects/{$project['slug']}/{$property['slug']}") ?>" class="properties__address"><span class="properties__address-street"><?= $property['title_' . $locale] ?></span></a>
+                                                        <div class="properties__offer">
+                                                            <div class="properties__offer-column">
+                                                                <div class="properties__offer-label">Invest From AED</div>
+                                                                <div class="properties__offer-value"><strong> 1,500,000</strong>
+                                                                </div>
+                                                            </div>
+                                                            <div class="properties__offer-column">
+                                                                <div class="properties__offer-label">Guaranteed ROI</div>
+                                                                <div class="properties__offer-value"><strong> 100%</strong>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Guaranteed ROI</div>
-                                                    <div class="properties__offer-value"><strong> 100%</strong>
-                                                    </div>
-                                                </div>
+                                                <!-- end of block .properties__info-->
                                             </div>
+                                            <!-- end of block .properties__item-->
                                         </div>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
+                                        <?php
+                                    }
+                                }
+                                ?>
                             </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="<?= asset("assets/media-demo/properties/554x360/02.jpg") ?>" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                            </figure></a><span class="properties__ribon">Sale On</span>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="property_details.html" class="properties__address"><span class="properties__address-street">Portofino</span></a>
-                                            <div class="properties__offer">
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Invest From AED</div>
-                                                    <div class="properties__offer-value"><strong> 1,500,000</strong>
-                                                    </div>
-                                                </div>
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Guaranteed ROI</div>
-                                                    <div class="properties__offer-value"><strong> 100%</strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
-                            <div class="listing__item">
-                                <div class="properties properties--grid">
-                                    <div class="properties__thumb"><a href="#" class="item-photo"><img src="<?= asset("assets/media-demo/properties/554x360/03.jpg") ?>" alt=""/>
-                                            <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Witness the magic of snowfall in the outdoor plaza in Main Europe Island Centre Plaza, the world’s first climate controlled resort....</span>
-                                            </figure></a><span class="properties__ribon">Sale On</span>
-                                    </div>
-                                    <!-- end of block .properties__thumb-->
-                                    <div class="properties__details">
-                                        <div class="properties__info"><a href="#" class="properties__address"><span class="properties__address-street">Cote D'Azur</span></a>
-                                            <div class="properties__offer">
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Invest From AED</div>
-                                                    <div class="properties__offer-value"><strong> 1,500,000</strong>
-                                                    </div>
-                                                </div>
-                                                <div class="properties__offer-column">
-                                                    <div class="properties__offer-label">Guaranteed ROI</div>
-                                                    <div class="properties__offer-value"><strong> 100%</strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end of block .properties__info-->
-                                </div>
-                                <!-- end of block .properties__item-->
-                            </div>
+
 
                         </div>
                     </div>
@@ -196,60 +157,64 @@ Home Page
         <div class="widget__content">
             <!-- BEGIN SECTION FEATURE-->
             <section class="feature">
-                <div class="feature__picture"></div>
+                <div class="feature__picture" style="background-image:url(<?= asset("/assets/images/invest/{$invest['image']}") ?>)"></div>
                 <!-- end of .feature__picture-->
                 <div class="container">
                     <div class="feature__content">
                         <div class="feature__header">
-                            <h3 data-sr="enter right ease-in-out 150px" class="feature__title">Why Invest with The Heart of Europe!</h3>
-                            <h4 data-sr="enter right ease-in-out 250px" class="feature__headline">Our mission is to empower consumers with information to make smart decisions. RealtySpace is a real estate marketplace dedicated to helping homeowners, home buyers, sellers, renters and agents find and share information about homes, real estate and home improvement.</h4>
+                            <h3 data-sr="enter right ease-in-out 150px" class="feature__title"><?= $invest['title_' . $locale] ?></h3>
+                            <h4 data-sr="enter right ease-in-out 250px" class="feature__headline"><?= $invest['description_' . $locale] ?></h4>
                         </div>
+                        <?php
+                        $section_en = unserialize($invest['section_en']);
+                        $section_ar = unserialize($invest['section_ar']);
+                        ?>
                         <!-- end of block .feature__header-->
                         <div class="feature__list">
                             <div data-sr="enter right ease 150px" class="feature__item">
-                                <svg class="feature__icon feature__icon--money-save">
-                                <use xlink:href="#icon-money-save"></use>
+                                <svg class="feature__icon feature__icon--<?= !empty($section_en[0]['icon']) ? $section_en[0]['icon'] : '' ?>">
+                                <use xlink:href="#icon-<?= !empty($section_en[0]['icon']) ? $section_en[0]['icon'] : '' ?>"></use>
                                 </svg>
                                 <div class="feature__item-content">
-                                    <h3 class="feature__item-title">Reason One</h3>
+                                    <h3 class="feature__item-title"><?= !empty($section_en[0]['title']) ? $section_en[0]['title'] : '' ?></h3>
                                     <div class="feature__text">
-                                        <p>It starts with our living database of more than 110 million U.S. homes &ndash; including homes for sale, homes for rent and homes not currently on the market.</p>
+                                        <p><?= !empty($section_en[0]['desc']) ? $section_en[0]['desc'] : '' ?></p>
                                     </div>
                                 </div>
                             </div>
                             <!-- end of block .feature__item-->
                             <div data-sr="enter right ease 250px" class="feature__item">
-                                <svg class="feature__icon feature__icon--good-sales">
-                                <use xlink:href="#icon-good-sales"></use>
+                                <svg class="feature__icon feature__icon--<?= !empty($section_en[1]['icon']) ? $section_en[1]['icon'] : '' ?>">
+                                <use xlink:href="#icon-<?= !empty($section_en[1]['icon']) ? $section_en[1]['icon'] : '' ?>"></use>
                                 </svg>
                                 <div class="feature__item-content">
-                                    <h3 class="feature__item-title">Reasone Two</h3>
+                                    <h3 class="feature__item-title"><?= !empty($section_en[1]['title']) ? $section_en[1]['title'] : '' ?></h3>
                                     <div class="feature__text">
-                                        <p>In addition, RealtySpace operates the largest real estate and rental advertising networks in the U.S. in partnership with Livemile Homes!</p>
+                                        <p><?= !empty($section_en[1]['desc']) ? $section_en[1]['desc'] : '' ?></p>
                                     </div>
                                 </div>
                             </div>
                             <!-- end of block .feature__item-->
                             <div data-sr="enter right ease 150px" class="feature__item">
                                 <svg class="feature__icon">
-                                <use xlink:href="#icon-comfort"></use>
+                                <use xlink:href="#<?= !empty($section_en[2]['icon']) ? $section_en[2]['icon'] : '' ?>"></use>
                                 </svg>
                                 <div class="feature__item-content">
-                                    <h3 class="feature__item-title">Reasone Three</h3>
+                                    <h3 class="feature__item-title"><?= !empty($section_en[2]['title']) ? $section_en[2]['title'] : '' ?></h3>
                                     <div class="feature__text">
-                                        <p>We are transforming the way consumers make home-related decisions and connect with professionals.</p>
+                                        <p><?= !empty($section_en[2]['desc']) ? $section_en[2]['desc'] : '' ?></p>
                                     </div>
                                 </div>
                             </div>
                             <!-- end of block .feature__item-->
                             <div data-sr="enter right ease 250px" class="feature__item">
                                 <svg class="feature__icon">
-                                <use xlink:href="#icon-easy"></use>
+                                <use xlink:href="#<?= !empty($section_en[3]['icon']) ? $section_en[3]['icon'] : '' ?>"></use>
                                 </svg>
                                 <div class="feature__item-content">
-                                    <h3 class="feature__item-title">Reasone Four</h3>
+                                    <h3 class="feature__item-title"><?= !empty($section_en[3]['title']) ? $section_en[3]['title'] : '' ?></h3>
                                     <div class="feature__text">
-                                        <p>It starts with our living database of more than 110 million U.S. homes &ndash; including homes for sale, homes for rent and homes not currently on the market.</p>
+                                        <p><?= !empty($section_en[3]['desc']) ? $section_en[3]['desc'] : '' ?></p>
                                     </div>
                                 </div>
                             </div>
