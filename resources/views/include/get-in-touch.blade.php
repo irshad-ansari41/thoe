@@ -20,6 +20,17 @@
             <label class="control-label">Email</label>
             <input type="email" id="in-form-email" name="email"  placeholder="name@name.com" class="form-control" required="required">
         </div>
+        <?php if (!empty($countries)) { ?>
+            <div class="form-group">
+                <!--<label for="in-contract-type" class="control-label">Intention</label>-->
+                <select id="in-contract-type" name="country" data-placeholder="Country" class="form-control" required="required">
+                    <option label=" "></option>
+                    <?php foreach ($countries as $country) { ?>
+                        <option value="<?= $country->name ?>"><?= $country->name ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        <?php } ?>
         <div class="form-group">
             <label class="control-label">Intention</label>
             <select id="in-contract-type" name="intention" data-placeholder="Register interest for" class="form-control" required="required">

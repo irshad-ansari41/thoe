@@ -42,29 +42,49 @@ Events
                                             <div class="article__item-header">
                                                 <time datetime="<?= $event['event_date'] ?>" class="article__time text-uppercase"><?= $month ?><strong><?= $day ?></strong></time></a>
                                                 <div class="article__item-info">
-                                                    <h3 class="article__item-title"><a href="#"><?= $event['event_title_' . $locale] ?></a></h3>
+                                                    <h3 class="article__item-title"><a href="<?= url("/$locale/events/{$event['slug']}") ?>"><?= $event['event_title_' . $locale] ?></a></h3>
                                                 </div>
                                             </div>
+                                            <div class="clearfix"></div><br/>
+                                            <?= $event['extra_desc_' . $locale] ?>
                                             <div class="clearfix"></div>
                                             <div class="article__preview">
-                                                <div class="slider slider--small slider--small js-slick-blog">
-                                                    <div class="slider__block js-slick-slider">
-                                                        <div class="slider__item"><a href="<?= asset("/assets/images/events/{$event['event_photo_' . $locale]}") ?>" data-size="1168x550" class="slider__img js-gallery-item"><img data-lazy="<?= asset('frontend-assets/media-demo/properties/1740x960/02.jpg') ?>" src="<?= asset("/assets/images/events/{$event['event_photo_' . $locale]}") ?>" alt=""></a></div>
-                                                        <div class="slider__item"><a href="<?= asset("/assets/images/events/{$event['event_photo_' . $locale]}") ?>" data-size="1168x550" class="slider__img js-gallery-item"><img data-lazy="<?= asset('frontend-assets/media-demo/properties/1740x960/03.jpg') ?>" src="<?= asset("/assets/images/events/{$event['event_photo_' . $locale]}") ?>" alt=""></a></div>
+
+                                                <?php
+                                                $images = !empty($event['event_main_photo_' . $locale]) ? explode(',', $event['event_main_photo_' . $locale]) : [];
+                                                if (!empty($press['youtube'])) {
+                                                    ?>
+                                                    <div><iframe width="853" height="480" src="<?= $press['youtube'] ?>" allowfullscreen></iframe></div>
+                                                    <?php
+                                                } else if (count($images) >= 1) {
+                                                    ?>
+                                                    <div class="slider slider--small slider--small js-slick-blog">
+                                                        <div class="slider__block js-slick-slider">
+                                                            <?php foreach (array_filter($images) as $image) { ?>
+                                                                <div class="slider__item">
+                                                                    <a href="<?= asset("/assets/images/events/{$image}") ?>" data-size="1168x550" class="slider__img js-gallery-item">
+                                                                        <img data-lazy="<?= asset('frontend-assets/media-demo/properties/1740x960/02.jpg') ?>" src="<?= asset("/assets/images/events/{$image}") ?>" alt="">
+                                                                    </a>
+                                                                </div>
+                                                            <?php } ?>
+                                                        </div>
+                                                        <div class="slider__controls">
+                                                            <button type="button" class="slider__control slider__control--prev js-slick-prev">
+                                                                <svg class="slider__control-icon">
+                                                                <use xlink:href="#icon-arrow-left"></use>
+                                                                </svg>
+                                                            </button><span class="slider__current js-slick-current">1 /</span><span class="slider__total js-slick-total">3</span>
+                                                            <button type="button" class="slider__control slider__control--next js-slick-next">
+                                                                <svg class="slider__control-icon">
+                                                                <use xlink:href="#icon-arrow-right"></use>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
                                                     </div>
-                                                    <div class="slider__controls">
-                                                        <button type="button" class="slider__control slider__control--prev js-slick-prev">
-                                                            <svg class="slider__control-icon">
-                                                            <use xlink:href="#icon-arrow-left"></use>
-                                                            </svg>
-                                                        </button><span class="slider__current js-slick-current">1 /</span><span class="slider__total js-slick-total">3</span>
-                                                        <button type="button" class="slider__control slider__control--next js-slick-next">
-                                                            <svg class="slider__control-icon">
-                                                            <use xlink:href="#icon-arrow-right"></use>
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                </div>
+                                                <?php } else if (!empty($images[0])) { ?>
+                                                    <a href="#" class=""><img src="<?= asset("/assets/images/events/{$images[0]}") ?>" alt=""></a>
+                                                <?php } ?>
+
                                             </div>
                                             <div class="contacts__address">
                                                 <address class="contacts__address-item">
@@ -80,7 +100,7 @@ Events
                                                     </dl>
                                                     <dl class="contacts__address-column">
                                                         <dt class="contacts__address-column__title"></dt>
-                                                        <dd><a href="<?= url("/$locale/events/{$event['slug_' . $locale]}") ?>" class="article__more">Read more</a><br></dd>
+                                                        <dd><a href="<?= url("/$locale/events/{$event['slug']}") ?>" class="article__more">Read more</a><br></dd>
                                                     </dl>
                                                 </address>
                                             </div>
@@ -93,17 +113,7 @@ Events
                     <div class="site__footer">
                         <!-- BEGIN PAGINATION-->
                         <nav class="listing__pagination">
-                            <ul class="pagination-custom">
-                                <li><a href="#"><span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span><span class="sr-only">Previous</span></a></li>
-                                <li><a href="#">1</a></li>
-                                <li><span>...</span></li>
-                                <li class="active-before"><a href="#">3</a></li>
-                                <li class="active"><span>4</span></li>
-                                <li class="active-after"><a href="#">5</a></li>
-                                <li><span>...</span></li>
-                                <li><a href="#">15</a></li>
-                                <li><a href="#"><span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span><span class="sr-only">Next</span></a></li>
-                            </ul>
+                            <?= $events->links() ?>
                         </nav>
                         <!-- END PAGINATION-->
                     </div>

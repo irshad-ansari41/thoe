@@ -173,7 +173,7 @@ class AdminEventsController extends Controller {
             $input['imagename'] = '';
 
             if ($image) {
-                $input['imagename'] = time() . rand() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
                 $destinationPath = STORE_PATH . '/assets/images/media/' . $pname;
                 $image->move($destinationPath, $input['imagename']);
             }
@@ -196,11 +196,11 @@ class AdminEventsController extends Controller {
             $gal->status = '1';
             $gal->created = date("Y-m-d H:i:s");
             $gal->year = $request->year;
-            
+
             $gal->meta_title = $request->meta_title;
             $gal->meta_keyword = $request->meta_keyword;
             $gal->meta_desc = $request->meta_desc;
-            
+
             $gal->save();
             $request->session()->flash('alert-success', 'Gallery has been added!');
         }
@@ -213,7 +213,7 @@ class AdminEventsController extends Controller {
             $input['imagename'] = '';
 
             if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
                 $destinationPath = STORE_PATH . '/assets/images/media/' . $old_data->path;
                 $image->move($destinationPath, $input['imagename']);
 
@@ -239,7 +239,7 @@ class AdminEventsController extends Controller {
             $data['gallery_type'] = $request->gallery_type;
             $data['status'] = "1";
             $data['year'] = $request->year;
-            
+
             $data['meta_title'] = $request->meta_title;
             $data['meta_keyword'] = $request->meta_keyword;
             $data['meta_desc'] = $request->meta_desc;
@@ -260,7 +260,7 @@ class AdminEventsController extends Controller {
             $input['imagename'] = '';
 
             if ($image) {
-                $input['imagename'] = time() . rand() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
                 $destinationPath = STORE_PATH . '/assets/images/video';
                 $image->move($destinationPath, $input['imagename']);
             }
@@ -268,7 +268,7 @@ class AdminEventsController extends Controller {
             $gal = new VGallery_master();
             $gal->gallery_title_en = $request->gallery_title_en;
             $gal->gallery_title_ar = $request->gallery_title_ar;
-            $gal->slug = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->gallery_title_en))));
+            $gal->slug = $request->slug;
             $gal->gallery_long_title_en = $request->gallery_long_title_en;
             $gal->gallery_long_title_ar = $request->gallery_long_title_ar;
 
@@ -296,7 +296,7 @@ class AdminEventsController extends Controller {
             $input['imagename'] = '';
 
             if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
                 $destinationPath = STORE_PATH . '/assets/images/video/';
                 $image->move($destinationPath, $input['imagename']);
 
@@ -308,7 +308,7 @@ class AdminEventsController extends Controller {
             $data = array();
             $data['gallery_title_en'] = $request->gallery_title_en;
             $data['gallery_title_ar'] = $request->gallery_title_ar;
-            $data['slug'] = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->gallery_title_en))));
+            $data['slug'] = $request->slug;
             $data['gallery_long_title_en'] = $request->gallery_long_title_en;
             $data['gallery_long_title_ar'] = $request->gallery_long_title_ar;
 
@@ -429,7 +429,7 @@ class AdminEventsController extends Controller {
                 $flag = 0;
                 if (isset($image[$i])) {
 
-                    $input['imagename'] = time() . rand() . '.' . $image[$i]->getClientOriginalExtension();
+                    $input['imagename'] = make_image_slug($image[$i]->getClientOriginalName());
                     $destinationPath = STORE_PATH . '/assets/images/media/' . $gallery->path . "/images";
                     $image[$i]->move($destinationPath, $input['imagename']);
 
@@ -507,16 +507,16 @@ class AdminEventsController extends Controller {
 
             $this->validate($request, [
                 'event_title' => 'required',
-                'extra_desc' => 'required',
-                'long_desc' => 'required',
+                'extra_desc_en' => 'required',
+                'long_desc_en' => 'required',
                     //'image' => 'required|image|mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
                     //'main_image' => 'required|image|mimes:jpeg,png,jpg,gif|dimensions:width=845,height=592|max:150',
                     //'image_ar' => 'mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
                     //'image_cn' => 'mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
                     ], [
                 'event_title.required' => 'Sales event title required !',
-                'extra_desc.required' => 'Sales event short description requried !',
-                'long_desc.required' => 'Sales event Details !',
+                'extra_desc_en.required' => 'Sales event short description requried !',
+                'long_desc_en.required' => 'Sales event Details !',
                 'image.required' => 'Thumbnail image required !',
                 'image.dimensions:width=313,height=197' => 'Image width must be 313X197 px!',
                 'image.max' => 'Image size must be less then 50kb !',
@@ -531,35 +531,36 @@ class AdminEventsController extends Controller {
             $input['imagename'] = '';
             $input['imagename_ar'] = '';
             if ($image) {
-                $input['imagename'] = time() . rand() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
                 $destinationPath = STORE_PATH . '/assets/images/events';
                 $image->move($destinationPath, $input['imagename']);
             }
             if ($image_ar) {
-                $input['imagename_ar'] = time() . rand() . '.' . $image_ar->getClientOriginalExtension();
+                $input['imagename_ar'] = make_image_slug($image->getClientOriginalName());
                 $destinationPath = STORE_PATH . '/assets/images/events';
                 $image_ar->move($destinationPath, $input['imagename_ar']);
             }
 
-           
 
-            $main_image = $request->file('main_image');
-            $main_image_ar = $request->file('main_image_ar');
-
-            $input['mimagename'] = '';
-            $input['mimagename_ar'] = '';
-            if ($main_image) {
-                $input['mimagename'] = time() . rand() . '.' . $main_image->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . '/assets/images/events/main';
-                $main_image->move($destinationPath, $input['mimagename']);
-            }
-            if ($main_image_ar) {
-                $input['mimagename_ar'] = time() . rand() . '.' . $main_image_ar->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . '/assets/images/events/main';
-                $main_image_ar->move($destinationPath, $input['mimagename_ar']);
+            $image_en_names = [];
+            for ($i = 0; $i <= 3; $i++) {
+                $image = $request->file('event_main_photo_en_' . $i);
+                if (!empty($image)) {
+                    $image_en_names[$i] = make_image_slug($image->getClientOriginalName());
+                    $destinationPath = STORE_PATH . ('assets/images/events');
+                    $image->move($destinationPath, $image_en_names[$i]);
+                }
             }
 
-           
+            $image_ar_names = [];
+            for ($i = 0; $i <= 3; $i++) {
+                $image = $request->file('event_main_photo_ar_' . $i);
+                if (!empty($image)) {
+                    $image_ar_names[$i] = make_image_slug($image->getClientOriginalName());
+                    $destinationPath = STORE_PATH . ('assets/images/events');
+                    $image->move($destinationPath, $image_ar_names[$i]);
+                }
+            }
 
             $new = new Event();
             $new->event_title_en = input_trims($request->event_title);
@@ -577,22 +578,21 @@ class AdminEventsController extends Controller {
             $new->long_desc_ar = input_trims($request->long_desc_ar);
 
             $new->event_photo_en = $input['imagename'];
-            $new->event_main_photo_en = $input['mimagename'];
             $new->event_photo_ar = $input['imagename_ar'];
-            $new->event_main_photo_ar = $input['mimagename_ar'];
+            $new->event_main_photo_en = implode(',', $image_en_names);
+            $new->event_main_photo_ar = implode(',', $image_ar_names);
 
             $new->event_photo_alt = input_trims($request->event_title);
             $new->event_main_photo_alt = input_trims($request->event_title);
 
-            $new->slug_en = !empty($request->slug) ? str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug . ' ' . date_format($slugdate, "jS F Y"))))) : '';
-            $new->slug_ar = !empty($request->slug_ar) ? str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug_ar . ' ' . date_format($slugdate, "jS F Y"))))) : '';
-            
+            $new->slug = $request->slug;
 
+            $new->youtube = input_trims($request->youtube);
             $new->meta_title = input_trims($request->event_title);
             $new->meta_keyword = input_trims($request->meta_keyword);
             $new->meta_desc = input_trims($request->meta_desc);
 
-            $new->extra_desc_en = input_trims($request->extra_desc);
+            $new->extra_desc_en = input_trims($request->extra_desc_en);
             $new->extra_desc_ar = input_trims($request->extra_desc_ar);
             $new->starting_from = input_trims($request->starting_from);
             $new->currency_type = input_trims($request->currency_type);
@@ -623,21 +623,23 @@ class AdminEventsController extends Controller {
 
             $this->validate($request, [
                 'event_title' => 'required',
-                'extra_desc' => 'required',
-                'long_desc' => 'required',
+                'extra_desc_en' => 'required',
+                'long_desc_en' => 'required',
                 'image' => 'image|mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
                 'main_image' => 'image|mimes:jpeg,png,jpg,gif|dimensions:width=845,height=592|max:150',
                     //'image_ar' => 'mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
                     //'image_cn' => 'mimes:jpeg,png,jpg,gif|dimensions:width=313,height=197|max:50',
                     ], [
                 'event_title.required' => 'Sales event title required !',
-                'extra_desc.required' => 'Sales event short description requried !',
-                'long_desc.required' => 'Sales event Details !',
+                'extra_desc_en.required' => 'Sales event short description requried !',
+                'long_desc_en.required' => 'Sales event Details !',
                 'image.dimensions:width=313,height=197' => 'Image width must be 313X197 px!',
                 'image.max' => 'Image size must be less then 50kb !',
                 'main_image.dimensions:width=845,height=592' => 'Image width must be 845X592 px',
                 'main_image.max' => 'Image size must be less then 50kb'
             ]);
+
+
 
             $image = $request->file('image');
             $image_ar = $request->file('image_ar');
@@ -651,7 +653,7 @@ class AdminEventsController extends Controller {
                     @unlink($url);
                 }
 
-                $input['imagename'] = time() . rand() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
                 $destinationPath = STORE_PATH . '/assets/images/events';
                 $image->move($destinationPath, $input['imagename']);
             }
@@ -663,79 +665,68 @@ class AdminEventsController extends Controller {
                     @unlink($url);
                 }
 
-                $input['imagename_ar'] = time() . rand() . '.' . $image_ar->getClientOriginalExtension();
+                $input['imagename_ar'] = make_image_slug($image_ar->getClientOriginalName());
                 $destinationPath = STORE_PATH . '/assets/images/events';
                 $image_ar->move($destinationPath, $input['imagename_ar']);
             }
 
 
-
-            $main_image = $request->file('main_image');
-            $main_image_ar = $request->file('main_image_ar');
-            $input['mimagename'] = '';
-            $input['mimagename_ar'] = '';
-            if ($main_image) {
-                $project = Event::find($request->id);
-                if ($project->event_main_photo_en != "") {
-                    $url = STORE_PATH . "/assets/images/events/main/" . $project->event_main_photo_en;
-                    @unlink($url);
+            $project = Event::find($request->id);
+            $images = !empty($project->event_main_photo_en) ? explode(',', $project->event_main_photo_en) : [];
+            $image_en_names = [];
+            for ($i = 0; $i <= 3; $i++) {
+                $image = $request->file('event_main_photo_en_' . $i);
+                if (!empty($image)) {
+                    !empty($images[$i]) ? @unlink(STORE_PATH . "/assets/images/events/" . $images[$i]) : '';
+                    $image_en_names[$i] = make_image_slug($image->getClientOriginalName());
+                    $destinationPath = STORE_PATH . ('assets/images/events');
+                    $image->move($destinationPath, $image_en_names[$i]);
+                } else {
+                    $image_en_names[$i] = !empty($images[$i]) ? $images[$i] : '';
                 }
-
-                $input['mimagename'] = time() . rand() . '.' . $main_image->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . '/assets/images/events/main';
-                $main_image->move($destinationPath, $input['mimagename']);
-            }
-            if ($main_image_ar) {
-                $project = Event::find($request->id);
-                if ($project->event_main_photo_ar != "") {
-                    $url = STORE_PATH . "/assets/images/events/main/" . $project->event_main_photo_ar;
-                    @unlink($url);
-                }
-
-                $input['mimagename_ar'] = time() . rand() . '.' . $main_image_ar->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . '/assets/images/events/main';
-                $main_image_ar->move($destinationPath, $input['mimagename_ar']);
             }
 
-           
 
+            $images = !empty($project->event_main_photo_ar) ? explode(',', $project->event_main_photo_ar) : [];
+            $image_ar_names = [];
+            for ($i = 0; $i <= 3; $i++) {
+                $image = $request->file('event_main_photo_ar_' . $i);
+                if (!empty($image)) {
+                    !empty($images[$i]) ? @unlink(STORE_PATH . "/assets/images/events/" . $images[$i]) : '';
+                    $image_ar_names[$i] = make_image_slug($image->getClientOriginalName());
+                    $destinationPath = STORE_PATH . ('assets/images/events');
+                    $image->move($destinationPath, $image_ar_names[$i]);
+                } else {
+                    $image_ar_names[$i] = !empty($images[$i]) ? $images[$i] : '';
+                }
+            }
 
             $data = array();
             if ($input['imagename'] != "") {
                 $data['event_photo_en'] = $input['imagename'];
             }
-
-            if ($input['mimagename'] != "") {
-                $data['event_main_photo_en'] = $input['mimagename'];
-            }
-
             if ($input['imagename_ar'] != "") {
                 $data['event_photo_ar'] = $input['imagename_ar'];
             }
 
-            if ($input['mimagename_ar'] != "") {
-                $data['event_main_photo_ar'] = $input['mimagename_ar'];
-            }
+            $data['event_main_photo_en'] = implode(',', array_filter($image_en_names));
+            $data['event_main_photo_ar'] = implode(',', array_filter($image_ar_names));
 
-           
-            $data['slug_en'] = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug))));
-            $data['slug_ar'] = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug_ar))));
 
+
+            $data['slug'] = $request->slug;
+
+            $data['youtube'] = input_trims($request->youtube);
             $data['meta_title'] = input_trims($request->event_title);
             $data['meta_keyword'] = input_trims($request->meta_keyword);
             $data['meta_desc'] = input_trims($request->meta_desc);
             $data['event_photo_alt'] = input_trims($request->event_title);
             $data['event_main_photo_alt'] = input_trims($request->event_title);
-            // if($request->date){
-            /* if(isset($request->date)){
-              $data['event_date']=$request->date;
-              }else{
-              $data['event_date']=date("Y-m-d");
-              } */
+
             $data['event_date'] = input_trims($request->date);
             $data['symbols'] = input_trims($request->symbols);
             $data['levent_date'] = !empty($request->ldate) ? input_trims($request->ldate) : '';
-            // }			   
+
 
 
             $data['event_start_time'] = input_trims($request->event_start_time);
@@ -748,42 +739,29 @@ class AdminEventsController extends Controller {
             $data['event_title_ar'] = input_trims($request->event_title_ar);
 
 
-            /* if($request->title_ar){
-              $data['title_ar']=$request->title_ar;
-              } */
-
-            //if($request->long_desc){
-            $data['long_desc_en'] = input_trims($request->long_desc);
+            $data['long_desc_en'] = input_trims($request->long_desc_en);
             $data['long_desc_ar'] = input_trims($request->long_desc_ar);
 
-            // }
-            //  if($request->extra_desc){
-            $data['extra_desc_en'] = input_trims($request->extra_desc);
+
+            $data['extra_desc_en'] = input_trims($request->extra_desc_en);
             $data['extra_desc_ar'] = input_trims($request->extra_desc_ar);
 
-            // }
-            // if($request->starting_from){
+
             $data['starting_from'] = input_trims($request->starting_from);
             $data['currency_type'] = input_trims($request->currency_type);
 
-            // }
-            // if($request->booking_fees){
+
             $data['booking_fees'] = input_trims($request->booking_fees);
-            // }
-            //if($request->payment_plan){
+
             $data['payment_plan_en'] = input_trims($request->payment_plan);
             $data['payment_plan_ar'] = input_trims($request->payment_plan_ar);
 
-
-            // }
-            //  if($request->mortgage_starting){
             $data['mortgage_starting'] = input_trims($request->mortgage_starting);
-            //  }
-            //   if($request->visit_us_at){
+
             $data['visit_us_at_en'] = input_trims($request->visit_us_at);
             $data['visit_us_at_ar'] = input_trims($request->visit_us_at_ar);
 
-            // }
+
 
             if (!empty($data)) {
                 Event::where('id', $request->id)->update($data);

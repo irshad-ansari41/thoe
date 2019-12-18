@@ -8,10 +8,12 @@ use App\Models\Content;
 use App\Models\Press;
 use DB;
 use View;
+use Cache;
 
 class NewsPrController extends Controller {
 
     public $locale;
+    public $countries;
 
     /**
      * Initializer.
@@ -21,6 +23,9 @@ class NewsPrController extends Controller {
     public function __construct(Request $request) {
         $this->locale = get_locale($request->segment(1));
         \App::setLocale($this->locale);
+        $this->countries = Cache::remember('countries', 30, function () {
+                    return DB::table('country')->get();
+                });
     }
 
     public function index(Request $request) {
@@ -55,9 +60,9 @@ class NewsPrController extends Controller {
 
 
         $data = [
-            "AllRatings" => DB::table('tbl_ratings')->where('menu_title', 'Press  Releases')->where('menu_id', 29)->first(),
             'presss' => $results,
             'content' => $content,
+            'countries' => $this->countries,
             'cat_count' => $this->count_category_post(),
             'keyword' => !empty($request->keyword) ? $request->keyword : '',
             'sort' => !empty($request->sort) ? $request->sort : '',
@@ -103,6 +108,7 @@ class NewsPrController extends Controller {
         $data = [
             'press' => (array) $pr,
             'content' => $content,
+            'countries' => $this->countries,
             'meta_title' => $meta_title,
             'meta_keyword' => 'real estate news, press release, thoe developments news, thoe developments',
             'meta_description' => $meta_desc,

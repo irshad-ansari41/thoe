@@ -105,6 +105,21 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
         Route::post('{about}/storecomment', 'AdminAboutController@storeComment');
     });
 
+    /* routes for featue */
+    Route::group(array('prefix' => 'feature'), function () {
+        Route::get('/', array('as' => 'features', 'uses' => 'AdminFeatureController@index'));
+        Route::get('create', array('as' => 'feature.create', 'uses' => 'AdminFeatureController@create'));
+        Route::post('create', 'AdminFeatureController@store');
+        Route::get('{feature}/edit', array('as' => 'feature.edit', 'uses' => 'AdminFeatureController@edit'));
+        Route::post('{feature}/edit', 'AdminFeatureController@update');
+        Route::get('{feature}/delete', array('as' => 'feature.delete', 'uses' => 'AdminFeatureController@destroy'));
+        Route::get('{feature}/confirm-delete/', array('as' => 'feature.confirm-delete', 'uses' => 'AdminFeatureController@getModalDelete'));
+        Route::get('{feature}/restore', array('as' => 'feature.restore', 'uses' => 'AdminFeatureController@restore'));
+        Route::get('{feature}/show', array('as' => 'feature.show', 'uses' => 'AdminFeatureController@show'));
+        Route::post('{feature}/storecomment', 'AdminFeatureController@storeComment');
+    });
+
+    
     /* routes for blog */
     Route::group(array('prefix' => 'blog'), function () {
         Route::get('/', array('as' => 'blogs', 'uses' => 'AdminBlogController@index'));
@@ -483,7 +498,7 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
     Route::post('/offer/{id}/edit', array('uses' => 'AdminOfferController@store_offer'));
     Route::post('/offer/add_offer', array('uses' => 'AdminOfferController@store_offer'));
     Route::post('/offer/coverage/delete_coverage', array('as' => 'offer.deletecoverage', 'uses' => 'AdminOfferController@delete_coverage'));
-    
+
     /* Invest Management */
     Route::get('/invest', array('uses' => 'AdminInvestController@index'));
     Route::get('/invest/{id}/status/{flag}', array('uses' => 'AdminInvestController@status'));

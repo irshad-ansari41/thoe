@@ -30,6 +30,8 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
     Route::get('/management-team', ['as' => 'management-team', 'uses' => 'AboutController@management_team']);
     Route::get('/awards', ['as' => 'awards', 'uses' => 'AboutController@awards']);
 
+    Route::get('/features', ['as' => 'features.index', 'uses' => 'FeatureController@index']);
+    Route::get('/features/{slug}', ['as' => 'features.details', 'uses' => 'FeatureController@details']);
 
     Route::get('/our-founder', ['as' => 'our-founder', 'uses' => 'AboutController@our_founder']);
     Route::get('/management', ['as' => 'management', 'uses' => 'AboutController@management1']);
@@ -99,9 +101,8 @@ Route::group(array('prefix' => get_locale(Request::segment(1))), function() {
     Route::post('/newsletter/subscribe', ['as' => 'newsletter-subscribe', 'uses' => 'NewsLetterController@subscribe']);
     Route::get('/newsletter/confirm/{sid}/{token}', ['as' => 'newsletter-confirm', 'uses' => 'NewsLetterController@confirm']);
 
-
 // New Routes
-    Route::post('/get-in-touch', 'HomeController@get_in_touch');
+    Route::post('/get-in-touch', 'LeadFormController@get_in_touch');
     Route::get('/send-emailer', ['as' => 'ips.sendEmailer', 'uses' => 'IPSController@sendEmailer']);
 
     #FrontEndController

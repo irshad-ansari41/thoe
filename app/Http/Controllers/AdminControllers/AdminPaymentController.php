@@ -122,7 +122,7 @@ class AdminPaymentController extends Controller {
             $image = $request->file('image');
             $input['imagename'] = '';
             if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());;
                 $destinationPath = STORE_PATH.('/assets/images/pressrelease');
                 $image->move($destinationPath, $input['imagename']);
             }
@@ -154,7 +154,7 @@ class AdminPaymentController extends Controller {
                     @unlink($url);
                 }
 
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());;
                 $destinationPath = STORE_PATH.('/assets/images/pressrelease');
                 $image->move($destinationPath, $input['imagename']);
             }

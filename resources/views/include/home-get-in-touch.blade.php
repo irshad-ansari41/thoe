@@ -21,6 +21,17 @@
             <!--<label for="in-keyword" class="control-label">Email</label>-->
             <input type="email" id="in-form-email" name="email" placeholder="name@name.com" class="form-control" required="required" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$">
         </div>
+        <?php if (!empty($countries)) { ?>
+            <div class="form-group">
+                <!--<label for="in-contract-type" class="control-label">Intention</label>-->
+                <select id="in-contract-type" name="country" data-placeholder="Country" class="form-control" required="required">
+                    <option label=" "></option>
+                    <?php foreach ($countries as $country) { ?>
+                        <option value="<?= $country->name ?>"><?= $country->name ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        <?php } ?>
         <div class="form-group">
             <!--<label for="in-contract-type" class="control-label">Intention</label>-->
             <select id="in-contract-type" name="intention" data-placeholder="Register interest for" class="form-control" required="required">
@@ -31,6 +42,7 @@
                 <option>Careers</option>
             </select>
         </div>
+
         <div id="response-msg" class="hidden"></div>
         <div class="form__buttons">
             <button type="submit" class="form__submit">Register Interest</button>

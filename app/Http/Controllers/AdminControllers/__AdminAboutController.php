@@ -49,7 +49,7 @@ class __AdminAboutController extends Controller {
         $image = $request->file('image');
 
         if ($image) {
-            $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+            $input['imagename'] = make_image_slug($image->getClientOriginalName());;
             $destinationPath = STORE_PATH.('/assets/images/banner');
             $image->move($destinationPath, $input['imagename']);
         } else {
@@ -81,7 +81,7 @@ class __AdminAboutController extends Controller {
 
         $image = $request->file('image');
         if ($image) {
-            $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+            $input['imagename'] = make_image_slug($image->getClientOriginalName());;
             $destinationPath = STORE_PATH.('/assets/images/banner');
             $image->move($destinationPath, $input['imagename']);
         } else {
@@ -133,7 +133,7 @@ class __AdminAboutController extends Controller {
 
         $image = $request->file('banner_image');
         if ($image) {
-            $bimage = time() . '.' . $image->getClientOriginalExtension();
+            $bimage = make_image_slug($image->getClientOriginalName());;
             $destinationPath = STORE_PATH.('/assets/images/about');
             $image->move($destinationPath, $bimage);
             /* unlink old image */
@@ -145,7 +145,7 @@ class __AdminAboutController extends Controller {
 
         $cimage = $request->file('chairmen_image');
         if ($cimage) {
-            $c_image = time() . rand() . '.' . $cimage->getClientOriginalExtension();
+            $c_image = make_image_slug($cimage->getClientOriginalName());
             $destinationPath = STORE_PATH.('/assets/images/about');
             $cimage->move($destinationPath, $c_image);
 

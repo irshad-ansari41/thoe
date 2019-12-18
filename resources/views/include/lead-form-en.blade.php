@@ -35,7 +35,7 @@
                 <option value="213">Algeria(+213)</option>
                 <option value="1-684">American Samoa(+1-684)</option>
                 <option value="376">Andorra(+376)</option>
-                <option value="244">Angola(+244)</option
+                <option value="244">Angola(+244)</option>
                 <option value="1-264">Anguilla(+1-264)</option>
                 <option value="672">Antarctica(+672)</option>
                 <option value="1-268">Antigua and Barbuda(+1-268)</option>

@@ -15,25 +15,21 @@ use Sentinel;
 use Intervention\Image\Facades\Image;
 use DOMDocument;
 
-
-class AdminBlogController extends Controller
-{
-
+class AdminBlogController extends Controller {
 
     private $tags;
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->tags = Blog::allTags();
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-    public function index()
-    {
+    public function index() {
         // Grab all the blogs
         $blogs = Blog::all();
         // Show the page
@@ -45,8 +41,7 @@ class AdminBlogController extends Controller
      *
      * @return Response
      */
-    public function create()
-    {
+    public function create() {
         $blogcategory = BlogCategory::pluck('title', 'id');
         return view('admin.blog.create', compact('blogcategory'));
     }
@@ -56,19 +51,18 @@ class AdminBlogController extends Controller
      *
      * @return Response
      */
-    public function store(BlogRequest $request)
-    {
-        $blog = new Blog($request->except('files','image','tags'));
+    public function store(BlogRequest $request) {
+        $blog = new Blog($request->except('files', 'image', 'tags'));
 
-        $message=$request->get('content');
+        $message = $request->get('content');
         $dom = new DomDocument();
         $dom->loadHtml($message, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
         // foreach <img> in the submited message
-        foreach($images as $img){
+        foreach ($images as $img) {
             $src = $img->getAttribute('src');
             // if the img source is 'data-url'
-            if(preg_match('/data:image/', $src)){
+            if (preg_match('/data:image/', $src)) {
                 // get the mimetype
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
                 $mimetype = $groups['mime'];
@@ -77,10 +71,10 @@ class AdminBlogController extends Controller
                 $filepath = "uploads/blog/$filename.$mimetype";
                 // @see http://image.intervention.io/api/
                 $image = Image::make($src)
-                    // resize if required
-                    /* ->resize(300, 200) */
-                    ->encode($mimetype, 100)  // encode file to the specified mimetype
-                    ->save(STORE_PATH.($filepath));
+                        // resize if required
+                        /* ->resize(300, 200) */
+                        ->encode($mimetype, 100)  // encode file to the specified mimetype
+                        ->save(STORE_PATH . ($filepath));
                 $new_src = asset($filepath);
                 $img->removeAttribute('src');
                 $img->setAttribute('src', $new_src);
@@ -92,13 +86,11 @@ class AdminBlogController extends Controller
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $filename = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension() ?: 'png';
             $folderName = '/uploads/blog/';
-            $picture = str_random(10) . '.' . $extension;
+            $picture = make_image_slug($file->getClientOriginalName());
             $blog->image = $picture;
         }
-        $blog->user_id = 1;//Sentinel::getUser()->id;
+        $blog->user_id = 1; //Sentinel::getUser()->id;
         $blog->save();
 
         if ($request->hasFile('image')) {
@@ -113,9 +105,7 @@ class AdminBlogController extends Controller
         } else {
             return Redirect::route('admin/blog')->withInput()->with('error', trans('blog/message.error.create'));
         }
-
     }
-
 
     /**
      * Display the specified resource.
@@ -123,8 +113,7 @@ class AdminBlogController extends Controller
      * @param  Blog $blog
      * @return view
      */
-    public function show(Blog $blog)
-    {
+    public function show(Blog $blog) {
         $comments = Blog::find($blog->id)->comments;
 
         return view('admin.blog.show', compact('blog', 'comments', 'tags'));
@@ -136,8 +125,7 @@ class AdminBlogController extends Controller
      * @param  Blog $blog
      * @return view
      */
-    public function edit(Blog $blog)
-    {
+    public function edit(Blog $blog) {
         $blogcategory = BlogCategory::pluck('title', 'id');
         return view('admin.blog.edit', compact('blog', 'blogcategory'));
     }
@@ -148,17 +136,16 @@ class AdminBlogController extends Controller
      * @param  Blog $blog
      * @return Response
      */
-    public function update(BlogRequest $request, Blog $blog)
-    {
-        $message=$request->get('content');
+    public function update(BlogRequest $request, Blog $blog) {
+        $message = $request->get('content');
         $dom = new DomDocument();
         $dom->loadHtml($message, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
         // foreach <img> in the submited message
-        foreach($images as $img){
+        foreach ($images as $img) {
             $src = $img->getAttribute('src');
             // if the img source is 'data-url'
-            if(preg_match('/data:image/', $src)){
+            if (preg_match('/data:image/', $src)) {
                 // get the mimetype
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
                 $mimetype = $groups['mime'];
@@ -167,14 +154,14 @@ class AdminBlogController extends Controller
                 $filepath = "uploads/blog/$filename.$mimetype";
                 // @see http://image.intervention.io/api/
                 $image = Image::make($src)
-                    // resize if required
-                    /* ->resize(300, 200) */
-                    ->encode($mimetype, 100)  // encode file to the specified mimetype
-                    ->save(STORE_PATH.($filepath));
+                        // resize if required
+                        /* ->resize(300, 200) */
+                        ->encode($mimetype, 100)  // encode file to the specified mimetype
+                        ->save(STORE_PATH . ($filepath));
                 $new_src = asset($filepath);
             } // <!--endif
-            else{
-                $new_src=$src;
+            else {
+                $new_src = $src;
             }
             $img->removeAttribute('src');
             $img->setAttribute('src', $new_src);
@@ -183,10 +170,8 @@ class AdminBlogController extends Controller
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $filename = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension() ?: 'png';
             $folderName = '/uploads/blog/';
-            $picture = str_random(10) . '.' . $extension;
+            $picture = make_image_slug($file->getClientOriginalName());
             $blog->image = $picture;
         }
 
@@ -196,7 +181,7 @@ class AdminBlogController extends Controller
         }
         $blog->retag($request['tags']);
 
-        if ($blog->update($request->except('content','image','files','_method', 'tags'))) {
+        if ($blog->update($request->except('content', 'image', 'files', '_method', 'tags'))) {
             return redirect('admin/blog')->with('success', trans('blog/message.success.update'));
         } else {
             return Redirect::route('admin/blog')->withInput()->with('error', trans('blog/message.error.update'));
@@ -209,8 +194,7 @@ class AdminBlogController extends Controller
      * @param Blog $blog
      * @return Response
      */
-    public function getModalDelete(Blog $blog)
-    {
+    public function getModalDelete(Blog $blog) {
         $model = 'blog';
         $confirm_route = $error = null;
         try {
@@ -229,8 +213,7 @@ class AdminBlogController extends Controller
      * @param  Blog $blog
      * @return Response
      */
-    public function destroy(Blog $blog)
-    {
+    public function destroy(Blog $blog) {
 
         if ($blog->delete()) {
             return redirect('admin/blog')->with('success', trans('blog/message.success.delete'));
@@ -239,20 +222,20 @@ class AdminBlogController extends Controller
         }
     }
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param BlogCommentRequest $request
-	 * @param Blog $blog
-	 *
-	 * @return Response
-	 */
-    public function storeComment(BlogCommentRequest $request, Blog $blog)
-    {
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param BlogCommentRequest $request
+     * @param Blog $blog
+     *
+     * @return Response
+     */
+    public function storeComment(BlogCommentRequest $request, Blog $blog) {
         $blogcooment = new BlogComment($request->all());
         $blogcooment->blog_id = $blog->id;
         $blogcooment->save();
 
         return redirect('admin/blog/' . $blog->id . '/show');
     }
+
 }

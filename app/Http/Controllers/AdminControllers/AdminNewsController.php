@@ -99,12 +99,14 @@ class AdminNewsController extends Controller {
 
         if ($request->type == "add") {
 
-            $image = $request->file('image');
-            $input['imagename'] = '';
-            if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . ('/assets/images/pressrelease');
-                $image->move($destinationPath, $input['imagename']);
+            $image_names = [];
+            for ($i = 0; $i <= 3; $i++) {
+                $image = $request->file('image_' . $i);
+                if (!empty($image)) {
+                    $image_names[$i] = make_image_slug($image->getClientOriginalName());
+                    $destinationPath = STORE_PATH . ('assets/images/pressrelease');
+                    $image->move($destinationPath, $image_names[$i]);
+                }
             }
 
             $new = new News();
@@ -114,14 +116,14 @@ class AdminNewsController extends Controller {
 
             $new->description_en = input_trims($request->description_en);
             $new->description_ar = input_trims($request->description_ar);
-            $new->slug = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower(substr($request->title_en, 0, 60)))));
+            $new->slug = $new->slug;
             $new->description_long_en = input_trims($request->description_long_en);
             $new->description_long_ar = input_trims($request->description_long_ar);
             $new->meta_title = input_trims($request->meta_title);
             $new->meta_keyword = input_trims($request->meta_keyword);
             $new->meta_desc = input_trims($request->meta_desc);
             $new->date = input_trims($request->date);
-            $new->image = $input['imagename'];
+            $new->image = implode(',', $image_names);
             $new->created = date("Y-m-d H:i:s");
             $new->status = '1';
             $new->category = '-' . implode('-', $request->category) . '-';
@@ -178,27 +180,27 @@ class AdminNewsController extends Controller {
 
             $request->session()->flash('alert-success', 'News has been added!');
         }
+
         if ($request->type == "edit") {
 
-
-            $image = $request->file('image');
+            $project = News::find($request->id);
+            $images = !empty($project->image) ? explode(',', $project->image) : [];
+            $image_names = [];
+            for ($i = 0; $i <= 3; $i++) {
+                $image = $request->file('image_' . $i);
+                if (!empty($image)) {
+                    !empty($images[$i]) ? @unlink(STORE_PATH . "/assets/images/pressrelease/" . $images[$i]) : '';
+                    $image_names[$i] = make_image_slug($image->getClientOriginalName());
+                    $destinationPath = STORE_PATH . ('assets/images/pressrelease');
+                    $image->move($destinationPath, $image_names[$i]);
+                } else {
+                    $image_names[$i] = !empty($images[$i]) ? $images[$i] : '';
+                }
+            }
 
             $doc = $request->file('doc');
             $image1 = $request->file('image1');
 
-            $input['imagename'] = '';
-
-            if ($image) {
-                $project = News::find($request->id);
-                if ($project->image != "") {
-                    $url = STORE_PATH . "/assets/images/pressrelease/" . $project->image;
-                    @unlink($url);
-                }
-
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . '/assets/images/pressrelease';
-                $image->move($destinationPath, $input['imagename']);
-            }
             $insertedId = $request->id;
             $path_c = STORE_PATH . '/assets/images/pressrelease/download/' . $request->id;
             if (!is_dir($path_c)) {
@@ -238,45 +240,24 @@ class AdminNewsController extends Controller {
                 $image1->move($destinationPath, $img);
             }
 
-
             $data = array();
-            if ($input['imagename'] != "") {
-                $data['image'] = $input['imagename'];
+            if (!empty($image_names)) {
+                $data['image'] = implode(',', array_filter($image_names));
             }
 
             $data['alt'] = input_trims($request->alt);
-
-            if ($request->date) {
-                $data['date'] = input_trims($request->date);
-            }
-            if ($request->title_en) {
-                $data['title_en'] = input_trims($request->title_en);
-                $data['slug'] = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug))));
-                $data['meta_title'] = input_trims($request->meta_title);
-                $data['meta_keyword'] = input_trims($request->meta_keyword);
-                $data['meta_desc'] = input_trims($request->meta_desc);
-            }
-            if ($request->title_ar) {
-                $data['title_ar'] = input_trims($request->title_ar);
-            }
-           
-
-            if ($request->description_en) {
-                $data['description_en'] = input_trims($request->description_en);
-            }
-            if ($request->description_ar) {
-                $data['description_ar'] = input_trims($request->description_ar);
-            }
-           
-            if ($request->description_long_en) {
-                $data['description_long_en'] = input_trims($request->description_long_en);
-            }
-            if ($request->description_long_ar) {
-                $data['description_long_ar'] = input_trims($request->description_long_ar);
-            }
-           
-
-            $data['category'] = '-'.implode('-', $request->category).'-';
+            $data['date'] = input_trims($request->date);
+            $data['title_en'] = input_trims($request->title_en);
+            $data['slug'] = $request->slug;
+            $data['meta_title'] = input_trims($request->meta_title);
+            $data['meta_keyword'] = input_trims($request->meta_keyword);
+            $data['meta_desc'] = input_trims($request->meta_desc);
+            $data['title_ar'] = input_trims($request->title_ar);
+            $data['description_en'] = input_trims($request->description_en);
+            $data['description_ar'] = input_trims($request->description_ar);
+            $data['description_long_en'] = input_trims($request->description_long_en);
+            $data['description_long_ar'] = input_trims($request->description_long_ar);
+            $data['category'] = '-' . implode('-', $request->category) . '-';
 
             if (!empty($data)) {
                 News::where('id', $request->id)->update($data);

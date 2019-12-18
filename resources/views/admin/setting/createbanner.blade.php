@@ -270,7 +270,7 @@
                              style="display:none;"	
                              @endif
                              @endif >
-                             <label class="col-md-3 control-label" name="description">Banner Photo (Arebic) <br><br> (Note : Banner size minimum 800kb and maximum 2mb)</label>
+                             <label class="col-md-3 control-label" name="description">Banner Photo (Arabic) <br><br> (Note : Banner size minimum 800kb and maximum 2mb)</label>
                             <div class="col-md-8">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">

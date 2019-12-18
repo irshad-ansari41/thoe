@@ -44,32 +44,27 @@ Offer List
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($offer as $new)
-                        <tr>
-                            <td><img src="{{ asset('assets/images/offer') }}/{!! $new->image !!}" width="100"/></td>
-                            <td> <a href="offer/{!! $new->id !!}/edit">{!! $new->title_en !!}</a></td>
-                            <td>{!! $new->date !!}</td>
-                            <td>
-                                <?= $new->status == 1 ? 'Active' : 'Inactive'; ?>
-                            </td>
-                            <td>
-                                <a href="offer/{!! $new->id !!}/edit"><i class="fa fa-edit"></i></a>
-
-                                <a href="offer/{!! $new->id !!}/delete" onclick="return confirm('Are you sure you want to delete this record?');" >
-                                    <i class="fa fa-trash"></i></a>
-
-                                @if($new->status=='0')
-                                <a href="{!!url('/')!!}/admin/offer/{!! $new->id !!}/status/1">		
-                                    <i class="fa fa-lock"></i>
-                                </a>
-                                @else
-                                <a href="{!!url('/')!!}/admin/offer/{!! $new->id !!}/status/0">		
-                                    <i class="fa fa-unlock"></i>
-                                </a>
-                                @endif
-                            </td>
-                        </tr>
-                        @endforeach
+                        <?php
+                        foreach ($offer as $new) {
+                            $images = !empty($new->image) ? explode(',', $new->image) : [];
+                            $image = !empty($images[0]) ? asset("assets/images/offer/{$images[0]}") : '';
+                            ?>
+                            <tr>
+                                <td><?= !empty($image) ? "<img src='$image' width=100/>" : '' ?></td>
+                                <td> <a href="offer/<?= $new->id ?>/edit"><?= $new->title_en ?></a></td>
+                                <td><?= $new->date ?></td>
+                                <td><?= $new->status == 1 ? 'Active' : 'Inactive'; ?></td>
+                                <td>
+                                    <a href="offer/<?= $new->id ?>/edit"><i class="fa fa-edit"></i></a>
+                                    <a href="offer/<?= $new->id ?>/delete" onclick="return confirm('Are you sure you want to delete this record?');" ><i class="fa fa-trash"></i></a>
+                                    @if($new->status=='0')
+                                    <a href="<?= url('/') ?>/admin/offer/<?= $new->id ?>/status/1"><i class="fa fa-lock"></i></a>
+                                    @else
+                                    <a href="<?= url('/') ?>/admin/offer/<?= $new->id ?>/status/0"><i class="fa fa-unlock"></i></a>
+                                    @endif
+                                </td>
+                            </tr>
+                        <?php } ?>
 
                     </tbody>
                 </table>

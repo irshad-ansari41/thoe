@@ -14,13 +14,13 @@
 
 <p>Email: <strong>{{ !empty($data['email'])?$data['email']:'' }}</strong></p>
 
-<p>Country: <strong>{{ !empty($data['country'])?$data['country']:'' }}</strong></p>
-
 <p>Phone: <strong>{{ !empty($data['phone'])?$data['phone']:'' }}</strong></p>
 
-<p>Department: <strong>{{ !empty($data['department'])?$data['department']:'' }}</strong></p>
+<?= !empty($data['country']) ? '<p>Country: <strong>' . $data['country'] . '</strong></p>' : '' ?>
 
-<p>Message: <strong>{{ !empty($data['message'])?$data['message']:'' }}</strong>  </p>
+<?= !empty($data['intention']) ? '<p>Intention: <strong>' . $data['intention'] . '</strong></p>' : '' ?>
+
+<?= !empty($data['message']) ? '<p>Message: <strong>' . $data['message'] . '</strong></p>' : '' ?>
 
 <br/><br/>
 

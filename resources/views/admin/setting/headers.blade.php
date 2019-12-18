@@ -21,59 +21,66 @@ Content List
 
 <!-- Main content -->
 <section class="content paddingleft_right15">
-	 <div class="flash-message">
-					@foreach (['danger', 'warning', 'success', 'info'] as $msg)
-					  @if(Session::has('alert-' . $msg))
+    <div class="flash-message">
+        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+        @if(Session::has('alert-' . $msg))
 
-					  <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-					  @endif
-					@endforeach
-				</div>
+        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+        @endif
+        @endforeach
+    </div>
     <div class="row">
         <div class="panel panel-primary ">
-            <div class="panel-heading">
-                Header Menu
+            <div class="panel-heading clearfix">
+                <h3 class="panel-title pull-left"><i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                    Header Menu
+                </h3>
+                <div class="pull-right">
+                    <a href="{{ URL::to('admin/setting/add_menu?type=1') }}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span> @lang('button.create')</a>
+                </div>
             </div>
             <br />
             <div class="panel-body">
                 <table class="table table-bordered " id="table">
                     <thead>
                         <tr class="filters">
-							<th>Title</th>
-							<th>Parent</th>
-							<th>Created At</th>
-							<th>Status</th>
+                            <th>Title</th>
+                            <th>Slug</th>
+                            <th>Parent</th>
+                            <th>Created At</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach ($records as $record)
-                    	<tr>
+                        @foreach ($records as $record)
+                        <tr>
                             <td>{!! $record['title'] !!}</td>
-							<td>{!! $record['parent'] !!}</td>
-                    		<td>{!! $record['created'] !!}</td>
-							<td>
-								@if($record['status']=='0')
-									Inactive
-								@else	
-									Acitve
-								@endif
-							</td>	
-            				<td>
-								<a href="{!! $record['id'] !!}/edith"><i class="fa fa-edit"></i></a>
-								@if($record['status']=='0')
-									<a href="{!! $record['id'] !!}/status/1">		
-										<i class="fa fa-lock"></i>
-									</a>
-								@else
-									<a href="{!! $record['id'] !!}/status/0">		
-										<i class="fa fa-unlock"></i>
-									</a>
-								@endif		
+                            <td>{!! $record['slug'] !!}</td>
+                            <td>{!! $record['parent'] !!}</td>
+                            <td>{!! $record['created'] !!}</td>
+                            <td>
+                                @if($record['status']=='0')
+                                Inactive
+                                @else	
+                                Acitve
+                                @endif
+                            </td>	
+                            <td>
+                                <a href="{!! $record['id'] !!}/edith"><i class="fa fa-edit"></i></a>
+                                @if($record['status']=='0')
+                                <a href="{!! $record['id'] !!}/status/1">		
+                                    <i class="fa fa-lock"></i>
+                                </a>
+                                @else
+                                <a href="{!! $record['id'] !!}/status/0">		
+                                    <i class="fa fa-unlock"></i>
+                                </a>
+                                @endif		
                             </td>
-            			</tr>
-                    @endforeach
-                        
+                        </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>
@@ -84,12 +91,12 @@ Content List
 
 {{-- page level scripts --}}
 @section('footer_scripts')
-    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap.js') }}" ></script>
 
 <script>
-$(document).ready(function() {
-	$('#table').DataTable();
+$(document).ready(function () {
+    $('#table').DataTable();
 });
 </script>
 @stop

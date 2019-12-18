@@ -40,26 +40,33 @@ Add New Content
                 <div class="panel-body">
                     <form id="tryitForm" class="form-horizontal" method="post" enctype="multipart/form-data">
 
-                        @if($menu->type=="1")
                         <div class="form-group">
-                            <label class="col-md-3 control-label hidden-xs">Select parent menu if submenu</label>
+                            <label class="col-md-3 control-label hidden-xs">Select Menu Type</label>
                             <div class="col-md-8">
-                                <select name="is_parent" class="form-control">
-                                    <option value="">Select parent menu item</option>
+                                <select name="type" class="form-control">
+                                    <option value="">Select</option>
+                                    <option value="1" <?= $menu->type == 1 ? 'selected="selected"' : 'disabled' ?>>Header</option>
+                                    <option value="2" <?= $menu->type == 2 ? 'selected="selected"' : 'disabled' ?>>Footer</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label hidden-xs">Select Parent Menu</label>
+                            <div class="col-md-8">
+                                <select name="parent_id" class="form-control">
+                                    <option value="0">No Parent Menu</option>
                                     @foreach ($parents as $parent)
-                                    <option value="{{ $parent->id }}"
-                                            @if($parent->id==$menu->parent_id)
-                                            selected
-                                            @endif
-                                            >{{ $parent->title_en }}</option>
+                                    <option value="{{ $parent->id }}" <?= $parent->id == $menu->parent_id ? 'selected="selected"' : '' ?>  >{{ $parent->title_en }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        @endif
+
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label hidden-xs">Title (english)</label>
+                            <label class="col-md-3 control-label hidden-xs">Title (English)</label>
 
                             <div class="col-md-8">
                                 <input type="text" class="form-control" name="title_en"
@@ -68,7 +75,7 @@ Add New Content
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label hidden-xs">Title (arabic)</label>
+                            <label class="col-md-3 control-label hidden-xs">Title (Arabic)</label>
 
                             <div class="col-md-8">
                                 <input type="text" class="form-control" value="{{ $menu->title_ar }}" name="title_ar"
@@ -76,7 +83,20 @@ Add New Content
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label class="col-md-3 control-label hidden-xs">Slug</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" value="{{ $menu->slug }}" name="slug" placeholder="Enter Slug" />
+                            </div>
+                        </div>
 
+                        <div class="form-group">
+                            <label class="col-md-3 control-label hidden-xs">Order</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" value="{{ $menu->ordering }}" name="ordering"
+                                       placeholder="Enter Order" />
+                            </div>
+                        </div>
 
 
                         <div class="form-group">

@@ -31,8 +31,8 @@ class AdminFrontEndController extends Controller {
      *
      * @return View
      */
-    public function getLogin() { 
-        
+    public function getLogin() {
+
         // Is the user logged in?
 
         if (Sentinel::check()) {
@@ -114,11 +114,9 @@ class AdminFrontEndController extends Controller {
         }
         // is new image uploaded?
         if ($file = $request->file('pic')) {
-            $fileName = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension() ?: 'png';
             $folderName = '/uploads/users/';
             $destinationPath = STORE_PATH . $folderName;
-            $safeName = str_random(10) . '.' . $extension;
+            $safeName = make_image_slug($file->getClientOriginalName());
             $file->move($destinationPath, $safeName);
 
             //delete old pic if exists

@@ -68,7 +68,7 @@ Add Team Member
                         </div>
 
                         <div class="form-group ar_field">
-                            <label class="col-md-3 control-label hidden-xs">Team Member Name (Arebic)</label>
+                            <label class="col-md-3 control-label hidden-xs">Team Member Name (Arabic)</label>
 
                             <div class="col-md-8">
                                 <input type="text" class="form-control" name="name_ar"
@@ -88,7 +88,7 @@ Add Team Member
                         </div>
 
                         <div class="form-group ar_field">
-                            <label class="col-md-3 control-label hidden-xs">Designation (Arebic)</label>
+                            <label class="col-md-3 control-label hidden-xs">Designation (Arabic)</label>
 
                             <div class="col-md-8">
                                 <input type="text" class="form-control" value="@if($team){{ $team->designation_ar }} @else {{ old('designation_ar') }} @endif" name="designation_ar"

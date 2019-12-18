@@ -49,12 +49,27 @@ Events
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
+                                            <br/><?= $offer['description_' . $locale] ?>
+                                            <div class="clearfix"></div>
                                             <div class="article__preview">
-                                                <?php if ($offer['image']) { ?>
+
+                                                <?php
+                                                $images = !empty($offer['image']) ? explode(',', $offer['image']) : [];
+                                                if (!empty($offer['youtube'])) {
+                                                    ?>
+                                                    <div><iframe width="853" height="480" src="<?= $offer['youtube'] ?>" allowfullscreen></iframe></div>
+                                                    <?php
+                                                } else if (count($images) >= 1) {
+                                                    ?>
                                                     <div class="slider slider--small slider--small js-slick-blog">
                                                         <div class="slider__block js-slick-slider">
-                                                            <div class="slider__item"><a href="<?= asset("/assets/images/offer/{$offer['image']}") ?>" data-size="1168x550" class="slider__img js-gallery-item"><img data-lazy="<?= asset('frontend-assets/media-demo/properties/1740x960/02.jpg') ?>" src="<?= asset("/assets/images/offer/{$offer['image']}") ?>" alt=""></a></div>
-                                                            <div class="slider__item"><a href="<?= asset("/assets/images/offer/{$offer['image']}") ?>" data-size="1168x550" class="slider__img js-gallery-item"><img data-lazy="<?= asset('frontend-assets/media-demo/properties/1740x960/03.jpg') ?>" src="<?= asset("/assets/images/offer/{$offer['image']}") ?>" alt=""></a></div>
+                                                            <?php foreach (array_filter($images) as $image) { ?>
+                                                                <div class="slider__item">
+                                                                    <a href="<?= asset("/assets/images/offer/{$image}") ?>" data-size="1168x550" class="slider__img js-gallery-item">
+                                                                        <img data-lazy="<?= asset('frontend-assets/media-demo/properties/1740x960/02.jpg') ?>" src="<?= asset("/assets/images/offer/{$image}") ?>" alt="">
+                                                                    </a>
+                                                                </div>
+                                                            <?php } ?>
                                                         </div>
                                                         <div class="slider__controls">
                                                             <button type="button" class="slider__control slider__control--prev js-slick-prev">
@@ -69,9 +84,10 @@ Events
                                                             </button>
                                                         </div>
                                                     </div>
-                                                <?php } else { ?>
-                                                    <a href="#" class=""><img src="assets/media-demo/properties/1740x960/05.jpg" alt=""></a>
+                                                <?php } else if (!empty($images[0])) { ?>
+                                                    <a href="#" class=""><img src="<?= asset("/assets/images/offer/{$images[0]}") ?>" alt=""></a>
                                                 <?php } ?>
+
                                             </div>
                                             <div class="article__intro">
                                                 <p><?= str_limit($offer['description_long_' . $locale], 65) ?></p>

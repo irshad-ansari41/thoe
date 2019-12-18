@@ -70,13 +70,13 @@
                         <div class="form-group en_field">
                             <label class="col-md-3 control-label hidden-xs">Title(English)</label>
                             <div class="col-md-8">
-                                <input type="text" name="gallery_title_en" id="gallery_title_en" class="form-control" value="{{!empty($results)?$results->gallery_title_en:''}}">
+                                <input type="text" name="gallery_title_en" id="gallery_title_en" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)"  class="form-control" value="{{!empty($results)?$results->gallery_title_en:''}}">
                             </div>
                         </div>
                         <div class="form-group en_field">
                             <label class="col-md-3 control-label hidden-xs">Slug</label>
                             <div class="col-md-8">
-                                <input type="text" name="slug" id="slug" class="form-control" value="{{!empty($results)?$results->slug:''}}">
+                                <input id="slug-text" type="text" name="slug" class="form-control" value="{{!empty($results)?$results->slug:''}}">
                             </div>
                         </div>
                         <div class="form-group ar_field">
@@ -233,5 +233,21 @@ $(document).ready(function () {
             $("#pimages").append($("#one").clone().attr({"style": "display:block", "id": ""}));
         });
 <?php } ?>
+    
+    /* Encode string to slug */
+    function convertToSlug(str) {
+
+        //replace all special characters | symbols with a space
+        str = str.replace(/[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g, ' ').toLowerCase();
+
+        // trim spaces at start and end of string
+        str = str.replace(/^\s+|\s+$/gm, '');
+
+        // replace space with dash/hyphen
+        str = str.replace(/\s+/g, '-');
+        document.getElementById("slug-text").innerHTML = str;
+        //return str;
+    }
+    
 </script>  
 @stop

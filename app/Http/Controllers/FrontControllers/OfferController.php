@@ -36,7 +36,7 @@ class OfferController extends Controller {
         if (!empty($request->category)) {
             $query->where('category', 'like', "%-$request->category-%");
         }
-        $offers = $query->paginate(1);
+        $offers = $query->paginate(10);
 
         $latest = DB::table('tbl_offers')->orderBy('created', 'desc')->limit(5)->get();
 

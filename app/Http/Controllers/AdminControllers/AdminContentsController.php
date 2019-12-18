@@ -62,7 +62,7 @@ class AdminContentsController extends Controller {
         $image = $request->file('image');
 
         if ($image) {
-            $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+            $input['imagename'] = make_image_slug($image->getClientOriginalName());;
             $destinationPath = STORE_PATH.'/assets/images/banner/';
             $image->move($destinationPath, $input['imagename']);
         } else {
@@ -89,7 +89,7 @@ class AdminContentsController extends Controller {
 
         $image = $request->file('image');
         if ($image) {
-            $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+            $input['imagename'] = make_image_slug($image->getClientOriginalName());;
             $destinationPath = STORE_PATH.'/assets/images/banner/';
             $image->move($destinationPath, $input['imagename']);
         } else {
@@ -176,7 +176,7 @@ class AdminContentsController extends Controller {
 
         $image = $request->file('banner_image');
         if ($image) {
-            $bimage = time() . '.' . $image->getClientOriginalExtension();
+            $bimage = make_image_slug($image->getClientOriginalName());;
             $destinationPath = STORE_PATH.'/assets/images/about/';
             $image->move($destinationPath, $bimage);
             /* unlink old image */
@@ -188,7 +188,7 @@ class AdminContentsController extends Controller {
 
         $cimage = $request->file('chairmen_image');
         if ($cimage) {
-            $c_image = time() . rand() . '.' . $cimage->getClientOriginalExtension();
+            $c_image = make_image_slug($cimage->getClientOriginalName());
             $destinationPath = STORE_PATH.'/assets/images/about/';
             $cimage->move($destinationPath, $c_image);
 
@@ -285,7 +285,7 @@ class AdminContentsController extends Controller {
             $image = $request->file('image');
             $timage = '';
             if ($image) {
-                $timage = time() . '.' . $image->getClientOriginalExtension();
+                $timage = make_image_slug($image->getClientOriginalName());;
                 $destinationPath = STORE_PATH.'/assets/images/timeline/';
                 $image->move($destinationPath, $timage);
             }
@@ -314,7 +314,7 @@ class AdminContentsController extends Controller {
             $timage = '';
             if ($image) {
 
-                $timage = time() . '.' . $image->getClientOriginalExtension();
+                $timage = make_image_slug($image->getClientOriginalName());;
                 $destinationPath = STORE_PATH.'/assets/images/timeline/';
                 $image->move($destinationPath, $timage);
 
@@ -399,7 +399,7 @@ class AdminContentsController extends Controller {
 
         $image = $request->file('banner_image');
         if ($image) {
-            $bimage = time() . '.' . $image->getClientOriginalExtension();
+            $bimage = make_image_slug($image->getClientOriginalName());;
             $destinationPath = STORE_PATH.'/assets/images/executives';
             $image->move($destinationPath, $bimage);
 
@@ -414,7 +414,7 @@ class AdminContentsController extends Controller {
 
         $cimage = $request->file('chairmen_image');
         if ($cimage) {
-            $c_image = time() . rand() . '.' . $cimage->getClientOriginalExtension();
+            $c_image = make_image_slug($cimage->getClientOriginalName());
             $destinationPath = STORE_PATH.'/assets/images/executives';
             $cimage->move($destinationPath, $c_image);
 
@@ -432,7 +432,7 @@ class AdminContentsController extends Controller {
 
         $ceoimage = $request->file('ceo_image');
         if ($ceoimage) {
-            $ceo_image = time() . rand() . '.' . $ceoimage->getClientOriginalExtension();
+            $ceo_image = make_image_slug($ceoimage->getClientOriginalName());
             $destinationPath = STORE_PATH.'/assets/images/executives';
             $ceoimage->move($destinationPath, $ceo_image);
 
@@ -447,7 +447,7 @@ class AdminContentsController extends Controller {
 
         $deputyceoimage = $request->file('deputy_ceo_image');
         if ($deputyceoimage) {
-            $dceo_image = time() . rand() . '.' . $deputyceoimage->getClientOriginalExtension();
+            $dceo_image = make_image_slug($deputyceoimage->getClientOriginalName());
             $destinationPath = STORE_PATH.'/assets/images/executives';
             $deputyceoimage->move($destinationPath, $dceo_image);
 
@@ -573,7 +573,7 @@ class AdminContentsController extends Controller {
             $image = $request->file('image');
             $timage = '';
             if ($image) {
-                $timage = time() . '.' . $image->getClientOriginalExtension();
+                $timage = make_image_slug($image->getClientOriginalName());;
                 $destinationPath = STORE_PATH.'/assets/images/team/';
                 $image->move($destinationPath, $timage);
             }
@@ -619,7 +619,7 @@ class AdminContentsController extends Controller {
             
             if ($image) {
 
-                $timage = time() . '.' . $image->getClientOriginalExtension();
+                $timage = make_image_slug($image->getClientOriginalName());;
                 $destinationPath = STORE_PATH.'/assets/images/team/'; 
                 $image->move($destinationPath, $timage);
 
@@ -771,7 +771,7 @@ class AdminContentsController extends Controller {
             $image = $request->file('image');
             $timage = '';
             if ($image) {
-                $timage = time() . '.' . $image->getClientOriginalExtension();
+                $timage = make_image_slug($image->getClientOriginalName());;
                 $destinationPath = STORE_PATH.'/assets/images/team/';
                 $image->move($destinationPath, $timage);
             }
@@ -809,7 +809,7 @@ class AdminContentsController extends Controller {
             $timage = '';
             if ($image) {
 
-                $timage = time() . '.' . $image->getClientOriginalExtension();
+                $timage = make_image_slug($image->getClientOriginalName());;
                 $destinationPath = STORE_PATH.'/assets/images/team/';
                 $image->move($destinationPath, $timage);
 
@@ -928,7 +928,7 @@ class AdminContentsController extends Controller {
 
         $image = $request->file('banner_image');
         if ($image) {
-            $bimage = time() . '.' . $image->getClientOriginalExtension();
+            $bimage = make_image_slug($image->getClientOriginalName());;
             $destinationPath = STORE_PATH.('/assets/images/banner');
             $image->move($destinationPath, $bimage);
             /* unlink old image */

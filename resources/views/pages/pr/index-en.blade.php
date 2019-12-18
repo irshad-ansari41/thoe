@@ -54,12 +54,26 @@ Events
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
+                                            <br/><?= $press['description_' . $locale] ?>
+                                            <div class="clearfix"></div>
                                             <div class="article__preview">
-                                                <?php if ($press['image']) { ?>
+                                                <?php
+                                                $images = !empty($press['image']) ? explode(',', $press['image']) : [];
+                                                if (!empty($press['youtube'])) {
+                                                    ?>
+                                                    <div><iframe width="853" height="480" src="<?= $press['youtube'] ?>" allowfullscreen></iframe></div>
+                                                    <?php
+                                                } else if (count($images) >= 1) {
+                                                    ?>
                                                     <div class="slider slider--small slider--small js-slick-blog">
                                                         <div class="slider__block js-slick-slider">
-                                                            <div class="slider__item"><a href="<?= asset("/assets/images/pressrelease/{$press['image']}") ?>" data-size="1168x550" class="slider__img js-gallery-item"><img data-lazy="<?= asset('frontend-assets/media-demo/properties/1740x960/02.jpg') ?>" src="<?= asset("/assets/images/pressrelease/{$press['image']}") ?>" alt=""></a></div>
-                                                            <div class="slider__item"><a href="<?= asset("/assets/images/pressrelease/{$press['image']}") ?>" data-size="1168x550" class="slider__img js-gallery-item"><img data-lazy="<?= asset('frontend-assets/media-demo/properties/1740x960/03.jpg') ?>" src="<?= asset("/assets/images/pressrelease/{$press['image']}") ?>" alt=""></a></div>
+                                                            <?php foreach (array_filter($images) as $image) { ?>
+                                                                <div class="slider__item">
+                                                                    <a href="<?= asset("/assets/images/pressrelease/{$image}") ?>" data-size="1168x550" class="slider__img js-gallery-item">
+                                                                        <img data-lazy="<?= asset('frontend-assets/media-demo/properties/1740x960/02.jpg') ?>" src="<?= asset("/assets/images/pressrelease/{$image}") ?>" alt="">
+                                                                    </a>
+                                                                </div>
+                                                            <?php } ?>
                                                         </div>
                                                         <div class="slider__controls">
                                                             <button type="button" class="slider__control slider__control--prev js-slick-prev">
@@ -74,12 +88,12 @@ Events
                                                             </button>
                                                         </div>
                                                     </div>
-                                                <?php } else { ?>
-                                                    <a href="#" class=""><img src="assets/media-demo/properties/1740x960/05.jpg" alt=""></a>
+                                                <?php } else if (!empty($images[0])) { ?>
+                                                    <a href="#" class=""><img src="<?= asset("/assets/images/pressrelease/{$images[0]}") ?>" alt=""></a>
                                                 <?php } ?>
                                             </div>
                                             <div class="article__intro">
-                                                <p><?= str_limit($press['description_long_' . $locale], 65) ?></p>
+                                                <p><?= str_limit($press['description_' . $locale], 65) ?></p>
                                             </div><a href="<?= url("/$locale/news-pr/{$press['slug']}") ?>" class="article__more">Read more</a>
                                         </article>
                                     </div>

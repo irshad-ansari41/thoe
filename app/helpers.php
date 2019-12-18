@@ -732,7 +732,8 @@ function makeDirectory($path) {
     umask($old);
 }
 
-function str_limit($text, $limit) {
+function str_limit($text, $limit = 35) {
+    $text = strip_tags($text);
     if (str_word_count($text, 0) > $limit) {
         $words = str_word_count($text, 2);
         $pos = array_keys($words);
@@ -769,4 +770,29 @@ function slugify($text) {
     }
 
     return $text;
+}
+
+if (!function_exists('str_random')) {
+
+    function str_random($length = 16) {
+        $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        return substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
+    }
+
+}
+
+if (!function_exists('make_slug')) {
+
+    function make_slug($title) {
+        return slugify($title);
+    }
+
+}
+
+function make_image_slug($name) {
+    $fileName = pathinfo($name, PATHINFO_FILENAME);
+    $fileExt = pathinfo($name, PATHINFO_EXTENSION);
+    $milliseconds = round(microtime(true) * 1000);
+    return slugify($fileName) . '-' . $milliseconds . '.' . $fileExt;
 }

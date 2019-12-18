@@ -67,7 +67,7 @@
                         <div class="form-group ">
                             <label class="col-md-1  hidden-xs">Slug</label>
                             <div class="col-md-5">
-                                <textarea id="slug-text" class="form-control" name="slug" ><?= $offer ? slugify($offer->slug) : '' ?></textarea>
+                                <textarea id="slug-text" class="form-control" name="slug" ><?= $offer ? $offer->slug : '' ?></textarea>
                             </div>
                             <label class="col-md-1  hidden-xs">Meta Title</label>
                             <div class="col-md-5">
@@ -94,23 +94,28 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-1 " name="description">Photo <br><br> </label>
-                            <div class="col-md-3">
-                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                        <?php if ($offer) { ?> 
-                                            <img src="<?= asset('assets/images/offer') ?>/<?= $offer->image ?>" height="190" width="190" /> 
-                                        <?php } ?>
-                                    </div>
-                                    <div>
-                                        <span class="btn btn-default btn-file">
-                                            <span class="fileinput-new">Select</span>
-                                            <span class="fileinput-exists">Change</span>
-                                            <?= $offer ? '<input type="file" name="image"></span>' : '<input type="file" name="image" required></span>' ?>
-                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                            <?php
+                            $images = !empty($offer->image) ? explode(',', $offer->image) : [];
+                            for ($i = 0; $i <= 3; $i++) {
+                                ?>
+                                <div class="col-md-3">
+                                    <label name="description">Photo <?= $i ?><br><br> </label>
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                            <?php if (!empty($images[$i])) { ?> 
+                                                <img src="<?= asset('assets/images/offer') ?>/<?= $images[$i] ?>" height="190" width="190" /> 
+                                            <?php } ?>
+                                        </div>
+                                        <div>
+                                            <span class="btn btn-default btn-file">
+                                                <span class="fileinput-new">Select</span>
+                                                <span class="fileinput-exists">Change</span>
+                                                <?= $offer ? "<input type=file name=image_{$i}></span>" : "<input type=file name=image_{$i} required></span>" ?>
+                                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php } ?>
                         </div>
 
                         <div class="form-group en_field">
@@ -133,6 +138,13 @@
                             <label class="col-md-1 " name="">Long Description (Arabic)</label>
                             <div class="col-md-5">
                                 <textarea id="ckeditor_standard" name="description_long_ar" class="arabicFont" ><?= $offer ? $offer->description_long_ar : '' ?></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group en_field">
+                            <label class="col-md-1 control-label hidden-xs">Youtube URL</label>
+                            <div class="col-md-11">
+                                <input type="text" name="youtube" class="form-control" value="<?= $offer ? $offer->youtube : '' ?>">
                             </div>
                         </div>
 

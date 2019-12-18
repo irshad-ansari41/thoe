@@ -38,7 +38,7 @@ News List
                         <tr class="filters">
                             <th>Image</th>
                             <th>Title</th>
-                            <th>News release date</th>
+                            <th>Event Release date</th>
                             <th>Status</th>
 
                             <th>Actions</th>

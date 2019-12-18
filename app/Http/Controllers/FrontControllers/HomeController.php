@@ -11,10 +11,12 @@ use App\Models\Press;
 use App\Models\Project;
 use DB;
 use Response;
+use Cache;
 
 class HomeController extends Controller {
 
     public $locale;
+    public $countries;
 
     /**
      *
@@ -23,6 +25,10 @@ class HomeController extends Controller {
     public function __construct(Request $request) {
         $this->locale = get_locale($request->segment(1));
         \App::setLocale($this->locale);
+
+        $this->countries = Cache::remember('countries', 30, function () {
+                    return DB::table('country')->get();
+                });
     }
 
     public function index(Request $request) {
@@ -33,7 +39,7 @@ class HomeController extends Controller {
             //return $cached;
         }
 
-        $content = Content::find(27);
+        $content = Content::where('id', 27)->first();
         $properties = [];
         $projects = Project::all()->toArray();
         foreach ($projects as $key => $project) {
@@ -43,11 +49,12 @@ class HomeController extends Controller {
 
         $data = [
             'sliders' => Banner::where('status', '1')->orderBy('banner_order', 'ASC')->get()->toArray(),
-            'content' => $content,
+            'content' => $content->toArray(),
             'properties' => $properties,
+            'countries' => $this->countries,
             'events' => Event::where('event_date', '>=', date('Y-m-d'))->where('status', '1', date('Y-m-d'))->where("event_title_{$this->locale}", '!=', '')->orderBy('event_order', 'asc')->limit(6)->get()->toArray(),
             'press' => Press::where('status', '1', date('Y-m-d'))->where("title_{$this->locale}", '!=', '')->orderBy('press_order', 'asc')->limit(6)->get()->toArray(),
-            'bannersliders' => DB::table('tbl_feature_banner_slider')->orderby('tbl_feature_banner_slider.banner_order', 'ASC')->get()->toArray(),
+            'features' => DB::table('features')->orderby('id', 'DESC')->get()->toArray(),
             'invest' => (array) DB::table('tbl_invest')->first(),
             'meta_title' => $content->meta_title,
             'meta_keyword' => $content->meta_keyword,
@@ -63,36 +70,6 @@ class HomeController extends Controller {
         /* end Cache */
 
         return view("pages.home.index-{$this->locale}", $data);
-    }
-
-    public function get_in_touch(Request $request) {
-
-        $error = $msg = '';
-        if (!$request->ajax()) {
-            $error = "invalid Request";
-            $status = 'error';
-        }
-
-        $origin = request()->headers->get('origin');
-        if ($origin != 'https://thoedevelopments.com') {
-            //return "invalid Host";
-        }
-
-        $id = DB::table('contacts')->where('email', $request->input('email'))->value('id');
-        if (empty($id)) {
-            DB::table('contacts')->insert(['name' => $request->input('name'), 'email' => $request->input('email'), 'phone' => $request->input('phone'), 'intention' => $request->input('intention'), 'created_at' => date('Y-m-d h:i:s')]);
-            $msg = 'Thank you for your interest.';
-            $status = 'success';
-        } else {
-            DB::table('contacts')->where('id', $id)->update(['updated_at' => date('Y-m-d h:i:s')]);
-            $msg = 'Thank you for your interest.';
-            $status = 'success';
-        }
-
-
-        $result = ['msg' => $msg, 'status' => $status, 'error' => $error];
-
-        return Response::json($result);
     }
 
 }

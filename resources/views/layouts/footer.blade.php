@@ -75,8 +75,6 @@
     <!-- end of block .footer__col-third-->
     <div class="clearfix"></div>
     <!-- end of block .footer__copyright-->
-</div>
-</div>
 </footer>
 <!-- end of block .footer-->
 <!-- END FOOTER-->

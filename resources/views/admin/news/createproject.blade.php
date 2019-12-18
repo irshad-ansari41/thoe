@@ -50,21 +50,21 @@
 
                             <label class="col-md-1  hidden-xs">Title(English) </label>
                             <div class="col-md-5">
-                                <input type="text" class="form-control" name="title_en"
+                                <input type="text" class="form-control" name="title_en" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)"
                                        placeholder="" value="@if($project){{ $project->title_en }} @endif" />
                             </div>
 
                             <label class="col-md-1  hidden-xs">Title(Arabic) </label>
                             <div class="col-md-5">
                                 <input type="text" class="form-control arabicFont" name="title_ar"
-                                       placeholder="" value="@if($project){{ $project->title_ar }} @endif" />
+                                       placeholder="" value="@if($project){{ $project->title_ar }} @endif"  />
                             </div>
 
                         </div>
 
                         <div class="form-group ar_field">
 
-                            
+
 
                             <label class="col-md-1  hidden-xs">Date</label>
                             <div class="col-md-5">
@@ -76,7 +76,7 @@
                         <div class="form-group ">
                             <label class="col-md-1  hidden-xs">Slug</label>
                             <div class="col-md-5">
-                                <textarea class="form-control" name="slug">@if($project){{ $project->slug }}@endif</textarea>
+                                <textarea id="slug-text" class="form-control" name="slug">@if($project){{ $project->slug }}@endif</textarea>
                             </div>
 
                             <label class="col-md-1  hidden-xs">Meta Title</label>
@@ -108,28 +108,33 @@
                             </div>
                         </div>
 
+
                         <div class="form-group">
-
-                            <label class="col-md-1 " name="description">Photo <br><br> </label>
-                            <div class="col-md-3">
-                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">@if($project) <img src="{{asset('assets/images/pressrelease')}}/{!! $project->image !!}" height="190" width="190" /> @endif</div>
-
-                                    <div>
-                                        <span class="btn btn-default btn-file">
-                                            <span class="fileinput-new">Select</span>
-                                            <span class="fileinput-exists">Change</span>
-                                            @if($project)
-                                            <input type="file" name="image"></span>
-                                        @else
-                                        <input type="file" name="image" required></span>
-                                        @endif
-                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                            <?php
+                            $images = !empty($project->image) ? explode(',', $project->image) : [];
+                            for ($i = 0; $i <= 3; $i++) {
+                                ?>
+                                <div class="col-md-3">
+                                    <label name="description">Photo <?= $i ?><br><br> </label>
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                            <?php if (!empty($images[$i])) { ?> 
+                                                <img src="<?= asset('assets/images/pressrelease') ?>/<?= $images[$i] ?>" height="190" width="190" /> 
+                                            <?php } ?>
+                                        </div>
+                                        <div>
+                                            <span class="btn btn-default btn-file">
+                                                <span class="fileinput-new">Select</span>
+                                                <span class="fileinput-exists">Change</span>
+                                                <?= $project ? "<input type=file name=image_{$i}></span>" : "<input type=file name=image_{$i} required></span>" ?>
+                                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                        </div>
                                     </div>
-
                                 </div>
-                            </div>
+                            <?php } ?>
+                        </div>
 
+                        <div class="form-group">
 
                             <label class="col-md-1 " name="description">Upload Image : Zip<br><br> </label>
                             <div class="col-md-3">
@@ -204,6 +209,13 @@
                                 <textarea id="ckeditor_standard" name="description_long_ar" class="arabicFont" >@if($project){{ $project->description_long_ar }} @endif</textarea>
                             </div>
 
+                        </div>
+
+                        <div class="form-group en_field">
+                            <label class="col-md-1 control-label hidden-xs">Youtube URL</label>
+                            <div class="col-md-11">
+                                <input type="text" name="youtube" class="form-control" value="<?= $project ? $project->youtube : '' ?>">
+                            </div>
                         </div>
 
                         <div class="form-group en_field">
@@ -344,6 +356,21 @@
                 }
             });
         }
+    }
+
+    /* Encode string to slug */
+    function convertToSlug(str) {
+
+        //replace all special characters | symbols with a space
+        str = str.replace(/[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g, ' ').toLowerCase();
+
+        // trim spaces at start and end of string
+        str = str.replace(/^\s+|\s+$/gm, '');
+
+        // replace space with dash/hyphen
+        str = str.replace(/\s+/g, '-');
+        document.getElementById("slug-text").innerHTML = str;
+        //return str;
     }
     // Delete News                 
 </script>

@@ -151,19 +151,20 @@ class AdminPropertiesController extends Controller {
             $input['headerimagename'] = '';
 
             if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
+                ;
                 $destinationPath = STORE_PATH . ('/assets/images/projects');
                 $image->move($destinationPath, str_replace('', '-', input_trims(strtolower($input['imagename']))));
             }
 
             if ($header_image) {
-                $input['headerimagename'] = time() . rand() . '.' . $header_image->getClientOriginalExtension();
+                $input['headerimagename'] = make_image_slug($header_image->getClientOriginalName());
                 $destinationPath = STORE_PATH . ('/assets/images/projects');
                 $header_image->move($destinationPath, str_replace('', '-', input_trims(strtolower($input['headerimagename']))));
             }
 
             if ($construction_header_image) {
-                $input['construction_header_image'] = time() . rand() . '.' . $construction_header_image->getClientOriginalExtension();
+                $input['construction_header_image'] = make_image_slug($construction_header_image->getClientOriginalName());
                 $destinationPath = STORE_PATH . ('/assets/images/projects');
                 $construction_header_image->move($destinationPath, str_replace('', '-', input_trims(strtolower($input['construction_header_image']))));
             }
@@ -229,7 +230,8 @@ class AdminPropertiesController extends Controller {
                     @unlink($url);
                 }
 
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
+                ;
                 $destinationPath = STORE_PATH . ('/assets/images/projects');
                 $image->move($destinationPath, str_replace('', '-', input_trims(strtolower($input['imagename']))));
             }
@@ -241,7 +243,7 @@ class AdminPropertiesController extends Controller {
                     @unlink($url);
                 }
 
-                $input['headerimagename'] = time() . rand() . '.' . $header_image->getClientOriginalExtension();
+                $input['headerimagename'] = make_image_slug($header_image->getClientOriginalName());
                 $destinationPath = STORE_PATH . ('/assets/images/projects');
                 $header_image->move($destinationPath, str_replace('', '-', input_trims(strtolower($input['headerimagename']))));
             }
@@ -253,7 +255,7 @@ class AdminPropertiesController extends Controller {
                     @unlink($url);
                 }
 
-                $input['construction_header_image'] = time() . rand() . '.' . $construction_header_image->getClientOriginalExtension();
+                $input['construction_header_image'] = make_image_slug($construction_header_image->getClientOriginalName());
                 $destinationPath = STORE_PATH . ('/assets/images/projects');
                 $construction_header_image->move($destinationPath, str_replace('', '-', input_trims(strtolower($input['construction_header_image']))));
             }
@@ -353,7 +355,8 @@ class AdminPropertiesController extends Controller {
             $image = $request->file('image');
             $input['imagename'] = '';
             if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
+                ;
                 $destinationPath = STORE_PATH . ('/assets/images/icon');
                 $image->move($destinationPath, $input['imagename']);
             }
@@ -377,7 +380,8 @@ class AdminPropertiesController extends Controller {
             $image = $request->file('image');
             $input['imagename'] = '';
             if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
+                ;
                 $destinationPath = STORE_PATH . ('/assets/images/icon');
                 $image->move($destinationPath, $input['imagename']);
                 $aminitie = Aminities::find($request->id);
@@ -708,7 +712,8 @@ class AdminPropertiesController extends Controller {
             $image = $request->file('image');
             $input['imagename'] = '';
             if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
+                ;
                 $destinationPath = STORE_PATH . ('/assets/images/icon');
                 $image->move($destinationPath, $input['imagename']);
             }
@@ -737,7 +742,8 @@ class AdminPropertiesController extends Controller {
             $image = $request->file('image');
             $input['imagename'] = '';
             if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
+                ;
                 $destinationPath = STORE_PATH . ('/assets/images/icon');
                 $image->move($destinationPath, $input['imagename']);
 
@@ -955,25 +961,25 @@ class AdminPropertiesController extends Controller {
             $input['headerimagename'] = '';
             $input['footerimagename'] = '';
             if ($image) {
-                $input['imagename'] = 'holder.' . $image->getClientOriginalExtension();
+                $input['imagename'] = 'holder.' . make_image_slug($image->getClientOriginalName());
                 $destinationPath = $path;
                 $image->move($destinationPath, $input['imagename']);
             }
 
             if ($header_image) {
-                $input['headerimagename'] = 'header.' . $header_image->getClientOriginalExtension();
+                $input['headerimagename'] = 'header.' . make_image_slug($header_image->getClientOriginalName());
                 $destinationPath = $path;
                 $header_image->move($destinationPath, $input['headerimagename']);
             }
 
             if ($construction_header) {
-                $input['conheaderimagename'] = 'conheader.' . $construction_header->getClientOriginalExtension();
+                $input['conheaderimagename'] = 'conheader.' . make_image_slug($construction_header->getClientOriginalName());
                 $destinationPath = $path;
                 $construction_header->move($destinationPath, $input['conheaderimagename']);
             }
 
             if ($footer_image) {
-                $input['footerimagename'] = 'footer.' . $footer_image->getClientOriginalExtension();
+                $input['footerimagename'] = 'footer.' . make_image_slug($footer_image->getClientOriginalName());
                 $destinationPath = $path;
                 $footer_image->move($destinationPath, $input['footerimagename']);
             }
@@ -1082,7 +1088,7 @@ class AdminPropertiesController extends Controller {
                     $path = STORE_PATH . '/assets/images/properties/' . $project->gallery_location . '/' . $properties->gallery_location . "/" . $properties->image;
                     @unlink($url);
                 }
-                $input['imagename'] = 'holder.' . $image->getClientOriginalExtension();
+                $input['imagename'] = 'holder.' . make_image_slug($image->getClientOriginalName());
                 $destinationPath = STORE_PATH . '/assets/images/properties/' . $project->gallery_location . '/' . $properties->gallery_location;
                 $image->move($destinationPath, $input['imagename']);
             }
@@ -1094,7 +1100,7 @@ class AdminPropertiesController extends Controller {
                     @unlink($url);
                 }
 
-                $input['headerimagename'] = 'header.' . $header_image->getClientOriginalExtension();
+                $input['headerimagename'] = 'header.' . make_image_slug($header_image->getClientOriginalName());
                 $destinationPath = STORE_PATH . '/assets/images/properties/' . $project->gallery_location . '/' . $properties->gallery_location;
                 $header_image->move($destinationPath, $input['headerimagename']);
             }
@@ -1107,7 +1113,7 @@ class AdminPropertiesController extends Controller {
                     @unlink($url);
                 }
 
-                $input['conheaderimagename'] = 'conheader.' . $construction_header->getClientOriginalExtension();
+                $input['conheaderimagename'] = 'conheader.' . make_image_slug($construction_header->getClientOriginalName());
                 $destinationPath = STORE_PATH . '/assets/images/properties/' . $project->gallery_location . '/' . $properties->gallery_location;
                 $construction_header->move($destinationPath, $input['conheaderimagename']);
             }
@@ -1120,7 +1126,7 @@ class AdminPropertiesController extends Controller {
                     @unlink($url);
                 }
 
-                $input['footerimagename'] = 'footer.' . $footer_image->getClientOriginalExtension();
+                $input['footerimagename'] = 'footer.' . make_image_slug($footer_image->getClientOriginalName());
                 $destinationPath = STORE_PATH . '/assets/images/properties/' . $project->gallery_location . '/' . $properties->gallery_location;
                 $footer_image->move($destinationPath, $input['footerimagename']);
             }
@@ -1423,7 +1429,7 @@ class AdminPropertiesController extends Controller {
 
                     $input['imagename'] = '';
                     if ($image[$i]) {
-                        $input['imagename'] = time() . rand() . '.' . $image[$i]->getClientOriginalExtension();
+                        $input['imagename'] = make_image_slug($image[$i]->getClientOriginalName());
                         $destinationPath = STORE_PATH . ('/assets/images/near');
                         $image[$i]->move($destinationPath, $input['imagename']);
                     }
@@ -1470,7 +1476,7 @@ class AdminPropertiesController extends Controller {
 
                     $input['imagename'] = '';
                     if (isset($image[$i])) {
-                        $input['imagename'] = time() . rand() . '.' . $image[$i]->getClientOriginalExtension();
+                        $input['imagename'] = make_image_slug($image[$i]->getClientOriginalName());
                         $destinationPath = STORE_PATH . ('/assets/images/near');
                         $image[$i]->move($destinationPath, $input['imagename']);
 
@@ -1775,7 +1781,7 @@ class AdminPropertiesController extends Controller {
                 $input['imagename'] = '';
                 $flag = 0;
                 if (isset($image[$i])) {
-                    $input['imagename'] = time() . rand() . '.' . $image[$i]->getClientOriginalExtension();
+                    $input['imagename'] = make_image_slug($image[$i]->getClientOriginalName());
                     $path2 = STORE_PATH . '/assets/images/properties/' . $project_data->gallery_location . '/' . $property_data->gallery_location . '/unit';
                     if (!file_exists($path2)) {
                         $sudopath2 = STORE_PATH . "/assets/images/properties/" . $project_data->gallery_location . '/' . $property_data->gallery_location . "/unit";
@@ -1886,7 +1892,7 @@ class AdminPropertiesController extends Controller {
                 $input['imagename'] = '';
                 $flag = 0;
                 if (isset($image[$i])) {
-                    $input['imagename'] = time() . rand() . '.' . $image[$i]->getClientOriginalExtension();
+                    $input['imagename'] = make_image_slug($image[$i]->getClientOriginalName());
                     $path2 = STORE_PATH . '/assets/images/properties/' . $project_data->gallery_location . '/' . $property_data->gallery_location . '/unit';
                     if (!file_exists($path2)) {
                         $sudopath2 = STORE_PATH . "/assets/images/properties/" . $project_data->gallery_location . '/' . $property_data->gallery_location . "/unit";
@@ -1968,7 +1974,7 @@ class AdminPropertiesController extends Controller {
 
                     $input['imagename'] = '';
                     if ($image[$i]) {
-                        $input['imagename'] = time() . rand() . '.' . $image[$i]->getClientOriginalExtension();
+                        $input['imagename'] = make_image_slug($image[$i]->getClientOriginalName());
                         $destinationPath = STORE_PATH . ('/assets/images/properties/' . $project->gallery_location . '/' . $prop->gallery_location);
                         $image[$i]->move($destinationPath, $input['imagename']);
                     }
@@ -2031,7 +2037,7 @@ class AdminPropertiesController extends Controller {
                         //$url = STORE_PATH . "/assets/images/properties/" . $project->gallery_location . '/' . $prop->gallery_location . "/" . @$old_image[$i];
                         //@unlink($url);
                     } else if (isset($image[$i])) {
-                        $input['imagename'] = time() . rand() . '.' . $image[$i]->getClientOriginalExtension();
+                        $input['imagename'] = make_image_slug($image[$i]->getClientOriginalName());
                         $destinationPath = STORE_PATH . ('/assets/images/properties/' . $project->gallery_location . '/' . $prop->gallery_location);
                         $image[$i]->move($destinationPath, $input['imagename']);
 
@@ -2222,7 +2228,7 @@ class AdminPropertiesController extends Controller {
 
                     $input['imagename'] = '';
                     if ($image[$i]) {
-                        $input['imagename'] = time() . rand() . '.' . $image[$i]->getClientOriginalExtension();
+                        $input['imagename'] = make_image_slug($image[$i]->getClientOriginalName());
                         $destinationPath = STORE_PATH . '/assets/images/properties/' . $project->gallery_location . '/' . $prop->gallery_location . "/construction-update";
                         $image[$i]->move($destinationPath, $input['imagename']);
                     }
@@ -2273,7 +2279,7 @@ class AdminPropertiesController extends Controller {
                     $input['imagename'] = '';
                     $flag = 0;
                     if (isset($image[$i])) {
-                        $input['imagename'] = time() . rand() . '.' . $image[$i]->getClientOriginalExtension();
+                        $input['imagename'] = make_image_slug($image[$i]->getClientOriginalName());
                         $destinationPath = STORE_PATH . '/assets/images/properties/' . $project->gallery_location . '/' . $prop->gallery_location . "/construction-update";
                         $image[$i]->move($destinationPath, $input['imagename']);
 
@@ -2399,7 +2405,8 @@ class AdminPropertiesController extends Controller {
             $image = $request->file('image');
             $input['imagename'] = '';
             if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
+                ;
                 $destinationPath = STORE_PATH . '/assets/images/icon';
                 $image->move($destinationPath, $input['imagename']);
             }
@@ -2421,7 +2428,8 @@ class AdminPropertiesController extends Controller {
             $image = $request->file('image');
             $input['imagename'] = '';
             if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
+                ;
                 $destinationPath = STORE_PATH . '/assets/images/icon';
                 $image->move($destinationPath, $input['imagename']);
 
@@ -2503,7 +2511,8 @@ class AdminPropertiesController extends Controller {
             $image = $request->file('image');
             $input['imagename'] = '';
             if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
+                ;
                 $destinationPath = STORE_PATH . '/assets/images/icon';
                 $image->move($destinationPath, $input['imagename']);
             }
@@ -2526,7 +2535,8 @@ class AdminPropertiesController extends Controller {
             $image = $request->file('image');
             $input['imagename'] = '';
             if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
+                ;
                 $destinationPath = STORE_PATH . '/assets/images/icon';
                 $image->move($destinationPath, $input['imagename']);
 

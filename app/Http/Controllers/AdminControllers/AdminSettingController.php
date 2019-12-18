@@ -70,8 +70,6 @@ class AdminSettingController extends Controller {
     public function update_logo(Request $request) {
 
 
-
-
         $setting = Setting::find(1);
 
         $image = $request->file('logo');
@@ -86,7 +84,7 @@ class AdminSettingController extends Controller {
 
 
         if ($image) {
-            $limage = time() . rand() . '.' . $image->getClientOriginalExtension();
+            $limage = make_image_slug($image->getClientOriginalName());
             $destinationPath = STORE_PATH . ('/assets/images/logo');
             if ($limage != "") {
                 $url = STORE_PATH . "/assets/images/logo/" . $setting->logo;
@@ -98,7 +96,8 @@ class AdminSettingController extends Controller {
         }
 
         if ($image_ar) {
-            $limage_ar = time() . rand() . '.' . $image_ar->getClientOriginalExtension();
+            $limage_ar = make_image_slug($image_ar->getClientOriginalName());
+            ;
             $destinationPath = STORE_PATH . ('/assets/images/logo');
             if ($limage_ar != "") {
                 $url = STORE_PATH . "/assets/images/logo/" . $setting->logo_ar;
@@ -109,10 +108,10 @@ class AdminSettingController extends Controller {
             $limage_ar = '';
         }
 
-        
+
 
         if ($inner_logo) {
-            $inimage = time() . rand() . '.' . $inner_logo->getClientOriginalExtension();
+            $inimage = make_image_slug($inner_logo->getClientOriginalName());
             $destinationPath = STORE_PATH . ('/assets/images/logo');
             if ($inimage != "") {
                 $inurl = STORE_PATH . "/assets/images/logo/" . $setting->inner_logo;
@@ -124,7 +123,7 @@ class AdminSettingController extends Controller {
         }
 
         if ($inner_logo_ar) {
-            $inimage_ar = time() . rand() . '.' . $inner_logo_ar->getClientOriginalExtension();
+            $inimage_ar = make_image_slug($inner_logo_ar->getClientOriginalName());
             $destinationPath = STORE_PATH . ('/assets/images/logo');
             if ($inimage_ar != "") {
                 $inurl = STORE_PATH . "/assets/images/logo/" . $setting->inner_logo_ar;
@@ -137,7 +136,7 @@ class AdminSettingController extends Controller {
 
 
         if ($footer_logo) {
-            $fimage = time() . rand() . '.' . $footer_logo->getClientOriginalExtension();
+            $fimage = make_image_slug($footer_logo->getClientOriginalName());
             $destinationPath = STORE_PATH . ('/assets/images/logo');
             if ($fimage != "") {
                 $furl = STORE_PATH . "/assets/images/logo/" . $setting->footer_logo;
@@ -149,7 +148,7 @@ class AdminSettingController extends Controller {
         }
 
         if ($footer_logo_ar) {
-            $fimage_ar = time() . rand() . '.' . $footer_logo_ar->getClientOriginalExtension();
+            $fimage_ar = make_image_slug($footer_logo_ar->getClientOriginalName());
             $destinationPath = STORE_PATH . ('/assets/images/logo');
             if ($fimage_ar != "") {
                 $furl = STORE_PATH . "/assets/images/logo/" . $setting->footer_logo_ar;
@@ -177,14 +176,14 @@ class AdminSettingController extends Controller {
         if ($inimage_ar) {
             $data['inner_logo_ar'] = $inimage_ar;
         }
-       
+
         if ($fimage) {
             $data['footer_logo'] = $fimage;
         }
         if ($fimage_ar) {
             $data['footer_logo_ar'] = $fimage_ar;
         }
-        
+
 
         if ($request->banner_postion) {
             $data['banner_postion'] = $request->banner_postion;
@@ -214,6 +213,7 @@ class AdminSettingController extends Controller {
             foreach ($menus as $menu) {
                 $records[$i]['id'] = $menu->id;
                 $records[$i]['title'] = $menu->title_en;
+                $records[$i]['slug'] = $menu->slug;
                 $records[$i]['created'] = $menu->created;
                 $records[$i]['status'] = $menu->status;
                 $records[$i]['ordering'] = $menu->ordering;
@@ -243,6 +243,7 @@ class AdminSettingController extends Controller {
             foreach ($menus as $menu) {
                 $records[$i]['id'] = $menu->id;
                 $records[$i]['title'] = $menu->title_en;
+                $records[$i]['slug'] = $menu->slug;
                 $records[$i]['created'] = $menu->created;
                 $records[$i]['status'] = $menu->status;
 
@@ -261,15 +262,20 @@ class AdminSettingController extends Controller {
         return view('admin.setting.footers', compact('menus', 'records'));
     }
 
-    public function add_menu() {
-        return view('admin.setting.create');
+    public function add_menu(Request $request) {
+        $type = !empty($request->type) ? $request->type : '';
+        $parents = Menu::where('type', $type)->get();
+        return view('admin.setting.create', compact('parents', 'type'));
     }
 
     public function store_menu(Request $request) {
         $menu = new Menu();
         $menu->title_en = $request->title_en;
         $menu->title_ar = $request->title_ar;
+        $menu->slug = $request->slug;
         $menu->type = $request->type;
+        $menu->parent_id = $request->parent_id;
+        $menu->ordering = $request->ordering;
         $menu->created = date("Y-m-d H:i:s");
         $menu->save();
 
@@ -285,26 +291,26 @@ class AdminSettingController extends Controller {
     public function edit_menu(Request $request, $id) {
 
         $menu = Menu::find($id);
-
-        $parents = Menu::where("type", $menu->type)->where("parent_id", "0")->get();
-
-        $type = 'edit';
+        $type = !empty($request->type) ? $request->type : '';
+        $parents = Menu::where("type", $menu->type)->get();
         return view('admin.setting.edit', compact('menu', 'type', 'parents'));
     }
 
     public function update_menu(Request $request) {
 
-        if ($request->is_parent != "") {
-            Menu::where('id', $request->id)->update(array("title_en" => $request->title_en, "title_ar" => $request->title_ar,  "parent_id" => $request->is_parent));
-        } else {
-            Menu::where('id', $request->id)->update(array("title_en" => $request->title_en, "title_ar" => $request->title_ar, ));
-        }
+        $menu = Menu::find($request->id);
+
+        $menu->title_en = $request->title_en;
+        $menu->title_ar = $request->title_ar;
+        $menu->slug = $request->slug;
+        $menu->type = $request->type;
+        $menu->parent_id = $request->parent_id;
+        $menu->ordering = $request->ordering;
+        $menu->save();
 
         $request->session()->flash('alert-success', 'Menu has been updated!');
 
-        $menu = Menu::where("id", $request->id)->first();
-
-        if ($menu->type == "1") {
+        if ($request->type == "1") {
             return redirect('admin/setting/header_menu');
         } else {
             return redirect('admin/setting/footer_menu');
@@ -341,59 +347,22 @@ class AdminSettingController extends Controller {
     public function update_setting(Request $request) {
 
         $data = array();
-
-        if ($request->description_en) {
-            $data['description_en'] = $request->description_en;
-        }
-
-        if ($request->description_ar) {
-            $data['description_ar'] = $request->description_ar;
-        }
-
-       
-        if ($request->footer_address_en) {
-            $data['footer_address_en'] = $request->footer_address_en;
-        }
-        if ($request->footer_address_ar) {
-            $data['footer_address_ar'] = $request->footer_address_ar;
-        }
-        if ($request->footer_timing_en) {
-            $data['footer_timing_en'] = $request->footer_timing_en;
-        }
-        if ($request->footer_timing_ar) {
-            $data['footer_timing_ar'] = $request->footer_timing_ar;
-        }
-        if ($request->copy_right_en) {
-            $data['copy_right_en'] = $request->copy_right_en;
-        }
-        if ($request->copy_right_ar) {
-            $data['copy_right_ar'] = $request->copy_right_ar;
-        }
-
-        if ($request->contact_email) {
-            $data['contact_email'] = $request->contact_email;
-        }
-        if ($request->contact_phone) {
-            $data['contact_phone'] = $request->contact_phone;
-        }
-        if ($request->linkedin_link) {
-            $data['linkedin_link'] = $request->linkedin_link;
-        }
-        if ($request->youtube_link) {
-            $data['youtube_link'] = $request->youtube_link;
-        }
-        if ($request->facebook_link) {
-            $data['facebook_link'] = $request->facebook_link;
-        }
-        if ($request->twitter_link) {
-            $data['twitter_link'] = $request->twitter_link;
-        }
-        if ($request->instagram_link) {
-            $data['instagram_link'] = $request->instagram_link;
-        }
-        if ($request->google_link) {
-            $data['google_link'] = $request->google_link;
-        }
+        $data['description_en'] = $request->description_en;
+        $data['description_ar'] = $request->description_ar;
+        $data['footer_address_en'] = $request->footer_address_en;
+        $data['footer_address_ar'] = $request->footer_address_ar;
+        $data['footer_timing_en'] = $request->footer_timing_en;
+        $data['footer_timing_ar'] = $request->footer_timing_ar;
+        $data['copy_right_en'] = $request->copy_right_en;
+        $data['copy_right_ar'] = $request->copy_right_ar;
+        $data['contact_email'] = $request->contact_email;
+        $data['contact_phone'] = $request->contact_phone;
+        $data['linkedin_link'] = $request->linkedin_link;
+        $data['youtube_link'] = $request->youtube_link;
+        $data['facebook_link'] = $request->facebook_link;
+        $data['twitter_link'] = $request->twitter_link;
+        $data['instagram_link'] = $request->instagram_link;
+        $data['google_link'] = $request->google_link;
 
         if (!empty($data)) {
             Setting::where('id', 1)->update($data);
@@ -439,18 +408,20 @@ class AdminSettingController extends Controller {
 
             $image = $request->file('banner_image');
             $image_ar = $request->file('banner_image_ar');
-           
+
 
             $input['imagename'] = '';
             if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
+                ;
                 $destinationPath = STORE_PATH . '/assets/images/home_banners/';
                 $image->move($destinationPath, $input['imagename']);
             }
 
             $input['imagename_ar'] = '';
             if ($image_ar) {
-                $input['imagename_ar'] = time() . '.' . $image_ar->getClientOriginalExtension();
+                $input['imagename_ar'] = make_image_slug($image_ar->getClientOriginalName());
+                ;
                 $destinationPath = STORE_PATH . '/assets/images/home_banners/';
                 $image_ar->move($destinationPath, $input['imagename_ar']);
             }
@@ -461,37 +432,28 @@ class AdminSettingController extends Controller {
             $banner->alt = $request->alt;
             $banner->banner_title_en = $request->banner_title_en;
             $banner->banner_title_ar = $request->banner_title_ar;
-           
-
             $banner->explore_button_option = $request->explore_button_option;
             $banner->inquire_button_option = $request->inquire_button_option;
-
             $banner->explore_link = $request->explore_link;
             $banner->explore_link_ar = $request->explore_link_ar;
-
             $banner->explore_button_color = $request->explore_button_color;
             $banner->explore_button_hover_color = $request->explore_button_hover_color;
             $banner->video_id = $request->video_id;
-
             $banner->banner_short_description_en = $request->banner_short_description_en;
             $banner->banner_short_description_ar = $request->banner_short_description_ar;
-           
-
             $banner->banner_long_description_en = $request->banner_long_description_en;
             $banner->banner_long_description_ar = $request->banner_long_description_ar;
-           
-
             $banner->created_on = date("Y-m-d H:i:s");
 
             if ($request->type1 == "1") {
                 $banner->banner_image = $input['imagename'];
                 $banner->banner_image_ar = $input['imagename_ar'];
-               
+
                 $banner->type = "1";
             } else {
                 $banner->banner_image = $request->youtubeurl;
                 $banner->banner_image_ar = $request->youtubeurl;
-               
+
                 $banner->type = "2";
             }
 
@@ -506,18 +468,20 @@ class AdminSettingController extends Controller {
 
             $image = $request->file('banner_image');
             $image_ar = $request->file('banner_image_ar');
-           
+
 
             $input['imagename'] = '';
             if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
+                ;
                 $destinationPath = STORE_PATH . '/assets/images/home_banners/';
                 $image->move($destinationPath, $input['imagename']);
             }
 
             $input['imagename_ar'] = '';
             if ($image_ar) {
-                $input['imagename_ar'] = time() . '.' . $image_ar->getClientOriginalExtension();
+                $input['imagename_ar'] = make_image_slug($image_ar->getClientOriginalName());
+                ;
                 $destinationPath = STORE_PATH . '/assets/images/home_banners/';
                 $image_ar->move($destinationPath, $input['imagename_ar']);
             }
@@ -532,62 +496,29 @@ class AdminSettingController extends Controller {
                 if ($input['imagename_ar'] != "") {
                     $data['banner_image_ar'] = $input['imagename_ar'];
                 }
-                
+
                 $data['type'] = "1";
             } else {
                 $data['banner_image'] = $request->youtubeurl;
                 $data['banner_image_ar'] = $request->youtubeurl;
-               
+
                 $data['type'] = "2";
             }
 
             $data['alt'] = $request->alt;
-            if ($request->banner_title_en) {
-                $data['banner_title_en'] = $request->banner_title_en;
-            }
-            if ($request->banner_title_ar) {
-                $data['banner_title_ar'] = $request->banner_title_ar;
-            }
-            
-
+            $data['banner_title_en'] = $request->banner_title_en;
+            $data['banner_title_ar'] = $request->banner_title_ar;
             $data['video_id'] = $request->video_id;
-           
-
-            if ($request->explore_link) {
-                $data['explore_link'] = $request->explore_link;
-            }
-
-
-            if ($request->explore_link_ar) {
-                $data['explore_link_ar'] = $request->explore_link_ar;
-            }
-
-            if ($request->explore_button_color) {
-                $data['explore_button_color'] = $request->explore_button_color;
-            }
-
-            if ($request->explore_button_hover_color) {
-                $data['explore_button_hover_color'] = $request->explore_button_hover_color;
-            }
-
+            $data['explore_link'] = $request->explore_link;
+            $data['explore_link_ar'] = $request->explore_link_ar;
+            $data['explore_button_color'] = $request->explore_button_color;
+            $data['explore_button_hover_color'] = $request->explore_button_hover_color;
             $data['explore_button_option'] = $request->explore_button_option;
             $data['inquire_button_option'] = $request->inquire_button_option;
-
-            // if($request->banner_short_description_en){
             $data['banner_short_description_en'] = $request->banner_short_description_en;
-            //}
-            if ($request->banner_short_description_ar) {
-                $data['banner_short_description_ar'] = $request->banner_short_description_ar;
-            }
-            
-
-            // if($request->banner_long_description_en){
+            $data['banner_short_description_ar'] = $request->banner_short_description_ar;
             $data['banner_long_description_en'] = $request->banner_long_description_en;
-            // }
-            if ($request->banner_long_description_ar) {
-                $data['banner_long_description_ar'] = $request->banner_long_description_ar;
-            }
-            
+            $data['banner_long_description_ar'] = $request->banner_long_description_ar;
 
             if (!empty($data)) {
                 Banner::where('id', $request->id)->update($data);
@@ -652,7 +583,8 @@ class AdminSettingController extends Controller {
 
             $input['imagename'] = '';
             if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
+                ;
                 $destinationPath = STORE_PATH . '/assets/images/home_banners/';
                 $image->move($destinationPath, $input['imagename']);
             }
@@ -661,18 +593,12 @@ class AdminSettingController extends Controller {
             $banner->alt = $request->alt;
             $banner->banner_title_en = $request->banner_title_en;
             $banner->banner_title_ar = $request->banner_title_ar;
-           
             $banner->explore_link = $request->explore_link;
             $banner->video_id = $request->video_id;
-
             $banner->banner_short_description_en = $request->banner_short_description_en;
             $banner->banner_short_description_ar = $request->banner_short_description_ar;
-           
-
             $banner->banner_long_description_en = $request->banner_long_description_en;
             $banner->banner_long_description_ar = $request->banner_long_description_ar;
-            
-
             $banner->created_on = date("Y-m-d H:i:s");
             $banner->banner_starting_at = $request->banner_starting_at;
             $banner->banner_image = $input['imagename'];
@@ -688,7 +614,8 @@ class AdminSettingController extends Controller {
             $image = $request->file('banner_image');
             $input['imagename'] = '';
             if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
+                ;
                 $destinationPath = STORE_PATH . '/assets/images/home_banners/';
                 $image->move($destinationPath, $input['imagename']);
             }
@@ -700,37 +627,14 @@ class AdminSettingController extends Controller {
             }
 
             $data['alt'] = $request->alt;
-            if ($request->banner_title_en) {
-                $data['banner_title_en'] = $request->banner_title_en;
-            }
-            if ($request->banner_title_ar) {
-                $data['banner_title_ar'] = $request->banner_title_ar;
-            }
-            
-
-            if ($request->explore_link) {
-                $data['explore_link'] = $request->explore_link;
-            }
-
-            if ($request->banner_starting_at) {
-                $data['banner_starting_at'] = $request->banner_starting_at;
-            }
-
-            // if($request->banner_short_description_en){
+            $data['banner_title_en'] = $request->banner_title_en;
+            $data['banner_title_ar'] = $request->banner_title_ar;
+            $data['explore_link'] = $request->explore_link;
+            $data['banner_starting_at'] = $request->banner_starting_at;
             $data['banner_short_description_en'] = $request->banner_short_description_en;
-            //}
-            if ($request->banner_short_description_ar) {
-                $data['banner_short_description_ar'] = $request->banner_short_description_ar;
-            }
-            
-
-            // if($request->banner_long_description_en){
+            $data['banner_short_description_ar'] = $request->banner_short_description_ar;
             $data['banner_long_description_en'] = $request->banner_long_description_en;
-            // }
-            if ($request->banner_long_description_ar) {
-                $data['banner_long_description_ar'] = $request->banner_long_description_ar;
-            }
-            
+            $data['banner_long_description_ar'] = $request->banner_long_description_ar;
 
             if (!empty($data)) {
                 FeatureBanner::where('id', $request->id)->update($data);

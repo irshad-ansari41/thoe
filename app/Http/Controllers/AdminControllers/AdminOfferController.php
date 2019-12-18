@@ -94,13 +94,14 @@ class AdminOfferController extends Controller {
     public function store_offer(Request $request, $id = '') {
 
         if ($request->type == "add") {
-
-            $image = $request->file('image');
-            $input['imagename'] = '';
-            if ($image) {
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . ('assets/images/offer');
-                $image->move($destinationPath, $input['imagename']);
+            $image_names = [];
+            for ($i = 0; $i <= 3; $i++) {
+                $image = $request->file('image_' . $i);
+                if (!empty($image)) {
+                    $image_names[$i] = make_image_slug($image->getClientOriginalName());
+                    $destinationPath = STORE_PATH . ('assets/images/offer');
+                    $image->move($destinationPath, $image_names[$i]);
+                }
             }
 
             $new = new Offer();
@@ -117,7 +118,8 @@ class AdminOfferController extends Controller {
             $new->meta_keyword = input_trims($request->meta_keyword);
             $new->meta_desc = input_trims($request->meta_desc);
             $new->date = input_trims($request->date);
-            $new->image = $input['imagename'];
+            $new->image = implode(',', $image_names);
+            $new->youtube = $request->youtube;
             $new->created = date("Y-m-d H:i:s");
             $new->status = '1';
 
@@ -126,62 +128,40 @@ class AdminOfferController extends Controller {
             $request->session()->flash('alert-success', 'Offer has been added!');
         }
         if ($request->type == "edit") {
-
-
-            $image = $request->file('image');
-
-         
-            $input['imagename'] = '';
-
-            if ($image) {
-                $offer = Offer::find($request->id);
-                if ($offer->image != "") {
-                    $url = STORE_PATH . "/assets/images/offer/" . $offer->image;
-                    @unlink($url);
+            $offer = Offer::find($request->id);
+            $images = !empty($offer->image) ? explode(',', $offer->image) : [];
+            $image_names = [];
+            for ($i = 0; $i <= 3; $i++) {
+                $image = $request->file('image_' . $i);
+                if (!empty($image)) {
+                    !empty($images[$i]) ? @unlink(STORE_PATH . "/assets/images/offer/" . $images[$i]) : '';
+                    $image_names[$i] = make_image_slug($image->getClientOriginalName());
+                    $destinationPath = STORE_PATH . ('assets/images/offer');
+                    $image->move($destinationPath, $image_names[$i]);
+                } else {
+                    $image_names[$i] = !empty($images[$i]) ? $images[$i] : '';
                 }
-
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-                $destinationPath = STORE_PATH . '/assets/images/offer';
-                $image->move($destinationPath, $input['imagename']);
             }
 
             $data = array();
-            if ($input['imagename'] != "") {
-                $data['image'] = $input['imagename'];
+
+            if (!empty($image_names)) {
+                $data['image'] = implode(',', array_filter($image_names));
             }
 
             $data['alt'] = input_trims($request->alt);
-
-            if ($request->date) {
-                $data['date'] = input_trims($request->date);
-            }
-            if ($request->title_en) {
-                $data['title_en'] = input_trims($request->title_en);
-                $data['slug'] = str_replace(' ', '-', preg_replace('/[^a-zA-Z0-9_ -]/s', '', input_trims(strtolower($request->slug))));
-                $data['meta_title'] = input_trims($request->meta_title);
-                $data['meta_keyword'] = input_trims($request->meta_keyword);
-                $data['meta_desc'] = input_trims($request->meta_desc);
-            }
-            if ($request->title_ar) {
-                $data['title_ar'] = input_trims($request->title_ar);
-            }
-
-
-            if ($request->description_en) {
-                $data['description_en'] = input_trims($request->description_en);
-            }
-            if ($request->description_ar) {
-                $data['description_ar'] = input_trims($request->description_ar);
-            }
-
-            if ($request->description_long_en) {
-                $data['description_long_en'] = input_trims($request->description_long_en);
-            }
-            if ($request->description_long_ar) {
-                $data['description_long_ar'] = input_trims($request->description_long_ar);
-            }
-
-
+            $data['date'] = input_trims($request->date);
+            $data['title_en'] = input_trims($request->title_en);
+            $data['slug'] = $request->slug;
+            $data['meta_title'] = input_trims($request->meta_title);
+            $data['meta_keyword'] = input_trims($request->meta_keyword);
+            $data['meta_desc'] = input_trims($request->meta_desc);
+            $data['title_ar'] = input_trims($request->title_ar);
+            $data['description_en'] = input_trims($request->description_en);
+            $data['description_ar'] = input_trims($request->description_ar);
+            $data['description_long_en'] = input_trims($request->description_long_en);
+            $data['description_long_ar'] = input_trims($request->description_long_ar);
+            $data['youtube'] = $request->youtube;;
 
             if (!empty($data)) {
                 Offer::where('id', $request->id)->update($data);

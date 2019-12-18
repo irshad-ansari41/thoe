@@ -21,14 +21,12 @@ use Sentinel;
 use URL;
 use View;
 
-
-class FrontEndController extends Controller
-{
-
+class FrontEndController extends Controller {
     /*
      * $user_activation set to false makes the user activation via user registered email
      * and set to true makes user activated while creation
      */
+
     private $user_activation = true;
 
     /**
@@ -36,8 +34,7 @@ class FrontEndController extends Controller
      *
      * @return View
      */
-    public function getLogin()
-    {
+    public function getLogin() {
         // Is the user logged in?
         if (Sentinel::check()) {
             //return Redirect::route('my-account');
@@ -53,20 +50,17 @@ class FrontEndController extends Controller
      *
      * @return Redirect
      */
-    public function postLogin(Request $request)
-    {
+    public function postLogin(Request $request) {
 
         try {
             // Try to log the user in
             if (Sentinel::authenticate($request->only('email', 'password'), $request->get('remember-me', 0))) {
                 //return Redirect::route("my-account")->with('success', Lang::get('auth/message.login.success'));
                 return Redirect::route("lead-form.agents");
-            }
-            else {
+            } else {
                 return redirect('login')->with('error', 'Email or password is incorrect.');
                 //return Redirect::back()->withInput()->withErrors($validator);
             }
-
         } catch (UserNotFoundException $e) {
             $this->messageBag->add('email', Lang::get('auth/message.account_not_found'));
         } catch (NotActivatedException $e) {
@@ -87,11 +81,10 @@ class FrontEndController extends Controller
     /**
      * get user details and display
      */
-    public function myAccount(User $user)
-    {
-       
+    public function myAccount(User $user) {
+
         $user = Sentinel::getUser();
-        $countries = [];//$this->countries;
+        $countries = []; //$this->countries;
         return view('user_account', compact('user', 'countries'));
     }
 
@@ -101,24 +94,23 @@ class FrontEndController extends Controller
      * @param User $user
      * @return Return Redirect
      */
-    public function update(Request $request, User $user)
-    {
+    public function update(Request $request, User $user) {
         $rules = array(
             'pic' => 'mimes:jpg,jpeg,bmp,png|max:10000',
-            'first_name'=>'required',
-            'last_name'=>'required'
+            'first_name' => 'required',
+            'last_name' => 'required'
         );
-        $message=['pic.mimes' => 'Please upload image types : jpg,jpeg,bmp,png !'];
+        $message = ['pic.mimes' => 'Please upload image types : jpg,jpeg,bmp,png !'];
 
         // Create a new validator instance from our validation rules
-        $validator = Validator::make($request->all(), $rules,$message);
+        $validator = Validator::make($request->all(), $rules, $message);
 
         // If validation fails, we'll exit the operation now.
         if ($validator->fails()) {
             // Ooops.. something went wrong
             return Redirect::back()->withInput()->withErrors($validator);
         }
-        
+
         $user = Sentinel::getUser();
 
         //update values
@@ -140,11 +132,9 @@ class FrontEndController extends Controller
         }
         // is new image uploaded?
         if ($file = $request->file('pic')) {
-            $fileName = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension() ?: 'png';
             $folderName = '/uploads/users/';
             $destinationPath = STORE_PATH . $folderName;
-            $safeName = str_random(10) . '.' . $extension;
+            $safeName = make_image_slug($file->getClientOriginalName());
             $file->move($destinationPath, $safeName);
 
             //delete old pic if exists
@@ -153,7 +143,6 @@ class FrontEndController extends Controller
             }
             //save new file path into db
             $user->pic = $safeName;
-
         }
 
         // Was the user updated?
@@ -171,8 +160,6 @@ class FrontEndController extends Controller
 
         // Redirect to the user page
         return Redirect::route('my-account')->withInput()->with('error', $error);
-
-
     }
 
     /**
@@ -180,8 +167,7 @@ class FrontEndController extends Controller
      *
      * @return View
      */
-    public function getRegister()
-    {
+    public function getRegister() {
         // Show the page
         return view('register');
     }
@@ -191,8 +177,7 @@ class FrontEndController extends Controller
      *
      * @return Redirect
      */
-    public function postRegister(UserRequest $request)
-    {
+    public function postRegister(UserRequest $request) {
         $activate = $this->user_activation; //make it false if you don't want to activate user automatically it is declared above as global variable
 
         try {
@@ -226,7 +211,6 @@ class FrontEndController extends Controller
             // Redirect to the home page with success menu
             return Redirect::route("my-account")->with('success', Lang::get('auth/message.signup.success'));
             //return View::make('user_account')->with('success', Lang::get('auth/message.signup.success'));
-
         } catch (UserExistsException $e) {
             $this->messageBag->add('email', Lang::get('auth/message.account_already_exists'));
         }
@@ -242,8 +226,7 @@ class FrontEndController extends Controller
      * @param string $activationCode
      *
      */
-    public function getActivate($userId, $activationCode)
-    {
+    public function getActivate($userId, $activationCode) {
         // Is the user logged in?
         if (Sentinel::check()) {
             return Redirect::route('my-account');
@@ -266,11 +249,9 @@ class FrontEndController extends Controller
      *
      * @return View
      */
-    public function getForgotPassword()
-    {
+    public function getForgotPassword() {
         // Show the page
         return view('forgotpwd');
-
     }
 
     /**
@@ -278,8 +259,7 @@ class FrontEndController extends Controller
      * @param Request $request
      * @return Redirect
      */
-    public function postForgotPassword(Request $request)
-    {
+    public function postForgotPassword(Request $request) {
         try {
             // Get the user password recovery code
             //$user = Sentinel::FindByLogin($request->get('email'));
@@ -322,31 +302,25 @@ class FrontEndController extends Controller
      * @param  string $passwordResetCode
      * @return View
      */
-    public function getForgotPasswordConfirm($userId, $passwordResetCode = null)
-    {
+    public function getForgotPasswordConfirm($userId, $passwordResetCode = null) {
         if (!$user = Sentinel::findById($userId)) {
             // Redirect to the forgot password page
             return Redirect::route('fe-forgot-password')->with('error', Lang::get('auth/message.account_not_found'));
         }
 
-        if($reminder = Reminder::exists($user))
-        {
-            if($passwordResetCode == $reminder->code)
-            {
+        if ($reminder = Reminder::exists($user)) {
+            if ($passwordResetCode == $reminder->code) {
                 return view('forgotpwd-confirm', compact(['userId', 'passwordResetCode']));
-            }
-            else{
+            } else {
                 return 'code does not match';
             }
-        }
-        else
-        {
+        } else {
             return 'does not exists';
         }
 
 
         // Show the page
-     //   return View::make('forgotpwd-confirm', compact(['userId', 'passwordResetCode']));
+        //   return View::make('forgotpwd-confirm', compact(['userId', 'passwordResetCode']));
     }
 
     /**
@@ -355,8 +329,7 @@ class FrontEndController extends Controller
      * @param  string $passwordResetCode
      * @return Redirect
      */
-    public function postForgotPasswordConfirm(Request $request, $userId, $passwordResetCode = null)
-    {
+    public function postForgotPasswordConfirm(Request $request, $userId, $passwordResetCode = null) {
 
         $user = Sentinel::findById($userId);
         if (!$reminder = Reminder::complete($user, $passwordResetCode, $request->get('password'))) {
@@ -373,8 +346,7 @@ class FrontEndController extends Controller
      * @param Request $request
      * @return Redirect
      */
-    public function postContact(Request $request)
-    {
+    public function postContact(Request $request) {
 
         // Data to be used on the email view
         $data = array(
@@ -388,7 +360,6 @@ class FrontEndController extends Controller
             $m->from($data['contact-email'], $data['contact-name']);
             $m->to('email@domain.com', @trans('general.site_name'));
             $m->subject('Received a mail from ' . $data['contact-name']);
-
         });
 
         //Redirect to contact page
@@ -400,14 +371,12 @@ class FrontEndController extends Controller
      *
      * @return Redirect
      */
-    public function getLogout()
-    {
+    public function getLogout() {
         // Log the user out
         Sentinel::logout();
 
         // Redirect to the users page
         return redirect('login')->with('success', 'You have successfully logged out!');
     }
-
 
 }

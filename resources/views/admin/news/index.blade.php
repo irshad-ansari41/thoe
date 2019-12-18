@@ -45,43 +45,47 @@ News List
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($news as $new)
-                        <tr>
-                            <td><img src="{{ asset('assets/images/pressrelease') }}/{!! $new->image !!}" width="100"/></td>
-                            <td> <a href="news/{!! $new->id !!}/edit">{!! $new->title_en !!}</a></td>
-                            <td> <?php
-                                $categories = get_category_name($new->category);
-                                foreach ($categories as $category) {
-                                    echo $category->title.'<br/>';
-                                }
-                                ?></td>
+                        <?php
+                        foreach ($news as $new) {
+                            $images = !empty($new->image) ? explode(',', $new->image) : [];
+                            $image = !empty($images[0]) ? asset("assets/images/pressrelease/{$images[0]}") : '';
+                            ?>
+                            <tr>
+                                <td><?= !empty($image) ? "<img src='$image' width=100/>" : '' ?></td>
+                                <td> <a href = "news/{!! $new->id !!}/edit">{!!$new->title_en!!}</a></td>
+                                <td> <?php
+                                    $categories = get_category_name($new->category);
+                                    foreach ($categories as $category) {
+                                        echo $category->title . '<br/>';
+                                    }
+                                    ?></td>
 
-                            <td>{!! $new->date !!}</td>
-                            <td>
-                                @if($new->status==1)
-                                Active
-                                @else
-                                Inactive
-                                @endif
-                            </td>
-                            <td>
-                                <a href="news/{!! $new->id !!}/edit"><i class="fa fa-edit"></i></a>
+                                <td>{!! $new->date !!}</td>
+                                <td>
+                                    @if($new->status==1)
+                                    Active
+                                    @else
+                                    Inactive
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="news/{!! $new->id !!}/edit"><i class="fa fa-edit"></i></a>
 
-                                <a href="news/{!! $new->id !!}/delete" onclick="return confirm('Are you sure you want to delete this record?');" >
-                                    <i class="fa fa-trash"></i></a>
+                                    <a href="news/{!! $new->id !!}/delete" onclick="return confirm('Are you sure you want to delete this record?');" >
+                                        <i class="fa fa-trash"></i></a>
 
-                                @if($new->status=='0')
-                                <a href="{!!url('/')!!}/admin/news/{!! $new->id !!}/status/1">		
-                                    <i class="fa fa-lock"></i>
-                                </a>
-                                @else
-                                <a href="{!!url('/')!!}/admin/news/{!! $new->id !!}/status/0">		
-                                    <i class="fa fa-unlock"></i>
-                                </a>
-                                @endif
-                            </td>
-                        </tr>
-                        @endforeach
+                                    @if($new->status=='0')
+                                    <a href="{!!url('/')!!}/admin/news/{!! $new->id !!}/status/1">		
+                                        <i class="fa fa-lock"></i>
+                                    </a>
+                                    @else
+                                    <a href="{!!url('/')!!}/admin/news/{!! $new->id !!}/status/0">		
+                                        <i class="fa fa-unlock"></i>
+                                    </a>
+                                    @endif
+                                </td>
+                            </tr>
+                        <?php } ?>
 
                     </tbody>
                 </table>

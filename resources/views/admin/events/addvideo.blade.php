@@ -105,7 +105,7 @@
                         <div class="form-group en_field">
                             <label class="col-md-3 control-label hidden-xs">Title(English)</label>
                             <div class="col-md-8">
-                                <input type="text" name="gallery_title_en" class="form-control" value="@if($results){{ $results->gallery_title_en }} @endif">
+                                <input type="text" name="gallery_title_en" class="form-control" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)"  value="@if($results){{ $results->gallery_title_en }} @endif">
                             </div>
                         </div>
                         <div class="form-group ar_field">
@@ -114,7 +114,13 @@
                                 <input type="text" name="gallery_title_ar" class="form-control" value="@if($results){{ $results->gallery_title_ar }} @endif">
                             </div>
                         </div>
-
+                        
+                        <div class="form-group en_field">
+                            <label class="col-md-3 control-label hidden-xs">Slug</label>
+                            <div class="col-md-8">
+                                <input id="slug-text" type="text" name="slug" class="form-control" value="{{!empty($results)?$results->slug:''}}">
+                            </div>
+                        </div>
 
                         <div class="form-group en_field">
                             <label class="col-md-3 control-label hidden-xs">Long Title(English)</label>
@@ -249,7 +255,23 @@ type="text/javascript"></script>
 <link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/croppie.css">
 <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" ></script>
 <script>
-CKEDITOR.replace('ckeditor_standard');
+    
+    /* Encode string to slug */
+    function convertToSlug(str) {
+
+        //replace all special characters | symbols with a space
+        str = str.replace(/[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g, ' ').toLowerCase();
+
+        // trim spaces at start and end of string
+        str = str.replace(/^\s+|\s+$/gm, '');
+
+        // replace space with dash/hyphen
+        str = str.replace(/\s+/g, '-');
+        document.getElementById("slug-text").innerHTML = str;
+        //return str;
+    }
+    
+//CKEDITOR.replace('ckeditor_standard');
 CKEDITOR.replace('ckeditor_standard1');
 $(document).ready(function () {
     $("#project").change(function () {
@@ -262,6 +284,7 @@ $(document).ready(function () {
                 $("#pajax").html(data);
             }
         });
+        
     });
 
 <?php if ($type == "add") { ?>
@@ -280,6 +303,8 @@ $(document).ready(function () {
         $(this).parent().parent().parent().parent().remove();
     });
 });
+
+
 </script>
 
 @stop

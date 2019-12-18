@@ -79,14 +79,7 @@
                     Banner Sliders - Ordering
                 </a>
             </li>
-
-            <li <?= (Request::is('admin/setting/feature_slider') ? 'class="active"' : '') ?>>
-                <a href="{{ URL::to('admin/setting/feature_slider') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Explore Our Projects
-                </a>
-            </li>
-
+            
             <li <?= (Request::is('admin/invest/*') ? 'class="active"' : '') ?>>
                 <a href="{{ URL::to('admin/invest/1/edit') }}">
                     <i class="fa fa-angle-double-right"></i>
@@ -119,6 +112,29 @@
         </ul>
     </li>
 
+    
+    <li {!! (( Request::is('admin/features') ||  Request::is('admin/feature/create')) || Request::is('admin/feature/*')  ? 'class="active"' : '') !!}>
+        <a href=javascript:void(0);>
+            <i class="livicon" data-name="comment" data-c="#F89A14" data-hc="#F89A14" data-size="18"
+               data-loop="true"></i>
+            <span class="title">Feature</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li {!! (Request::is('admin/feature') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/feature') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Feature List
+                </a>
+            </li>
+            <li {!! (Request::is('admin/feature/create') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/feature/create') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Add New Feature
+                </a>
+            </li>
+        </ul>
+    </li>
 
 
 

@@ -68,42 +68,27 @@
                 <div class="panel-body">
                     <form id="tryitForm" class="form-horizontal" method="post" enctype="multipart/form-data">
 
-                        <div class="form-group en_field">
-                            <label class="col-md-3 control-label hidden-xs">Title(English) </label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" name="event_title"
-                                       placeholder="" value="{{ !empty($project->event_title_en)?$project->event_title_en : old('event_title') }}" />
-                            </div>
-                        </div>
-                        <div class="form-group ar_field">
-                            <label class="col-md-3 control-label hidden-xs">Title(Arabic) </label>
+                        <div class="row form-group en_field">
 
-                            <div class="col-md-8">
+                            <div class="col-md-4">
+                                <label >Title(English) </label><br/>
+                                <input type="text" class="form-control" name="event_title" onload="convertToSlug(this.value)" onkeyup="convertToSlug(this.value)" 
+                                       placeholder="" value="{{ !empty($project->event_title_en)?$project->event_title_en : old('event_title_en') }}" />
+                            </div>
+                            <div class="col-md-4">
+                                <label >Slug(English)</label>
+                                <textarea id="slug-text" class="form-control" name="slug">{{ !empty($project)?$project->slug: old('slug') }}</textarea>
+                            </div>
+                            <div class="col-md-4">
+                                <label >Title(Arabic) </label>
                                 <input type="text" class="form-control" name="event_title_ar"
                                        placeholder="" value="{{ !empty($project->event_title_ar)?$project->event_title_ar: old('event_title_ar') }}" />
                             </div>
                         </div>
-                        
 
-                        <div class="form-group ">
-                            <label class="col-md-3 control-label hidden-xs en_field">Slug(English)</label>
-
-                            <div class="col-md-8">
-                                <textarea class="form-control" name="slug">{{ !empty($project->slug_en)?$project->slug_en: old('slug') }}</textarea>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-md-3 control-label hidden-xs ar_field">Slug(Arabic)</label>
-
-                            <div class="col-md-8">
-                                <textarea class="form-control" name="slug_ar">{{ !empty($project->slug_ar)?$project->slug_ar : old('slug_ar') }}</textarea>
-                            </div>
-                        </div>
-                       
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" name="description">Thumbnail photo (English) <br><br> </label>
-                            <div class="col-md-8">
+                        <div class="row form-group">
+                            <div class="col-md-3">
+                                <label  >Thumbnail photo (English) </label><br>
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
                                         <img src="{{asset('assets/images/events')}}/{{ !empty($project->event_photo_en)?$project->event_photo_en:'100-blank-img.jpg' }}" height="190" width="190" /> </div>
@@ -117,11 +102,8 @@
 
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" name="description">Thumbnail photo (Arebic) <br><br> </label>
-                            <div class="col-md-8">
+                            <div class="col-md-3">
+                                <label  >Thumbnail photo (Arabic) </label><br>
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
                                         <img src="{{asset('assets/images/events')}}/{{!empty($project->event_photo_ar)?$project->event_photo_ar:'100-blank-img.jpg'}}" height="190" width="190" /> </div>
@@ -137,82 +119,83 @@
                             </div>
                         </div>
 
-                        
-                        
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" name="description">Main Photo (English) <br><br> </label>
-                            <div class="col-md-8">
-                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                        <img src="{{asset('assets/images/events/main')}}/{{ !empty($project->event_main_photo_en)?$project->event_main_photo_en:'100-blank-img.jpg' }}" height="190" width="190" /> </div>
-
-                                    <div>
-                                        <span class="btn btn-default btn-file">
-                                            <span class="fileinput-new">Select</span>
-                                            <span class="fileinput-exists">Change</span>
-                                            <input type="file" name="main_image" ></span>
-                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                        <div class="row form-group">
+                            <?php
+                            $images_en = !empty($project->event_main_photo_en) ? explode(',', $project->event_main_photo_en) : [];
+                            for ($i = 0; $i <= 3; $i++) {
+                                ?>
+                                <div class="col-md-3">
+                                    <label >Main Photo (English) <?= $i + 1 ?> </label><br>
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                            <?php if (!empty($images_en[$i])) { ?> 
+                                                <img src="<?= asset('assets/images/events') ?>/<?= $images_en[$i] ?>" height="190" width="190" /> 
+                                            <?php } ?>
+                                        </div>
+                                        <div>
+                                            <span class="btn btn-default btn-file">
+                                                <span class="fileinput-new">Select</span>
+                                                <span class="fileinput-exists">Change</span>
+                                                <input type=file name="event_main_photo_en_<?= $i ?>"></span>
+                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                        </div>
                                     </div>
-
                                 </div>
-                            </div>
+                            <?php } ?>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" name="description">Main Photo (Arebic) <br><br> </label>
-                            <div class="col-md-8">
-                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                        <img src="{{asset('assets/images/events/main')}}/{{ !empty($project->event_main_photo_ar)?$project->event_main_photo_ar:'100-blank-img.jpg' }}" height="190" width="190" /></div>
-
-                                    <div>
-                                        <span class="btn btn-default btn-file">
-                                            <span class="fileinput-new">Select</span>
-                                            <span class="fileinput-exists">Change</span>
-                                            <input type="file" name="main_image_ar" ></span>
-                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                        <div class="row form-group">
+                            <?php
+                            $images_ar = !empty($project->event_main_photo_ar) ? explode(',', $project->event_main_photo_ar) : [];
+                            for ($i = 0; $i <= 3; $i++) {
+                                ?>
+                                <div class="col-md-3">
+                                    <label >Main Photo (Arabic) <?= $i + 1 ?></label><br>
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                            <?php if (!empty($images_ar[$i])) { ?> 
+                                                <img src="<?= asset('assets/images/events') ?>/<?= $images_ar[$i] ?>" height="190" width="190" /> 
+                                            <?php } ?>
+                                        </div>
+                                        <div>
+                                            <span class="btn btn-default btn-file">
+                                                <span class="fileinput-new">Select</span>
+                                                <span class="fileinput-exists">Change</span>
+                                                <input type=file name="event_main_photo_ar_<?= $i ?>"></span>
+                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                        </div>
                                     </div>
-
                                 </div>
-                            </div>
+                            <?php } ?>
                         </div>
 
-                        
 
-                        <div class="form-group en_field">
-                            <label class="col-md-3 control-label" name="">Short Description(English) </label>
-
-                            <div class="col-md-8">
-                                <textarea id="" class="form-control"  name="extra_desc" rows="5">{{ !empty($project->extra_desc_en)?$project->extra_desc_en: old('extra_desc') }}</textarea>
+                        <div class="row form-group en_field">
+                            <div class="col-md-6"><label  name="">Short Description(English) </label><br/>
+                                <textarea id="" class="form-control"  name="extra_desc_en" rows="5">{{ !empty($project->extra_desc_en)?$project->extra_desc_en: old('extra_desc_en') }}</textarea>
                             </div>
-                        </div>
-                        <div class="form-group ar_field">
-                            <label class="col-md-3 control-label" name="">Short Description(Arabic) </label>
-
-                            <div class="col-md-8">
+                            <div class="col-md-6">
+                                <label  name="">Short Description(Arabic) </label><br/>
                                 <textarea id="" class="form-control"  name="extra_desc_ar" rows="5">{{ !empty($project->extra_desc_ar)?$project->extra_desc_ar: old('extra_desc_ar') }}</textarea>
                             </div>
                         </div>
-                        
 
-                        <div class="form-group en_field">
-                            <label class="col-md-3 control-label" name="">Long Description(English) </label>
 
-                            <div class="col-md-8">
-                                <textarea id="ckeditor_standard" name="long_desc">{{ !empty($project->long_desc_en)?$project->long_desc_en: old('long_desc') }}</textarea>
+
+                        <div class="row form-group en_field">
+                            <div class="col-md-6">
+                                <label  name="">Long Description(English) </label><br/>
+                                <textarea id="ckeditor_standard" name="long_desc_en">{{ !empty($project->long_desc_en)?$project->long_desc_en: old('long_desc_en') }}</textarea>
                             </div>
-                        </div>
-                        <div class="form-group ar_field">
-                            <label class="col-md-3 control-label" name="">Long Description(Arabic) </label>
-
-                            <div class="col-md-8">
+                            <div class="col-md-6">
+                                <label  name="">Long Description(Arabic) </label><br/>
                                 <textarea id="ckeditor_standard1" name="long_desc_ar">{{ !empty($project->long_desc_ar)?$project->long_desc_ar: old('long_desc_ar') }}</textarea>
                             </div>
                         </div>
-                       
+
 
                         <div class="form-group en_field">
-                            <label class="col-md-3 control-label hidden-xs">Starting From</label>
+                            <label class="col-md-3 control-label ">Starting From</label>
                             <div class="col-md-2">
                                 <select class="form-control" name="currency_type">
                                     <option value="">--</option>
@@ -227,7 +210,7 @@
                         </div>
 
                         <div class="form-group en_field">
-                            <label class="col-md-3 control-label hidden-xs">Booking Fees</label>
+                            <label class="col-md-3 control-label ">Booking Fees</label>
 
                             <div class="col-md-8">
                                 <input id="" value="{{ !empty($project->booking_fees)?$project->booking_fees: old('booking_fees') }}" type="text" class="form-control" name="booking_fees">
@@ -235,7 +218,7 @@
                         </div>
 
                         <div class="form-group en_field">
-                            <label class="col-md-3 control-label hidden-xs">Payment Plan(English)</label>
+                            <label class="col-md-3 control-label ">Payment Plan(English)</label>
 
                             <div class="col-md-8">
                                 <input id="" value="{{ !empty($project->payment_plan)?$project->payment_plan: old('payment_plan') }}" type="text" class="form-control" name="payment_plan">
@@ -243,14 +226,14 @@
                         </div>
 
                         <div class="form-group ar_field">
-                            <label class="col-md-3 control-label hidden-xs">Payment Plan(Arabic)</label>
+                            <label class="col-md-3 control-label ">Payment Plan(Arabic)</label>
                             <div class="col-md-8">
                                 <input id="" value="{{ !empty($project->payment_plan_ar)?$project->payment_plan_ar: old('payment_plan_ar') }}" type="text" class="form-control" name="payment_plan_ar">
                             </div>
                         </div>
-                        
+
                         <div class="form-group en_field">
-                            <label class="col-md-3 control-label hidden-xs">Mortgage Starting</label>
+                            <label class="col-md-3 control-label ">Mortgage Starting</label>
                             <div class="col-md-8">
                                 <input id="" value="{{ !empty($project->mortgage_starting)?$project->mortgage_starting: old('mortgage_starting') }}" type="text" class="form-control" name="mortgage_starting">
                             </div>
@@ -262,14 +245,14 @@
                             </div>
                         </div>
                         <div class="form-group en_field">
-                            <label class="col-md-3 control-label" name="">Visit Us (Arebic) </label>
+                            <label class="col-md-3 control-label" name="">Visit Us (Arabic) </label>
                             <div class="col-md-8">
                                 <textarea id="" class="form-control"  name="visit_us_at_ar">{{ !empty($project->visit_us_at_ar)?$project->visit_us_at_ar: old('visit_us_at_ar') }}</textarea>
                             </div>
                         </div>
-                        
+
                         <div class="form-group en_field">
-                            <label class="col-md-3 control-label hidden-xs">Event Date</label>
+                            <label class="col-md-3 control-label ">Event Date</label>
 
                             <div class="col-md-7">
                                 <input id="date" value="{{ !empty($project->event_date)?$project->event_date: old('date') }} " type="text" class="form-control" name="date">
@@ -279,27 +262,27 @@
                             </div>                            
                         </div>
                         <div class="form-group en_field">
-                            <label class="col-md-3 control-label hidden-xs">Last Day For Event</label>
+                            <label class="col-md-3 control-label ">Last Day For Event</label>
 
                             <div class="col-md-8">
                                 <input id="date1" value="{{ !empty($project->levent_date)?$project->levent_date: old('ldate') }} " type="text" class="form-control" name="ldate">
                             </div>
                         </div>
-                        
+
                         <div class="form-group en_field">
-                            <label class="col-md-3 control-label hidden-xs">Event Start Time</label>
+                            <label class="col-md-3 control-label ">Event Start Time</label>
                             <div class="col-md-8">
                                 <input id="timepicker1" value="{{ !empty($project->event_start_time)?$project->event_start_time: old('event_start_time') }} " type="text" class="form-control" name="event_start_time" style="padding-bottom:0px;">
                             </div>
                         </div>
                         <div class="form-group en_field">
-                            <label class="col-md-3 control-label hidden-xs">Event End Time</label>
+                            <label class="col-md-3 control-label ">Event End Time</label>
                             <div class="col-md-8">
                                 <input id="timepicker2"  value="{{ !empty($project->event_end_time)?$project->event_end_time: old('event_end_time') }} " type="text" class="form-control" name="event_end_time" style="padding-bottom:0px;">
                             </div>
                         </div>
                         <div class="form-group en_field">
-                            <label class="col-md-3 control-label hidden-xs">Event Location (English)</label>
+                            <label class="col-md-3 control-label ">Event Location (English)</label>
 
                             <div class="col-md-8">
                                 <input id="" value="{{ !empty($project->event_location_en)?$project->event_location_en: old('event_location') }}" type="text" class="form-control" name="event_location">
@@ -307,17 +290,17 @@
                         </div>
 
                         <div class="form-group ar_field">
-                            <label class="col-md-3 control-label hidden-xs">Event Location (Arebic)</label>
+                            <label class="col-md-3 control-label ">Event Location (Arabic)</label>
 
                             <div class="col-md-8">
                                 <input id="" value="{{ !empty($project->event_location_ar)?$project->event_location_ar: old('event_location_ar') }}" type="text" class="form-control" name="event_location_ar">
                             </div>
                         </div>
 
-                       
+
 
                         <div class="form-group en_field">
-                            <label class="col-md-3 control-label hidden-xs">Event Place (English)</label>
+                            <label class="col-md-3 control-label ">Event Place (English)</label>
 
                             <div class="col-md-8">
                                 <input id="" value="{{ !empty($project->event_place_en)?$project->event_place_en: old('event_place') }}" type="text" class="form-control" name="event_place">
@@ -325,16 +308,23 @@
                         </div>
 
                         <div class="form-group ar_field">
-                            <label class="col-md-3 control-label hidden-xs">Event Place (Arebic)</label>
+                            <label class="col-md-3 control-label ">Event Place (Arabic)</label>
 
                             <div class="col-md-8">
                                 <input id="" value="{{ !empty($project->event_place_ar)?$project->event_place_ar:old('event_place_ar') }}" type="text" class="form-control" name="event_place_ar">
                             </div>
                         </div>
 
+                        <div class="form-group en_field">
+                            <label class="col-md-1 control-label hidden-xs">Youtube URL</label>
+                            <div class="col-md-11">
+                                <input type="text" name="youtube" class="form-control" value="<?= $project ? $project->youtube : '' ?>">
+                            </div>
+                        </div>
+
 
                         <div class="form-group ">
-                            <label class="col-md-3 control-label hidden-xs">Meta keyword</label>
+                            <label class="col-md-3 control-label ">Meta keyword</label>
 
                             <div class="col-md-8">
                                 <textarea class="form-control" name="meta_keyword">{{ !empty($project->meta_keyword)?$project->meta_keyword: old('meta_keyword') }}</textarea>
@@ -342,7 +332,7 @@
                         </div>
 
                         <div class="form-group ">
-                            <label class="col-md-3 control-label hidden-xs">Meta Description</label>
+                            <label class="col-md-3 control-label ">Meta Description</label>
 
                             <div class="col-md-8">
                                 <textarea class="form-control" name="meta_desc">{{ !empty($project->meta_desc)?$project->meta_desc: old('meta_desc') }}</textarea>
@@ -391,18 +381,33 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 
-CKEDITOR.replace('ckeditor_standard');
-CKEDITOR.replace('ckeditor_standard1');
-CKEDITOR.replace('ckeditor_standard2');
+                                    CKEDITOR.replace('ckeditor_standard');
+                                    CKEDITOR.replace('ckeditor_standard1');
+                                    CKEDITOR.replace('ckeditor_standard2');
 
-jQuery(function () {
-    jQuery("#date").datepicker({
-        dateFormat: "yy-mm-dd"
-    });
-});
+                                    jQuery(function () {
+                                        jQuery("#date").datepicker({
+                                            dateFormat: "yy-mm-dd"
+                                        });
+                                    });
 </script>
 <script>
     $('#timepicker1').timepicki();
     $('#timepicker2').timepicki();
+
+    /* Encode string to slug */
+    function convertToSlug(str) {
+
+        //replace all special characters | symbols with a space
+        str = str.replace(/[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g, ' ').toLowerCase();
+
+        // trim spaces at start and end of string
+        str = str.replace(/^\s+|\s+$/gm, '');
+
+        // replace space with dash/hyphen
+        str = str.replace(/\s+/g, '-');
+        document.getElementById("slug-text").innerHTML = str;
+        //return str;
+    }
 </script>
 @stop

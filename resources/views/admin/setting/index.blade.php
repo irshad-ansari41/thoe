@@ -65,7 +65,7 @@
 
                         <div class="form-group">
 
-                            <label class="col-md-3 control-label" name="description">Home page - Header Logo (Arebic) <br><br> (Note : Logo size maximum 20kb and Height must not exceed 50px and Width must not exceed 200px.)</label>
+                            <label class="col-md-3 control-label" name="description">Home page - Header Logo (Arabic) <br><br> (Note : Logo size maximum 20kb and Height must not exceed 50px and Width must not exceed 200px.)</label>
                             <div class="col-md-8">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px; background-color:#eee;">
@@ -113,7 +113,7 @@
 
                         <div class="form-group">
 
-                            <label class="col-md-3 control-label" name="description">Inner page - Header Logo (Arebic) <br><br> (Note : Logo size maximum 20kb and Height must not exceed 50px and Width must not exceed 200px.)</label>
+                            <label class="col-md-3 control-label" name="description">Inner page - Header Logo (Arabic) <br><br> (Note : Logo size maximum 20kb and Height must not exceed 50px and Width must not exceed 200px.)</label>
                             <div class="col-md-8">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px; background-color:#eee;">
@@ -163,7 +163,7 @@
 
                         <div class="form-group">
 
-                            <label class="col-md-3 control-label" name="description">Footer Logo (Arebic)<br><br> (Note : Logo size maximum 20kb and Height must not exceed 50px and Width must not exceed 200px.)</label>
+                            <label class="col-md-3 control-label" name="description">Footer Logo (Arabic)<br><br> (Note : Logo size maximum 20kb and Height must not exceed 50px and Width must not exceed 200px.)</label>
                             <div class="col-md-8">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px; background-color:#eee;">

@@ -75,7 +75,7 @@ class AdminInterviewsController extends Controller {
             $image = $request->file('image');
             $input['imagename'] = '';
             if ($image) {
-                $input['imagename'] = time() . rand() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
                 $destinationPath = STORE_PATH . '/assets/images/media/interviews';
                 $image->move($destinationPath, $input['imagename']);
             }
@@ -116,7 +116,7 @@ class AdminInterviewsController extends Controller {
                     @unlink($url);
                 }
 
-                $input['imagename'] = time() . rand() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = make_image_slug($image->getClientOriginalName());
                 $destinationPath = STORE_PATH . '/assets/images/media/interviews';
                 $image->move($destinationPath, $input['imagename']);
             }

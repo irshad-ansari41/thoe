@@ -31,8 +31,13 @@ Content List
     </div>
     <div class="row">
         <div class="panel panel-primary ">
-            <div class="panel-heading">
-                Footer Menu
+            <div class="panel-heading clearfix">
+                <h3 class="panel-title pull-left"><i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                    Footer Menu
+                </h3>
+                <div class="pull-right">
+                    <a href="{{ URL::to('admin/setting/add_menu?type=2') }}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span> @lang('button.create')</a>
+                </div>
             </div>
             <br />
             <div class="panel-body">
@@ -40,6 +45,7 @@ Content List
                     <thead>
                         <tr class="filters">
                             <th>Title</th>
+                            <th>Slug</th>
                             <th>Parent</th>
                             <th>Created At</th>
                             <th>Status</th>
@@ -50,6 +56,7 @@ Content List
                         @foreach ($records as $record)
                         <tr>
                             <td>{!! $record['title'] !!}</td>
+                            <td>{!! $record['slug'] !!}</td>
                             <td>{!! $record['parent'] !!}</td>
                             <td>{!! $record['created'] !!}</td>
                             <td>

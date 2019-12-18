@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\Content;
 use App\Models\Event;
 use View;
+use Cache;
+use DB;
 
 class EventController extends Controller {
 
     public $locale;
+    public $countries;
 
     /**
      * Initializer.
@@ -20,6 +23,9 @@ class EventController extends Controller {
     public function __construct(Request $request) {
         $this->locale = get_locale($request->segment(1));
         \App::setLocale($this->locale);
+        $this->countries = Cache::remember('countries', 30, function () {
+                    return DB::table('country')->get();
+                });
     }
 
     public function index(Request $request) {
@@ -34,11 +40,12 @@ class EventController extends Controller {
         $keyword = $sort = "";
         $date_start = date('Y-m-d');
         $date_end = date('Y-m-d', strtotime('+1 days'));
-        $events = Event::where("status", "1")->where('event_date', '>=', $date_start)->where('event_date', '<=', $date_end)->orWhere('event_date', '>', $date_end)->where("event_title_{$this->locale}", '!=', '')->orderBy('event_order', 'ASC')->paginate(5);
+        $events = Event::where("status", "1")->where('event_date', '>=', $date_start)->where('event_date', '<=', $date_end)->orWhere('event_date', '>', $date_end)->where("event_title_{$this->locale}", '!=', '')->orderBy('event_order', 'ASC')->paginate(10);
 
         $data = [
             'content' => $content,
             'events' => $events,
+            'countries' => $this->countries,
             'meta_title' => $content->meta_title,
             'meta_keyword' => $content->meta_keyword,
             'meta_description' => $content->meta_desc,
@@ -66,12 +73,13 @@ class EventController extends Controller {
         if (!empty($cached)) {
             return $cached;
         }
-        $event = Event::where("slug_{$this->locale}", $slug)->where("event_title_{$this->locale}", '!=', '')->first();
+        $event = Event::where("slug", $slug)->where("event_title_{$this->locale}", '!=', '')->first();
         if (empty($event)) {
             return redirect("$this->locale/events", 301);
         }
         $data = [
             'event' => $event,
+            'countries' => $this->countries,
             'meta_title' => $event->event_title_en . " | The Heart of Europe Event",
             'meta_keyword' => $event->event_title_en . ", Upcoming Events, Events in UAE, Property Developer Events",
             'meta_description' => $event->extra_des_en,

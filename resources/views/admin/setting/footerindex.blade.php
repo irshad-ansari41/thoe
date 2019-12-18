@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label hidden-xs">Description (Arebic)</label>
+                            <label class="col-md-3 control-label hidden-xs">Description (Arabic)</label>
 
                             <div class="col-md-8">
                                 <textarea class="form-control" name="description_ar">{{ $setting->description_ar }}</textarea>

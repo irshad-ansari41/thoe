@@ -32,7 +32,7 @@ Home Page
                                                     <h1 class="banner__title"><?= $slide['banner_title_' . $locale] ?></h1>
                                                     <h3 class="banner__subtitle"><?= $slide['banner_short_description_' . $locale] ?></h3>
                                                     <?php if ($slide['explore_link']) { ?>
-                                                        <a href="<?= $slide['explore_link'] ?>" class="article__more">Read more</a>
+                                                        <a href="<?= $slide['explore_link'] ?>" class="article__more" style="color:#fff;border-color: #fff;z-index:9999">Read more</a>
                                                     <?php } ?>
                                                 </div>
                                             </div>
@@ -64,8 +64,8 @@ Home Page
     </div>
     <div class="widget js-widget widget--landing widget--gray">
         <div class="widget__header">
-            <h2 class="widget__title">The Heart of Europe</br>Explore Our Projects</h2>
-            <h5 class="widget__headline">Our agents are licensed professionals that specialise in searching, evaluating and negotiating the purchase of property on behalf of the buyer. They will sell you real estate. Insights, tips & how-to guides on selling property and preparing your home or investment property for sale and working to maximise your sale price.</h5>
+            <h2 class="widget__title"><?= $content['short_description_' . $locale] ?></h2>
+            <h5 class="widget__headline"><?= $content['description_' . $locale] ?></h5>
         </div>
         <div class="widget__content">
             <!-- BEGIN PROPERTIES INDEX-->
@@ -80,19 +80,23 @@ Home Page
                     <div id="tab-features" class="tab-pane in active">
                         <div class="listing listing--grid">
                             <?php
-                            foreach ($bannersliders as $slide) {
-                                $slide = (array) $slide;
+                            foreach ($features as $feature) {
+                                $feature = (array) $feature;
                                 ?>
                                 <div class="listing__item">
                                     <div class="properties properties--grid">
-                                        <div class="properties__thumb"><a href="<?= $slide['explore_link'] ?>" class="item-photo"><img src="<?= asset("assets/images/home_banners/{$slide['banner_image']}") ?>" alt=""/>
-                                                <figure class="item-photo__hover item-photo__hover--params"><span class="properties__intro">Read more!</span>
+                                        <div class="properties__thumb"><a href="<?= url("$locale/features/{$feature['slug']}") ?>" class="item-photo"><img src="<?= asset("uploads/feature/{$feature['image']}") ?>" alt=""/>
+                                                <figure class="item-photo__hover item-photo__hover--params">
+                                                    <!--<span class="properties__intro"><?= str_limit($feature['content'], 35) ?> Read more!</span>-->
                                                 </figure></a>
                                         </div>
                                         <!-- end of block .properties__thumb-->
                                         <div class="properties__details">
-                                            <div class="properties__info"><a href="<?= $slide['explore_link'] ?>" class="properties__address"><span class="properties__address-street"><?= $slide['banner_title_' . $locale] ?></span><span class="properties__intro"><?= $slide['banner_long_description_' . $locale] ?></span>
-                                            </div></a>
+                                            <div class="properties__info"><a href="<?= url("$locale/features/{$feature['slug']}") ?>" class="properties__address">
+                                                    <span class="properties__address-street"><?= $feature['title'] ?></span>
+                                                    <span class="properties__intro"><?= str_limit($feature['content'], 35) ?> Read more!</span>
+                                                </a>
+                                            </div>
                                         </div>
                                         <!-- end of block .properties__info-->
                                     </div>
@@ -250,7 +254,7 @@ Home Page
                                     <time datetime="<?= $news['date'] ?>" class="article__time text-uppercase"><?= $month ?><strong><?= $day ?></strong></time></a>
                                 <div class="article__details"><a href="blog_details.html" class="article__item-title"><?= $news['title_' . $locale] ?></a>
                                     <div class="article__intro">
-                                        <p><?= str_limit($news['description_long_' . $locale], 20) ?></p>
+                                        <p><?= str_limit($news['description_' . $locale], 20) ?></p>
                                     </div><a href="<?= url("/$locale/news-pr/{$news['slug']}") ?>" class="article__more">Read more</a>
                                 </div>
                                 <!-- end of block .articl-->
@@ -280,13 +284,13 @@ Home Page
                         ?>
                         <div class="listing__item">
                             <!-- BEGIN SECTION ARTICLE-->
-                            <div class="article article--grid"><a href="<?= url("/$locale/events/{$event['slug_' . $locale]}") ?>" class="article__photo">
+                            <div class="article article--grid"><a href="<?= url("/$locale/events/{$event['slug']}") ?>" class="article__photo">
                                     <img src="<?= asset("/assets/images/events/{$event['event_photo_' . $locale]}") ?>" alt="News title" class="article__photo-img">
                                     <time datetime="<?= $event['event_date'] ?>" class="article__time text-uppercase"><?= $month ?><strong><?= $day ?></strong></time></a>
                                 <div class="article__details"><a href="blog_details.html" class="article__item-title"><?= $event['event_title_' . $locale] ?></a>
                                     <div class="article__intro">
-                                        <p><?= str_limit($event['long_desc_' . $locale], 20) ?></p>
-                                    </div><a href="<?= url("/$locale/events/{$event['slug_' . $locale]}") ?>" class="article__more">Read more</a>
+                                        <p><?= str_limit($event['extra_desc_' . $locale], 20) ?></p>
+                                    </div><a href="<?= url("/$locale/events/{$event['slug']}") ?>" class="article__more">Read more</a>
                                 </div>
                                 <!-- end of block .articl-->
                             </div>

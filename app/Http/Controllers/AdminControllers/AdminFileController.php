@@ -23,8 +23,7 @@ class AdminFileController extends Controller {
         $destinationPath = STORE_PATH . '/uploads/files/';
 
         $file_temp = $request->file('file');
-        $extension = $file_temp->getClientOriginalExtension() ?: 'png';
-        $safeName = str_random(10) . '.' . $extension;
+        $safeName = make_image_slug($file_temp->getClientOriginalName());
 
         $fileItem = new File();
         $fileItem->filename = $safeName;
@@ -48,8 +47,7 @@ class AdminFileController extends Controller {
         $destinationPath = STORE_PATH . '/uploads/files/';
 
         $file_temp = $request->file('file');
-        $extension = $file_temp->getClientOriginalExtension() ?: 'png';
-        $safeName = str_random(10) . '.' . $extension;
+        $safeName = make_image_slug($file_temp->getClientOriginalName());
 
         $fileItem = new File();
         $fileItem->filename = $safeName;
