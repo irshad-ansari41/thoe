@@ -10,3 +10,33 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+**/.DS_Store
+
+# Environment Folders
+.idea/
+.devilbox/
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+*.db
+
+# ignore compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
