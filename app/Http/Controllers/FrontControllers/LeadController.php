@@ -57,8 +57,8 @@ class LeadController extends Controller {
         \App::setLocale($this->locale);
 
         //Server API
-        $this->API_KEY = 'jdsflkjl09238490@#$@#$SDFflkwej923432wdmffks@#$@#$sdfk';
-        $this->API_URL = 'https://crm.thoedevelopments.com/WebForms/websiteleads.aspx/InsertLeadV6';
+        $this->API_KEY = '';
+        $this->API_URL = '';
 
         //Post Fields
         $this->name = !empty($request->name) ? $this->clear_input($request->name) : '';
@@ -92,7 +92,7 @@ class LeadController extends Controller {
         $this->date = date('Y-m-d');
 
         //Captcha
-        $this->secret = '6LdRBpkUAAAAABCy8JCwtTKd42gfAMxvrXlNERja';
+        $this->secret = '';
         $this->captcha = !empty(filter_input(INPUT_POST, 'g-recaptcha-response')) ? filter_input(INPUT_POST, 'g-recaptcha-response') : '';
     }
 
