@@ -40,3 +40,5 @@ yarn-error.log
 *.rar
 *.tar
 *.zip
+
+*.lock
