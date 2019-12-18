@@ -90,7 +90,7 @@
 
                         <div class="row">
                             <div class="col-md-3">
-                                <label class="control-label" name="description">Property Holder Image <br><br> </label>
+                                <label class="control-label" name="description">Property Holder Image </label><br>
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">@if($properties) <img src="{{asset('assets/images/properties')}}/{{ $selectedprojects->gallery_location }}/{{ $properties->gallery_location }}/{{ $properties->holder_image }}" height="190" width="190" /> @endif</div>
 
@@ -110,7 +110,7 @@
                             </div>
 
                             <div class="col-md-3">
-                                <label class="control-label" name="description">Property Header Banner <br><br> </label>
+                                <label class="control-label" name="description">Property Header Banner </label><br>
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">@if($properties) <img src="{{asset('assets/images/properties')}}/{!! $selectedprojects->gallery_location !!}/{!! $properties->gallery_location !!}/{!! $properties->header_image !!}" height="190" width="190" /> @endif</div>
 
@@ -129,7 +129,7 @@
                             </div>
 
                             <div class="col-md-3">
-                                <label class="control-label" name="description">Construction Header Banner <br><br> </label>
+                                <label class="control-label" name="description">Construction Header Banner </label><br>
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">@if($properties && $properties->construction_header) <img src="{{asset('assets/images/properties')}}/{!! $selectedprojects->gallery_location !!}/{!! $properties->gallery_location !!}/{!! $properties->construction_header !!}" height="190" width="190" /> @endif</div>
 
@@ -148,7 +148,7 @@
                             </div>
 
                             <div class="col-md-3">
-                                <label class="control-label" name="description">Property Footer Banner <br><br> </label>
+                                <label class="control-label" name="description">Property Footer Banner </label><br>
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">@if($properties && $properties->footer_image) <img src="{{asset('assets/images/properties')}}/{!! $selectedprojects->gallery_location !!}/{!! $properties->gallery_location !!}/{!! $properties->footer_image !!}" height="190" width="190" /> @endif</div>
 
@@ -383,7 +383,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <?php
-                                $extra_details = unserialize($properties['extra_details']);
+                                $extra_details = !empty($properties['extra_details']) ? unserialize($properties['extra_details']) : [];
                                 ?>
                                 <label class="control-label hidden-xs">Extra Details</label>
                                 <table border="1" style="border-collapse:collapse;width: 100%" cellpadding=5 cellspacing=5>
@@ -392,11 +392,11 @@
                                         <?php for ($i = 0; $i <= 6; $i++) { ?>
                                             <tr>
                                                 <td><input type="text" class="form-control" placeholder="Key" name="extra_details[<?= $i ?>][key]" 
-                                                           value="<?= $extra_details[$i]['key'] ?>" ></td>
+                                                           value="<?= !empty($extra_details[$i]['key']) ? $extra_details[$i]['key'] : '' ?>" ></td>
                                                 <td><input type="text" class="form-control" placeholder="Value" name="extra_details[<?= $i ?>][value]" 
-                                                           value="<?= $extra_details[$i]['value'] ?>"></td>
+                                                           value="<?= !empty($extra_details[$i]['value']) ? $extra_details[$i]['value'] : '' ?>"></td>
                                                 <td><input type="text" class="form-control" placeholder="Icon" name="extra_details[<?= $i ?>][icon]" 
-                                                           value="<?= htmlspecialchars($extra_details[$i]['icon']) ?>"></td>
+                                                           value="<?= !empty($extra_details[$i]['icon']) ? htmlspecialchars($extra_details[$i]['icon']) : '' ?>"></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -461,8 +461,10 @@
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
                                         <?php
-                                        $brochures = glob(PUBLIC_PATH . '/assets/images/properties' . "/{$selectedprojects->gallery_location}/{$properties->gallery_location}/brochures/*");
-                                        echo!empty($brochures) ? "<iframe src='" . str_replace(PUBLIC_PATH, SITE_URL, $brochures[0]) . "' height=190 width=190></iframe>" : '';
+                                        if (!empty($selectedprojects) && !empty($properties)) {
+                                            $brochures = glob(PUBLIC_PATH . '/assets/images/properties' . "/{$selectedprojects->gallery_location}/{$properties->gallery_location}/brochures/*");
+                                            echo!empty($brochures) ? "<iframe src='" . str_replace(PUBLIC_PATH, SITE_URL, $brochures[0]) . "' height=190 width=190></iframe>" : '';
+                                        }
                                         ?>
                                     </div>
 
@@ -481,8 +483,10 @@
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
                                         <?php
-                                        $floorplans = glob(PUBLIC_PATH . '/assets/images/properties' . "/{$selectedprojects->gallery_location}/{$properties->gallery_location}/floor-plans/*");
-                                        echo!empty($floorplans) ? "<iframe src='" . str_replace(PUBLIC_PATH, SITE_URL, $brochures[0]) . "' height=190 width=190></iframe>" : '';
+                                        if (!empty($selectedprojects) && !empty($properties)) {
+                                            $floorplans = glob(PUBLIC_PATH . '/assets/images/properties' . "/{$selectedprojects->gallery_location}/{$properties->gallery_location}/floor-plans/*");
+                                            echo!empty($floorplans) ? "<iframe src='" . str_replace(PUBLIC_PATH, SITE_URL, $brochures[0]) . "' height=190 width=190></iframe>" : '';
+                                        }
                                         ?>
                                     </div>
 

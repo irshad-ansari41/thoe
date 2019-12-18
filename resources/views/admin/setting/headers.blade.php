@@ -68,12 +68,14 @@ Content List
                             </td>	
                             <td>
                                 <a href="{!! $record['id'] !!}/edith"><i class="fa fa-edit"></i></a>
+                                <a href="<?= url("admin/setting/{$record['id']}/deletem") ?>" onclick="return confirm('Are you sure you want to delete this record?');" >
+                                    <i class="fa fa-trash"></i></a>
                                 @if($record['status']=='0')
-                                <a href="{!! $record['id'] !!}/status/1">		
+                                <a href="{!!$record['id']!!}/status/1">		
                                     <i class="fa fa-lock"></i>
                                 </a>
                                 @else
-                                <a href="{!! $record['id'] !!}/status/0">		
+                                <a href="{!!$record['id']!!}/status/0">		
                                     <i class="fa fa-unlock"></i>
                                 </a>
                                 @endif		
@@ -95,8 +97,20 @@ Content List
 <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap.js') }}" ></script>
 
 <script>
-$(document).ready(function () {
-    $('#table').DataTable();
-});
+                                    $(document).ready(function () {
+                                        $('#table').DataTable();
+                                    });
+</script>
+<div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="user_delete_confirm_title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('body').on('hidden.bs.modal', '.modal', function () {
+            $(this).removeData('bs.modal');
+        });
+    });
 </script>
 @stop

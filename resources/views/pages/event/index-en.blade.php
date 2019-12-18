@@ -63,7 +63,7 @@ Events
                                                             <?php foreach (array_filter($images) as $image) { ?>
                                                                 <div class="slider__item">
                                                                     <a href="<?= asset("/assets/images/events/{$image}") ?>" data-size="1168x550" class="slider__img js-gallery-item">
-                                                                        <img data-lazy="<?= asset('frontend-assets/media-demo/properties/1740x960/02.jpg') ?>" src="<?= asset("/assets/images/events/{$image}") ?>" alt="">
+                                                                        <img data-lazy="<?= asset('assets/images/empty.png') ?>" src="<?= asset("/assets/images/events/{$image}") ?>" alt="">
                                                                     </a>
                                                                 </div>
                                                             <?php } ?>

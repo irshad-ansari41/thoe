@@ -42,7 +42,7 @@ Events
                                             </div>
                                             <!-- end of block .properties__thumb-->
                                             <div class="properties__details">
-                                                <div class="properties__info"><a href="<?= url("/$locale/construction-updates/{{$project->slug}}") ?>" class="properties__address"><span class="properties__address-street"><?= $project['title_' . $locale] ?></span></a>
+                                                <div class="properties__info"><a href="<?= url("/$locale/construction-updates/{$project->slug}") ?>" class="properties__address"><span class="properties__address-street"><?= $project['title_' . $locale] ?></span></a>
                                                     <div class="properties__offer">
                                                         <div class="properties__offer-column">
                                                             <div class="properties__offer-label"><?= date_format(date_create($project->completion_date), 'F Y') ?></div>

@@ -99,7 +99,7 @@
                             for ($i = 0; $i <= 3; $i++) {
                                 ?>
                                 <div class="col-md-3">
-                                    <label name="description">Photo <?= $i ?><br><br> </label>
+                                    <label name="description">Photo <?= $i ?></label><br>
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
                                             <?php if (!empty($images[$i])) { ?> 

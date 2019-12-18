@@ -83,7 +83,7 @@
                        
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label" name="description">Thumbnail photo <br><br> </label>
+                            <label class="col-md-3 control-label" name="description">Thumbnail photo </label><br>
                             <div class="col-md-8">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"><img src="{{asset('assets/images/media/interviews')}}/<?= !empty($project->interview_photo) ? $project->interview_photo : '' ?>" height="190" width="190" /> </div>

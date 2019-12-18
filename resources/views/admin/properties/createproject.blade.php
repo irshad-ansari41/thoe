@@ -83,7 +83,7 @@
 
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label" name="description">Holder Photo <br><br> </label>
+                            <label class="col-md-3 control-label" name="description">Holder Photo </label><br>
                             <div class="col-md-8">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">@if($project) <img src="{{asset('assets/images/projects')}}/{!! $project->image !!}" height="190" width="190" /> @endif</div>
@@ -114,7 +114,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label" name="description">Header Photo <br><br> </label>
+                            <label class="col-md-3 control-label" name="description">Header Photo </label><br>
                             <div class="col-md-8">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">@if($project) <img src="{{asset('assets/images/projects')}}/{!! $project->header_image !!}" height="190" width="190" /> @endif</div>
@@ -145,7 +145,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label" name="description">Construction Header Photo <br><br> </label>
+                            <label class="col-md-3 control-label" name="description">Construction Header Photo </label><br>
                             <div class="col-md-8">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">@if($project) <img src="{{asset('assets/images/projects')}}/{!! $project->construction_header_image !!}" height="190" width="190" /> @endif</div>

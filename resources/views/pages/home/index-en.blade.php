@@ -246,11 +246,12 @@ Home Page
                     foreach ($press as $news) {
                         $month = date_format(date_create($news['date']), 'M');
                         $day = date_format(date_create($news['date']), 'd');
+                        $images = !empty($news['image']) ? explode(',', $news['image']) : ['empty.png'];
                         ?>
                         <div class="listing__item">
                             <!-- BEGIN SECTION ARTICLE-->
                             <div class="article article--grid"><a href="<?= url("/$locale/news-pr/{$news['slug']}") ?>" class="article__photo">
-                                    <img src="<?= asset("/assets/images/pressrelease/{$news['image']}") ?>" alt="News title" class="article__photo-img">
+                                    <img src="<?= asset("/assets/images/pressrelease/{$images[0]}") ?>" alt="News title" class="article__photo-img">
                                     <time datetime="<?= $news['date'] ?>" class="article__time text-uppercase"><?= $month ?><strong><?= $day ?></strong></time></a>
                                 <div class="article__details"><a href="blog_details.html" class="article__item-title"><?= $news['title_' . $locale] ?></a>
                                     <div class="article__intro">
@@ -267,7 +268,7 @@ Home Page
         </div>
     <?php } ?>
 
-    <?php if (!empty($press)) { ?>
+    <?php if (!empty($events)) { ?>
         <div class="widget js-widget widget--landing">
             <div class="widget__header">
                 <h2 class="widget__title">Events</h2>

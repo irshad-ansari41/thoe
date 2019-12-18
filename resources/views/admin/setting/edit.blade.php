@@ -69,8 +69,7 @@ Add New Content
                             <label class="col-md-3 control-label hidden-xs">Title (English)</label>
 
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="title_en"
-                                       placeholder="Enter Title" value="{{ $menu->title_en }}" />
+                                <input type="text" class="form-control" name="title_en"  placeholder="Enter Title" value="{{ $menu->title_en }}" />
                             </div>
                         </div>
 
@@ -78,8 +77,7 @@ Add New Content
                             <label class="col-md-3 control-label hidden-xs">Title (Arabic)</label>
 
                             <div class="col-md-8">
-                                <input type="text" class="form-control" value="{{ $menu->title_ar }}" name="title_ar"
-                                       placeholder="Enter Title" />
+                                <input type="text" class="form-control" value="{{ $menu->title_ar }}" name="title_ar"  placeholder="Enter Title" />
                             </div>
                         </div>
 
@@ -93,8 +91,7 @@ Add New Content
                         <div class="form-group">
                             <label class="col-md-3 control-label hidden-xs">Order</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" value="{{ $menu->ordering }}" name="ordering"
-                                       placeholder="Enter Order" />
+                                <input type="text" class="form-control" value="{{ $menu->ordering }}" name="ordering" placeholder="Enter Order" />
                             </div>
                         </div>
 

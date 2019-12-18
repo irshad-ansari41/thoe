@@ -243,7 +243,7 @@ Route::group(['middleware' => 'admin', 'as' => 'admin.',], function () {
     Route::get('/setting/add_menu', array('uses' => 'AdminSettingController@add_menu'));
     Route::post('/setting/add_menu', array('uses' => 'AdminSettingController@store_menu'));
     Route::get('/setting/{id}/edith', array('uses' => 'AdminSettingController@edit_menu'));
-    Route::get('/setting/{id}/deleteh', array('uses' => 'AdminSettingController@delete_menu'));
+    Route::get('/setting/{id}/deletem', array('uses' => 'AdminSettingController@delete_menu'));
     Route::post('/setting/{id}/edith', array('uses' => 'AdminSettingController@update_menu'));
     Route::get('/setting/{id}/status/{flag}', array('uses' => 'AdminSettingController@status'));
     Route::get('/setting/footer', array('uses' => 'AdminSettingController@footer_setting'));

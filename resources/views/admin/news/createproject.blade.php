@@ -115,7 +115,7 @@
                             for ($i = 0; $i <= 3; $i++) {
                                 ?>
                                 <div class="col-md-3">
-                                    <label name="description">Photo <?= $i ?><br><br> </label>
+                                    <label name="description">Photo <?= $i ?></label><br>
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
                                             <?php if (!empty($images[$i])) { ?> 
@@ -136,7 +136,7 @@
 
                         <div class="form-group">
 
-                            <label class="col-md-1 " name="description">Upload Image : Zip<br><br> </label>
+                            <label class="col-md-1 " name="description">Upload Image : Zip</label><br>
                             <div class="col-md-3">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
@@ -156,7 +156,7 @@
                                 </div>
                             </div>
 
-                            <label class="col-md-1 " name="description">Upload Document : Zip<br><br> </label>
+                            <label class="col-md-1 " name="description">Upload Document : Zip</label><br>
                             <div class="col-md-3">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
@@ -225,7 +225,7 @@
                             <div class="col-md-11">
                                 <?php
                                 foreach ($pressscategories as $category) {
-                                    $checked = in_array($category->id, explode('-', $project->category)) ? 'checked' : ''
+                                    $checked = !empty($project->category) && in_array($category->id, explode('-', $project->category)) ? 'checked' : ''
                                     ?>
                                     <label><input type='checkbox' name="category[]" value="<?= $category->id ?>" <?= $checked ?>> <?= $category->title ?></label><br/>  
                                 <?php } ?>

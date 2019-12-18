@@ -69,7 +69,7 @@
                                 </div>
                             </div>
 							<div class="form-group">
-								<label class="col-md-3 control-label" name="description">Banner photo <br><br> </label>
+								<label class="col-md-3 control-label" name="description">Banner photo </label><br>
 								<div class="col-md-8">
 									<div class="fileinput fileinput-new" data-provides="fileinput">
 												<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">

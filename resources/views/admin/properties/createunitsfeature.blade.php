@@ -79,7 +79,7 @@
                             <div class="col-md-8">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                        @if($unit->icon) <img src="{{asset('assets/images/icon')}}/{!! $unit->icon !!}" height="190" width="190" /> @endif</div>
+                                        @if(!empty($unit->icon)) <img src="{{asset('assets/images/icon')}}/{!! $unit->icon !!}" height="190" width="190" /> @endif</div>
 
                                     <div>
                                         <span class="btn btn-default btn-file">

@@ -110,7 +110,7 @@ $year = date_format(date_create($property['plan_end_date']), 'Y');
                                                         ?>
                                                         <div class="slider__item">
                                                             <a href="<?= $src ?>" data-size="1168x550" class="slider__img js-gallery-item">
-                                                                <img data-lazy="<?= asset('frontend-assets/media-demo/properties/1740x960/02.jpg') ?>" src="<?= $src ?>" alt="">
+                                                                <img data-lazy="<?= asset('assets/images/empty.png') ?>" src="<?= $src ?>" alt="">
                                                             </a>
                                                         </div>
                                                     <?php } ?>
