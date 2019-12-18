@@ -116,7 +116,7 @@
                         <!-- All -->
                         <div id="all" class="col s12">
                             <div class="row" id="allId">
-                                @include('ajax-all-search')
+                                @includeIf('ajax-all-search')
                             </div>
                             <!-- Pagination -->
                             <!--<div class="row">
@@ -140,7 +140,7 @@
                         <!-- Events -->
                         <div id="events" class="col s12">
                             <div class="row"  id="eventd">
-                                @include('ajax-event-search')
+                                @includeIf('ajax-event-search')
                             </div>
                         </div>
                         <!-- End -->
@@ -148,7 +148,7 @@
                         <!-- News -->
                         <div id="news" class="col s12">
                             <div class="row" id="newsId">
-                                @include('ajax-news-search')
+                                @includeIf('ajax-news-search')
                             </div>
                         </div>
                         <!-- End -->
@@ -156,7 +156,7 @@
                         <!-- Projects -->
                         <div id="projects" class="col s12" >
                             <div class="row" id="projectsId">
-                                @include('ajax-project-search')
+                                @includeIf('ajax-project-search')
                             </div>
                         </div>
                         <!-- End -->

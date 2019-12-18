@@ -35,7 +35,7 @@
     <!--main content-->
     <div class="row">
         <div class="col-md-12">
-            @include('admin.common.errors')
+            @includeIf('admin.common.errors')
 
             <div class="flash-message">
                 @foreach (['danger', 'warning', 'success', 'info'] as $msg)

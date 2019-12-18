@@ -42,7 +42,7 @@ class NewsLetterController extends Controller {
         $name = $request->first_name . ' ' . $request->last_name;
         $msg = subscribe_newsletter($name, $request->email, $this->locale);
 
-        return Response::json(['status' => 'success', 'msg' => $msg]);
+        return Response::json(['status' => 'success', 'error' => '', 'msg' => $msg]);
     }
 
     /**
@@ -57,7 +57,7 @@ class NewsLetterController extends Controller {
             if (!empty($exist)) {
                 DB::table('subscribers')->where('id', trim($sid))->where('token', trim($token))->update(['status' => 'C']);
             }
-            return redirect(SITE_URL.'/en/thank-you?nl=c');
+            return redirect(SITE_URL . '/en/thank-you?nl=c');
         }
     }
 

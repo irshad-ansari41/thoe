@@ -49,7 +49,7 @@ Contact
             <div class="col-md-6">
                 <h2>Contact Form</h2>
                 <!-- Notifications -->
-                @include('notifications')
+                @includeIf('notifications')
 
                 <form class="contact" id="contact" action="{{route('contact')}}" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />

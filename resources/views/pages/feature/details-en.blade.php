@@ -43,7 +43,7 @@ About us
             </div>
             <!-- END Site-->
 
-            @include('pages.feature.sidebar')
+            @includeIf('pages.feature.sidebar')
 
             <div class="clearfix"></div>
         </div>

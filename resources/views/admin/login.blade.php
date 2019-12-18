@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row vertical-offset-100">
             <!-- Notifications -->
-            @include('notifications')
+            @includeIf('notifications')
 
             <div class="col-sm-6 col-sm-offset-3  col-md-5 col-md-offset-4 col-lg-4 col-lg-offset-4">
                 <div id="container_demo">

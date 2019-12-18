@@ -121,9 +121,9 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
 <!-- endinject -->
 <div class="box js-box">
 
-    @include('layouts.header')
+    @includeIf('layouts.header')
 
-    @include('layouts.navbar')
+    @includeIf('layouts.navbar')
 
     <div class="site-wrap js-site-wrap">
         <!-- BEGIN BREADCRUMBS-->
@@ -135,7 +135,7 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
         <!-- Middle Content Section Ends-->
     </div>
 
-    @include('layouts.footer')
+    @includeIf('layouts.footer')
 
 </div>
 <button type="button" class="scrollup js-scrollup"></button>

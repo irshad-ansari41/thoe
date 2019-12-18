@@ -487,7 +487,7 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
                             </div>
                             <!-- /.col-sm-3 -->
                             <div class="col-sm-4 col-md-3">
-                                @include('include.news-letter')
+                                @includeIf('include.news-letter')
                             </div>
                             <!-- /.col-sm-3 -->
 
@@ -539,7 +539,7 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
         <!-- End popup -->
 
 
-        {{-- @include('include.popup-slider-bt') --}}
+        {{-- @includeIf('include.popup-slider-bt') --}}
 
 
         <!-- Footer Scripts -->

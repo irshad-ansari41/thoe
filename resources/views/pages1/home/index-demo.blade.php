@@ -297,7 +297,7 @@
 
 <!-- End popup -->
 
-{{-- @include('include.popup-slider-bt') --}}
+{{-- @includeIf('include.popup-slider-bt') --}}
 
 <!-- Modal login, register, custom gallery -->
 <div id="login-modal-open"></div>

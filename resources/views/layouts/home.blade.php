@@ -112,9 +112,9 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
 <!-- endinject -->
 <div class="box js-box">
 
-    @include('layouts.header')
+    @includeIf('layouts.header')
 
-    @include('layouts.navbar-home')
+    @includeIf('layouts.navbar-home')
 
     <div class="site-wrap js-site-wrap">
         <!-- BEGIN BREADCRUMBS-->
@@ -131,14 +131,7 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
         <div class="widget__content">
             <!-- BEGIN SUBSCRIBE-->
             <div class="subscribe">
-                <form action="#" class="subscribe__form js-subscribe-form">
-                    <h4 class="subscribe__title">Receive Updates</h4>
-                    <div class="subscribe__group form-group">
-                        <label class="sr-only">Newsletters</label>
-                        <input type="email" placeholder="Your e-mail" name="email" required data-parsley-trigger="change" class="subscribe__field form-control js-subscribe-email">
-                    </div>
-                    <button type="submit" class="btn--action subscribe__submit js-subscribe-submit">SUBMIT</button>
-                </form>
+                @includeIf('include.newsletter')
                 <!-- end of block .subscribe__form-->
             </div>
             <!-- END SUBSCRIBE-->
@@ -146,7 +139,7 @@ if (!empty(Request::segment(1)) && !empty(Request::segment(2))) {
     </div>
     <!-- END AFTER CENTER SECTION-->
 
-    @include('layouts.footer')
+    @includeIf('layouts.footer')
 
 </div>
 <button type="button" class="scrollup js-scrollup"></button>

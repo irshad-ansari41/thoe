@@ -95,7 +95,7 @@ Events
             </div>
             <!-- END Site-->
 
-            @include('pages.offer.sidebar')
+            @includeIf('pages.offer.sidebar')
 
             <div class="clearfix"></div>
         </div>

@@ -678,9 +678,9 @@ $imagepath = '';
             </div>
             <!-- End -->
 
-            {{--@include('/pages/property/downloadPopup', ['name'=>'View Brochure','type' => 'vbrochure','link'=>$viewBrochure]) --}}
-            {{-- @include('/pages/property/downloadPopup', ['name'=>'View Floor Plan','type' => 'vfloorplan','link'=>$viewFloorPlan]) --}}
-            {{-- @include('/pages/property/downloadPopup', ['name'=>'View 360','type' => 'view360','link'=>$view360]) --}}
+            {{--@includeIf('/pages/property/downloadPopup', ['name'=>'View Brochure','type' => 'vbrochure','link'=>$viewBrochure]) --}}
+            {{-- @includeIf('/pages/property/downloadPopup', ['name'=>'View Floor Plan','type' => 'vfloorplan','link'=>$viewFloorPlan]) --}}
+            {{-- @includeIf('/pages/property/downloadPopup', ['name'=>'View 360','type' => 'view360','link'=>$view360]) --}}
 
             @stop
 

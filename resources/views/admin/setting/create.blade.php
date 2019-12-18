@@ -24,7 +24,7 @@
     <!--main content-->
     <div class="row">
         <div class="col-md-12">
-            @include('admin.common.errors')
+            @includeIf('admin.common.errors')
             <!--image upload -->
             <div class="panel panel-danger">
                 <div class="panel-heading">

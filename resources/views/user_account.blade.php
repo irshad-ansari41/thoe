@@ -40,7 +40,7 @@ User Account
                 <!--main content-->
                 <div class="position-center">
                     <!-- Notifications -->
-                    @include('notifications')
+                    @includeIf('notifications')
 
                     <div>
                         <h3 class="text-primary" id="title">Personal Information</h3>

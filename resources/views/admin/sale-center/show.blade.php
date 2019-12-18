@@ -28,7 +28,7 @@ Amenities
             </h4>
         </div>
             <div class="panel-body">
-                @include('admin.amenities.show_fields')
+                @includeIf('admin.amenities.show_fields')
             </div>
         </div>
     <div class="form-group">

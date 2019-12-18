@@ -22,7 +22,7 @@
             <img src="{{ asset('assets/images/thoe-logo.png') }}" alt="logo" class="img-responsive mar">
             <h3 class="text-primary">Forgot Password</h3>
             <p>Enter your email to reset your password</p>
-            @include('notifications')
+            @includeIf('notifications')
             <form action="{{ route('fe-forgot-password') }}" class="omb_loginForm" autocomplete="off" method="POST">
                 {!! Form::token() !!}
                 <div class="form-group">

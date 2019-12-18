@@ -34,7 +34,7 @@ font-size: 12px;
     <div class="col-sm-12">
         <section class="content paddingleft_right15">
             <div class="row">
-                @include('flash::message')
+                @includeIf('flash::message')
                 <div class="panel panel-primary ">
                     <div class="panel-heading clearfix">
                         <h4 class="panel-title pull-left"> <i class="livicon" data-name="list-ul" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
@@ -43,7 +43,7 @@ font-size: 12px;
                     </div>
                     <br />
                     <div class="panel-body table-responsive">
-                        @include('admin.sale-center.table-location')
+                        @includeIf('admin.sale-center.table-location')
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@ font-size: 12px;
     <div class="col-sm-12">
         <section class="content paddingleft_right15">
             <div class="row">
-                @include('flash::message')
+                @includeIf('flash::message')
                 <div class="panel panel-primary ">
                     <div class="panel-heading clearfix">
                         <h4 class="panel-title pull-left"> <i class="livicon" data-name="list-ul" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
@@ -62,7 +62,7 @@ font-size: 12px;
                     </div>
                     <br />
                     <div class="panel-body table-responsive">
-                        @include('admin.sale-center.table-community')
+                        @includeIf('admin.sale-center.table-community')
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@ font-size: 12px;
     <div class="col-sm-12">
         <section class="content paddingleft_right15">
             <div class="row">
-                @include('flash::message')
+                @includeIf('flash::message')
                 <div class="panel panel-primary ">
                     <div class="panel-heading clearfix">
                         <h4 class="panel-title pull-left"> <i class="livicon" data-name="list-ul" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
@@ -81,7 +81,7 @@ font-size: 12px;
                     </div>
                     <br />
                     <div class="panel-body table-responsive">
-                        @include('admin.sale-center.table-property')
+                        @includeIf('admin.sale-center.table-property')
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@ font-size: 12px;
     </div>
     @elseif($type=='units')
     <div class="col-sm-12">
-        @include('flash::message')
+        @includeIf('flash::message')
         <div class="panel panel-primary ">
             <div class="panel-heading clearfix">
                 <h4 class="panel-title pull-left"> <i class="livicon" data-name="list-ul" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
@@ -103,7 +103,7 @@ font-size: 12px;
             </div>
             <br />
             <div class="panel-body table-responsive">
-                @include('admin.sale-center.table-unit')
+                @includeIf('admin.sale-center.table-unit')
             </div>
         </div>
     </div>

@@ -24,7 +24,7 @@
             <img src="{{ asset('assets/images/thoe-logo.png') }}" alt="logo" class="img-responsive mar">
             <h3 class="text-primary">Sign Up</h3>
             <!-- Notifications -->
-            @include('notifications')
+            @includeIf('notifications')
             <form action="{{ route('fe-register') }}" method="POST" id="reg_form">
                 <!-- CSRF Token -->
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />

@@ -29,7 +29,7 @@
                 @endif
                 @endforeach
             </div>
-            @include('admin.common.errors')
+            @includeIf('admin.common.errors')
             <!--image upload -->
             <div class="panel panel-danger">
                 <div class="panel-heading">

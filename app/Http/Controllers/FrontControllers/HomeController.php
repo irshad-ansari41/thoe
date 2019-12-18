@@ -71,5 +71,5 @@ class HomeController extends Controller {
 
         return view("pages.home.index-{$this->locale}", $data);
     }
-
+    
 }

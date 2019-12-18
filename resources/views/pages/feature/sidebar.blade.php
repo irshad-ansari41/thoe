@@ -27,7 +27,7 @@
         <div class="widget__content">
             <h3>Get in touch</h3>
             <!-- BEGIN SEARCH-->
-            @include("include.lead-form-$locale")
+            @includeIf("include.lead-form-$locale")
             <!-- end of block-->
             <!-- END SEARCH-->
         </div>

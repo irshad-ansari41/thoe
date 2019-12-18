@@ -1,6 +1,6 @@
 @if (session()->has('flash_notification.message'))
     @if (session()->has('flash_notification.overlay'))
-        @include('flash::modal', [
+        @includeIf('flash::modal', [
             'modalClass' => 'flash-modal',
             'title'      => session('flash_notification.title'),
             'body'       => session('flash_notification.message')

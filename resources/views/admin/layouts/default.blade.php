@@ -91,7 +91,7 @@
 
                         <div class="clearfix"></div>
                         <!-- BEGIN SIDEBAR MENU -->
-                        @include('admin.layouts._left_menu')
+                        @includeIf('admin.layouts._left_menu')
                         <!-- END SIDEBAR MENU -->
                     </div>
                 </section>

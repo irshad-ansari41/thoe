@@ -21,7 +21,7 @@
             <img src="{{ asset('assets/images/thoe-logo.png') }}" alt="logo" class="img-responsive mar">
             <h3 class="text-primary">Reset your Password</h3>
             <p>Enter your new password details</p>
-            @include('notifications')
+            @includeIf('notifications')
             <form action="{{ route('fe-forgot-password-confirm',compact(['userId','passwordResetCode'])) }}" class="omb_loginForm"  autocomplete="off" method="POST">
                 {!! Form::token() !!}
                 <input type="password" class="form-control" name="password" placeholder="New Password">

@@ -6,7 +6,7 @@ Amenities
 @stop
 
 @section('content')
-@include('core-templates::common.errors')
+@includeIf('core-templates::common.errors')
 <section class="content-header">
     <h1>Amenities</h1>
     <ol class="breadcrumb">
@@ -30,7 +30,7 @@ Amenities
         <div class="panel-body">
         {!! Form::open(['route' => 'admin.amenities.store']) !!}
 
-            @include('admin.amenities.fields')
+            @includeIf('admin.amenities.fields')
 
         {!! Form::close() !!}
     </div>

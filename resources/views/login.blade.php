@@ -25,7 +25,7 @@
                         <img src="{{ asset('assets/images/thoe-logo.png') }}" alt="logo" class="img-responsive mar">
                         <h3 class="text-primary">Log In</h3>
                         <!-- Notifications -->
-                        @include('notifications')
+                        @includeIf('notifications')
 
                         <form action="{{ route('fe-login') }}" class="omb_loginForm"  autocomplete="off" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">

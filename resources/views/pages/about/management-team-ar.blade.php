@@ -46,7 +46,7 @@ About us
             </div>
             <!-- END Site-->
             
-            @include('pages.about.sidebar')
+            @includeIf('pages.about.sidebar')
             
             <div class="clearfix"></div>
         </div>

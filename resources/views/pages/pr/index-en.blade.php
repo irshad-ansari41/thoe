@@ -112,7 +112,7 @@ Events
             </div>
             <!-- END Site-->
 
-            @include('pages.pr.sidebar')
+            @includeIf('pages.pr.sidebar')
 
             <div class="clearfix"></div>
         </div>
